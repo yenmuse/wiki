@@ -1,0 +1,10 @@
+created: 20211121142447366
+modified: 20211121142749102
+revision: 2-36a3aa5b93369590c8a40fe58ea04778
+tags: netlogo
+title: netlogo 简介
+type: text/vnd.tiddlywiki
+
+more is defferent，每个层级都会在自己的层面上表现出复杂性，而不是简单的下层元素性质的堆砌。netlog是对复杂系统的一个建模工具，编程语言是lisp的一个方言
+
+[ext[simpread-NetLogo 如何入门？有哪些学习交流渠道|file:./resources/simpread/simpread-NetLogo 如何入门？有哪些学习交流渠道？.html]]

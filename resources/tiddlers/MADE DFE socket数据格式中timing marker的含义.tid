@@ -1,0 +1,36 @@
+created: 20211220062713628
+modified: 20211220065826943
+revision: 1-ad340eb47649e9aa0b3823469eec8c14
+tags: [[made soc]] dfe
+title: MADE DFE socket数据格式中timing marker的含义
+type: text/vnd.tiddlywiki
+
+socket header中有4个timing marker，每个marker的含义如下：
+
+* CA: Carrier Alignment -- mostly for downlink, period 10ms(60ms in GSM)
+
+** 主要用于下行，顾名思义，各个独立载波可以用它来对齐，避免合成聚合载波时出现问题。上行不同，JESD RX在收到的天线数据中插图CA marker，然后UL_DDC根据它插入CT
+
+* CT: Carrier Trigger -- mostly for uplink, period 10ms(577 us slot in GSM)
+
+** CT主要用于上行，用于触发connectivity模块开始缓存数据。UL_DDC模块根据软件配置的BCN时间插入CT marker，其他上行模块可以忽略所有第一个CT marker之前的数据。在下行，connectivity模块在每个radio frame的开头插入CT marker
+
+** DFE的上行处理时延由CT marker + CA marker共同决定
+
+*** CA用于接收侧（JESD204B IP）的时间控制
+
+*** UL_DDC模块根据指定的同步与CA marker的BCN time为每个载波插入CT marker
+
+*** At the output side (Connectivity IP) CT controls sample transmission timing. This means that CT timing from UL_DDC to Connectivity IP must be accurate
+
+*** CA is used only for debugging purposes downstream from UL_DDC
+
+*** To ensure accurate and known UL latency, the CT in UL_SRC must be used and re-generated similarly to CA in DL_SRC
+
+* CS: Carrier Subframe -- mostly for 5G (both DL and UL) and LAA, period 1/8, 1/2 or 1ms
+
+* CV: carrier Valid -- '1' in practice, was supposed to be optional power saving in TDD
+
+[img[file:./resources/picbed/dfe1.1_ul_timing_marker_in_tdd.png]]
+
+[img[file:./resources/picbed/dfe1.1_dl_timing_marker_in_tdd.png]]

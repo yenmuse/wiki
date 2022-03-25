@@ -1,0 +1,14 @@
+created: 20211123142724568
+modified: 20211124142108021
+revision: 1-fb3227fd644f76cb15f0b5ee930be5a1
+tags: simpread 统计信号处理 贝叶斯方法
+title: 走进贝叶斯统计
+type: text/vnd.tiddlywiki
+
+[ext[simpread-走进贝叶斯统计（一）—— 先验分布与后验分布|file:./resources/simpread/simpread-走进贝叶斯统计（一）—— 先验分布与后验分布.html]]
+
+[ext[simpread-走进贝叶斯统计（二）—— 共轭先验|file:./resources/simpread/simpread-走进贝叶斯统计（二）—— 共轭先验.html]]
+
+[ext[simpread-走进贝叶斯统计（三）—— 后验预测分布|file:./resources/simpread/simpread-走进贝叶斯统计（三）—— 后验预测分布.html]]
+
+[ext[simpread-走进贝叶斯统计（四）—— 蒙特卡洛方法|file:./resources/simpread/simpread-走进贝叶斯统计（四）—— 蒙特卡洛方法.html]]

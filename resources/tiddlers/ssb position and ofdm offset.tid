@@ -1,0 +1,12 @@
+created: 20211102081153290
+modified: 20211102092950091
+tags: 
+title: ssb position and ofdm offset
+
+<$presentation>
+<$list filter="[tag[ssb position and ofdm phase offset]sort[title]]">
+<$slide tiddlerTitle={{!!title}} backgroundColor={{!!color}}>
+<$transclude mode="block" />
+</$slide>
+</$list>
+</$presentation>

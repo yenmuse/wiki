@@ -1,0 +1,14 @@
+created: 20211101083842240
+modified: 20211101084405725
+tags: rnti dci [[5G NR]]
+title: 同样的DCI格式为什么会用不同的rnti来加扰
+
+从协议看相同的DCI格式会用不同的rnti来加扰，这是为什么呢？
+
+主要是因为RRC状态的不同，大略分为idle态、traffic态、正在收paging，这几种。
+
+You would notice that some DCI format can be scrambled by many other types of RNTI type. Then you may ask how PHY layer figure out which RNTI types it has to use to decode a certain DCI type.  ''It depends on communication status''. For example, DCI Format 1A can be scrambled by SI-RNTI, P-RNTI, C-RNTI. In this case, UE will try something like followings
+
+* UE will use SI-RNTI if it is in idle mode and within SI-transmission window
+* UE will use P-RNTI if it is in idle mode and it is at the PO (Paging Occasion) subframe
+* UE will use C-RNTI while it is in commuincation status

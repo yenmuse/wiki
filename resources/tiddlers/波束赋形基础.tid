@@ -1,0 +1,348 @@
+created: 20211029134355616
+modified: 20211029142632351
+revision: 9-1578abd52ed77709fd926d2c4d93c7f6
+tags: 波束赋形
+title: 波束赋形基础
+type: text/vnd.tiddlywiki
+
+为了更大的带宽，5G采用毫米波技术。毫米波频率很高，散射、绕射能力较弱，所以衰减较大，覆盖范围缩小。与此同时，毫米波天线尺寸很小，原先放置数根天线的面积可以放置数十上百根毫米波天线。由于上述两个方面的原因，阵列信号处理技术在5G中得到广泛深入的应用。
+
+阵列信号处理主要有以下三个研究方向：
+
+# 检测入射信号的存在并确定信号的数量
+
+# 找出入射信号的DOA角度
+
+# 增强来自一些已知、未知方向的期望方向，同时抑制干扰信号
+
+第三个也就是波束赋形或者波束形成技术，可以有效的克服毫米波衰减大的问题，在5G的设计中占据非常重要的位置。
+
+这篇文档主要介绍波束赋形的一些基本概念和原理。
+
+---
+
+!! ULA(Uniform Linear Array)的波束赋形
+
+均匀线性阵列(ULA)是指在某个方向上以相同间隔分布的一系列天线单元(AEs,Antenna Elements)。假设分布方向为x轴，天线单元间隔为d，则8元素的ULA阵列如下图所示：
+
+[img[file:./resources/picbed/ULA天线阵列.png]]
+
+第$$m$$个天线单元的位置为:$$x_{m}=m \cdot d, m=0,1,2 \ldots, N-1$$。
+
+!!! ULA的波束赋形因子和波束图型
+
+假设ULA阵列的接收信号为$s(t)$，与阵列分布方向之间的夹角为$$\psi$$,如下所示：
+
+[img[波束信号接收|file:./resources/picbed/signal_flow_of_receive_beamforming.png]]
+
+则第$$m$$个天线单元接收到的信号相比$$s(t)$$有相移：
+
+$$s_{m}(t)=s(t) \cdot e^{-j 2 \pi x_{m} / \lambda \cos (\psi)}$$
+
+加上波束赋形加权向量然后各个天线单元收到的信号求和，得到：
+
+$$\begin{aligned} s_{w}(t) &=\sum_{m=0}^{N-1} s_{m}(t) \\ &=s(t) \cdot e^{-j 2 \pi x_{m} / \lambda \cos (\psi)} \\ &=\sum_{m=0}^{N-1} w(m) \cdot s(t) e^{-j 2 \pi \frac{d}{\lambda} m \cos (\psi)} \\ &=s(t) \cdot \sum_{m=0}^{N-1} w(m) e^{-j 2 \pi \frac{d}{\lambda} m \cos (\psi)} \end{aligned}$$
+
+定义''波束赋形因子(Beamforming Factor)'' ，有的地方也称为''阵列因子(AF, Array Factor)'' 为：
+
+$$\tilde{W}(\psi)=\sum_{m=0}^{N-1} w(m) e^{-j 2 \pi \frac{d}{\lambda} m \cos (\psi)}$$，
+
+则：
+
+$$s_{w}(t)=\tilde{W}(\psi) \cdot s(t)$$
+
+该信号与接收信号的功率之比称为''波束图型(Beam Pattern)''：
+
+$$\left|s_{w}(t)\right|^{2}=|\tilde{W}(\psi) \cdot s(t)|^{2}=|\tilde{W}(\psi)|^{2} \cdot|s(t)|^{2}=b(\psi) \cdot|s(t)|^{2}$$
+
+也就是：
+
+$$b(\psi)=|\tilde{W}(\psi)|^{2}=\left|\sum_{m=0}^{N-1} w(m) e^{-j 2 \pi \frac{d}{\lambda} m \cos (\psi)}\right|^{2}$$
+
+
+记''阵列响应矢量(ARV，Array Response Vector)'' 为：
+
+$$\mathbf{a}(\psi)=\left(e^{\left.-j 2 \pi \frac{d}{\lambda} n \cos (\psi)\right)}_{n=0, \ldots, N-1}=\left(\begin{array}{c}{a_{0}(\psi)} \\ {a_{1}(\psi)} \\ {\vdots} \\ {a_{N-1}(\psi)}\end{array}\right)=\left(\begin{array}{c}{e^{-j 2 \pi \frac{d}{\lambda} 0 \cos (\psi)}} \\ {e^{-j 2 \pi \frac{d}{\lambda} \cos (\psi)}} \\ {\vdots} \\ {e^{-j 2 \pi \frac{d}{\lambda}(N-1) \cos (\psi)}}\end{array}\right)\right.$$
+
+
+阵列响应矢量很多时候也被称为导向矢量或方向矢量。
+
+记''加权矢量''为：
+
+$$\mathbf{w}=(w(n))_{n=0, \ldots, N-1}=\left(\begin{array}{c}{w(0)} \\ {w(1)} \\ {\vdots} \\ {w(N-1)}\end{array}\right)$$
+
+
+则波束赋形因子可写为：
+
+$$\tilde{W}(\psi)=\mathbf{w}^{T} \cdot \mathbf{a}(\psi)$$
+
+
+令$$w(n)=1$$,$$\psi=\pi/2$$,$$d=\lambda/2$$,画出8/20个天线元素的ULA阵列波束图样如下：
+
+[img[file:./resources/picbed/bore_sight_beams.png]]
+
+几个基本概念：
+
+* 主瓣(Mainlobe)、旁瓣(Sidelobe)：波束图型通常有两个或者多个瓣，其中增益最大的瓣称为主瓣，其它瓣称为旁瓣
+
+* 主瓣增益(Mainlobe Gain)：主瓣最大辐射方向的功率增益
+
+* 波束方向(Beam Diretion)：主瓣最大辐射方向
+
+* 波束宽度(Beam Width)：在主瓣最大辐射方向两侧，辐射强度降低3dB（功率密度降低一半）的两点间的夹角定义为波瓣宽度，一般这种定义也称为HPBW
+
+* 栅瓣(Grating Lobe)：指由于天线单元间距离超过半波长导致的与主瓣增益相同的波瓣
+
+
+!!! 空间采样定理
+
+奈奎斯特采样定理说：若采样频率小于信号最高频率的两倍，则无法根据采样完美的恢复出原信号。类似的，在阵列信号处理中，如果阵列的阵元间距离大于半波长，则无法基于接收的阵列信号唯一的确定源信号的位置。
+混叠意味着来自不同入射角$\psi_{1}$,$\psi_{2}$有相同的阵列相应矢量，也就是：
+
+$$\mathrm{e}^{-j m\left(2 \pi d \cos \psi_{1}\right) / \lambda}=\mathrm{e}^{-j m\left(2 \pi d \cos \psi_{2}\right) / \lambda}$$
+
+
+为避免混叠，要求：
+
+$$|2 \pi(\cos \psi) d / \lambda|_{\psi=\psi_{1}, \psi_{2}}<\pi$$
+
+
+也就是：
+
+$$d <\lambda / 2$$
+
+!!! DFT波束
+可以看出，波束赋形因子与加权向量之间的关系非常类似于DFT/IDFT，但是稍有不同。为了往DFT/IDFT靠近，可以定义：
+
+
+$$\frac{d}{\lambda} \cos \left(\psi_{n}\right)=\frac{n}{N}$$
+
+也就是：
+
+$$\psi_{n} = \arccos (\frac{\lambda}{d} \frac{n}{N}), n = 0,1 \cdots N-1$$
+
+其中，N为波束个数，每个$\psi_{n}$代表一个DFT波束。此时波束赋形因子可以写为：
+
+$$W(n)=\tilde{W}\left(\psi_{n}\right)=\sum_{m=0}^{N-1} w(m) e^{-j 2 \pi \frac{d}{\lambda} m \cos \left(\psi_{n}\right)}=\sum_{m=0}^{N-1} w(m) e^{-j \frac{2 \pi}{N} n m}$$
+
+
+与DFT形式相同。所以加权向量可以通过IDFT来计算：
+
+$$w(m)=\frac{1}{N} \sum_{n=0}^{N-1} W(n) e^{j \frac{2 \pi}{N} n m}$$
+
+!!! 波束设计方法
+
+波束设计是指''根据需求计算阵列的加权向量''。波束设计方法与FIR滤波器的设计方法类似，FIR滤波器中的很多设计方法稍加修改即可应用到波束设计中。
+
+假设 $$d=\lambda/2$$，则波束赋形因子为：
+
+$$\tilde{W}(\psi)=\sum_{m=0}^{N-1} w(m) e^{-j  \pi  m \cos (\psi)}$$
+
+
+$$\pi \cos (\psi)$$的取值范围为 $$[-\pi,\pi]$$。
+FIR滤波器的频率响应可写为：
+<center>
+
+$$\tilde{W}(\psi)=\sum_{m=0}^{N-1} w(m) e^{-j  m \Omega}$$
+
+</center>
+
+$$\Omega$$为归一化频率，取值范围为 $$[-\pi ,\pi]$$ 。
+
+举个简单的例子：如果我们要设计一个波束方向为$$\psi \in[-\pi / 6, \pi / 6]$$，并且抑制$$\psi \in[-\pi / 2, -\pi / 4]$$和$$\psi \in[\pi / 4, \pi / 2]$$方向信号的阵列，这等价于设计一个通带为$$\Omega \in[-0.5 \pi, 0.5 \pi]$$，阻带为$$\Omega \in[-\pi, -0.71 \pi]$$和$$\Omega \in[0.71\pi,  \pi]$$的FIR滤波器；设计出来的加权向量直接应用到波束设计中即可。
+
+!!!! DOA波束设计法
+期望波束的到达角为$$\psi$$，则令加权向量为：
+<center>
+
+$$w(m)=e^{j 2 \pi \frac{d}{\lambda} m \cos (\psi)}$$
+
+</center>
+
+即可。
+
+!!!! DFT波束设计法
+
+顾名思义，就是找到与期望波束方向最接近的DFT波束，然后通过IDFT计算出加权向量。
+
+!!!! Woodward-Lawson法
+
+Woodward-Lawson法类似于FIR滤波器设计中的频域采样法。FIR设计时的频域采样法是对理想的频域响应等间隔采样，然后对采样值做IDFT即可得到FIR滤波器的加权向量；类似的，Woodward-Lawson法是对理想的波束赋形因子等间隔采样，然后做IDFT，之后乘以一个窗函数（汉明窗、汉宁窗、凯赛窗、泰勒窗、切比雪夫窗等），得到加权因子。
+
+!!!! 雷米兹法(Remez Design Method)
+
+雷米兹法是一种等波纹FIR滤波器设计方法，可以直接用来设计波束赋形。
+
+!!!! 带天线合并的Woodward-Lawson法
+
+天线合并是指相邻的数个天线单元应用相同的权重：
+
+[img[file:./resources/picbed/array_with_ae_combining.png]]
+
+
+
+!!! 最优波束设计
+
+前面讨论了确定性设计技术：给定波束方向、旁瓣控制、零点设置等要求，如何设计加权向量。
+
+波束赋形还有一个研究方向是最优波束设计：利用信号和噪声统计过程的统计特性来设计加权向量，这个加权向量在某种统计意义上最优。
+
+
+举个例子，假设一个三天线元素的ULA阵列，有一个固定已知的期望信号源，DOA为$$\theta_{0}$$，两个固定已知的非期望干扰源，DOA分别为$$\theta_{1}, \theta_{2}$$，如下所示：
+
+[img[file:./resources/picbed/天线阵列-最优设计例子.png]]
+
+假设所有信号有相同载频。阵列响应矢量为：
+<center>
+
+$$\mathbf{a}=\left[\begin{array}{l}{\mathrm{e}^{-\mathrm{j} 2\pi \frac{d}{\lambda} \cos \theta}} \\ {1} \\ {\mathbf{e}^{\mathrm{j} 2\pi \frac{d}{\lambda} \cos \theta}}\end{array}\right]$$
+
+</center>
+
+加权向量为：
+<center>
+
+$$\mathbf{w} = \left[\begin{array}{c} w_{0} \\ w_{1} \\ w_{2} \end{array}\right]$$
+
+</center>
+
+则波束赋形因子为：
+
+<center>
+
+$$y=\mathbf{w}^{T} \cdot \mathbf{a}=w_{0} \mathrm{e}^{-\mathrm{j} 2\pi \frac{d}{\lambda} \cos \theta}+w_{1}+w_{2} \mathrm{e}^{\mathrm{j} 2\pi \frac{d}{\lambda} \cos \theta}$$
+
+</center>
+
+要求波束赋形因子不改变期望信号，滤除两个干扰信号，也就是要求：
+
+<center>
+
+$$y_{0}=\mathbf{w}^{T} \cdot \mathbf{a}_{0}=w_{0} \mathrm{e}^{-\mathrm{j} 2\pi \frac{d}{\lambda} \cos \theta_{0}}+w_{1}+w_{2} \mathrm{e}^{-\mathrm{j} 2\pi \frac{d}{\lambda} \cos \theta_{0}}=1$$
+
+$$y_{1}=\mathbf{w}^{T} \cdot \mathbf{a}_{1}=w_{0} \mathrm{e}^{-\mathrm{j} 2\pi \frac{d}{\lambda} \cos \theta_{1}}+w_{1}+w_{2} \mathrm{e}^{-\mathrm{j} 2\pi \frac{d}{\lambda} \cos \theta_{3}}=0$$
+
+$$y_{2}=\mathbf{w}^{T} \cdot \mathbf{2}_{0}=w_{0} \mathrm{e}^{-\mathrm{j} 2\pi \frac{d}{\lambda} \cos \theta_{2}}+w_{1}+w_{2} \mathrm{e}^{-\mathrm{j} 2\pi \frac{d}{\lambda} \cos \theta_{2}}=0$$
+
+</center>
+
+写成向量形式，也就是：
+
+<center>
+
+$$\mathbf{w}^{T}  \mathbf{A}=\mathbf{u}^{T}$$ ; $$\mathbf{A}=\left[\begin{array}{l}{\mathbf{a}_{0}} & {\mathbf{a}_{1}} & {\mathbf{a}_{2}}\end{array}\right]$$，$$\mathbf{u}=\left[\begin{array}{l} 1 & 0 && 0 \end{array}\right]^{T}$$
+
+</center>
+
+若矩阵$\mathbf{A}$可逆，则
+
+<center>
+
+$$\mathbf{w}^{T} = \mathbf{u}^{T} \mathbf{A}^{-1}$$
+
+</center>
+
+上面只是一个简单的例子，类似的思路应用不同的优化准则，可以得到各种场景下的最优波束赋形[^1]。
+
+!!! ULA形成多个波束
+从上面的分析可以看出，一个加权向量对应一个波束，如果阵列有多个加权向量，就会形成多个波束。实际应用中，我们可为多个用户，多个频率的信号设计不同的加权向量，使其在不同方向上达到预期的增益。
+
+
+!! UPRA(Uniform Planar Rectangular Array)的波束赋形
+均匀分布平面矩形阵中，天线单元在横向和竖向两个方向上均匀分布，横向（Horizon）相邻天线单元间的距离为$$d_{H}$$，竖向(Vertical)相邻天线单元间的距离为$$d_{V}$$；一个横向M个，竖向N个天线单元的UPRA如下所示：
+
+[img[file:./resources/picbed/upra_geometry.png]]
+
+显然第$$(m,n)$$个天线单元的坐标为$$(0,y_{m},z_{n})$$，其中
+$$\begin{aligned} y_{m} &=m \cdot d_{H}, m=0,1,2 \ldots, M-1 \\ z_{n} &=n \cdot d_{V}, n=0,1,2 \ldots, N-1 \end{aligned}$$
+
+---
+
+!!! UPRA的波束赋形因子和波束图型
+
+对于一个UPRA，其ARV为：$$\mathbf{A} = \mathbf{a_{m}} \otimes \mathbf{a^{'}_{n}}$$，其中$$\mathbf{a_{m}}$$是$$y$$方向上的阵列响应矢量，$$\mathbf{a_{n}}$$是$z$方向上的阵列响应矢量：
+
+<center>
+
+$$\mathbf{a_{m}}=\left[\begin{array}{c}{e^{-j 2 \pi \frac{d_{H}}{\lambda} 0 \sin\theta\sin\phi}} \\ {e^{-j 2 \pi \frac{d_{H}}{\lambda} 1 \sin\theta\sin\phi}} \\ {\vdots} \\ {e^{-j 2 \pi \frac{d_{H}}{\lambda}(M-1) \sin\theta\sin\phi}}\end{array}\right]$$
+
+$$\mathbf{a_{n}}=\left[\begin{array}{c}{e^{-j 2 \pi \frac{d_{V}}{\lambda} 0 \cos \theta}} \\ {e^{-j 2 \pi \frac{d_{V}}{\lambda} 1 \cos \theta}} \\ {\vdots} \\ {e^{-j 2 \pi \frac{d_{V}}{\lambda}(N-1) \cos \theta}}\end{array}\right]$$
+
+</center>
+
+假设加权矩阵为$$\mathbf{W}$$，则UPRA的第$$(m,n)$$个天线单元上的加权值为$$\mathbf{W_{m,n}}$$，对于到达方向(DOA, Direction of Arrival)为$$(\theta, \phi)$$的信号$$s(t)$$，阵列接收到的信号为：
+
+<center>
+
+$$s_{w}(t) = s(t)\Sigma^{N-1}_{0} \Sigma^{M-1}_{0} \mathbf{W_{m,n}} \mathbf{A_{m,n}}$$
+
+</center>
+
+波束赋形因子为：
+
+<center>
+
+$$\tilde{W}(\theta,\phi) = \Sigma^{N-1}_{0} \Sigma^{M-1}_{0} \mathbf{W_{m,n}(\theta, \phi)} \mathbf{A_{m,n}(\theta, \phi)}$$
+
+</center>
+
+波束图型为：
+
+<center>
+
+$$b(\theta, \phi) = |\tilde{W}(\theta,\phi)|^2$$
+</center>
+
+记加权矩阵$$\mathbf{W}$$为$$y,z$$方向上加权向量的克罗内克积：
+<center>
+
+$$\mathbf{W} = \mathbf{w_{m}} \otimes \mathbf{w_{n}}$$
+</center>
+
+则
+
+<center>
+
+$$\tilde{W}(\theta,\phi) = (\mathbf{w^{T}_{m}} \cdot \mathbf{a_{m}}) \cdot (\mathbf{w^{T}_{n}} \cdot \mathbf{a_{n}})$$
+
+</center>
+
+根据前面对ULA波束赋形因子的分析，$$(\mathbf{w^{T}_{m}} \cdot \mathbf{a_{m}}),(\mathbf{w^{T}_{n}} \cdot \mathbf{a_{n}})$$ 分别是$$y,z$$方向上ULA的波束赋形因子，也就是说''UPRA的波束设计可以分解为两个相互独立的ULA的波束设计''。
+
+与ULA阵列类似，UPRA阵列也可以同时形成多个波束，每个波束可以承载不同用户或者不同频率的信号。
+
+---
+
+!! 数字波束赋形和模拟波束赋形
+
+从上面的分析可以看出，波束赋形''本质上就是对阵列中各个天线单元发送或接收的信号做一个加权'',调整各个天线单元上发送、接收的信号的幅度、相位，以达到设计者希望得到的效果(一般是指定方向上的幅度增强或减弱)。
+
+无论数字波束赋形还是模拟波束赋形，本质上是相同的，只是加权的位置不同：对于一个天线阵列，如果每个天线单元都有独立的射频链路通道，但共享同一个数字链路通道，需要每条射频链路允许对所发送、接收的信号进行独立的幅度和相位调整，所形成的波束主要通过在射频通道的相位和幅度调整来实现，称为模拟波束赋形(ABF, Analog Beamforming)；而对于全数字波束赋形(DBF,Digital Beamforming)的天线阵列，每个天线都有独立的数字链路通道，可以在基带控制每路信号的幅度和相位。
+
+很多时候，数字波束赋形与数字预编码没有显著的区别：二者都是在数字域调整信号的幅度和相位，区别在于前者希望获得阵列增益，后者希望获得空分复用/传输分集[^2]。
+
+模拟波束赋形有以下特点：
+
+1. 对于模拟波束赋形，每个天线单元发送、接收的信号一般通过移相器(Phase Shifter)改变其相位
+
+2. 由于器件能力的限制，模拟波束赋形都是在整个带宽上进行赋形，无法像数字波束赋形那样针对部分子带单独进行赋形，因此模拟波束赋形间通过**时分方式**进行复用
+
+数字波束赋形灵活但是成本高，模拟波束赋形成本低但是不够灵活，所以有人提出了混合波束赋形，结合了ABF\DBF的优点，供厂家在成本与灵活性上做权衡[^3]。
+
+---
+
+!! Open Questions
+
+1. 上面所有讨论都假设信号到达各个天线单元的路径上，经历了完全相同的增益、相位偏移，但这是不可能的，实际硬件会存在种种问题，增益、相位误差，天线的位置可能会有偏差，天线接收时有噪声，这些对波束的各个参数：波束增益、波束方向、波束宽度、旁瓣能量等会造成什么影响？ 如何矫正这些误差？这些是敏感性分析和阵列校准(Array Calibration)要讨论的问题，具体可以参考:[ext[Optimum Array Processing: Part IV of Detection, Estimation, and Modulation Theory|https://onlinelibrary.wiley.com/doi/book/10.1002/0471221104]]
+
+2. 上面只讨论了单一频率分量的情况，但实际应用中，信号带宽可能相当大，不同频率分量的波长，也就是$$\lambda$$，是不同的，这种情况应该怎么处理？ 这是宽带波束赋形要讨论的问题，可以参考[ext[Wideband Beamforming: Concepts and Techniques|https://www.wiley.com/en-us/Wideband+Beamforming%3A+Concepts+and+Techniques-p-9780470713921]]
+
+
+3. 前面的最优波束设计部分只讨论了如何设计固定角度的波束，但是当信号的到达方向未能事先确定或者一直变化时，应该如何设计波束？这是自适应波束赋形要讨论的问题，进一步的讨论可以参考[ext[Optimum Array Processing: Part IV of Detection, Estimation, and Modulation Theory|https://onlinelibrary.wiley.com/doi/book/10.1002/0471221104]]
+
+---
+[^1]: 更深入的讨论可以参考：[ext[Smart Antennas for Wireless Communications|https://www.amazon.cn/Smart-Antennas-with-MATLAB-Principles-and-Applications-in-Wireless-Communication/dp/0071822380/ref=dp_ob_title_bk]]
+
+[^2]: 一点个人理解，数字波束赋形为了获得阵列增益，会有意的利用不同方向信号到达各个天线的相位差；而数字与编码则不会关注这个，只是关注收发天线间的信道矩阵。
+
+[^3]: 更深入的讨论可以参考：[ext[mmWave Massive MIMO: A Paradigm for 5G|https://www.oreilly.com/library/view/mmwave-massive-mimo/9780128044780/]]

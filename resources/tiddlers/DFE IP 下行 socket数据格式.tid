@@ -1,0 +1,11 @@
+created: 20211215023438066
+modified: 20220207031725537
+revision: 3-9fde278186614c4446b6e0c88fab8c6b
+tags: dfe nokia
+title: DFE IP 下行 socket数据格式
+type: text/vnd.tiddlywiki
+
+其实也就是CP2 dump的数据格式
+
+[img[file:./resources/picbed/CP2_data_format_from_Aku.png]]
+[img[file:./resources/picbed/CP2_data_format.png]]

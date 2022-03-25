@@ -1,0 +1,24 @@
+created: 20220301013604298
+modified: 20220301015842162
+revision: 11-c970b912125bca5be916759429b6da7d
+tags: puml rfoe thor
+title: RFOE RX MBT Ring Buffer管理相关序列图
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startuml
+EaxcStream --> MbtBufferManagerFactory: CreateBufferManager()
+MbtBufferManagerFactory --> MbtBufferManagerStreamSpecific: std::make_unique\n<MbtBufferManagerStreamSpecific>\n(numOfMbtBuffers, useSmem)
+MbtBufferManagerStreamSpecific --> FhMemoryManager: allocateIoMem
+MbtBufferManagerStreamSpecific <-- FhMemoryManager: function return
+MbtBufferManagerFactory <-- MbtBufferManagerStreamSpecific: function return
+EaxcStream <-- MbtBufferManagerFactory: function return
+|||
+|||
+|||
+EaxcStream --> rfoeRxController: configureMemBufferTable
+EaxcStream <-- rfoeRxController: function return
+note right
+this functio will write the addr
+of allocated buffer to MBT CSR
+end note
+@enduml""">

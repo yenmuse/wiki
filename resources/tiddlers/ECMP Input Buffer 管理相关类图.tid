@@ -1,0 +1,116 @@
+created: 20220302073900469
+modified: 20220304011232119
+revision: 10-0b95a31b47ae00dc868f70fcad71b8cd
+tags: ecmp thor puml
+title: ECMP Input Buffer 管理相关类图
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startuml
+class ThorNrtApi
+
+class StreamManager
+{
+		void StreamManager::AddDlTxEaxcStream(const SpatialStreamParamsDl& eaxcConfiguration)
+		l1sw::ctrl::rt::fronthaul::ecpriRt::IoMemIqDataSymbolBufferManager ioMemIqDataSymbolBufferManager_;
+}
+
+class EaxcStream
+{
+		l1sw::ctrl::rt::fronthaul::ecpriRt::FhCircularBuffer iqDataSymbolBuffer_
+		std::vector<uint64_t*> iqDataSymbolStartAddresses_{}
+		CreateDlTxEcmpAndRfoeJobs(const uint8_t /*ecmpMhabIdx*/, const uint8_t /*rfoeMhabIdx*/)
+}
+
+class UplaneJobCreator
+{
+		void createJobs(*,*,*, uint32_t* iqDataReadBuffer,*,*)
+}
+
+class UplaneJobCreatorBase
+
+class EcmpJdInputParams
+{
+    uint64_t* inputHeaderAddr;
+    uint64_t  inputHeaderLengthIn64bitWords;
+    uint64_t* iqDmaCfgAddr;
+    uint64_t  numIqDmaCfgs;
+    uint64_t* outputAddr;
+    uint64_t  outputLengthIn64bitWords;
+    uint8_t   mantissaSize;
+}
+class EcmpJdNew
+{
+		void EcmpJdNew::setDmaParams(const EcmpJdInputParams& ecmpJdInputParams)
+}
+
+class IoMemIqDataSymbolBufferManager
+{
+		std::unordered_map<uint8_t, FhCircularBuffer> iqDataSymbolBuffers{}
+		void InitMem(const uint8_t ccId, const uint32_t numOfPrbs)
+		inline FhCircularBuffer& getIqDataSymbolBuffer(const uint8_t ccId)
+}
+
+class FhCircularBuffer
+{
+		size_t    stepSize;
+    uint64_t* baseAddress;
+    bool      isSmem;
+    size_t    bufferSizeInSteps;
+    size_t    currentIndex{0};
+		static uint64_t* allocate(size_t sizeBytes, size_t alignBytes, bool useSmem)
+		uint64_t* getWritePtr(size_t maxWriteSizeInBytes);
+    uint64_t* getNextEntryU64() { return getNEntriesU64(1); };
+    uint64_t* getNEntriesU64(size_t numSteps);
+}
+
+class BfmulTimerEo
+{
+		std::array<BfDlJob, BfmulJob::NUM_OF_BFMUL_INSTANCES> \njob2_{ BfDlJob(0), BfDlJob(1),BfDlJob(2),BfDlJob(3) }
+		void ExecuteBeamformingJobs(const BfmulCCInfo& info, TimerQueueContext& context)
+}
+
+class BfDlJob
+{
+		BfMulJ2d* descJob2_[2] = {}; //ping-pong buffer
+		void PushToPsm(varargs)
+}
+
+class BfmulJob
+
+class JobBase
+
+class TimerQueueContext
+{
+		FixedSizeList<BfmulCCInfo, MAX_NUM_OF_CARRIERS> componentCarriersInfo_{};
+    uint8_t numOfCarriersTriggeredBfDlJob_{};
+    uint8_t numOfBfDlJobsToBeTriggered_{};
+    std::vector<cavm_psm_cmd_addjob_s> ecmpAddJobCmdsToBeTriggered_{};
+    SharedMemPtr<em::TimerManager> timerManager_;
+		void AddTxComponentCarrier(*, *, *, uint8_t* iqBuffer, uint8_t* ecmpInputAddr0, uint8_t* ecmpInputAddr1, *)
+		inline auto& Get(const uint8_t ccIdx)
+}
+
+class BfmulCCInfo
+{
+		uint8_t* iqBuffer{};
+    uint8_t* ecmpInputAddr[2]{};
+}
+class TimerManager
+
+ThorNrtApi o-- StreamManager
+StreamManager *-- EaxcStream
+EaxcStream o-- UplaneJobCreator
+UplaneJobCreatorBase <|-- UplaneJobCreator
+StreamManager *-- IoMemIqDataSymbolBufferManager
+IoMemIqDataSymbolBufferManager *-- FhCircularBuffer
+UplaneJobCreator o-- EcmpJdInputParams
+UplaneJobCreator o-- EcmpJdNew
+ThorNrtApi o-- TimerQueueContext
+TimerQueueContext *-- BfmulCCInfo
+BfmulTimerEo o-- BfDlJob
+BfDlJob <|--  BfmulJob
+BfmulJob <|-- JobBase
+BfDlJob o-- BfmulCCInfo
+TimerManager o-- BfmulTimerEo
+TimerQueueContext *-- TimerManager
+@enduml""">

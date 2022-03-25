@@ -1,0 +1,57 @@
+created: 20210913081757089
+modified: 20211014005136262
+revision: 5-08f116da234aba1c32d990ad75de964e
+tags: rach [[5G NR]] [[python code base]]
+title: 5G NR PRACH PDP 计算示例
+tmap.id: 5c322ae7-1b59-4871-8d7f-7a9023d3bcf1
+type: text/vnd.tiddlywiki
+
+
+```
+import numpy as np
+import scipy as sp
+import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+
+erach_output_dump_file_name = ".\\resources\dataset\\erach_outPut_46dbm.txt"
+#erach_output_dump_file_name = "C:\\N-20L6PF1RKJ6B-Data\\maoy\\Documents\\daily_job\\2021\\fb03\\common\\1100\\erach_outPut_46dbm.txt"
+
+def conv_complex(content):
+    #print(content)
+    return complex(int(content[6:], 16) if (int(content[6:], 16) < 32768) else (int(content[6:], 16) - 65536), int(content[2:6], 16) if \
+                   (int(content[2:6], 16) < 32768) else int(content[2:6], 16) - 65536)
+erach_dump_td = np.loadtxt(open(erach_output_dump_file_name), dtype=complex, delimiter=" = ", \
+                                      usecols=(2), converters={2:conv_complex})[0:1536]
+
+erach_dump_fd_all = sp.fft.fft(erach_dump_td)
+erach_dump_fd = sp.fft.fftshift(erach_dump_fd_all)[348:1118]
+fig, axe = plt.subplots(1,3)
+axe[0].plot(np.abs(erach_dump_td), linewidth = 1)
+axe[1].plot(np.abs(erach_dump_fd), linewidth = 1)
+axe[2].scatter(erach_dump_fd.real, erach_dump_fd.imag)
+fig.show()
+
+L_RA = 839
+RS_NUM = 838
+i = np.mat(np.arange(L_RA)).transpose()
+u = np.mat(np.arange(RS_NUM) + 1).transpose()
+temp_mat = np.multiply(i, i+1)*u.transpose()
+x = np.exp(-1j*np.pi*temp_mat/L_RA)
+y = np.fft.fft(x, axis=0)
+t = np.mat(np.roll(y[:,0], -30)).transpose()
+r = np.fft.ifft(np.multiply(y, np.conjugate(t)), axis = 0)
+suf = go.Surface(z =np.abs(r))
+fig = go.Figure(suf)
+fig.show()
+xx, yy = np.meshgrid(np.arange(838), np.arange(839))
+fig, axe = plt.subplots(1, 1, figsize=(8, 6), subplot_kw={'projection': '3d'})
+axe.plot_surface(xx, yy, np.abs(r))
+fig.show()
+
+```
+
+上面代码在i64 python 3.6.5 win环境下，依赖库均安装情况下可以正常运行。
+
+* python函数np.loadtxt
+
+* python matplotlib函数meshgrid画3D plot

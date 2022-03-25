@@ -1,0 +1,2614 @@
+
+                <html lang="en" class="simpread-font simpread-theme-root" style='font-size: 60%!important;'>
+                    <head>
+                        <meta charset="utf-8">
+                        <meta http-equiv="content-type" content="text/html; charset=UTF-8;charset=utf-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
+                        <meta name="author" content="Kenshin"/>
+                        <meta name="description" content="简悦 SimpRead - 如杂志般沉浸式阅读体验的扩展" />
+                        <meta name="keywords" content="Chrome extension, Chrome 扩展, 阅读模式, 沉浸式阅读, 简悦, 简阅, read mode, reading mode, reader view, firefox, firefox addon, userscript, safari, opera, tampermonkey"/>
+                        <meta name="thumbnail" content="https://simpread-1254315611.cos.ap-shanghai.myqcloud.com/static/introduce-2.png"/>
+                        <meta property="og:title" content="简悦 SimpRead - 如杂志般沉浸式阅读体验的扩展"/>
+                        <meta property="og:type" content="website">
+                        <meta property="og:local" content="zh_CN"/>
+                        <meta property="og:url" content="http://ksria.com/simpread"/>
+                        <meta property="og:image" content="https://simpread-1254315611.cos.ap-shanghai.myqcloud.com/static/introduce-2.png"/>
+                        <meta property="og:image:type" content="image/png"/>
+                        <meta property="og:image:width" content="960"/>
+                        <meta property="og:image:height" content="355"/>
+                        <meta property="og:site_name" content="http://ksria.com/simpread"/>
+                        <meta property="og:description" content="简悦 SimpRead - 如杂志般沉浸式阅读体验的扩展"/>
+                        <style type="text/css">.simpread-font{font:300 16px/1.8 -apple-system,PingFang SC,Microsoft Yahei,Lantinghei SC,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;color:#333;text-rendering:optimizelegibility;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}.simpread-hidden{display:none}.simpread-read-root{display:-webkit-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;margin:0;top:-1000px;left:0;width:100%;z-index:2147483646;overflow-x:hidden;opacity:0;-webkit-transition:all 1s cubic-bezier(.23,1,.32,1) .1s;transition:all 1s cubic-bezier(.23,1,.32,1) .1s}.simpread-read-root-show{top:0}.simpread-read-root-hide{top:1000px}sr-read{display:-webkit-flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:column nowrap;flex-flow:column;margin:20px 20%;min-width:400px;min-height:400px;text-align:center}read-process{position:fixed;top:0;left:0;height:3px;width:100%;background-color:#64b5f6;-webkit-transition:width 2s;transition:width 2s;z-index:20000}sr-rd-content-error{display:block;position:relative;margin:0;margin-bottom:30px;padding:25px;background-color:rgba(0,0,0,.05)}sr-rd-footer{-webkit-box-orient:vertical;-ms-flex-direction:column;flex-direction:column;font-size:14px}sr-rd-footer,sr-rd-footer-group{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-direction:normal}sr-rd-footer-group{-webkit-box-orient:horizontal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}sr-rd-footer-line{width:100%;border-top:1px solid #e0e0e0}sr-rd-footer-text{min-width:150px}sr-rd-footer-copywrite{margin:10px 0 0;color:inherit}sr-rd-footer-copywrite abbr{-webkit-font-feature-settings:normal;font-feature-settings:normal;font-variant:normal;text-decoration:none}sr-rd-footer-copywrite .second{margin:10px 0}sr-rd-footer-copywrite .third a:hover{border:none!important}sr-rd-footer-copywrite .third a:first-child{margin-right:50px}sr-rd-footer-copywrite .sr-icon{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:33px;height:33px;opacity:.8;-webkit-transition:opacity .5s ease;transition:opacity .5s ease;cursor:pointer}sr-rd-footer-copywrite .sr-icon:hover{opacity:1}sr-rd-footer-copywrite a,sr-rd-footer-copywrite a:link,sr-rd-footer-copywrite a:visited{margin:0;padding:0;color:inherit;background-color:transparent;font-size:inherit!important;line-height:normal;text-decoration:none;vertical-align:baseline;vertical-align:initial;border:none!important;box-sizing:border-box}sr-rd-footer-copywrite a:focus,sr-rd-footer-copywrite a:hover,sr-rd-footer a:active{color:inherit;text-decoration:none;border-bottom:1px dotted!important}.simpread-blocks{text-decoration:none!important}.simpread-blocks *{margin:0}.simpread-blocks a{padding:0;text-decoration:none!important}.simpread-blocks img{margin:0;padding:0;border:0;background:transparent;box-shadow:none}.simpread-focus-root{display:block;position:fixed;top:0;left:0;right:0;bottom:0;background-color:hsla(0,0%,92%,.9);z-index:2147483645;opacity:0;-webkit-transition:opacity 1s cubic-bezier(.23,1,.32,1) 0ms;transition:opacity 1s cubic-bezier(.23,1,.32,1) 0ms}.simpread-focus-highlight{position:relative;box-shadow:0 0 0 20px #fff;background-color:#fff;overflow:visible;z-index:2147483646}.sr-controlbar-bg sr-rd-crlbar,.sr-controlbar-bg sr-rd-crlbar fab{z-index:2147483647}sr-rd-crlbar.controlbar{position:fixed;right:0;bottom:0;width:100px;height:100%;opacity:0;-webkit-transition:opacity .5s ease;transition:opacity .5s ease}sr-rd-crlbar.controlbar:hover{opacity:1}sr-rd-crlbar fap *{box-sizing:border-box}@media (max-height:620px){fab{zoom:.8}}@media (max-height:783px){dialog-gp dialog-content{max-height:580px}dialog-gp dialog-footer{border-top:1px solid #e0e0e0}}.simpread-highlight-selector{outline:3px dashed #1976d2!important;cursor:pointer!important}.simpread-highlight-controlbar,.simpread-highlight-selector{background-color:#fafafa!important;opacity:.8!important;-webkit-transition:opacity .5s ease!important;transition:opacity .5s ease!important}.simpread-highlight-controlbar{position:relative!important;border:3px dashed #1976d2!important}simpread-highlight,sr-snapshot-ctlbar{position:fixed;top:0;left:0;right:0;padding:15px;height:50px;background-color:rgba(50,50,50,.9);box-shadow:0 2px 5px rgba(0,0,0,.26);box-sizing:border-box;z-index:2147483640}simpread-highlight,sr-highlight-ctl,sr-snapshot-ctlbar{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}sr-highlight-ctl{margin:0 5px;width:50px;height:20px;color:#fff;background-color:#1976d2;border-radius:4px;box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);cursor:pointer}toc-bg{position:fixed;left:0;top:0;width:50px;height:200px;font-size:medium}toc-bg:hover{z-index:3}.toc-bg-hidden{opacity:0;-webkit-transition:opacity .5s ease;transition:opacity .5s ease}.toc-bg-hidden:hover{opacity:1;z-index:3}.toc-bg-hidden:hover toc{width:180px}toc *{all:unset}toc{position:fixed;left:0;top:100px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding:10px;width:0;max-width:200px;max-height:500px;overflow-x:hidden;overflow-y:hidden;cursor:pointer;border:1px solid hsla(0,0%,62%,.22);-webkit-transition:width .5s;transition:width .5s}toc:hover{overflow-y:auto}toc.mini:hover{width:200px!important}toc::-webkit-scrollbar{width:3px}toc::-webkit-scrollbar-thumb{border-radius:10px;background-color:hsla(36,2%,54%,.5)}toc outline{position:relative;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;padding:2px 0;min-height:21px;line-height:21px;text-align:left}toc outline a,toc outline a:active,toc outline a:focus,toc outline a:visited{display:block;width:100%;color:inherit;font-size:11px;text-decoration:none!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}toc outline a:hover{font-weight:700!important}toc outline a.toc-outline-theme-dark,toc outline a.toc-outline-theme-night{color:#fff!important}.toc-level-h1{padding-left:5px}.toc-level-h2{padding-left:15px}.toc-level-h3{padding-left:25px}.toc-level-h4{padding-left:35px}.toc-outline-active{border-left:2px solid #f44336}toc outline active{position:absolute;left:0;top:0;bottom:0;padding:0 0 0 3px;border-left:2px solid #e8e8e8}sr-kbd{background:-webkit-gradient(linear,0 0,0 100%,from(#fff785),to(#ffc542));border:1px solid #e3be23;-o-border-image:none;border-image:none;-o-border-image:initial;border-image:initial;position:absolute;left:0;padding:1px 3px 0;font-size:11px!important;font-weight:700;box-shadow:0 3px 7px 0 rgba(0,0,0,.3);overflow:hidden;border-radius:3px}.sr-kbd-a{position:relative}kbd-mapping{position:fixed;left:5px;bottom:5px;-ms-flex-flow:row;flex-flow:row;width:250px;height:500px;background-color:#fff;border:1px solid hsla(0,0%,62%,.22);box-shadow:0 2px 5px rgba(0,0,0,.26);border-radius:3px}kbd-mapping,kbd-maps{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}kbd-maps{margin:40px 0 20px;width:100%;overflow-x:auto}kbd-maps::-webkit-scrollbar-thumb{background-clip:padding-box;border-radius:10px;border:2px solid transparent;background-color:rgba(85,85,85,.55)}kbd-maps::-webkit-scrollbar{width:10px;-webkit-transition:width .7s cubic-bezier(.4,0,.2,1);transition:width .7s cubic-bezier(.4,0,.2,1)}kbd-mapping kbd-map-title{position:absolute;margin:5px 0;width:100%;font-size:14px;font-weight:700}kbd-maps-group{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}kbd-maps-title{margin:5px 0;padding-left:53px;font-size:12px;font-weight:700}kbd-map kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#444d56;vertical-align:middle;background-color:#fafbfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}kbd-map kbd-name{display:inline-block;text-align:right;width:50px}kbd-map kbd-desc{padding-left:3px}sharecard-bg{position:fixed;top:0;left:0;width:100%;height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,0,.4);z-index:2147483647}sharecard{max-width:450px;background-color:#64b5f6}sharecard,sharecard-head{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}sharecard-head{margin:25px;color:#fff;border-radius:10px;box-shadow:0 2px 6px 0 rgba(0,0,0,.2),0 25px 50px 0 rgba(0,0,0,.15)}sharecard-card{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}sharecard-card,sharecard-top{display:-webkit-box;display:-ms-flexbox;display:flex}sharecard-top{-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-right:5px;height:65px;background-color:#fff;color:#878787;font-size:25px;font-weight:500;border-top-left-radius:10px;border-top-right-radius:10px}sharecard-top span.logos{display:block;width:48px;height:48px;margin:5px;background-repeat:no-repeat;background-position:50%;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAABU1BMVEUAAAAnNJMnNZI3Q5onNJInNJMnNJInNJMnNJI8SJ0tOZY/S55EUKAoNJI6RpwoNJNIU6InNJInNJImNJI7SJwmNJJ2fLUiMJFKVaNCTJ9faK1HUaJOWKVSXaUnNJNYY6pye7cmM5JXYKhwebMjMI8mL4719fW9vb0oNZP/UlLz8/QqN5TAwMAnNJPv7+/Pz8/q6+/p6enNzc3Kysry8vMsOJXc3env7/LU1uXo29vR0dHOzs7ExMTwjo73bW37XV3Aj1TCYELl5u3n5+fW2Obn6O7f4OrZ2+g0QJkxPpgvO5bh4uvS1OTP0ePCwsJQW6ZLVqTs7fHd3d3V1dXqv79VX6lET6A1TIxXUIBSgHxWQnpelHf+WVnopkXqbC7j5Ozi4uLDw8NGUaFATJ9SgH3r6+vGyd7BxNva2trX19ejqM2gpczHx8dze7Zha67Z2dlTgH1aXQeSAAAAJnRSTlMA6ff+497Y8NL+/fv49P379sqab/BeOiX06tzVy8m/tKqpalA7G6oKj0EAAAJlSURBVEjHndNXWxpBFIDhcS2ICRLAkt4Dx4WhLk0E6R0MYoIISrWX5P9f5cwSIRC2+T1czMV5n2FnZwn2eWONUqCAv3H2Uf5Ra1hx4+0WEXtDQW0fCPYJ1EffEfIV4CSROAE4jsePoTFsNmTJF/IeIHF2lgCIn57GodlqDWXBK7IwBYatVlMWFAildPKX7I3m74Z9fsCiQChoimoFQAz04Ad2gH1n9fv9n9hgMNDr9euLWD6fLxQKxaLfb7dTSlahbFVdEPwIQtrAihZQgyKCtCagbQe3xh0QFMgy5MR11+ewYY5/qlZ7vT2xu93ULKjbFLpiUxnIIwjgKmVTLDUFXMrAi2NJWCRLIthTBo4xyOLKpwyqU6CuDCI41hFBCVdOhyLw4FgJ1skCAiyl9BSHbCorgo6VJXTru5hrVCQS8Yr5xLzX59YJSFpVFwD9U0BGC3hGdFpATgRupTGe9R9I1b1ePBvXKDyvq/O/44LT4/E4BUbSCAwj8Evq6HlnOBprx6JhJz8Gktc7xeaP9ndY+0coQvCccFBD4JW60UIY50ciLOAODAQRVOeCHm4Q3Xks6uRDY+CQ+AR4T2wMYh6+jMCIQOp78CFoj0H7EQgIuhI3dGaHCrwgADwCPjJvA372GRigCJg49FUdk3D87pq3zp4SA5zc1Zh9DxfwkpjgUg5Mv+lbeE3McC8Lpu7SA3wk2xzcqL2tN5DfIsQC8HB7UamUy6FQOpTO5QKBQDZbKnWSyUzGjdWCwaDA8+7Le4BNgm3qQGWchYh9s5hNq6wVbBlbwhZYOp3OYOA4zmgEypnM2zj8ByIdedKrH8vDAAAAAElFTkSuQmCC");zoom:.8}sharecard-content{padding:15px;max-height:500px;font-size:20px;text-align:justify;background-color:#2196f3;overflow-x:hidden;overflow-y:auto}sharecard-via{padding:10px;font-size:10px;background-color:#2196f3}sharecard-footer{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-right:5px;height:100px;background-color:#fff;color:#878787;font-size:15px;font-weight:500;border-bottom-left-radius:10px;border-bottom-right-radius:10px}sharecard-footer,sharecard-footer div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}sharecard-footer span.qrcode{display:block;width:100px;height:100px;margin:5px;background-repeat:no-repeat;background-position:50%;background-image:url("data:image/png;base64,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")}sharecard-control{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:0 19px;height:80px;background-color:#fff}simpread-snapshot{width:100%;height:100%;cursor:move;z-index:2147483645}simpread-snapshot,sr-mask{position:fixed;left:0;top:0}sr-mask{background-color:rgba(0,0,0,.1)}.simpread-feedback,.simpread-urlscheme{position:fixed;right:20px;bottom:20px;z-index:2147483646}simpread-feedback,simpread-urlscheme{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;padding:20px 20px 0;width:500px;color:rgba(51,51,51,.87);background-color:#fff;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.26);overflow:hidden;-webkit-transform-origin:bottom;transform-origin:bottom;-webkit-transition:all .6s ease;transition:all .6s ease}simpread-feedback *,simpread-urlscheme *{font-size:12px!important;box-sizing:border-box}simpread-feedback.active,simpread-urlscheme.active{-webkit-animation-name:srFadeInUp;animation-name:srFadeInUp;-webkit-animation-duration:.45s;animation-duration:.45s;-webkit-animation-fill-mode:both;animation-fill-mode:both}simpread-feedback.hide,simpread-urlscheme.hide{-webkit-animation-name:srFadeInDown;animation-name:srFadeInDown;-webkit-animation-duration:.45s;animation-duration:.45s;-webkit-animation-fill-mode:both;animation-fill-mode:both}simpread-feedback sr-fb-label,simpread-urlscheme sr-urls-label{width:100%}simpread-feedback sr-fb-head,simpread-urlscheme sr-urls-head{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;margin-bottom:5px;width:100%}simpread-feedback sr-fb-content,simpread-urlscheme sr-urls-content{margin-bottom:5px;width:100%}simpread-feedback sr-urls-footer,simpread-urlscheme sr-urls-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;width:100%}simpread-feedback sr-fb-a,simpread-urlscheme sr-urls-a{color:#2163f7;cursor:pointer}simpread-feedback text-field-state,simpread-urlscheme text-field-state{border-top:none rgba(34,101,247,.8)!important;border-left:none rgba(34,101,247,.8)!important;border-right:none rgba(34,101,247,.8)!important;border-bottom:2px solid rgba(34,101,247,.8)!important}simpread-feedback switch,simpread-urlscheme switch{margin-top:0!important}@-webkit-keyframes srFadeInUp{0%{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes srFadeInUp{0%{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@-webkit-keyframes srFadeInDown{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}to{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}}@keyframes srFadeInDown{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}to{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}}simpread-feedback sr-fb-head{font-weight:700}simpread-feedback sr-fb-content{-webkit-box-orient:vertical;-ms-flex-direction:column;flex-direction:column}simpread-feedback sr-fb-content,simpread-feedback sr-fb-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-direction:normal}simpread-feedback sr-fb-footer{-webkit-box-orient:horizontal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;width:100%}simpread-feedback sr-close{position:absolute;right:20px;cursor:pointer;-webkit-transition:all 1s cubic-bezier(.23,1,.32,1) .1s;transition:all 1s cubic-bezier(.23,1,.32,1) .1s;z-index:200}simpread-feedback sr-close:hover{-webkit-transform:rotate(-15deg) scale(1.3);transform:rotate(-15deg) scale(1.3)}simpread-feedback sr-stars{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-top:10px}simpread-feedback sr-stars i{margin-right:10px;cursor:pointer}simpread-feedback sr-stars i svg{-webkit-transition:all 1s cubic-bezier(.23,1,.32,1) .1s;transition:all 1s cubic-bezier(.23,1,.32,1) .1s}simpread-feedback sr-stars i svg:hover{-webkit-transform:rotate(-15deg) scale(1.3);transform:rotate(-15deg) scale(1.3)}simpread-feedback sr-stars i.active svg{-webkit-transform:rotate(0) scale(1);transform:rotate(0) scale(1)}simpread-feedback sr-emojis{display:block;height:100px;overflow:hidden}simpread-feedback sr-emoji{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-transition:.3s;transition:.3s}simpread-feedback sr-emoji>svg{margin:15px 0;width:70px;height:70px;-ms-flex-negative:0;flex-shrink:0}simpread-feedback sr-stars-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin:10px 0 20px}</style>
+                        <style type="text/css">.simpread-theme-root{font-size:62.5%!important}sr-rd-content,sr-rd-desc,sr-rd-title{width:100%}sr-rd-title{display:-webkit-box;margin:1em 0 .5em;overflow:hidden;text-overflow:ellipsis;text-rendering:optimizelegibility;-webkit-line-clamp:3;-webkit-box-orient:vertical}sr-rd-content{text-align:left;word-break:break-word}sr-rd-desc{text-align:justify;line-height:2.4;margin:0 0 1.2em;box-sizing:border-box}sr-rd-content{font-size:25.6px;font-size:1.6rem;line-height:1.6}sr-rd-content h1,sr-rd-content h1 *,sr-rd-content h2,sr-rd-content h2 *,sr-rd-content h3,sr-rd-content h3 *,sr-rd-content h4,sr-rd-content h4 *,sr-rd-content h5,sr-rd-content h5 *,sr-rd-content h6,sr-rd-content h6 *{word-break:break-all}sr-rd-content div,sr-rd-content p{display:block;float:inherit;line-height:1.6;font-size:25.6px;font-size:1.6rem}sr-rd-content div,sr-rd-content p,sr-rd-content pre,sr-rd-content sr-blockquote{margin:0 0 1.2em;word-break:break-word}sr-rd-content a{padding:0 5px;vertical-align:baseline;vertical-align:initial}sr-rd-content a,sr-rd-content a:link{color:inherit;font-size:inherit;font-weight:inherit;border:none}sr-rd-content a:hover{background:transparent}sr-rd-content img{margin:10px;padding:5px;max-width:100%;background:#fff;border:1px solid #bbb;box-shadow:1px 1px 3px #d4d4d4}sr-rd-content figcaption{text-align:center;font-size:14px}sr-rd-content sr-blockquote{display:block;position:relative;padding:15px 25px;text-align:left;line-height:inherit}sr-rd-content sr-blockquote:before{position:absolute}sr-rd-content sr-blockquote *{margin:0;font-size:inherit}sr-rd-content table{width:100%;margin:0 0 1.2em;word-break:keep-all;word-break:normal;overflow:auto;border:none}sr-rd-content table td,sr-rd-content table th{border:none}sr-rd-content ul{margin:0 0 1.2em;margin-left:1.3em;padding:0;list-style:disc}sr-rd-content ol{list-style:decimal;margin:0;padding:0}sr-rd-content ol li,sr-rd-content ul li{font-size:inherit;list-style:disc;margin:0 0 1.2em}sr-rd-content ol li{list-style:decimal;margin-left:1.3em}sr-rd-content ol li *,sr-rd-content ul li *{margin:0;text-align:left;text-align:initial}sr-rd-content li ol,sr-rd-content li ul{margin-bottom:.8em;margin-left:2em}sr-rd-content li ul{list-style:circle}sr-rd-content pre{font-family:Consolas,Monaco,Andale Mono,Source Code Pro,Liberation Mono,Courier,monospace;display:block;padding:15px;line-height:1.5;word-break:break-all;word-wrap:break-word;white-space:pre;overflow:auto}sr-rd-content pre,sr-rd-content pre *,sr-rd-content pre div{font-size:17.6px;font-size:1.1rem}sr-rd-content li pre code,sr-rd-content p pre code,sr-rd-content pre{background-color:transparent;border:none}sr-rd-content pre code{margin:0;padding:0}sr-rd-content pre code,sr-rd-content pre code *{font-size:17.6px;font-size:1.1rem}sr-rd-content pre p{margin:0;padding:0;color:inherit;font-size:inherit;line-height:inherit}sr-rd-content li code,sr-rd-content p code{margin:0 4px;padding:2px 4px;font-size:17.6px;font-size:1.1rem}sr-rd-content mark{margin:0 5px;padding:2px;background:#fffdd1;border-bottom:1px solid #ffedce}.sr-rd-content-img{width:90%;height:auto}.sr-rd-content-img-load{width:48px;height:48px;margin:0;padding:0;border-style:none;border-width:0;background-repeat:no-repeat;background-image:url(data:image/gif;base64,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)}.sr-rd-content-center{text-align:center;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:vertical}.sr-rd-content-center-small{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex}.sr-rd-content-center-small img{margin:0;padding:0;border:0;box-shadow:none}img.simpread-img-broken{cursor:pointer}.sr-rd-content-nobeautify{margin:0;padding:0;border:0;box-shadow:0 0 0}sr-rd-mult{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;margin:0 0 16px;padding:16px 0 24px;width:100%;background-color:#fff;border-radius:4px;box-shadow:0 1px 2px 0 rgba(60,64,67,.3),0 2px 6px 2px rgba(60,64,67,.15)}sr-rd-mult:hover{-webkit-transition:all .45s 0ms;transition:all .45s 0ms;box-shadow:1px 1px 8px rgba(0,0,0,.16)}sr-rd-mult sr-rd-mult-content{padding:0 16px;overflow:auto}sr-rd-mult sr-rd-mult-avatar,sr-rd-mult sr-rd-mult-content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}sr-rd-mult sr-rd-mult-avatar{-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:0 15px}sr-rd-mult sr-rd-mult-avatar span{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;max-width:75px;overflow:hidden;text-overflow:ellipsis;text-align:left;font-size:16px;font-size:1rem}sr-rd-mult sr-rd-mult-avatar img{margin-bottom:0;max-width:50px;max-height:50px;width:50px;height:50px;border-radius:50%}sr-rd-mult sr-rd-mult-content img{max-width:80%}sr-rd-mult sr-rd-mult-avatar .sr-rd-content-center{margin:0}sr-page{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;width:100%}</style>
+                        <style type="text/css">sr-rd-theme-gothic{display:none}sr-rd-content h1{line-height:64px;line-height:4rem;margin:64px 0 28px;margin:4rem 0 1.75rem;padding:20px 30px}sr-rd-content h1,sr-rd-content h2{font-weight:400;text-align:center;text-transform:uppercase}sr-rd-content h2{line-height:48px;line-height:3rem;margin:48px 0 31px;margin:3rem 0 1.9375rem;padding:0 30px}sr-rd-content h3,sr-rd-content h4,sr-rd-content h5{font-weight:400}sr-rd-content h6{font-weight:700}sr-rd-content h1{font-size:57.6px;font-size:3.6rem}sr-rd-content h2{font-size:51.2px;font-size:3.2rem}sr-rd-content h3{font-size:40px;font-size:2.5rem}sr-rd-content h4{font-size:35.2px;font-size:2.2rem}sr-rd-content h5{font-size:30.4px;font-size:1.9rem}sr-rd-content h6{font-size:27.2px;font-size:1.7rem}sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{margin-top:1.2em;margin-bottom:.6em;color:#111}sr-rd-content ol,sr-rd-content ul{list-style-type:disc;margin-left:3em}sr-rd-content ol ol,sr-rd-content ul ol{list-style-type:lower-roman}sr-rd-content ol ol ol,sr-rd-content ol ul ol,sr-rd-content ul ol ol,sr-rd-content ul ul ol{list-style-type:lower-alpha}sr-rd-content table{margin-bottom:20px}sr-rd-content table td,sr-rd-content table th{padding:8px;line-height:20px;line-height:1.25rem;vertical-align:top;border-top:1px solid #ddd}sr-rd-content table th{font-weight:700}sr-rd-content table thead th{vertical-align:bottom}sr-rd-content table caption+thead tr:first-child td,sr-rd-content table caption+thead tr:first-child th,sr-rd-content table colgroup+thead tr:first-child td,sr-rd-content table colgroup+thead tr:first-child th,sr-rd-content table thead:first-child tr:first-child td,sr-rd-content table thead:first-child tr:first-child th{border-top:0}sr-rd-content table tbody+tbody{border-top:2px solid #ddd}sr-rd-content sr-blockquote{margin:0 0 17.777px;margin:0 0 1.11111rem;padding:8px 17.777px 0 16.888px;padding:.5rem 1.11111rem 0 1.05556rem;border-left:1px solid gray}sr-rd-content sr-blockquote,sr-rd-content sr-blockquote p{line-height:2;color:#6f6f6f}.simpread-multi-root,.simpread-theme-root{background:#fcfcfc;color:#333}sr-rd-title{font-weight:400;line-height:64px;line-height:4rem;text-align:center;text-transform:uppercase;color:#111;font-size:51.2px;font-size:3.2rem}sr-rd-desc{margin:0 0 17.777px;margin:0 0 1.11111rem;padding:8px 17.777px 0 16.888px;padding:.5rem 1.11111rem 0 1.05556rem;font-size:32px;font-size:2rem;line-height:2;color:#6f6f6f;border-left:1px solid gray}sr-rd-content{font-weight:400;color:#333}sr-rd-content *,sr-rd-content div,sr-rd-content p{color:#333}sr-rd-content a,sr-rd-content a:link{color:#900;text-decoration:none}sr-rd-content a:active,sr-rd-content a:focus,sr-rd-content a:hover{color:#900;text-decoration:underline}sr-rd-content li code,sr-rd-content p code,sr-rd-content pre{background-color:transparent;border:1px solid #ccc}sr-rd-mult{background-color:#f2f2f2}</style>
+                        <style type="text/css"></style>
+                        <style type="text/css">@media (pointer:coarse){sr-read{margin:20px 5%!important;min-width:0!important;max-width:90%!important}sr-rd-title{margin-top:0;font-size:2.7rem}sr-rd-content sr-blockquote,sr-rd-desc{margin:10 0!important;padding:0 0 0 10px!important;width:90%;font-size:1.8rem;font-style:normal;line-height:1.7;text-align:justify}sr-rd-content{font-size:1.75rem;font-weight:300}sr-rd-content figure{margin:0;padding:0;text-align:center}sr-rd-content a,sr-rd-content a:link,sr-rd-content li code,sr-rd-content p code{font-size:inherit}sr-rd-footer{margin-top:20px}sr-blockquote,sr-blockquote *{margin:5px!important;padding:5px!important}sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6,sr-rd-title{font-family:PingFang SC,Verdana,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;color:#000;font-weight:100;line-height:1.35}sr-rd-content-h1,sr-rd-content-h2,sr-rd-content-h3,sr-rd-content-h4,sr-rd-content-h5,sr-rd-content-h6,sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{margin-top:1.2em;margin-bottom:.6em;line-height:1.35}sr-rd-content-h1,sr-rd-content h1{font-size:1.8em}sr-rd-content-h2,sr-rd-content h2{font-size:1.6em}sr-rd-content-h3,sr-rd-content h3{font-size:1.4em}sr-rd-content-h4,sr-rd-content-h5,sr-rd-content-h6,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{font-size:1.2em}sr-rd-content-ul,sr-rd-content ul{margin-left:1.3em!important;list-style:disc}sr-rd-content-ol,sr-rd-content ol{list-style:decimal;margin-left:1.9em!important}sr-rd-content-ol ol,sr-rd-content-ol ul,sr-rd-content-ul ol,sr-rd-content-ul ul,sr-rd-content li ol,sr-rd-content li ul{margin-bottom:.8em;margin-left:2em!important}sr-rd-content img{margin:0;padding:0;border:0;max-width:100%!important;height:auto;box-shadow:0 20px 20px -10px rgba(0,0,0,.1)}sr-rd-mult{min-width:0;background-color:#fff;box-shadow:0 1px 6px rgba(32,33,36,.28);border-radius:8px}sr-rd-mult sr-rd-mult-avatar div{margin:0}sr-rd-mult sr-rd-mult-avatar .sr-rd-content-center-small{margin:7px 0!important}sr-rd-mult sr-rd-mult-avatar span{display:block}sr-rd-mult sr-rd-mult-content{padding-left:0}@media only screen and (max-device-width:1024px){.simpread-theme-root,html.simpread-theme-root{font-size:80%!important}sr-rd-mult sr-rd-mult-avatar img{width:50px;height:50px;min-width:50px;min-height:50px}toc-bg toc{width:10px!important}toc-bg:hover toc{width:auto!important}}@media only screen and (max-device-width:414px){.simpread-theme-root,html.simpread-theme-root{font-size:70%!important}sr-rd-mult sr-rd-mult-avatar img{width:30px;height:30px;min-width:30px;min-height:30px}}@media only screen and (max-device-width:320px){.simpread-theme-root,html.simpread-theme-root{font-size:90%!important}sr-rd-content p{margin-bottom:.5em}}}</style>
+                        <style type="text/css">sr-rd-content *, sr-rd-content p, sr-rd-content div {}sr-rd-content pre code, sr-rd-content pre code * {}sr-rd-desc {}sr-rd-content pre {}sr-rd-title {}</style>
+                        <style type="text/css"></style>
+                        <style type="text/css"></style>
+                        <style type="text/css"></style>
+                        <style type="text/css"></style>
+                        <style type="text/css">sr-rd-content *, sr-rd-content p, sr-rd-content div {
+        font-size: 15px;
+    }
+
+    .annote-perview, .annote-perview * {
+        color: rgb(85, 85, 85);
+        font-weight: 400;
+        line-height: 1.8;
+    }</style>
+                        
+                        
+                        <script>setTimeout(()=>{const e=location.hash.replace("#id=","");let t,a=!1;const n=t=>{for(let n of t){let t;if((t=e.length>6?n.getAttribute("data-id"):n.getAttribute("data-idx"))==e){n.scrollIntoView({behavior:"smooth",block:"start",inline:"nearest"}),a=!0;break}}};e&&(0==(t=document.getElementsByClassName("sr-unread-card")).length&&(t=document.getElementsByTagName("sr-annote")),n(t),a||n(t=document.getElementsByClassName("sr-annote")))},500);</script>
+                        
+                        <title>简悦 | Write yourself a Git!</title>
+                    </head>
+                    <body>
+                        <sr-read style='font-family: YaHei-Consolas-Hybrid; margin: 20px 22%;'>
+                            <sr-rd-title>Write yourself a Git!</sr-rd-title>
+                    <sr-rd-desc style="margin: 0;padding-top: 0;padding-bottom: 0;font-style: normal;font-size: 18px;">This article is an attempt at explaining the Git version control
+system from the bottom up, that is, ......</sr-rd-desc>
+                    <sr-rd-content><div>
+
+
+
+<div>
+<h2 id="sr-toc-0"><span>1.</span> Introduction</h2>
+<div>
+<p>
+This article is an attempt at explaining the <a href="https://git-scm.com/">Git version control
+system</a> from the bottom up, that is, starting at the most fundamental
+level moving up from there.  This does not sound too easy, and has
+been attempted multiple times with questionable success.  But there’s
+an easy way: all it takes to understand Git internals is to
+reimplement Git from scratch.
+</p>
+
+<p>
+No, don’t run.
+</p>
+
+<p>
+It’s not a joke, and it’s really not complicated: if you read this
+article top to bottom and write the code (or just clone <a href="https://github.com/thblt/write-yourself-a-git">the repository</a>
+— but you should write the code yourself, really), you’ll end up
+with a program, called <code>wyag</code>, that will implement all the fundamental
+features of git: <code>init</code>, <code>add</code>, <code>rm</code>, <code>status</code>, <code>commit</code>, <code>log</code>… in a way that
+is perfectly compatible with <code>git</code> itself.  The last commit of this
+article was actually created with <code>wyag</code>, not <code>git</code>.  And all that in
+exactly 503 lines of very simple Python code.
+</p>
+
+<p>
+But isn’t Git too complex for that?  That Git is complex is, in my
+opinion, a misconception.  Git is a large program, with a lot of
+features, that’s true.  But the core of that program is actually
+extremely simple, and its apparent complexity stems first from the
+fact it’s often deeply counterintuitive (and <a href="https://byorgey.wordpress.com/2009/01/12/abstraction-intuition-and-the-monad-tutorial-fallacy/">Git is a burrito</a> blog
+posts probably don’t help).  But maybe what makes Git the most
+confusing is the extreme simplicity <i>and</i> power of its core model.  The
+combination of core simplicity and powerful applications often makes
+thing really hard to grasp, because of the mental jump required to
+derive the variety of applications from the essential simplicity of
+the fundamental abstraction (monads, anyone?)
+</p>
+
+<p>
+Implementing Git will expose its fundamentals in all their naked
+glory.
+</p>
+
+<p>
+<b>What to expect?</b>  This article will implement and explain in great
+details (if something is not clear, please <a href="#feedback">report it</a>!) a very
+simplified version of Git core commands.  I will keep the code simple
+and to the point, so <code>wyag</code> won’t come anywhere near the power of the
+real git command-line — but what’s missing will be obvious, and
+trivial to implement by anyone who wants to give it a try.  “Upgrading
+wyag to a full-featured git library and CLI is left as an exercise to
+the reader”, as they say.
+</p>
+
+<p>
+More precisely, we’ll implement:
+</p>
+
+<ul>
+<li><code>add</code> () <a href="https://git-scm.com/docs/git-add">git man page</a></li>
+<li><code>cat-file</code> (<a href="#cmd-cat-file">wyag source</a>) <a href="https://git-scm.com/docs/git-cat-file">git man page</a></li>
+<li><code>checkout</code> (<a href="#cmd-checkout">wyag source</a>) <a href="https://git-scm.com/docs/git-checkout">git man page</a></li>
+<li><code>commit</code> () <a href="https://git-scm.com/docs/git-commit">git man page</a></li>
+<li><code>hash-object</code> (<a href="#cmd-hash-object">wyag source</a>) <a href="https://git-scm.com/docs/git-hash-object">git man page</a></li>
+<li><code>init</code> (<a href="#cmd-init">wyag source</a>) <a href="https://git-scm.com/docs/git-init">git man page</a></li>
+<li><code>log</code> (<a href="#cmd-log">wyag source</a>) <a href="https://git-scm.com/docs/git-log">git man page</a></li>
+<li><code>ls-tree</code> () <a href="https://git-scm.com/docs/git-ls-tree">git man page</a></li>
+<li><code>merge</code> () <a href="https://git-scm.com/docs/git-merge">git man page</a></li>
+<li><code>rebase</code> () <a href="https://git-scm.com/docs/git-rebase">git man page</a></li>
+<li><code>rev-parse</code> () <a href="https://git-scm.com/docs/git-rev-parse">git man page</a></li>
+<li><code>rm</code> () <a href="https://git-scm.com/docs/git-rm">git man page</a></li>
+<li><code>show-ref</code> () <a href="https://git-scm.com/docs/git-show-ref">git man page</a></li>
+<li><code>tag</code> (<a href="#cmd-tag">wyag source</a>) <a href="https://git-scm.com/docs/git-tag">git man page</a></li>
+</ul>
+
+<p>
+You’re not going to need to know much to follow this article: just
+some basic Git (obviously), some basic Python, some basic shell.
+</p>
+
+<ul>
+<li>First, I’m only going to assume some level of familiarity with the
+most basic <b>git commands</b> — nothing like an expert level, but if
+you’ve never used <code>init</code>, <code>add</code>, <code>rm</code>, <code>commit</code> or <code>checkout</code>, you will be
+lost.</li>
+<li>Language-wise, wyag will be implemented in <b>Python</b>.  Again, I won’t
+use anything too fancy, and Python looks like pseudo-code anyways,
+so it will be easy to follow (ironically, the most complicated part
+will be the command-line arguments parsing logic, and you don’t
+really need to understand that).  Yet, if you know programming but
+have never done any Python, I suggest you find a crash course
+somewhere in the internet just to get acquainted with the language.</li>
+<li><code>wyag</code> and <code>git</code> are terminal programs.  I assume you know your way
+inside a Unix terminal.  Again, you don’t need to be a l77t h4x0r,
+but <code>cd</code>, <code>ls</code>, <code>rm</code>, <code>tree</code> and their friends should be in your toolbox.</li>
+</ul>
+
+<p>Warning</p><div>
+<p>
+<b>Note for Windows users</b>
+</p>
+
+<p>
+<code>wyag</code> should run on any Unix-like system with a Python interpreter,
+but I have absolutely no idea how it will behave on Windows.  The
+test suite absolutely requires a bash-compatible shell, which I
+assume the WSL can provide.  Feedback from Windows users would be
+appreciated!
+</p>
+
+</div>
+</div>
+</div>
+
+<div>
+<h2 id="sr-toc-1"><span>2.</span> Getting started</h2>
+<div>
+<p>
+You’re going to need Python 3 (I used 3.6.5: if you encounter issues
+try using at least this version.  Python 2 won’t work at all) and your
+favorite text editor.  We won’t need third party packages or
+virtualenvs, or anything besides a regular Python interpreter:
+everything we need is in Python’s standard library.
+</p>
+
+<p>
+We’ll split the code into two files:
+</p>
+
+<ul>
+<li>An executable, called <code>wyag</code>;</li>
+<li>A Python library, called <code>libwyag.py</code>;</li>
+</ul>
+
+<p>
+Now, every software project starts with a boatload of boilerplate, so let’s
+get this over with.
+</p>
+
+<p>
+We’ll begin by creating the binary.  Create a new file called <code>wyag</code> in
+your text editor, and copy the following few lines:
+</p>
+
+<div>
+<pre>#!/usr/bin/env python3
+
+import libwyag
+libwyag.main()
+
+</pre>
+</div>
+
+<p>
+Then make it executable:
+</p>
+
+<pre>$ chmod +x wyag
+
+</pre>
+
+<p>
+You’re done!
+</p>
+
+<p>
+Now for the library.  it must be called <code>libwyag.py</code>, and be in the same
+directory as the <code>wyag</code> executable.  Begin by opening the empty <code>libwyag.py</code> in your
+text editor.
+</p>
+
+<p>
+We’re first going to need a bunch of imports (just copy each import,
+or merge them all in a single line)
+</p>
+
+<ul>
+<li><p>
+Git is a CLI application, so we’ll need something to parse
+command-line arguments.  Python provides a cool module called
+<a href="https://docs.python.org/3/library/argparse.html">argparse</a> that can do 99% of the job for us.
+</p>
+
+</li>
+
+<li><p>
+We’ll need a few more container types than the base lib provides,
+most notably an <code>OrderedDict</code>.  It’s in <a href="https://docs.python.org/3/library/collections.html#collections.OrderedDict">collections</a>.
+</p>
+
+</li>
+
+<li><p>
+Git uses a configuration file format that is basically Microsoft’s
+INI format.  The <a href="https://docs.python.org/3/library/configparser.html">configparser</a> module can read and write these
+files.
+</p>
+
+</li>
+
+<li><p>
+Git uses the SHA-1 function quite extensively.  In Python, it’s in <a href="https://docs.python.org/3/library/hashlib.html">hashlib</a>.
+</p>
+
+</li>
+
+<li><p>
+<a href="https://docs.python.org/3/library/os.html">os</a> and <a href="https://docs.python.org/3/library/os.path.html">os.path</a> provide some nice filesystem abstraction routines.
+</p>
+
+</li>
+
+<li><p>
+we use <i>just a bit</i> of regular expressions:
+</p>
+
+</li>
+
+<li><p>
+We also need <a href="https://docs.python.org/3/library/sys.html">sys</a> to access the actual command-line arguments (in <code>sys.argv</code>):
+</p>
+
+</li>
+
+<li><p>
+Git compresses everything using zlib.  Python <a href="https://docs.python.org/3/library/zlib.html">has that</a>, too:
+</p>
+
+</li>
+</ul>
+
+<p>
+Imports are done.  We’ll be working with command-line arguments a lot.
+Python provides a simple yet reasonably powerful parsing library,
+<code>argparse</code>.  It’s a nice library, but its interface may not be the most
+intuitive ever; if need, refer to its <a href="https://docs.python.org/3/library/argparse.html">documentation</a>.
+</p>
+
+<div>
+<pre>argparser = argparse.ArgumentParser(description="The stupid content tracker")
+
+</pre>
+</div>
+
+<p>
+We’ll need to handle subcommands (as in git: <code>init</code>, <code>commit</code>, etc.)  In
+argparse slang, these are called “subparsers”.  At this point we only
+need to declare that our CLI will use some, and that all invocation
+will actually <i>require</i> one — you don’t just call <code>git</code>, you
+call <code>git COMMAND</code>.
+</p>
+
+<div>
+<pre>argsubparsers = argparser.add_subparsers(title="Commands", dest="command")
+argsubparsers.required = True
+
+</pre>
+</div>
+
+<p>
+The <code>dest="command"</code> argument states that the name of the chosen
+subparser will be returned as a string in a field called <code>command</code>.  So
+we just need to read this string and call the correct function
+accordingly.  By convention, I’ll prefix these functions by <code>cmd_</code>.
+<code>cmd_*</code> functions take the parsed arguments as their unique parameter,
+and are responsible for processing and validating them before
+executing the actual command.
+</p>
+
+<div>
+<pre>def main(argv=sys.argv[1:]):
+    args = argparser.parse_args(argv)
+
+    if   args.command == "add"         : cmd_add(args)
+    elif args.command == "cat-file"    : cmd_cat_file(args)
+    elif args.command == "checkout"    : cmd_checkout(args)
+    elif args.command == "commit"      : cmd_commit(args)
+    elif args.command == "hash-object" : cmd_hash_object(args)
+    elif args.command == "init"        : cmd_init(args)
+    elif args.command == "log"         : cmd_log(args)
+    elif args.command == "ls-tree"     : cmd_ls_tree(args)
+    elif args.command == "merge"       : cmd_merge(args)
+    elif args.command == "rebase"      : cmd_rebase(args)
+    elif args.command == "rev-parse"   : cmd_rev_parse(args)
+    elif args.command == "rm"          : cmd_rm(args)
+    elif args.command == "show-ref"    : cmd_show_ref(args)
+    elif args.command == "tag"         : cmd_tag(args)
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h2 id="sr-toc-2"><span>3.</span> Creating repositories: init</h2>
+<p>
+Obviously, the first Git command in chronological <i>and</i> logical order is
+<code>git init</code>, so we’ll begin by creating <code>wyag init</code>.  To achieve this,
+we’re going to first need some very basic repository abstraction.
+</p>
+
+<div>
+<h3 id="sr-toc-3"><span>3.1.</span> The Repository object</h3>
+<div>
+<p>
+We’ll obviously need some abstraction for a repository: almost every
+time we run a git command, we’re trying to do something to a
+repository, to create it, read from it or modify it.
+</p>
+
+<p>
+A repository, in git, is made of two things: a “work tree”, where the
+files meant to be in version control live, and a “git directory”,
+where Git stores its own data.  In most cases, the worktree is a
+regular directory and the git directory is a child directory of the
+worktree, called <code>.git</code>.
+</p>
+
+<p>
+Git supports <i>much more</i> cases (bare repo, separated gitdir, etc) but we
+won’t need them: we’ll stick the basic approach of <code>worktree/.git</code>.  Our
+repository object will then just hold two paths: the worktree and the
+gitdir.
+</p>
+
+<p>
+To create a new <code>Repository</code> object, we only need  to make a few checks:
+</p>
+
+<ul>
+<li>We must verify that the directory exists, and contains a
+subdirectory called <code>.git</code>.</li>
+
+<li>We read its configuration in <code>.git/config</code> (it’s just an INI file)
+and control that <code>core.repositoryformatversion</code> is 0.  More on that
+field in a moment.</li>
+</ul>
+
+<p>
+The constructor takes an optional <code>force</code> which disables all check.
+That’s because the <code>repo_create()</code> function which we’ll create later uses
+a <code>Repository</code> object to <i>create</i> the repo.  So we need a way to create
+repository even from (still) invalid filesystem locations.
+</p>
+
+<div>
+<pre>class GitRepository(object):
+    """A git repository"""
+
+    worktree = None
+    gitdir = None
+    conf = None
+
+    def __init__(self, path, force=False):
+        self.worktree = path
+        self.gitdir = os.path.join(path, ".git")
+
+        if not (force or os.path.isdir(self.gitdir)):
+            raise Exception("Not a Git repository %s" % path)
+
+        # Read configuration file in .git/config
+        self.conf = configparser.ConfigParser()
+        cf = repo_file(self, "config")
+
+        if cf and os.path.exists(cf):
+            self.conf.read([cf])
+        elif not force:
+            raise Exception("Configuration file missing")
+
+        if not force:
+            vers = int(self.conf.get("core", "repositoryformatversion"))
+            if vers != 0:
+                raise Exception("Unsupported repositoryformatversion %s" % vers)
+
+</pre>
+</div>
+
+<p>
+We’re going to be manipulating <b>lots</b> of paths in repositories.  We may
+as well create a few utility functions to compute those paths and
+create missing directory structures if needed.  First, just a general
+path building function:
+</p>
+
+<div>
+<pre>def repo_path(repo, *path):
+    """Compute path under repo's gitdir."""
+    return os.path.join(repo.gitdir, *path)
+
+</pre>
+</div>
+
+<p>
+The two next functions, <code>repo_file()</code> and <code>repo_dir()</code>, return and
+optionally create a path to a file or a directory, respectively.  The
+difference between them is that the file version only creates
+directories up to the last component.
+</p>
+
+<div>
+<pre>def repo_file(repo, *path, mkdir=False):
+    """Same as repo_path, but create dirname(*path) if absent.  For
+example, repo_file(r, \"refs\", \"remotes\", \"origin\", \"HEAD\") will create
+.git/refs/remotes/origin."""
+
+    if repo_dir(repo, *path[:-1], mkdir=mkdir):
+        return repo_path(repo, *path)
+
+def repo_dir(repo, *path, mkdir=False):
+    """Same as repo_path, but mkdir *path if absent if mkdir."""
+
+    path = repo_path(repo, *path)
+
+    if os.path.exists(path):
+        if (os.path.isdir(path)):
+            return path
+        else:
+            raise Exception("Not a directory %s" % path)
+
+    if mkdir:
+        os.makedirs(path)
+        return path
+    else:
+        return None
+
+</pre>
+</div>
+
+<p>
+To <b>create</b> a new repository, we start with a directory (which we create
+if doesn’t already exist, or check for emptiness otherwise) and create
+the following paths:
+</p>
+
+<ul>
+<li><code>.git</code> is the git directory itself, which contains:
+<ul>
+<li><code>.git/objects/</code> : the object store, which we’ll introduce <a href="#objects">in the next section</a>.</li>
+<li><code>.git/refs/</code> the reference store, which we’ll discuss .
+It contains two subdirectories, <code>heads</code> and <code>tags</code>.</li>
+<li><code>.git/HEAD</code>, a reference to the current HEAD (more on that later!)</li>
+<li><code>.git/config</code>, the repository’s configuration file.</li>
+<li><code>.git/description</code>, the repository’s description file.</li>
+</ul></li>
+</ul>
+
+<div>
+<pre>def repo_create(path):
+    """Create a new repository at path."""
+
+    repo = GitRepository(path, True)
+
+    # First, we make sure the path either doesn't exist or is an
+    # empty dir.
+
+    if os.path.exists(repo.worktree):
+        if not os.path.isdir(repo.worktree):
+            raise Exception ("%s is not a directory!" % path)
+        if os.listdir(repo.worktree):
+            raise Exception("%s is not empty!" % path)
+    else:
+        os.makedirs(repo.worktree)
+
+    assert(repo_dir(repo, "branches", mkdir=True))
+    assert(repo_dir(repo, "objects", mkdir=True))
+    assert(repo_dir(repo, "refs", "tags", mkdir=True))
+    assert(repo_dir(repo, "refs", "heads", mkdir=True))
+
+    # .git/description
+    with open(repo_file(repo, "description"), "w") as f:
+        f.write("Unnamed repository; edit this file 'description' to name the repository.\n")
+
+    # .git/HEAD
+    with open(repo_file(repo, "HEAD"), "w") as f:
+        f.write("ref: refs/heads/master\n")
+
+    with open(repo_file(repo, "config"), "w") as f:
+        config = repo_default_config()
+        config.write(f)
+
+    return repo
+
+</pre>
+</div>
+
+<p>
+The configuration file is very simple, it’s a INI-like file with a
+single section (<code>[core]</code>) and three fields:
+</p>
+
+<ul>
+<li><code>repositoryformatversion = 0</code>: the version of
+the gitdir format.  0 means the initial format, 1 the same with
+extensions.  If &gt; 1, git will panic; wyag will only accept 0.</li>
+<li><code>filemode = false</code>: disable tracking of file mode changes in the work tree.</li>
+</ul>
+
+<ul>
+<li><code>bare = false</code>: indicates that this repository has a worktree.  Git
+supports an optional <code>worktree</code> key which indicates the location of
+the worktree, if not <code>..</code>; wyag doesn’t.</li>
+</ul>
+
+<p>
+We create this file using Python’s <code>configparser</code> lib:
+</p>
+
+<div>
+<pre>def repo_default_config():
+    ret = configparser.ConfigParser()
+
+    ret.add_section("core")
+    ret.set("core", "repositoryformatversion", "0")
+    ret.set("core", "filemode", "false")
+    ret.set("core", "bare", "false")
+
+    return ret
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-4"><span>3.2.</span> The init command</h3>
+<div>
+<p>
+Now that we have code to read and create repositories, let’s make this
+code usable from the command line by creating the <code>wyag init</code> command.
+<code>wyag init</code> behaves just like <code>git init</code> — with much less possible
+customization, of course.  The syntax of <code>wyag init</code> is going to be:
+</p>
+
+<pre>wyag init [path]
+
+</pre>
+
+<p>
+We already have the complete repository creation logic.  To create the
+command, we’re only going to need two more things:
+</p>
+
+<ol>
+<li><p>
+We need to create an argparse subparser to handle our command’s
+argument.
+</p>
+
+<div>
+<pre>argsp = argsubparsers.add_parser("init", help="Initialize a new, empty repository.")
+
+</pre>
+</div>
+
+<p>
+In the case of <code>init</code>, there’s a single, optional,
+positional argument: the path where to init the repo.  It defaults
+to <code>.</code>:
+</p>
+
+<div>
+<pre>argsp.add_argument("path",
+                   metavar="directory",
+                   nargs="?",
+                   default=".",
+                   help="Where to create the repository.")
+
+</pre>
+</div></li>
+
+<li><p>
+We also need a “bridge” function that will read argument values
+from the object returned by argparse and call the actual
+function with correct values.
+</p>
+
+<div>
+<pre>def cmd_init(args):
+    repo_create(args.path)
+
+</pre>
+</div></li>
+</ol>
+
+<p>
+And we’re done!  If you’ve followed these steps, you should now be
+able to <code>wyag init</code> a git repository anywhere.
+</p>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-5"><span>3.3.</span> The repo_find() function</h3>
+<div>
+<p>
+While we’re implementing repositories, there’s a function we’re going
+to need a lot later: Almost all Git functions <code>init</code> use an existing
+repository.  It’s often in the current directory, but it may be in a
+parent instead: your repository’s root may be in
+<code>~/Documents/MyProject</code>, but you may currently be in
+<code>~/Documents/MyProject/src/tui/frames/mainview/</code>.  The <code>repo_find()</code>
+function we’ll now create will look for a repository, starting at
+current directory and recursing back until <code>/</code>.  To identify something
+as a repo, it will check for the presence of a <code>.git</code> directory.
+</p>
+
+<div>
+<pre>def repo_find(path=".", required=True):
+    path = os.path.realpath(path)
+
+    if os.path.isdir(os.path.join(path, ".git")):
+        return GitRepository(path)
+
+    # If we haven't returned, recurse in parent, if w
+    parent = os.path.realpath(os.path.join(path, ".."))
+
+    if parent == path:
+        # Bottom case
+        # os.path.join("/", "..") == "/":
+        # If parent==path, then path is root.
+        if required:
+            raise Exception("No git directory.")
+        else:
+            return None
+
+    # Recursive case
+    return repo_find(parent, required)
+
+</pre>
+</div>
+
+<p>
+And we’re done with repositories!
+</p>
+</div>
+</div>
+</div>
+
+<div>
+<h2 id="sr-toc-6"><span>4.</span> Reading and writing objects: hash-object and cat-file</h2>
+
+
+<div>
+<h3 id="sr-toc-7"><span>4.1.</span> What are objects?</h3>
+<div>
+<p>
+Now that we have repositories, putting things inside them is in order.
+Also, repositories are boring, and writing a Git implementation
+shouldn’t be just a matter of writing a bunch of <code>mkdir</code>.  Let’s talk
+about <b>objects</b>, and let’s implement <code>git hash-object</code> and <code>git cat-file</code>.
+</p>
+
+<p>
+Maybe you don’t know these two commands — they’re not exactly part
+of an everyday git toolbox, and they’re actually quite low-level
+(“plumbing”, in git parlance).  What they do is actually very simple:
+<code>hash-object</code> converts an existing file into a git object, and <code>cat-file</code>
+prints an existing git object to the standard output.
+</p>
+
+<p>
+Now, <b>what actually is a Git object?</b>  At its core, Git is a
+“content-addressed filesystem”.  That means that unlike regular
+filesystems, where the name of a file is arbitrary and unrelated to
+that file’s contents, the names of files as stored by Git are
+mathematically derived from their contents.  This has a very important
+implication: if a single byte of, say, a text file, changes, its
+internal name will change, too.  To put it simply: you don’t <i>modify</i> a
+file, you create a new file in a different location.  Objects are just
+that: files in the git repository, whose path is determined by their
+contents.
+</p>
+
+<p>Warning</p><div>
+<p>
+<b>Git is not (really) a key-value store</b>
+</p>
+
+<p>
+Some documentation, including the excellent <a href="https://git-scm.com/book/id/v2/Git-Internals-Git-Objects">Pro Git</a>, call Git a
+“key-value store”.  This is not incorrect, but may be misleading.
+Regular filesystems are actually closer to a key-value store than Git
+is.  Because it computes keys from data, Git should rather be called a
+<i>value-value store</i>.
+</p>
+
+</div>
+
+<p>
+Git uses objects to store quite a lot of things: first and foremost,
+the actual files it keeps in version control — source code, for
+example.  Commit are objects, too, as well as tags.  With a few
+notable exceptions (which we’ll see later!), almost everything, in
+Git, is stored as an object.
+</p>
+
+<p>
+The path is computed by calculating the <a href="https://en.wikipedia.org/wiki/SHA-1">SHA-1</a> <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">hash</a> of its contents.
+More precisely, Git renders the hash as a lowercase hexadecimal
+string, and splits it in two parts: the first two characters, and the
+rest.  It uses the first part as a directory name, the rest as the
+file name (this is because most filesystems hate having too many files
+in a single directory and would slow down to a crawl.  Git’s method
+creates 256 possible intermediate directories, hence dividing the
+average number of files per directory by 256)
+</p>
+
+<p>Note</p><div>
+<p>
+<b>What is a hash function?</b>
+</p>
+
+<p>
+Simply put, a hash function is a kind of unidirectional mathematical
+function: it is easy to compute the hash of a value, but there’s no
+way to compute which value produced a hash.  A very simple example of
+a hash function is the <code>strlen</code> function.  It’s really easy to compute
+the length of a string, and the length of a given string will never
+change (unless the string itself changes, of course!) but it’s
+impossible to retrieve the original string, given only its length.
+<i>Cryptographic</i> hash functions are just a much more complex version of
+the same, with the added property that computing an input meant to
+produce a given hash is hard enough to be
+practically impossible.  (With <code>strlen</code>, producing an input <code>i</code> with
+<code>strlen(i) == 12</code>, you just have to type twelve random characters.  With
+algorithms such as SHA-1. it would take much, much longer — long
+enough to be practically impossible<sup><a href="#fn.1" role="doc-backlink">1</a></sup>.
+</p>
+
+</div>
+
+<p>
+Before we start implementing the object storage system, we must
+understand their exact storage format.  An object starts with a header
+that specifies its type: <code>blob</code>, <code>commit</code>, <code>tag</code> or <code>tree</code>.  This header is
+followed by an ASCII space (0x20), then the size of the object in bytes as an
+ASCII number, then null (0x00) (the null byte), then the contents of the
+object.  The first 48 bytes of a commit object in Wyag’s repo look like this:
+</p>
+
+<pre>00000000  63 6f 6d 6d 69 74 20 31  30 38 36 00 74 72 65 65  |commit 1086.tree|
+00000010  20 32 39 66 66 31 36 63  39 63 31 34 65 32 36 35  | 29ff16c9c14e265|
+00000020  32 62 32 32 66 38 62 37  38 62 62 30 38 61 35 61  |2b22f8b78bb08a5a|
+
+</pre>
+
+<p>
+In the first line, we see the type header, a space (<code>0x20</code>), the size in
+ASCII (1086) and the null separator <code>0x00</code>.  The last four bytes on the
+first line are the beginning of that object’s contents, the word
+“tree” — we’ll discuss that further when we’ll talk about commits.
+</p>
+
+<p>
+The objects (headers and contents) are stored compressed with <code>zlib</code>.
+</p>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-8"><span>4.2.</span> A generic object object</h3>
+<div>
+<p>
+Objects can be of multiple types, but they all share the same
+storage/retrieval mechanism and the same general header format.
+Before we dive into the details of various types of objects, we need
+to abstract over these common features.  The easiest way is to create
+a generic <code>GitObject</code> with two unimplemented methods: <code>serialize()</code> and
+<code>deserialize()</code>.  Later, we’ll subclass this generic class, actually
+implementing these functions for each object format.
+</p>
+
+<div>
+<pre>class GitObject (object):
+
+    repo = None
+
+    def __init__(self, repo, data=None):
+        self.repo=repo
+
+        if data != None:
+            self.deserialize(data)
+
+    def serialize(self):
+        """This function MUST be implemented by subclasses.
+
+It must read the object's contents from self.data, a byte string, and do
+whatever it takes to convert it into a meaningful representation.  What exactly that means depend on each subclass."""
+        raise Exception("Unimplemented!")
+
+    def deserialize(self, data):
+        raise Exception("Unimplemented!")
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-9"><span>4.3.</span> Reading objects</h3>
+<div>
+<p>
+To read an object, we need to know its hash.  We then compute its path
+from this hash (with the formula explained above: first two
+characters, then a directory delimiter <code>/</code>, then the remaining part) and
+look it up inside of the “objects” directory in the gitdir.  That is,
+the path to <code>e673d1b7eaa0aa01b5bc2442d570a765bdaae751</code> is
+<code>.git/objects/e6/73d1b7eaa0aa01b5bc2442d570a765bdaae751</code>.
+</p>
+
+<p>
+We then read that file as a binary file, and decompress it using
+<code>zlib</code>.
+</p>
+
+<p>
+From the decompressed data, we extract the two header components: the
+object type and its size.   From the type, we determine the actual
+class to use.   We convert the size to a Python integer, and check if
+it matches.
+</p>
+
+<p>
+When all is done, we just call the correct constructor for that
+object’s format.
+</p>
+
+<div>
+<pre>def object_read(repo, sha):
+    """Read object object_id from Git repository repo.  Return a
+    GitObject whose exact type depends on the object."""
+
+    path = repo_file(repo, "objects", sha[0:2], sha[2:])
+
+    with open (path, "rb") as f:
+        raw = zlib.decompress(f.read())
+
+        # Read object type
+        x = raw.find(b' ')
+        fmt = raw[0:x]
+
+        # Read and validate object size
+        y = raw.find(b'\x00', x)
+        size = int(raw[x:y].decode("ascii"))
+        if size != len(raw)-y-1:
+            raise Exception("Malformed object {0}: bad length".format(sha))
+
+        # Pick constructor
+        if   fmt==b'commit' : c=GitCommit
+        elif fmt==b'tree'   : c=GitTree
+        elif fmt==b'tag'    : c=GitTag
+        elif fmt==b'blob'   : c=GitBlob
+        else:
+            raise Exception("Unknown type {0} for object {1}".format(fmt.decode("ascii"), sha))
+
+        # Call constructor and return object
+        return c(repo, raw[y+1:])
+
+</pre>
+</div>
+
+<p>
+<a></a> We haven’t introduced the <code>object_find</code> function yet.  It’s actually a
+placeholder, and looks like this:
+</p>
+
+<div>
+<pre>def object_find(repo, name, fmt=None, follow=True):
+    return name
+
+</pre>
+</div>
+
+<p>
+The reason for this strange small function is that Git has a <i>lot</i> of
+ways to refer to objects: full hash, short hash, tags…
+<code>object_find()</code> will be our name resolution function.  We’ll only
+implement it <a href="#func-object_find">later</a>, so this is a temporary placeholder.  This means
+that until we implement the real thing, the only way we can refer to
+an object will be by its full hash.
+</p>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-10"><span>4.4.</span> Writing objects</h3>
+<div>
+<p>
+Writing an object is reading it in reverse: we compute the hash,
+insert the header, zlib-compress everything and write the result in
+place.  This really shouldn’t require much explanation, just notice
+that the hash is computed <b>after</b> the header is added.
+</p>
+
+<div>
+<pre>def object_write(obj, actually_write=True):
+    # Serialize object data
+    data = obj.serialize()
+    # Add header
+    result = obj.fmt + b' ' + str(len(data)).encode() + b'\x00' + data
+    # Compute hash
+    sha = hashlib.sha1(result).hexdigest()
+
+    if actually_write:
+        # Compute path
+        path=repo_file(obj.repo, "objects", sha[0:2], sha[2:], mkdir=actually_write)
+
+        with open(path, 'wb') as f:
+            # Compress and write
+            f.write(zlib.compress(result))
+
+    return sha
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-11"><span>4.5.</span> Working with blobs</h3>
+<div>
+<p>
+Of the four Git object types, blobs are the simplest, because they
+have no actual format.  Blobs are user content: every file you put in
+git is stored as a blob.  That make them easy to manipulate, because
+they have no actual syntax or constraints beyond the basic object
+storage mechanism: they’re just unspecified data.  Creating a <code>GitBlob</code>
+class is thus trivial, the <code>serialize</code> and <code>deserialize</code> functions just
+have to store and return their input unmodified.
+</p>
+
+<div>
+<pre>class GitBlob(GitObject):
+    fmt=b'blob'
+
+    def serialize(self):
+        return self.blobdata
+
+    def deserialize(self, data):
+        self.blobdata = data
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-12"><span>4.6.</span> The cat-file command</h3>
+<div>
+<p>
+With all that, we can now create <code>wyag cat-file</code>.  The basic syntax of
+<code>git cat-file</code> is just two positional arguments: a type and an object identifier:
+</p>
+
+<pre>git cat-file TYPE OBJECT
+
+</pre>
+
+<p>
+The subparser is very simple:
+</p>
+
+<div>
+<pre>argsp = argsubparsers.add_parser("cat-file",
+                                 help="Provide content of repository objects")
+
+argsp.add_argument("type",
+                   metavar="type",
+                   choices=["blob", "commit", "tag", "tree"],
+                   help="Specify the type")
+
+argsp.add_argument("object",
+                   metavar="object",
+                   help="The object to display")
+
+</pre>
+</div>
+
+<p>
+And the functions themselves shouldn’t need any explanation, they just
+call into already written logic:
+</p>
+
+<div>
+<pre>def cmd_cat_file(args):
+    repo = repo_find()
+    cat_file(repo, args.object, fmt=args.type.encode())
+
+def cat_file(repo, obj, fmt=None):
+    obj = object_read(repo, object_find(repo, obj, fmt=fmt))
+    sys.stdout.buffer.write(obj.serialize())
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-13"><span>4.7.</span> The hash-object command</h3>
+<div>
+<p>
+<code>hash-object</code> is basically the opposite of <code>cat-file</code>: it reads a file,
+computes its hash as an object, either storing it in the
+repository (if the -w flag is passed) or just printing its hash.
+</p>
+
+<p>
+The basic syntax of <code>git hash-object</code> looks like this:
+</p>
+
+<pre>git hash-object [-w] [-t TYPE] FILE
+
+</pre>
+
+<p>
+Which converts to:
+</p>
+
+<div>
+<pre>argsp = argsubparsers.add_parser(
+    "hash-object",
+    help="Compute object ID and optionally creates a blob from a file")
+
+argsp.add_argument("-t",
+                   metavar="type",
+                   dest="type",
+                   choices=["blob", "commit", "tag", "tree"],
+                   default="blob",
+                   help="Specify the type")
+
+argsp.add_argument("-w",
+                   dest="write",
+                   action="store_true",
+                   help="Actually write the object into the database")
+
+argsp.add_argument("path",
+                   help="Read object from &lt;file&gt;")
+
+</pre>
+</div>
+
+<p>
+The actual implementation is very simple.  As usual, we create a small
+bridge function:
+</p>
+
+<div>
+<pre>def cmd_hash_object(args):
+    if args.write:
+        repo = GitRepository(".")
+    else:
+        repo = None
+
+    with open(args.path, "rb") as fd:
+        sha = object_hash(fd, args.type.encode(), repo)
+        print(sha)
+
+</pre>
+</div>
+
+<p>
+and the actual implementation.  The repo argument is optional:
+</p>
+
+<div>
+<pre>def object_hash(fd, fmt, repo=None):
+    data = fd.read()
+
+    # Choose constructor depending on
+    # object type found in header.
+    if   fmt==b'commit' : obj=GitCommit(repo, data)
+    elif fmt==b'tree'   : obj=GitTree(repo, data)
+    elif fmt==b'tag'    : obj=GitTag(repo, data)
+    elif fmt==b'blob'   : obj=GitBlob(repo, data)
+    else:
+        raise Exception("Unknown type %s!" % fmt)
+
+    return object_write(obj, repo)
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-14"><span>4.8.</span> What about packfiles?</h3>
+<div>
+<p>
+What we’ve just implemented is called “loose objects”.  Git has a
+second object storage mechanism called packfiles.  Packfiles are much
+more efficient, but also much more complex, than loose objects.  And
+aren’t worth implementing in <code>wyag</code>.  Simply put, a packfile is a
+compilation of loose objects (like a <code>tar</code>) but some are stored as
+deltas (as a transformation of another object).  Packfiles are way too
+complex to be supported by wyag.
+</p>
+
+<p>
+The packfile is stored in <code>.git/objects/pack/</code>.  It has a <code>.pack</code>
+extension, and is accompanied by an index file of the same name with
+the <code>.idx</code> extension.  Should you want to convert a packfile to loose
+objects format (to play with <code>wyag</code> on an existing repo, for example),
+here’s the solution.
+</p>
+
+<p>
+First, <i>move</i> the packfile outside the gitdir.  Copying it,
+you have to move it.
+</p>
+
+<div>
+<pre>mv .git/objects/pack/pack-d9ef004d4ca729287f12aaaacf36fee39baa7c9d.pack .
+
+</pre>
+</div>
+
+<p>
+You can ignore the <code>.idx</code>.  Then, from the worktree, just <code>cat</code> it and pipe the result to <code>git
+unpack-objects</code>:
+</p>
+
+<div>
+<pre>cat pack-d9ef004d4ca729287f12aaaacf36fee39baa7c9d.pack | git unpack-objects
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+<h2 id="sr-toc-15"><span>5.</span> Reading commit history: log</h2>
+
+<div>
+<h3 id="sr-toc-16"><span>5.1.</span> Parsing commits</h3>
+<div>
+<p>
+Now that we can read and write objects, we should consider commits.
+A commit object (uncompressed, without headers) looks like this:
+</p>
+
+<pre>tree 29ff16c9c14e2652b22f8b78bb08a5a07930c147
+parent 206941306e8a8af65b66eaaaea388a7ae24d49a0
+author Thibault Polge &lt;thibault@thb.lt&gt; 1527025023 +0200
+committer Thibault Polge &lt;thibault@thb.lt&gt; 1527025044 +0200
+gpgsig -----BEGIN PGP SIGNATURE-----
+
+ iQIzBAABCAAdFiEExwXquOM8bWb4Q2zVGxM2FxoLkGQFAlsEjZQACgkQGxM2FxoL
+ kGQdcBAAqPP+ln4nGDd2gETXjvOpOxLzIMEw4A9gU6CzWzm+oB8mEIKyaH0UFIPh
+ rNUZ1j7/ZGFNeBDtT55LPdPIQw4KKlcf6kC8MPWP3qSu3xHqx12C5zyai2duFZUU
+ wqOt9iCFCscFQYqKs3xsHI+ncQb+PGjVZA8+jPw7nrPIkeSXQV2aZb1E68wa2YIL
+ 3eYgTUKz34cB6tAq9YwHnZpyPx8UJCZGkshpJmgtZ3mCbtQaO17LoihnqPn4UOMr
+ V75R/7FjSuPLS8NaZF4wfi52btXMSxO/u7GuoJkzJscP3p4qtwe6Rl9dc1XC8P7k
+ NIbGZ5Yg5cEPcfmhgXFOhQZkD0yxcJqBUcoFpnp2vu5XJl2E5I/quIyVxUXi6O6c
+ /obspcvace4wy8uO0bdVhc4nJ+Rla4InVSJaUaBeiHTW8kReSFYyMmDCzLjGIu1q
+ doU61OM3Zv1ptsLu3gUE6GU27iWYj2RWN3e3HE4Sbd89IFwLXNdSuM0ifDLZk7AQ
+ WBhRhipCCgZhkj9g2NEk7jRVslti1NdN5zoQLaJNqSwO1MtxTmJ15Ksk3QP6kfLB
+ Q52UWybBzpaP9HEd4XnR+HuQ4k2K0ns2KgNImsNvIyFwbpMUyUWLMPimaV1DWUXo
+ 5SBjDB/V/W2JBFR+XKHFJeFwYhj7DD/ocsGr4ZMx/lgc8rjIBkI=
+ =lgTX
+ -----END PGP SIGNATURE-----
+
+Create first draft
+
+</pre>
+
+<p>
+The format is a simplified version of mail messages, as specified in
+<a href="https://www.ietf.org/rfc/rfc2822.txt">RFC 2822</a>.  It begins with a series of key-value pairs, with space as
+the key/value separator, and ends with the commit message, that may
+span over multiple lines.  Values may continue over multiple lines,
+subsequent lines start with a space which the parser must drop.
+</p>
+
+<p>
+Let’s have a look at those fields:
+</p>
+
+<ul>
+<li><code>tree</code> is a reference to a tree object, a type of object that we’ll
+see soon.  A tree maps blobs IDs to filesystem locations, and
+describes a state of the work tree.  Put simply, it is
+the actual content of the commit: files, and where they go.</li>
+<li><code>parent</code> is a reference to the parent of this commit.  It may be
+repeated: merge commits, for example, have multiple parents.  It
+may also be absent: the very first commit in a repository obviously
+doesn’t have a parent.</li>
+<li><code>author</code> and <code>committer</code> are separate, because the author of a commit
+is not necessarily the person who can commit it (This may not be
+obvious for GitHub users, but a lot of projects do Git through e-mail)</li>
+<li><code>gpgsig</code> is the PGP signature of this object.</li>
+</ul>
+
+<p>
+We’ll start by writing a simple parser for the format.  The code is
+obvious.  The name of the function we’re about to create,
+<code>kvlm_parse()</code>, may be confusing: it isn’t called <code>commit_parse()</code> because
+tags have the very same format, so we’ll use it for both objects types.
+I use KVLM to mean “Key-Value List with Message”.
+</p>
+
+<div>
+<pre>def kvlm_parse(raw, start=0, dct=None):
+    if not dct:
+        dct = collections.OrderedDict()
+        # You CANNOT declare the argument as dct=OrderedDict() or all
+        # call to the functions will endlessly grow the same dict.
+
+    # We search for the next space and the next newline.
+    spc = raw.find(b' ', start)
+    nl = raw.find(b'\n', start)
+
+    # If space appears before newline, we have a keyword.
+
+    # Base case
+    # =========
+    # If newline appears first (or there's no space at all, in which
+    # case find returns -1), we assume a blank line.  A blank line
+    # means the remainder of the data is the message.
+    if (spc &lt; 0) or (nl &lt; spc):
+        assert(nl == start)
+        dct[b''] = raw[start+1:]
+        return dct
+
+    # Recursive case
+    # ==============
+    # we read a key-value pair and recurse for the next.
+    key = raw[start:spc]
+
+    # Find the end of the value.  Continuation lines begin with a
+    # space, so we loop until we find a "\n" not followed by a space.
+    end = start
+    while True:
+        end = raw.find(b'\n', end+1)
+        if raw[end+1] != ord(' '): break
+
+    # Grab the value
+    # Also, drop the leading space on continuation lines
+    value = raw[spc+1:end].replace(b'\n ', b'\n')
+
+    # Don't overwrite existing data contents
+    if key in dct:
+        if type(dct[key]) == list:
+            dct[key].append(value)
+        else:
+            dct[key] = [ dct[key], value ]
+    else:
+        dct[key]=value
+
+    return kvlm_parse(raw, start=end+1, dct=dct)
+
+</pre>
+</div>
+
+<p>
+We use an <code>OrderedDict</code> here because <code>cat-file</code>, as we’ve implemented it,
+will print a commit object by parsing it and re-serializing it, so we
+need fields to be in the exact same order they were defined.  Also, in
+Git, the order keys appear in commit and tag object seem to matter.
+</p>
+
+<p>
+We’re going to need to write similar objects, so let’s add a
+<code>kvlm_serialize()</code> function to our toolkit.
+</p>
+
+<div>
+<pre>def kvlm_serialize(kvlm):
+    ret = b''
+
+    # Output fields
+    for k in kvlm.keys():
+        # Skip the message itself
+        if k == b'': continue
+        val = kvlm[k]
+        # Normalize to a list
+        if type(val) != list:
+            val = [ val ]
+
+        for v in val:
+            ret += k + b' ' + (v.replace(b'\n', b'\n ')) + b'\n'
+
+    # Append message
+    ret += b'\n' + kvlm[b'']
+
+    return ret
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-17"><span>5.2.</span> The Commit object</h3>
+<div>
+<p>
+Now we have the parser, we can create the <code>GitCommit</code> class:
+</p>
+
+<div>
+<pre>class GitCommit(GitObject):
+    fmt=b'commit'
+
+    def deserialize(self, data):
+        self.kvlm = kvlm_parse(data)
+
+    def serialize(self):
+        return kvlm_serialize(self.kvlm)
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-18"><span>5.3.</span> The log command</h3>
+<div>
+<p>
+We’ll implement a much, much simpler version of <code>log</code> than what Git
+provides.  Most importantly, we won’t deal with representing the log
+<i>at all</i>.  Instead, we’ll dump Graphviz data and let the user use <code>dot</code> to
+render the actual log.
+</p>
+
+<div>
+<pre>argsp = argsubparsers.add_parser("log", help="Display history of a given commit.")
+argsp.add_argument("commit",
+                   default="HEAD",
+                   nargs="?",
+                   help="Commit to start at.")
+
+</pre>
+</div>
+
+<div>
+<pre>def cmd_log(args):
+    repo = repo_find()
+
+    print("digraph wyaglog{")
+    log_graphviz(repo, object_find(repo, args.commit), set())
+    print("}")
+
+def log_graphviz(repo, sha, seen):
+
+    if sha in seen:
+        return
+    seen.add(sha)
+
+    commit = object_read(repo, sha)
+    assert (commit.fmt==b'commit')
+
+    if not b'parent' in commit.kvlm.keys():
+        # Base case: the initial commit.
+        return
+
+    parents = commit.kvlm[b'parent']
+
+    if type(parents) != list:
+        parents = [ parents ]
+
+    for p in parents:
+        p = p.decode("ascii")
+        print ("c_{0} -&gt; c_{1};".format(sha, p))
+        log_graphviz(repo, p, seen)
+
+</pre>
+</div>
+
+<p>
+You can now use our log command like this:
+</p>
+
+<div>
+<pre>wyag log e03158242ecab460f31b0d6ae1642880577ccbe8 &gt; log.dot
+dot -O -Tpdf log.dot
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-19"><span>5.4.</span> Anatomy of a commit</h3>
+<div>
+<p>
+You may have noticed a few things right now.
+</p>
+
+<p>
+First and foremost, we’ve been playing with commits, browsing and
+walking through commit objects, building a graph of commit history,
+without ever touching a single file in the worktree or a blob.  We’ve
+done a lot with commits <i>without considering their contents</i>.  This is
+important: work tree contents are just a part of a commit.  But a
+commit is made of everything: its contents, its authors, and also its
+parents.  If you remember that the ID (the SHA-1 hash) of a commit is
+computed from the whole commit object, you’ll understand what it means
+that commits are immutable: if you change the author, the parent
+commit or a single file, you’ve actually created a new, different
+object.  Each and every commit is bound to its place and its
+relationship to the whole repository up to the very first commit.  To
+put it otherwise, a given commit ID not only identifies some file
+contents, but it also binds the commit to its whole history and to the
+whole repository.
+</p>
+
+<p>
+It’s also worth noting that from the point of view of a commit, time
+runs backwards: we’re used to considering the history of a project
+from its humble beginnings as an evening distraction, starting with a
+few lines of code, some initial commits, and progressing to its
+present state (millions of lines of code, dozens of contributors,
+whatever).  But each commit is completely unaware of its future,
+it’s only linked to the past.  Commits have “memory”, but no
+premonition.
+</p>
+
+<p>Note</p><p>
+In Terry Pratchett’s Discworld, trolls believe they progress in time
+from the future to the past.  The reasoning behind that belief is that
+when you walk, what you can see is what’s <i>ahead</i> of you.  Of time, all
+you can perceive is the past, because you remember; hence it’s where
+you’re headed.  Git was written by a Discworld troll.
+</p>
+
+<p>
+So what makes a commit?  To sum it up:
+</p>
+
+<ul>
+<li>A tree object, which we’ll discuss now, that is, the contents of a
+worktree, files and directories;</li>
+<li>Zero, one or more parents;</li>
+<li>An author identity (name and email);</li>
+<li>A committer identity (name and email);</li>
+<li>An optional PGP signature</li>
+<li>A message;</li>
+</ul>
+
+<p>
+All this hashed together in a SHA-1 identifier.
+</p>
+
+<p>Note</p><div>
+<p>
+<b>Wait, does that make Git a blockchain?</b>
+</p>
+
+<p>
+Because of cryptocurrencies, blockchains are all the hype these days.
+And yes, <i>in a way</i>, Git is a blockchain: it’s a sequence of blocks
+(commits) tied together by cryptographic means in a way that guarantee
+that each single element is associated to the whole history of the
+structure.  Don’t take the comparison too seriously, though: we don’t
+need a GitCoin.  Really, we don’t.
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div>
+<h2 id="sr-toc-20"><span>6.</span> Reading commit data: checkout</h2>
+<p>
+It’s all well that commits hold a lot more than files and directories
+in a given state, but that doesn’t make them really useful.  It’s
+probably time to start implementing tree objects as well, so we’ll be
+able to checkout commits into the work tree.
+</p>
+
+<div>
+<h3 id="sr-toc-21"><span>6.1.</span> What’s in a tree?</h3>
+<div>
+<p>
+Informally, a tree describes the content of the work tree, that it, it
+associates blobs to paths.  It’s an array of three-element tuples made
+of a file mode, a path (relative to the worktree) and a SHA-1.  A
+typical tree contents may look like this:
+</p>
+
+<table>
+
+
+<colgroup>
+<col>
+
+<col>
+
+<col>
+</colgroup>
+<thead>
+<tr>
+<th scope="col">Mode</th>
+<th scope="col">SHA-1</th>
+<th scope="col">Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>100644</code></td>
+<td><code>894a44cc066a027465cd26d634948d56d13af9af</code></td>
+<td><code>.gitignore</code></td>
+</tr>
+
+<tr>
+<td><code>100644</code></td>
+<td><code>94a9ed024d3859793618152ea559a168bbcbb5e2</code></td>
+<td><code>LICENSE</code></td>
+</tr>
+
+<tr>
+<td><code>100644</code></td>
+<td><code>bab489c4f4600a38ce6dbfd652b90383a4aa3e45</code></td>
+<td><code>README.md</code></td>
+</tr>
+
+<tr>
+<td><code>100644</code></td>
+<td><code>6d208e47659a2a10f5f8640e0155d9276a2130a9</code></td>
+<td><code>src</code></td>
+</tr>
+
+<tr>
+<td><code>040000</code></td>
+<td><code>e7445b03aea61ec801b20d6ab62f076208b7d097</code></td>
+<td><code>tests</code></td>
+</tr>
+
+<tr>
+<td><code>040000</code></td>
+<td><code>d5ec863f17f3a2e92aa8f6b66ac18f7b09fd1b38</code></td>
+<td><code>main.c</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Mode is just the file’s <a href="https://en.wikipedia.org/wiki/File_system_permissions">mode</a>, path is its location.  The SHA-1 refers
+to either a blob or another tree object.  If a blob, the path is a
+file, if a tree, it’s directory.  To instantiate this tree in the
+filesystem, we would begin by loading the object associated to the
+first path (<code>.gitignore</code>) and check its type.  Since it’s a blob, we’ll
+just create a file called <code>.gitignore</code> with this blob’s contents; and
+same for <code>LICENSE</code> and <code>README.md</code>.  But the object associated with <code>src</code> is
+not a blob, but another tree: we’ll create the directory <code>src</code> and
+repeat the same operation in that directory with the new tree.
+</p>
+
+<p>Warning</p><div>
+<p>
+<b>A path is a single filesystem entry</b>
+</p>
+
+<p>
+The path identifies exactly one object.  Not two, not three.  If you
+have five levels of nested directories, you’re going to need five
+tree objects recursively referring to one another.  You cannot take
+the shortcut of putting a full path in a single tree entry, like
+<code>dir1/dir2/dir3/dir4/dir5</code>.
+</p>
+
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-22"><span>6.2.</span> Parsing trees</h3>
+<div>
+<p>
+Unlike tags and commits, tree objects are binary objects, but their
+format is actually quite simple.  A tree is the concatenation of records of
+the format:
+</p>
+
+<pre>[mode] space [path] 0x00 [sha-1]
+
+</pre>
+
+<ul>
+<li><code>[mode]</code> is up to six bytes and is an ASCII representation of a file mode.
+For example, 100644 is encoded with byte values 49 (ASCII “1”), 48
+(ASCII “0”), 48, 54, 52, 52.</li>
+
+<li>It’s followed by 0x20, an ASCII space;</li>
+
+<li>Followed by the null-terminated (0x00) path;</li>
+
+<li>Followed by the object’s SHA-1 in binary encoding, on 20 bytes.  Why
+binary?  God only knows.</li>
+</ul>
+
+<p>
+The parser is going to be quite simple.  First, create a tiny object
+wrapper for a single record (a leaf, a single path):
+</p>
+
+<div>
+<pre>class GitTreeLeaf(object):
+    def __init__(self, mode, path, sha):
+        self.mode = mode
+        self.path = path
+        self.sha = sha
+
+</pre>
+</div>
+
+<p>
+Because a tree object is just the repetition of the same fundamental
+data structure, we write the parser in two functions.  First, a parser
+to extract a single record, which returns parsed data and the position
+it reached in input data:
+</p>
+
+<div>
+<pre>def tree_parse_one(raw, start=0):
+    # Find the space terminator of the mode
+    x = raw.find(b' ', start)
+    assert(x-start == 5 or x-start==6)
+
+    # Read the mode
+    mode = raw[start:x]
+
+    # Find the NULL terminator of the path
+    y = raw.find(b'\x00', x)
+    # and read the path
+    path = raw[x+1:y]
+
+    # Read the SHA and convert to an hex string
+    sha = hex(
+        int.from_bytes(
+            raw[y+1:y+21], "big"))[2:] # hex() adds 0x in front,
+                                           # we don't want that.
+    return y+21, GitTreeLeaf(mode, path, sha)
+
+</pre>
+</div>
+
+<p>
+And the “real” parser which just calls the previous one in a loop,
+until input data is exhausted.
+</p>
+
+<div>
+<pre>def tree_parse(raw):
+    pos = 0
+    max = len(raw)
+    ret = list()
+    while pos &lt; max:
+        pos, data = tree_parse_one(raw, pos)
+        ret.append(data)
+
+    return ret
+
+</pre>
+</div>
+
+<p>
+Last but not least, we’ll need a serializer:
+</p>
+
+<div>
+<pre>def tree_serialize(obj):
+    #@FIXME Add serializer!
+    ret = b''
+    for i in obj.items:
+        ret += i.mode
+        ret += b' '
+        ret += i.path
+        ret += b'\x00'
+        sha = int(i.sha, 16)
+        # @FIXME Does
+        ret += sha.to_bytes(20, byteorder="big")
+    return ret
+
+</pre>
+</div>
+
+<p>
+And now we just have to combine all that into a class:
+</p>
+
+<div>
+<pre>class GitTree(GitObject):
+    fmt=b'tree'
+
+    def deserialize(self, data):
+        self.items = tree_parse(data)
+
+    def serialize(self):
+        return tree_serialize(self)
+
+</pre>
+</div>
+
+<p>
+While we’re at it, let’s add the <code>ls-tree</code> command to wyag.  It’s
+so easy there’s no reason not to.
+</p>
+
+<div>
+<pre>argsp = argsubparsers.add_parser("ls-tree", help="Pretty-print a tree object.")
+argsp.add_argument("object",
+                   help="The object to show.")
+
+def cmd_ls_tree(args):
+    repo = repo_find()
+    obj = object_read(repo, object_find(repo, args.object, fmt=b'tree'))
+
+    for item in obj.items:
+        print("{0} {1} {2}\t{3}".format(
+            "0" * (6 - len(item.mode)) + item.mode.decode("ascii"),
+            # Git's ls-tree displays the type
+            # of the object pointed to.  We can do that too :)
+            object_read(repo, item.sha).fmt.decode("ascii"),
+            item.sha,
+            item.path.decode("ascii")))
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-23"><span>6.3.</span> The checkout command</h3>
+<div>
+<p>
+We’re going to oversimplify the actual git command to make our implementation clear and understandable.  We’re also going to add a few safeguards.  Here’s how our version of checkout will work:
+</p>
+
+<ul>
+<li>It will take two arguments: a commit, and a directory.  Git checkout only needs a commit.</li>
+
+<li>It will then instantiate the tree in the directory, <b>if and only if the directory is empty</b>.  Git is full of safeguards to avoid deleting data, which would be too complicated and unsafe to try to reproduce in wyag.  Since the point of wyag is to demonstrate git, not to produce a working implementation, this limitation is acceptable.</li>
+</ul>
+
+<p>
+Let’s get started.  As usual, we need a subparser:
+</p>
+
+<div>
+<pre>argsp = argsubparsers.add_parser("checkout", help="Checkout a commit inside of a directory.")
+
+argsp.add_argument("commit",
+                   help="The commit or tree to checkout.")
+
+argsp.add_argument("path",
+                   help="The EMPTY directory to checkout on.")
+
+</pre>
+</div>
+
+<p>
+A wrapper function:
+</p>
+
+<div>
+<pre>def cmd_checkout(args):
+    repo = repo_find()
+
+    obj = object_read(repo, object_find(repo, args.commit))
+
+    # If the object is a commit, we grab its tree
+    if obj.fmt == b'commit':
+        obj = object_read(repo, obj.kvlm[b'tree'].decode("ascii"))
+
+    # Verify that path is an empty directory
+    if os.path.exists(args.path):
+        if not os.path.isdir(args.path):
+            raise Exception("Not a directory {0}!".format(args.path))
+        if os.listdir(args.path):
+            raise Exception("Not empty {0}!".format(args.path))
+    else:
+        os.makedirs(args.path)
+
+    tree_checkout(repo, obj, os.path.realpath(args.path).encode())
+
+</pre>
+</div>
+
+<p>
+And a function to do the actual work:
+</p>
+
+<div>
+<pre>def tree_checkout(repo, tree, path):
+    for item in tree.items:
+        obj = object_read(repo, item.sha)
+        dest = os.path.join(path, item.path)
+
+        if obj.fmt == b'tree':
+            os.mkdir(dest)
+            tree_checkout(repo, obj, dest)
+        elif obj.fmt == b'blob':
+            with open(dest, 'wb') as f:
+                f.write(obj.blobdata)
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+<h2 id="sr-toc-24"><span>7.</span> Refs, tags and branches</h2>
+
+<div>
+<h3 id="sr-toc-25"><span>7.1.</span> What’s a ref?</h3>
+<div>
+<p>
+Git references, or refs, are probably the most simple type of things
+git holds.  They live in subdirectories of <code>.git/refs</code>, and are text
+files containing a hexadecimal representation of an object’s hash,
+encoded in ASCII.  They’re actually as simple as this:
+</p>
+
+<pre>6071c08bcb4757d8c89a30d9755d2466cef8c1de
+
+</pre>
+
+<p>
+Refs can also refer to another reference, and thus only indirectly to
+an object, in which case they look like this:
+</p>
+
+<pre>ref: refs/remotes/origin/master
+
+</pre>
+
+<p>Note</p><div>
+<p>
+<b>Direct and indirect references</b>
+</p>
+
+<p>
+From now on, I will call a reference of the form <code>ref:
+path/to/other/ref</code> an <b>indirect</b> reference, and a ref with a SHA-1 object
+ID a <b>direct reference</b>.
+</p>
+
+</div>
+
+<p>
+This whole section will describe the uses of refs.  For now, all that
+matter is this:
+</p>
+
+<ul>
+<li>they’re text files, in the <code>.git/refs</code> hierarchy;</li>
+<li>they hold the sha-1 identifier of an object, or a reference to
+another branch.</li>
+</ul>
+
+<p>
+To work with refs, we’re first going to need a simple recursive solver
+that will take a ref name, follow eventual recursive references
+(refs whose content begin with <code>ref:</code>, as exemplified above) and return
+a SHA-1:
+</p>
+
+<div>
+<pre>def ref_resolve(repo, ref):
+    with open(repo_file(repo, ref), 'r') as fp:
+        data = fp.read()[:-1]
+        # Drop final \n ^^^^^
+    if data.startswith("ref: "):
+        return ref_resolve(repo, data[5:])
+    else:
+        return data
+
+</pre>
+</div>
+
+<p>
+Let’s create two small functions, and implement the <code>show-refs</code>
+command.  First, a stupid recursive function to collect refs
+and return them as a dict:
+</p>
+
+<div>
+<pre>def ref_list(repo, path=None):
+    if not path:
+        path = repo_dir(repo, "refs")
+    ret = collections.OrderedDict()
+    # Git shows refs sorted.  To do the same, we use
+    # an OrderedDict and sort the output of listdir
+    for f in sorted(os.listdir(path)):
+        can = os.path.join(path, f)
+        if os.path.isdir(can):
+            ret[f] = ref_list(repo, can)
+        else:
+            ret[f] = ref_resolve(repo, can)
+
+    return ret
+
+</pre>
+</div>
+
+<div>
+<pre>argsp = argsubparsers.add_parser("show-ref", help="List references.")
+
+def cmd_show_ref(args):
+    repo = repo_find()
+    refs = ref_list(repo)
+    show_ref(repo, refs, prefix="refs")
+
+def show_ref(repo, refs, with_hash=True, prefix=""):
+    for k, v in refs.items():
+        if type(v) == str:
+            print ("{0}{1}{2}".format(
+                v + " " if with_hash else "",
+                prefix + "/" if prefix else "",
+                k))
+        else:
+            show_ref(repo, v, with_hash=with_hash, prefix="{0}{1}{2}".format(prefix, "/" if prefix else "", k))
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-26"><span>7.2.</span> What’s a tag?</h3>
+<div>
+<p>
+The most simple use of refs is tags.  A tag is just a user-defined
+name for an object, often a commit.  A very common use of tags is
+identifying software releases: You’ve just merged the last commit of,
+say, version 12.78.52 of your program, so your most recent commit
+(let’s call it <code>6071c08</code>) <i>is</i> your version 12.78.52.  To make this
+association explicit, all you have to do is:
+</p>
+
+<div>
+<pre>git tag v12.78.52 6071c08
+# the object hash ^here^^ is optional and defaults to HEAD.
+
+</pre>
+</div>
+
+<p>
+This creates a new tag, called <code>v12.78.52</code>, pointing at <code>6071c08</code>.
+Tagging is like aliasing: a tag introduces a new way to refer to an
+existing object.  After the tag is created, the name <code>v12.78.52</code> refers
+to <code>6071c08</code>.  For example, these two commands are now perfectly
+equivalent:
+</p>
+
+<div>
+<pre>git checkout v12.78.52
+git checkout 6071c08
+
+</pre>
+</div>
+
+<p>Note</p><p>
+Versions are a common use of tags, but like almost everything in
+Git, tags have no predefined semantics: they mean whatever you want
+them to mean, and can point to whichever object you want, you can
+even tag <i>blobs</i>!
+</p>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-27"><span>7.3.</span> Parsing tag objects</h3>
+<div>
+<p>
+You’ve probably guessed already that tags are actually refs.  They
+live in the <code>.git/refs/tags/</code> hierarchy.  The only point worth noting is
+that they come in two flavors: lightweight tags and tags objects.
+</p>
+
+<dl>
+<dt>“Lightweight” tags</dt><dd>are just regular refs to a commit, a tree or
+a blob.</dd>
+
+<dt>Tag objects</dt><dd>are regular refs pointing to an object of type <code>tag</code>.
+Unlike lightweight tags, tag objects have an author,
+a date, an optional PGP signature and an optional
+annotation.  Their format is the same as a commit
+object.</dd>
+</dl>
+
+<p>
+We don’t even need to implement tag objects, we can reuse <code>GitCommit</code>
+and just change the <code>fmt</code> field:
+</p>
+
+<div>
+<pre>class GitTag(GitCommit):
+    fmt = b'tag'
+
+</pre>
+</div>
+
+<p>
+And now we support tags.
+</p>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-28"><span>7.4.</span> The tag command</h3>
+<div>
+<p>
+Let’s add the tag command.  In Git, it does two things: it creates a
+new tag or list existing tags (by default).  So you can invoke it with:
+</p>
+
+<div>
+<pre>git tag                  # List all tags
+git tag NAME [OBJECT]    # create a new *lightweight* tag NAME, pointing
+                         # at HEAD (default) or OBJECT
+git tag -a NAME [OBJECT] # create a new tag *object* NAME, pointing at
+                         # HEAD (default) or OBJECT
+
+</pre>
+</div>
+
+<p>
+This translates to argparse as follows.  Notice we ignore the mutual
+exclusion between <code>--list</code> and <code>[-a] name [object]</code>, which seems too
+complicated for argparse.
+</p>
+
+<div>
+<pre>argsp = argsubparsers.add_parser(
+    "tag",
+    help="List and create tags")
+
+argsp.add_argument("-a",
+                    action="store_true",
+                    dest="create_tag_object",
+                    help="Whether to create a tag object")
+
+argsp.add_argument("name",
+                    nargs="?",
+                    help="The new tag's name")
+
+argsp.add_argument("object",
+                    default="HEAD",
+                    nargs="?",
+                    help="The object the new tag will point to")
+
+</pre>
+</div>
+
+<p>
+The <code>cmd_tag</code> function will dispatch behavior (list or create) depending
+on whether or not <code>name</code> is provided.
+</p>
+
+<div>
+<pre>def cmd_tag(args):
+    repo = repo_find()
+
+    if args.name:
+        tag_create(args.name,
+                   args.object,
+                   type="object" if args.create_tag_object else "ref")
+    else:
+        refs = ref_list(repo)
+        show_ref(repo, refs["tags"], with_hash=False)
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-29"><span>7.5.</span> What’s a branch?</h3>
+<div>
+<p>
+It’s time to address the elephant in the room: like most Git users,
+wyag still doesn’t have any idea what a branch is.  It currently
+treats a repository as a bunch of disorganized objects, some of them
+commits, and has no representation whatsoever of the fact that commits
+are grouped in branches, and that at every point in time there’s a
+commit that’s <code>HEAD</code>, <i>ie</i>, the <b>head</b> commit of the <b>current</b> branch.
+</p>
+
+<p>
+Now, what’s a branch?  The answer is actually surprisingly simple, but
+it may also end up being simply surprising: <b>a branch is a reference to
+a commit</b>.  You could even say that a branch is a kind of a name for a
+commit.  In this regard, a branch is exactly the same thing as a tag.
+Tags are refs that live in <code>.git/refs/tags</code>, branches are refs that live
+in  <code>.git/refs/heads</code>.
+</p>
+
+<p>
+There are, of course, differences between a branch and a tag:
+</p>
+
+<ol>
+<li>Branches are references to a commit, tags can refer to any object;</li>
+<li>But most importantly, the branch ref is updated at each commit.  This means
+that whenever you commit, Git actually does this:
+<ol>
+<li>a new commit object is created, with the current branch’s ID as
+its parent;</li>
+<li>the commit object is hashed and stored;</li>
+<li>the branch ref is updated to refer to the new commit’s hash.</li>
+</ol></li>
+</ol>
+
+<p>
+That’s all.
+</p>
+
+<p>
+But what about the <b>current</b> branch?  It’s actually even easier.  It’s a
+ref file outside of the <code>refs</code> hierarchy, in <code>.git/HEAD</code>, which is an
+<b>indirect</b> ref (that is, it is of the form <code>ref: path/to/other/ref</code>, and
+not a simple hash).
+</p>
+
+<div>
+<p>
+<b>Detached HEAD</b>
+</p>
+
+<p>
+When you just checkout a random commit, git will warn you it’s in
+“detached HEAD state”.  This means you’re not on any branch
+anymore.  In this case, <code>.git/HEAD</code> is a <b>direct</b> reference: it
+contains a SHA-1.
+</p>
+
+</div>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-30"><span>7.6.</span> Referring to objects: the <code>object_find</code> function</h3>
+
+
+<div>
+<h4 id="sr-toc-31"><span>7.6.1.</span> Resolving names</h4>
+<div>
+<p>
+Remember when we’ve created <a href="#org16e3e10">the stupid <code>object_find</code> function</a> that would
+take four arguments, return the second unmodified and ignore the other
+three?  It’s time to replace it by something more useful.  We’re going
+to implement a small, but usable, subset of the actual Git name
+resolution algorithm.  The new <code>object_find()</code> will work in two steps:
+first, given a name, it will return a complete sha-1 hash.  For
+example, with <code>HEAD</code>, it will return the hash of the head commit of the
+current branch, etc.  More precisely, this name resolution function
+will work like this:
+</p>
+
+<ul>
+<li>If <code>name</code> is HEAD, it will just resolve <code>.git/HEAD</code>;</li>
+<li>If <code>name</code> is a full hash, this hash is returned unmodified.</li>
+<li>If <code>name</code> looks like a short hash, it will collect objects whose full
+hash begin with this short hash.</li>
+<li>At last, it will resolve tags and branches matching name.</li>
+</ul>
+
+<p>
+Notice how the last two steps <i>collect</i> values: the first two are
+absolute references, so we can safely return a result.  But short
+hashes or branch names can be ambiguous, we want to enumerate all
+possible meanings of the name and raise an error if we’ve found more
+than 1.
+</p>
+
+<div>
+<p>
+<b>Short hashes</b>
+</p>
+
+<p>
+For convenience, Git allows to refer to hashes by a prefix of their
+name.  For example, <code>5bd254aa973646fa16f66d702a5826ea14a3eb45</code> can be
+referred to as <code>5bd254</code>.  This is called a “short hash”.
+</p>
+
+</div>
+
+<div>
+<pre>def object_resolve(repo, name):
+    """Resolve name to an object hash in repo.
+
+This function is aware of:
+
+ - the HEAD literal
+ - short and long hashes
+ - tags
+ - branches
+ - remote branches"""
+    candidates = list()
+    hashRE = re.compile(r"^[0-9A-Fa-f]{4,40}$")
+
+    # Empty string?  Abort.
+    if not name.strip():
+        return None
+
+    # Head is nonambiguous
+    if name == "HEAD":
+        return [ ref_resolve(repo, "HEAD") ]
+
+
+    if hashRE.match(name):
+        if len(name) == 40:
+            # This is a complete hash
+            return [ name.lower() ]
+
+        # This is a small hash 4 seems to be the minimal length
+        # for git to consider something a short hash.
+        # This limit is documented in man git-rev-parse
+        name = name.lower()
+        prefix = name[0:2]
+        path = repo_dir(repo, "objects", prefix, mkdir=False)
+        if path:
+            rem = name[2:]
+            for f in os.listdir(path):
+                if f.startswith(rem):
+                    candidates.append(prefix + f)
+
+    return candidates
+
+</pre>
+</div>
+
+<p>
+The second step is to follow the object we found to an object of the
+required type, if a type argument was provided.  Since we only need to
+handle trivial cases, this is a very simple iterative process:
+</p>
+
+<ul>
+<li>If we have a tag and <code>fmt</code> is anything else, we follow the tag.</li>
+<li>If we have a commit and <code>fmt</code> is tree, we return this commit’s tree
+object</li>
+<li>In all other situations, we abort.</li>
+</ul>
+
+<p>
+(The process is iterative because it may take an undefined number of
+steps, since tags themselves can be tagged)
+</p>
+
+<div>
+<pre>def object_find(repo, name, fmt=None, follow=True):
+    sha = object_resolve(repo, name)
+
+    if not sha:
+        raise Exception("No such reference {0}.".format(name))
+
+    if len(sha) &gt; 1:
+        raise Exception("Ambiguous reference {0}: Candidates are:\n - {1}.".format(name,  "\n - ".join(sha)))
+
+    sha = sha[0]
+
+    if not fmt:
+        return sha
+
+    while True:
+        obj = object_read(repo, sha)
+
+        if obj.fmt == fmt:
+            return sha
+
+        if not follow:
+            return None
+
+        # Follow tags
+        if obj.fmt == b'tag':
+            sha = obj.kvlm[b'object'].decode("ascii")
+        elif obj.fmt == b'commit' and fmt == b'tree':
+            sha = obj.kvlm[b'tree'].decode("ascii")
+        else:
+            return None
+
+</pre>
+</div>
+</div>
+</div>
+
+<div>
+<h4 id="sr-toc-32"><span>7.6.2.</span> The rev-parse command</h4>
+<div>
+<p>
+The <code>git rev-parse</code> commands does a lot, but one of its use cases is
+solving revision (commits) references.  For the purpose of testing the
+“follow” feature of <code>object_find</code>, we’ll add an optional <code>wyag-type</code>
+arguments to its interface.
+</p>
+
+<div>
+<pre>argsp = argsubparsers.add_parser(
+    "rev-parse",
+    help="Parse revision (or other objects )identifiers")
+
+argsp.add_argument("--wyag-type",
+                   metavar="type",
+                   dest="type",
+                   choices=["blob", "commit", "tag", "tree"],
+                   default=None,
+                   help="Specify the expected type")
+
+argsp.add_argument("name",
+                   help="The name to parse")
+
+</pre>
+</div>
+
+<div>
+<pre>def cmd_rev_parse(args):
+    if args.type:
+        fmt = args.type.encode()
+
+    repo = repo_find()
+
+    print (object_find(repo, args.name, args.type, follow=True))
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<div>
+<h2 id="sr-toc-33"><span>8.</span> The staging area and the index file</h2>
+<div>
+<p>
+Creating commits seems to be simply a matter of creating a bunch of
+new tree object (not just one, remember they’re recursive — you need
+exactly one per directory), a commit object pointing at the root tree
+object, and updating <code>HEAD</code> to point to that commit — and yes, we
+could do it like this, but Git chooses a much more complicated road:
+the staging area, implemented in the form of the index file.
+</p>
+
+<p>
+You certainly know that to commit in Git, you first “stage” some
+changes, using <code>git add</code> and <code>git rm</code>, <i>then</i> commit.  It would seem logical
+to use a commit-like object to represent the staging area, but Git
+goes a completely different way, and uses a completely different
+mechanism, in the form of the index file.  The index file represents a
+set of changes from the HEAD commit, to commit, they must be combined
+to create a new commit.
+</p>
+</div>
+
+<div>
+<h3 id="sr-toc-34"><span>8.1.</span> Parsing the index</h3>
+<div>
+<p>
+The index file is by far the most complicated piece of data a Git
+repository can hold.  Its complete documentation can be found in Git
+source tree at <code>Documentation/technical/commit-graph-format.txt</code>, you
+can read it <a href="https://github.com/git/git/blob/master/Documentation/technical/index-format.txt">on the Github mirror</a>.  The index is made of three parts:
+</p>
+
+<ul>
+<li>A classic header with a signature and a few basic info, most
+importantly the number of entries it holds;</li>
+<li>A series of entries, sorted, each representing a change;</li>
+<li>A series of optional extensions, which we’ll ignore.</li>
+</ul>
+
+<p>
+The only thing we need to represent is an entry item.  It actually
+holds quite a lot of stuff:
+</p>
+
+<div>
+<pre>class GitIndexEntry(object):
+    ctime = None
+    """The last time a file's metadata changed.  This is a tuple (seconds, nanoseconds)"""
+
+    mtime = None
+    """The last time a file's data changed.  This is a tuple (seconds, nanoseconds)"""
+
+    dev = None
+    """The ID of device containing this file"""
+    ino = None
+    """The file's inode number"""
+    mode_type = None
+    """The object type, either b1000 (regular), b1010 (symlink), b1110 (gitlink). """
+    mode_perms = None
+    """The object permissions, an integer."""
+    uid = None
+    """User ID of owner"""
+    gid = None
+    """Group ID of ownner (according to stat 2.  Isn'th)"""
+    size = None
+    """Size of this object, in bytes"""
+    obj = None
+    """The object's hash as a hex string"""
+    flag_assume_valid = None
+    flag_extended = None
+    flag_stage = None
+    flag_name_length = None
+    """Length of the name if &lt; 0xFFF (yes, three Fs), -1 otherwise"""
+
+    name = None
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+<h2 id="sr-toc-35"><span>9.</span> Final words</h2>
+
+<div>
+<h3 id="sr-toc-36"><span>9.1.</span> Comments, feedback and issues</h3>
+<div>
+<p>
+This page has no comment system.  To report issues or just give
+feedback, you may use:
+</p>
+
+<dl>
+<dt>Github</dt><dd>If you have a Github account, you can <a href="https://github.com/thblt/write-yourself-a-git/issues/new">create an issue</a>,
+either to report a problem or a bug, or just for) general
+feedback :</dd>
+
+<dt>E-mail</dt><dd>If you don’t have/want a Github account, you can send me
+an e-mail at <a href="mailto:thibault@thb.lt">thibault@thb.lt</a>.</dd>
+
+<dt>Pull requests</dt><dd>are accepted (and welcome!) by e-mail or on
+Github.  Before you start making any changes,
+please read the next section.</dd>
+
+<dt>IRC</dt><dd>I’m thblt on Freenode, feel free to message me!</dd>
+</dl>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-37"><span>9.2.</span> Contributing</h3>
+<div>
+<p>
+If you want to contribute changes or improvements to this article or
+the wyag program, library and/or test suite, please read the
+following before you start working.
+</p>
+
+<ul>
+<li>Do <i>not</i> make changes to <code>wyag</code> or <code>libwyag.py</code>.  These files
+are extracted (“tangled”) from <code>write-yourself-a-git.org</code> and are
+included in the repository as a convenience.  Instead, search the
+code blocks corresponding to the changes you want to make and
+update them.</li>
+
+<li>The source file for <i>both</i> the article and the program is
+<code>write-yourself-a-git.org</code>.  Its format may seem unusual, but it’s
+pretty simple and not that far from markdown.</li>
+</ul>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-38"><span>9.3.</span> Release information</h3>
+<div>
+<table>
+
+
+<colgroup>
+<col>
+
+<col>
+</colgroup>
+<thead>
+<tr>
+<th scope="col">Key</th>
+<th scope="col">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Creation date</td>
+<td>Fri Aug 20 14:27:57 2021</td>
+</tr>
+
+<tr>
+<td>On commit</td>
+<td><code>0.1-26-gbe7fc33</code> (<b>dirty</b>)</td>
+</tr>
+
+<tr>
+<td>By</td>
+<td>(<code>thblt</code> on <code>dru</code>)</td>
+</tr>
+
+<tr>
+<td>Emacs version</td>
+<td>28.0.50</td>
+</tr>
+
+<tr>
+<td>Org-mode version</td>
+<td>9.4.6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div>
+<h3 id="sr-toc-39"><span>9.4.</span> License</h3>
+<div>
+<p>
+This document is part of wyag &lt;<a href="https://wyag.thb.lt/">https://wyag.thb.lt</a>&gt;.  Copyright (c)
+2018 Thibault Polge &lt;<a href="mailto:thibault@thb.lt">thibault@thb.lt</a>&gt;.  All rights reserved
+</p>
+
+<p>
+Wyag is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+</p>
+
+<p>
+Wyag is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public
+License for more details.
+</p>
+
+<p>
+You should have received a copy of the GNU General Public License
+along with Wyag.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.
+</p>
+</div>
+</div>
+</div>
+</div><div>
+
+<p>Created: 2021-08-20 ven. 14:27</p>
+<p><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div></sr-rd-content>
+                            
+                            <sr-rd-footer>
+                                <sr-rd-footer-group>
+                                    <sr-rd-footer-line></sr-rd-footer-line>
+                                    <sr-rd-footer-text>全文完</sr-rd-footer-text>
+                                    <sr-rd-footer-line></sr-rd-footer-line>
+                                </sr-rd-footer-group>
+                                <sr-rd-footer-copywrite>
+                                    <div>本文由 <a href="http://ksria.com/simpread" target="_blank">简悦 SimpRead</a> 转码，用以提升阅读体验，<a href="https://wyag.thb.lt/" target="_blank">原文地址 </a></div>
+                                </sr-rd-footer-copywrite>
+                            </sr-rd-footer>
+                        </sr-read>
+                    </body>
+                </html>

@@ -1,0 +1,46 @@
+created: 20220301010942805
+modified: 20220304025735848
+revision: 4-45b09ecb1cde0cee2d7ace25edca28fe
+tags: puml rfoe thor
+title: RFOE RX MBT Ring Buffer管理相关类图
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startuml
+class EaxcStream
+{
+	std::unique_ptr<MbtBufferManagerIf> bufferManager_;
+	EaxcStream(varargs) {bufferManager_(MbtBufferManagerFactory().CreateBufferManager(serDesPortArg)}
+}
+
+class MbtBufferManagerFactory
+{
+	std::unique_ptr<MbtBufferManagerIf> CreateBufferManager(const uint32_t serDesPortId, varargs)
+}
+
+class MbtBufferManagerIf
+{
+	uint64_t* AllocateBuffer(const uint64_t bufferSize, const uint64_t numOfBuffers)
+	static constexpr uint64_t MBT_BUFFER_SIZE{ 1536 }
+  static constexpr uint64_t SMEM_BYTE_ALIGNMENT{ 16 }
+  static constexpr uint64_t L2DDR_BYTE_ALIGNMENT{ 128 }
+}
+
+class MbtBufferManagerStreamSpecific
+{
+		uint16_t numOfMbtBuffers_{ 9 }
+    uint64_t* rxMbtBuffer_{ nullptr }
+		uint16_t GetNumOfMbtBuffers()
+		uint64_t* GetDmaAddress()
+		uint64_t* GetDspSmemAddress()
+}
+
+class FhMemoryManager
+{
+		ReturnType* allocateIoMem(size_t size, uint64_t alignBytes = alignof(ReturnType))
+}
+
+EaxcStream *-- MbtBufferManagerStreamSpecific
+MbtBufferManagerIf <|-- MbtBufferManagerStreamSpecific
+MbtBufferManagerFactory o-- MbtBufferManagerIf
+MbtBufferManagerIf o-- FhMemoryManager
+@enduml""">

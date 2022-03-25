@@ -1,0 +1,10 @@
+created: 20211101150613762
+modified: 20211101150656775
+tags: [[si request]] [[5G NR]]
+title: 5g nr的si request流程
+
+在LTE里，所有的SIB消息都是小区里广播。而5G有一些变化，SIB消息中除了SIB1和SIB2是周期广播以外，其他的都不是必须广播的。
+
+对于已经接入的UE，比如Handle over接入的UE，可以通过RRC消息去得到所有的系统信息。
+
+另一种，对于Idle态的UE，则可以通过一个新的流程SI Request去通知gNB，来请求获得指定的SIB消息。 

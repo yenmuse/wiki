@@ -1,0 +1,22 @@
+created: 20211104054553572
+modified: 20211105015906399
+tags: dmrs [[5G NR]]
+title: 5g nr中解调参考信号的时域位置
+
+DMRS是demodulation reference signal的缩写，用于解调pusch、pdsch。它在时域的位置由几个参数共同决定：
+
+* dmrs type a or dmrs type b: type a 的话，下面的type a dmrs position这个参数参照所在slot的symbol0来说，type b的话，type a dmrs position这个参数就没有意义了，此时dmrs位于pxsch的第一个符号上
+
+** Mapping type A, where the first DM-RS is located in symbol 2 or 3 of the slot and the DM-RS is mapped relative to the start of the slot boundary, regardless of where in the slot the actual data transmission starts. This mapping type is primarily intended for the case where the data occupy (most of) a slot. The reason for symbol 2 or 3 in the downlink is to locate the first DM-RS occasion after a CORESET located at the beginning of a slot.
+
+
+
+** Mapping type B, where the first DM-RS is located in the first symbol of the data allocation, that is, the DM-RS location is not given relative to the slot boundary but rather relative to where the data are located. This mapping is originally motivated by transmissions over a small fraction of the slot to support very low latency and other transmissions that benefit from not waiting until a slot boundary starts but can be used regardless of the transmission duration.
+
+* type a dmrs position：仅在dmrs type a的情况下有用，取值范围是pos2和pos3，分别表示dmrs在符号2还是符号3上，符号索引从0开始
+
+* dmrs length：表示dmrs的长度是一个符号还是两个符号，注意additional dmrs的长度也是这个参数。两个符号的dmrs主要是为了支持更多的天线端口。
+
+* additional dmrs：为了支持高速场景，可以配置最多3个additional dmrs.
+
+这里有比较形象的示例：[ext[simpread_5G_ShareTechnote_PDSCH_DMRS|file:./resources/simpread/simpread_5G_ShareTechnote_PDSCH_DMRS.html]]

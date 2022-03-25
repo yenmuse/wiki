@@ -1,0 +1,29 @@
+created: 20210804055150684
+modified: 20210927073135911
+revision: 6-f0f0fe412ca2703631877c3b00b70179
+tags: 相位补偿 [[python code base]] numpy
+title: 一次dubug中相位补偿系数计算
+tmap.id: d18a6c74-179c-4734-b4e8-7078412f3d75
+type: text/vnd.tiddlywiki
+
+aeqp concurrent debug过程中，debug需要修改mbeamer里面的相位补偿系数，每个符号相较前一个符号偏移增加固定角度，代码如下：
+
+```
+import numpy as np
+
+sym_ind = np.arange(0,14)
+theta = np.pi*(sym_ind*25)/180
+coef_exp = np.exp(1j*theta)
+coef_r = np.real(coef_exp)
+coef_i = np.imag(coef_exp)
+coef_r_q16 = np.array([((round(i*2**15-1)) if i>0 else (round(i*2**15+1)+2**16-1)) for i in coef_r])
+coef_i_q16 = np.array([((round(i*2**15-1)) if i>0 else (round(i*2**15+1)+2**16-1)) for i in coef_i])
+coef_r_q16_hex = [hex(i) for i in coef_r_q16]
+coef_i_q16_hex = [hex(i) for i in coef_i_q16]
+```
+
+* 这个代码中计算coef_r_q16/coef_i_q16的时候没有考虑i=0的情况，是个疏漏
+
+* 计算coef_r_q16/coef_i_q16的时候最外层的np.array是必须的，否则里面的[func(i) for i in list]会默认的将这个数组转化成list类型，list的加法会将list按顺序衔接起来，而不是逐个元素相加
+
+* np.round函数的返回类型是浮点数，内建函数round的返回类型是整型

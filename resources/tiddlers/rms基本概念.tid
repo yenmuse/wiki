@@ -1,0 +1,10 @@
+created: 20211013044559362
+modified: 20211013052933092
+revision: 6-7f8a44a6236a04eb08ea4c556b7c1966
+tags: simpread rms
+title: rms基本概念
+type: text/vnd.tiddlywiki
+
+[ext[simpread-RMS Voltage of a Sinusoidal AC Waveform|file:./resources/simpread/simpread-RMS Voltage of a Sinusoidal AC Waveform.html]]
+
+主要介绍了rms的基本概念，rms是root mean square的缩写，对于一个正弦波来说，其一个周期内产生的热量等于某一固定幅值的直流产生的热量，这一直流的幅值就是这个正弦波的rms：Most books define this as the “amount of AC power that produces the same heating effect as an equivalent DC power”, or something similar along these lines

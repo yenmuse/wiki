@@ -1,0 +1,19 @@
+created: 20220303082255825
+modified: 20220303083936479
+revision: 2-7219e50cbd915d445cb0a26339132559
+tags: ecmp thor puml
+title: ECMP Output Buffer 管理相关序列图
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startuml
+EaxcStream --> UplaneJobCreator
+UplaneJobCreator --> FhCircularBuffer: allocate buffers\nsize of allocated buffer recorded in IoMemDefs
+UplaneJobCreator <-- FhCircularBuffer: function return
+UplaneJobCreator --> EcmpJdInputParams: create a instance
+UplaneJobCreator <-- EcmpJdInputParams: function return
+UplaneJobCreator --> EcmpJdNew: configure the buffer to jd
+UplaneJobCreator <-- EcmpJdNew: function returns
+UplaneJobCreator --> RfoeTxJobCreator: updatePacketReadParams
+UplaneJobCreator <-- RfoeTxJobCreator: function return
+EaxcStream <-- UplaneJobCreator: function return
+@enduml""">

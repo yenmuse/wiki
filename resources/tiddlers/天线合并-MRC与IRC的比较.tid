@@ -1,0 +1,14 @@
+created: 20211122143451734
+modified: 20211202145909558
+revision: 3-e78c4f59d6aa6e0ae34edb730a776ac1
+tags: 天线合并
+title: 天线合并-MRC与IRC的比较
+type: text/vnd.tiddlywiki
+
+[img[file:./resources/picbed/mrc_vs_irc_1.png]]
+
+[img[file:./resources/picbed/mrc_vs_irc_2.png]]
+
+[img[file:./resources/picbed/mrc_vs_irc_3.png]]
+
+前一直有个误解: mrc就是迫零估计，irc就是lmmse估计。这里需要厘清，mrc和irc都是lmmse，二者的区别在于mrc认为噪声是白色的，而irc认为还需要考虑其它小区的干扰，这些干扰并不是白色的。

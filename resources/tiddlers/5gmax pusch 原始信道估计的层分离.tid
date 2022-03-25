@@ -1,0 +1,81 @@
+created: 20211201055501827
+modified: 20211201055602570
+tags: pusch 信道估计 5gmax
+title: 5gmax pusch 原始信道估计的层分离
+
+''层分离''
+
+这里名字叫层分离，其实也就是天线端口分离。在多个天线端口时，不同天线端口上的参考信号可能占据相同的时频资源，所以需要将其它端口上参考信号的干扰消除掉，得到一个干净的、只包含期望端口上的信道估计。下面的式子是一个两端口分离的例子：
+
+$$\widehat{\mathbf{H}}_{p, s e p, i}^{\text {pilot }}=\left\{\begin{array}{cc}
+0.25 * \widehat{\mathbf{H}}_{p, \text { raw, } i-1}^{\text {pilot }}+0.5 * \widehat{\mathbf{H}}_{p, \text { raw }, i}^{\text {pilot }}+0.25 * \widehat{\mathbf{H}}_{p, \text { raw }, i+1}^{\text {pilot }} & 1 \leq i<N_{\text {Psc }} \\
+0.5 * \widehat{\mathbf{H}}_{p, \text { raw }, i}^{\text {pilot }}+0.5 * \widehat{\mathbf{H}}_{p, \text { raw }, i+1}^{\text {pilot }} & i=0 \\
+0.5 * \widehat{\mathbf{H}}_{p, \text { raw }, i-1}^{\text {pilot }}+0.5 * \widehat{\mathbf{H}}_{p, \text { raw }, i}^{\text {pilot }} & i=N_{\text {Psc }}
+\end{array}\right.$$
+
+5gmax的文档里面没有解释为什么这样做，但是可以在4gmax的文档里面找到相关描述。这里可以简单推导一下：
+
+简单起见，假设参考信号只占了4个RE。三个两端口的情况下，二者分别记作端口$$p_{0}$$和端口$$p_{1}$$，两个端口上的序列是用OCC区分的，也就是：
+
+$$p_{0}$$上参考信号是 $$\alpha_{0}, \alpha_{1}, \alpha{2}, \alpha{3}$$，$$p_{1}$$上的参考信号是$$\beta_{0}, \beta_{1}, \beta_{2}, \beta_{3}$$。
+而且有这样的关系: $$\alpha_{0} = \beta_{0}, \alpha_{1} = -\beta_{1}, \alpha{2} = -\beta_{2}, \alpha{3} = -\beta_{3}$$
+
+
+
+两个端口上的参考信号经历不同的信道分别到达接收端某根天线上，假设这个接收天线上$$p_{0}$$上4个RE的参考信号经历的信道分别是$$h_{0, 0}, h_{0, 1}, h_{0, 2}, h_{0, 3}$$，$$p_{1}$$上经历的信号分别是$$h_{1, 0}, h_{1, 1}, h_{1, 2}, h_{1, 3}$$。
+
+那么接收的信号就是：
+
+$$
+\begin{aligned}
+&\gamma_{0} = \alpha_{0} \times h_{0, 0} + \beta_{0} \times h_{1, 0} \\
+&\gamma_{1} = \alpha_{1} \times h_{0, 1} + \beta_{0} \times h_{1, 1} \\
+&\gamma_{2} = \alpha_{2} \times h_{0, 2} + \beta_{0} \times h_{1, 2} \\
+&\gamma_{3} = \alpha_{3} \times h_{0, 3} + \beta_{0} \times h_{1, 3}
+\end{aligned}
+$$
+
+
+那么$$p_{0}$$上的原始信道估计的结果就是：
+
+$$
+\begin{aligned}
+&\hat{h_{0}} = \alpha^{*}_{0} \times (\alpha_{0} \times h_{0, 0} + \beta_{0} \times h_{1, 0}) \\
+&\hat{h_{1}} = \alpha^{*}_{1} \times (\alpha_{1} \times h_{0, 1} + \beta_{1} \times h_{1, 1}) \\
+&\hat{h_{2}} = \alpha^{*}_{2} \times (\alpha_{2} \times h_{0, 1} + \beta_{2} \times h_{1, 2}) \\
+&\hat{h_{3}} = \alpha^{*}_{3} \times (\alpha_{3} \times h_{0, 3} + \beta_{3} \times h_{1, 3})
+\end{aligned}
+$$
+
+参考信号都是ZC序列，所以每个与其共轭相乘得到1，再结合OCC，可以得到：
+
+$$
+\begin{aligned}
+&\hat{h_{0}} = h_{0, 0} + h_{1, 0} \\
+&\hat{h_{1}} = h_{0, 1} - h_{1, 1} \\
+&\hat{h_{2}} = h_{0, 2} + h_{1, 2} \\
+&\hat{h_{3}} = h_{0, 3} - h_{1, 3}
+\end{aligned}
+$$
+
+假设信道是平坦的，也就是 $$h_{0,n}$$约等于$$h_{0,n+1}$$，$$h_{1,n}$$约等于$$h_{1,n+1}$$，那么：
+
+$$
+\hat{h_{0}} + \hat{h_{1}} = h_{0, 0} + h_{1, 0} + h_{0, 1} - h_{1, 1} = h_{0, 0} + h_{0, 1}
+$$
+
+因为$$h_{0, 0}$$约等于$$h_{0, 1}$$ 所以
+
+$$
+h_{0, 0} = 1/2 \times (\hat{h_{0}} + \hat{h_{1}})
+$$
+
+其它RE上的结果类似。
+
+另外还可以做的复杂一点，在3个RE上做频域的平均，比如：
+
+$$h_{0, 1} = 0.25 \times \hat{h_{0}} + 0.5 \times \hat{h_{1}} + 0.25 \times \hat{h_{2}}$$
+
+这种方法在频域上更健壮一点，减轻频域的非线性的影响。
+
+更进一步，这种方法可以推广到$$\Delta n_{c s}=4,3$$的情况。

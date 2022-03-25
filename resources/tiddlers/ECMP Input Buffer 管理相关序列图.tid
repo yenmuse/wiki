@@ -1,0 +1,29 @@
+created: 20220303011408412
+modified: 20220303092953361
+revision: 7-4ac141460b6d7fe95de269efeea5bfc1
+tags: puml thor ecmp
+title: ECMP Input Buffer 管理相关序列图
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startuml
+ThorNrtApi --> StreamManager: construct and config streams
+StreamManager --> IoMemIqDataSymbolBufferManager:AllocateIqDataSymbolBuffer(ccId, bandwidth, scs)
+IoMemIqDataSymbolBufferManager --> FhCircularBuffer:IoMemIqDataSymbolBufferManager::\nInitMem(const uint8_t ccId, const uint32_t numOfPrbs)
+IoMemIqDataSymbolBufferManager <-- FhCircularBuffer: function return
+StreamManager <-- IoMemIqDataSymbolBufferManager: function return
+|||
+|||
+StreamManager --> EaxcStream: the constructor
+note right: the constructor of EaxcStream will record addr of the allocated buffer
+StreamManager <-- EaxcStream: function return
+StreamManager --> EaxcStream: CreateDlTxEcmpAndRfoeJobs\n(const uint8_t /*ecmpMhabIdx*/, const uint8_t /*rfoeMhabIdx*/)
+EaxcStream --> UplaneJobCreator: createJobs
+EaxcStream <-- UplaneJobCreator: function return
+StreamManager <-- EaxcStream: function return
+ThorNrtApi <-- StreamManager: function return
+ThorNrtApi --> TimerQueueContext: record the ECMP input buffer in it \nmember var and start timer
+TimerQueueContext --> BfmulTimerEo: TimerQueueContext will trigger the timer
+ThorNrtApi <-- TimerQueueContext: function return
+BfmulTimerEo --> BfDlJob: PushToPsm, will configure JD according to \ninfor recorded in BfmulCCInfo
+BfmulTimerEo <-- BfDlJob: function return
+@enduml""">

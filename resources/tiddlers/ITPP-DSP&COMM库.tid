@@ -1,0 +1,12 @@
+created: 20210928050027575
+modified: 20211013030801414
+revision: 5-24480d64f2b95d54a9287ccd3b23a23f
+tags: c++ itpp pack&lib todo
+title: ITPP-DSP&COMM库
+type: text/vnd.tiddlywiki
+
+ITPP是一个C++库，提供了丰富的数字信号处理和通信相关的功能，支持复数、向量、矩阵、定点化、随机数生成、互相关、滤波器、多种调制解调、OFDM、多种编解码，数据文件的载入导出接口、采样率转换等功能。
+
+- 
+
+-

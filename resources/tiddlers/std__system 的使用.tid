@@ -1,0 +1,35 @@
+created: 20210913052157829
+modified: 20211014005141440
+revision: 9-b4c335c1ea7a7bb3c7f798c50e8cad32
+tags: std c++
+title: std::system 的使用
+tmap.id: fd589bd3-8813-41d2-9c7b-7566a5ac845a
+type: text/vnd.tiddlywiki
+
+C++中调用系统命令，定义于头文件 <cstdlib>：
+
+int system( const char* command );
+
+以参数 command 调用运行环境的命令处理器（例如 /bin/sh 、 cmd.exe 、 command.com ）。返回相应实现的定义值（通常是被调用程序所返回的值）。
+若 command 为空，则检查运行环境是否有命令处理器，并当且仅当命令行存在才返回非零。
+
+
+
+
+
+```
+
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
+ 
+int main()
+{
+    std::system("ls -l >test.txt"); // 执行 UNIX 命令 "ls -l >test.txt"
+    std::cout << std::ifstream("test.txt").rdbuf();
+}
+
+```
+
+l1low代码中，用于sct框架里的插数。
+

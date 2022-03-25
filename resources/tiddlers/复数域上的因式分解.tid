@@ -1,0 +1,13 @@
+created: 20190910091148913
+modified: 20211029125124235
+tags: 
+title: 复数域上的因式分解
+
+令$$f(x)\in \mathbb{C}$$且$$\partial f(x) \geqslant1$$，则$$f(x)$$在$$\mathbb{C}$$上可以唯一分解成一次因式的乘积，即此时$$f(x)$$的标准分解式为
+$$f(x)=c(x-a_{1})^{r_{1}}(x-a_{2})^{r_{2}}\cdots(x-a_{s})^{r_{s}},
+\\r_{i}\geqslant1,a_{i}\in \mathbb{C},a_{i}\neq a_{j},i,j=1,2,\cdots,s,i\neq j.
+$$
+
+!! ''推论''
+* $$\mathbb{C}$$上$$n$$次多项式在$$\mathbb{C}$$上恰有$$n$$个根（重根按重数算）
+*$$\mathbb{C}$$上$$n$$次多项式在$$\mathbb{C}$$上的根是共轭成对出现的

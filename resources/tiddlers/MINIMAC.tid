@@ -1,0 +1,79 @@
+created: 20211102140029489
+modified: 20211102140135025
+tags: 
+title: MINIMAC
+
+
+```
+THE WORLD'S SMALLEST MACROECONOMIC MODEL
+I learned this model from Robert Hall back in 1975. It can seem silly and trivial; but it seemed to me then, and still seems to me now, to capture the essence of what is going on in "demand-side" macroeconomics, and to clarify points that both the general public and, I'm sorry to say, quite a few Ph.D. economists often seem to find confusing. It also maps pretty well into my favorite economic parable, the story of the baby-sitting coop ("Baby-sitting the economy") that I have put to good use a number of times.
+
+There is only one good, produced at constant returns by the single factor of production, labor. Choose units so that one unit of labor produces one unit of the good; then the price level and wage rate must be the same, and can be referred to with a single symbol, P.
+
+There is also only one asset, money. Agents start the current period with M dollars, and end with M' after spending on consumption and earning from the sale of their labor. They derive utility both from consumption and from the expected purchasing power of the money they hold at the end of the period. (The utility of money presumably reflects its usefulness in providing future consumption; but we sweep this implicit dynamic problem under the rug). The utility function is assumed to take a specific form:
+
+U = (1-s) ln(C) + s ln (M'/Pe)
+
+where Pe is the expected price level. However, consumers are also assumed to have static expectations, so that Pe = P.
+
+Finally, people are assumed to be endowed with L units of labor.
+
+First, let us consider the full-employment version of the model. If labor is fully employed, then the budget constraint is
+
+C + M'/P = L + M/P
+
+But if the money supply is constant, M' = M; also, C = L. Given the utility function, consumers will spend a share 1-s of their initial wealth on goods, s on money. So we can represent equilibrium either by the condition that demand for goods equal supply,
+
+L = (1-s)(L + M/P)
+
+or by the condition that demand for money equal supply,
+
+M/P = s(L + M/P).
+
+Both ways of looking at it imply the price-level equation
+
+P = [(1-s)/s)](M/L)
+
+so the price level is proportional to the money supply.
+
+But now let us introduce some rigidity of prices. Suppose that for some reason - never mind why - the price (wage) level is fixed above the level consistent with full employment, so that real balances M/P are too low. There are two ways of describing the problem this poses. You could say that at full employment the demand for real balances would exceed the supply:
+
+M/P < s(L + M/P)
+
+Or you could say that at full employment aggregate demand would fall short of output:
+
+(1-s)(L + M/P) < L
+
+These are just different ways of looking at the same thing.
+
+What must happen, then, is that output is demand-constrained. But that in turn means that employment, and hence income, is also demand-constrained: the equation for consumption, which must equal output, is
+
+C = (1-s)(C + M/P)
+
+which has an immediately identifiable "multiplier" flavor.
+
+The clear policy implication is that one should increase output by increasing the money supply; after all,
+
+C = ((1-s)/s)(M/P)
+
+Or, to put it differently, the problem is that at full employment the public would want to hold more real balances than there are available; and because P will not fall, M must be increased.
+
+This is presumably the meaning of John Maynard Keynes' famous remark in The General Theory:
+
+"Unemployment develops, that is to say, because people want the moon: men cannot be employed when the object of desire (i.e. money) is something which cannot be produced and the demand for which cannot readily be choked off. There is no remedy but to persuade the public that green cheese is practically the same thing and to have a green cheese factory (i.e. central bank) under public control."
+
+What is wrong with this model? Don't get me started ... but actually there are three main objections that macroeconomists are likely to raise:
+
+1. What happened to the interest rate? For most purposes we will want at the minimum a theory of employment, interest, and money; that means a model with bonds as well as money and goods, which means IS-LM. (See my note "There's something about macro").
+
+2. More fundamentally, the quasi-static approach here is at best a crude approximation to a dynamic model in which behavior results from plans that are based on expectations about the future.
+
+3. Finally, the output effects of money come from the assumption of price rigidity. Where does that come from? (Overwhelming empirical evidence, that's where - but why?).
+
+All these objections help to set the agenda for the last six decades of research.
+
+But if you are one of those people to whom macroeconomics always sounds like witchcraft, who is hung up on Say's Law, who cannot even comprehend how a shortfall of aggregate demand is possible - then the world's smallest macro model is a good place to start on the road to enlightenment.
+```
+
+
+http://web.mit.edu/krugman/www/MINIMAC.html

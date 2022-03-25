@@ -1,0 +1,14 @@
+created: 20211018090701574
+modified: 20211101134705155
+revision: 1-6a1903eab9908c6d87d1b3b61921f7cb
+tags: simpread 调度 LTE
+title: simpread-LTE调度基本概念
+type: application/x-tiddler
+
+[ext[详细解析 LTE 调度算法_冰河世纪 20 的博客|file:./resources/simpread/simpread-详细解析 LTE 调度算法_冰河世纪 20 的博客 - CSDN 博客_lte 调度算法.html]]
+
+[ext[LTE 调度|file:./resources/simpread/simpread-LTE 调度.html]]
+
+[ext[PDSCH的TB分配|https://wenku.baidu.com/view/de45341cbd64783e08122b19.html]]
+
+[ext[simpread-LTE eNodeB Scheduler and Different Scheduler Type|file:./resources/simpread/simpread-LTE eNodeB Scheduler and Different Scheduler Type.html]]

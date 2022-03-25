@@ -1,0 +1,826 @@
+
+                <html lang="en" class="simpread-font simpread-theme-root" style='font-size: 60%!important;'>
+                    <head>
+                        <meta charset="utf-8">
+                        <meta http-equiv="content-type" content="text/html; charset=UTF-8;charset=utf-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
+                        <meta name="author" content="Kenshin"/>
+                        <meta name="description" content="简悦 SimpRead - 如杂志般沉浸式阅读体验的扩展" />
+                        <meta name="keywords" content="Chrome extension, Chrome 扩展, 阅读模式, 沉浸式阅读, 简悦, 简阅, read mode, reading mode, reader view, firefox, firefox addon, userscript, safari, opera, tampermonkey"/>
+                        <meta name="thumbnail" content="https://simpread-1254315611.cos.ap-shanghai.myqcloud.com/static/introduce-2.png"/>
+                        <meta property="og:title" content="简悦 SimpRead - 如杂志般沉浸式阅读体验的扩展"/>
+                        <meta property="og:type" content="website">
+                        <meta property="og:local" content="zh_CN"/>
+                        <meta property="og:url" content="http://ksria.com/simpread"/>
+                        <meta property="og:image" content="https://simpread-1254315611.cos.ap-shanghai.myqcloud.com/static/introduce-2.png"/>
+                        <meta property="og:image:type" content="image/png"/>
+                        <meta property="og:image:width" content="960"/>
+                        <meta property="og:image:height" content="355"/>
+                        <meta property="og:site_name" content="http://ksria.com/simpread"/>
+                        <meta property="og:description" content="简悦 SimpRead - 如杂志般沉浸式阅读体验的扩展"/>
+                        <style type="text/css">.simpread-font{font:300 16px/1.8 -apple-system,PingFang SC,Microsoft Yahei,Lantinghei SC,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;color:#333;text-rendering:optimizelegibility;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}.simpread-hidden{display:none}.simpread-read-root{display:-webkit-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;margin:0;top:-1000px;left:0;width:100%;z-index:2147483646;overflow-x:hidden;opacity:0;-webkit-transition:all 1s cubic-bezier(.23,1,.32,1) .1s;transition:all 1s cubic-bezier(.23,1,.32,1) .1s}.simpread-read-root-show{top:0}.simpread-read-root-hide{top:1000px}sr-read{display:-webkit-flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:column nowrap;flex-flow:column;margin:20px 20%;min-width:400px;min-height:400px;text-align:center}read-process{position:fixed;top:0;left:0;height:3px;width:100%;background-color:#64b5f6;-webkit-transition:width 2s;transition:width 2s;z-index:20000}sr-rd-content-error{display:block;position:relative;margin:0;margin-bottom:30px;padding:25px;background-color:rgba(0,0,0,.05)}sr-rd-footer{-webkit-box-orient:vertical;-ms-flex-direction:column;flex-direction:column;font-size:14px}sr-rd-footer,sr-rd-footer-group{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-direction:normal}sr-rd-footer-group{-webkit-box-orient:horizontal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}sr-rd-footer-line{width:100%;border-top:1px solid #e0e0e0}sr-rd-footer-text{min-width:150px}sr-rd-footer-copywrite{margin:10px 0 0;color:inherit}sr-rd-footer-copywrite abbr{-webkit-font-feature-settings:normal;font-feature-settings:normal;font-variant:normal;text-decoration:none}sr-rd-footer-copywrite .second{margin:10px 0}sr-rd-footer-copywrite .third a:hover{border:none!important}sr-rd-footer-copywrite .third a:first-child{margin-right:50px}sr-rd-footer-copywrite .sr-icon{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:33px;height:33px;opacity:.8;-webkit-transition:opacity .5s ease;transition:opacity .5s ease;cursor:pointer}sr-rd-footer-copywrite .sr-icon:hover{opacity:1}sr-rd-footer-copywrite a,sr-rd-footer-copywrite a:link,sr-rd-footer-copywrite a:visited{margin:0;padding:0;color:inherit;background-color:transparent;font-size:inherit!important;line-height:normal;text-decoration:none;vertical-align:baseline;vertical-align:initial;border:none!important;box-sizing:border-box}sr-rd-footer-copywrite a:focus,sr-rd-footer-copywrite a:hover,sr-rd-footer a:active{color:inherit;text-decoration:none;border-bottom:1px dotted!important}.simpread-blocks{text-decoration:none!important}.simpread-blocks *{margin:0}.simpread-blocks a{padding:0;text-decoration:none!important}.simpread-blocks img{margin:0;padding:0;border:0;background:transparent;box-shadow:none}.simpread-focus-root{display:block;position:fixed;top:0;left:0;right:0;bottom:0;background-color:hsla(0,0%,92%,.9);z-index:2147483645;opacity:0;-webkit-transition:opacity 1s cubic-bezier(.23,1,.32,1) 0ms;transition:opacity 1s cubic-bezier(.23,1,.32,1) 0ms}.simpread-focus-highlight{position:relative;box-shadow:0 0 0 20px #fff;background-color:#fff;overflow:visible;z-index:2147483646}.sr-controlbar-bg sr-rd-crlbar,.sr-controlbar-bg sr-rd-crlbar fab{z-index:2147483647}sr-rd-crlbar.controlbar{position:fixed;right:0;bottom:0;width:100px;height:100%;opacity:0;-webkit-transition:opacity .5s ease;transition:opacity .5s ease}sr-rd-crlbar.controlbar:hover{opacity:1}sr-rd-crlbar fap *{box-sizing:border-box}@media (max-height:620px){fab{zoom:.8}}@media (max-height:783px){dialog-gp dialog-content{max-height:580px}dialog-gp dialog-footer{border-top:1px solid #e0e0e0}}.simpread-highlight-selector{outline:3px dashed #1976d2!important;cursor:pointer!important}.simpread-highlight-controlbar,.simpread-highlight-selector{background-color:#fafafa!important;opacity:.8!important;-webkit-transition:opacity .5s ease!important;transition:opacity .5s ease!important}.simpread-highlight-controlbar{position:relative!important;border:3px dashed #1976d2!important}simpread-highlight,sr-snapshot-ctlbar{position:fixed;top:0;left:0;right:0;padding:15px;height:50px;background-color:rgba(50,50,50,.9);box-shadow:0 2px 5px rgba(0,0,0,.26);box-sizing:border-box;z-index:2147483640}simpread-highlight,sr-highlight-ctl,sr-snapshot-ctlbar{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}sr-highlight-ctl{margin:0 5px;width:50px;height:20px;color:#fff;background-color:#1976d2;border-radius:4px;box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);cursor:pointer}toc-bg{position:fixed;left:0;top:0;width:50px;height:200px;font-size:medium}toc-bg:hover{z-index:3}.toc-bg-hidden{opacity:0;-webkit-transition:opacity .5s ease;transition:opacity .5s ease}.toc-bg-hidden:hover{opacity:1;z-index:3}.toc-bg-hidden:hover toc{width:180px}toc *{all:unset}toc{position:fixed;left:0;top:100px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding:10px;width:0;max-width:200px;max-height:500px;overflow-x:hidden;overflow-y:hidden;cursor:pointer;border:1px solid hsla(0,0%,62%,.22);-webkit-transition:width .5s;transition:width .5s}toc:hover{overflow-y:auto}toc.mini:hover{width:200px!important}toc::-webkit-scrollbar{width:3px}toc::-webkit-scrollbar-thumb{border-radius:10px;background-color:hsla(36,2%,54%,.5)}toc outline{position:relative;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;padding:2px 0;min-height:21px;line-height:21px;text-align:left}toc outline a,toc outline a:active,toc outline a:focus,toc outline a:visited{display:block;width:100%;color:inherit;font-size:11px;text-decoration:none!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}toc outline a:hover{font-weight:700!important}toc outline a.toc-outline-theme-dark,toc outline a.toc-outline-theme-night{color:#fff!important}.toc-level-h1{padding-left:5px}.toc-level-h2{padding-left:15px}.toc-level-h3{padding-left:25px}.toc-level-h4{padding-left:35px}.toc-outline-active{border-left:2px solid #f44336}toc outline active{position:absolute;left:0;top:0;bottom:0;padding:0 0 0 3px;border-left:2px solid #e8e8e8}sr-kbd{background:-webkit-gradient(linear,0 0,0 100%,from(#fff785),to(#ffc542));border:1px solid #e3be23;-o-border-image:none;border-image:none;-o-border-image:initial;border-image:initial;position:absolute;left:0;padding:1px 3px 0;font-size:11px!important;font-weight:700;box-shadow:0 3px 7px 0 rgba(0,0,0,.3);overflow:hidden;border-radius:3px}.sr-kbd-a{position:relative}kbd-mapping{position:fixed;left:5px;bottom:5px;-ms-flex-flow:row;flex-flow:row;width:250px;height:500px;background-color:#fff;border:1px solid hsla(0,0%,62%,.22);box-shadow:0 2px 5px rgba(0,0,0,.26);border-radius:3px}kbd-mapping,kbd-maps{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}kbd-maps{margin:40px 0 20px;width:100%;overflow-x:auto}kbd-maps::-webkit-scrollbar-thumb{background-clip:padding-box;border-radius:10px;border:2px solid transparent;background-color:rgba(85,85,85,.55)}kbd-maps::-webkit-scrollbar{width:10px;-webkit-transition:width .7s cubic-bezier(.4,0,.2,1);transition:width .7s cubic-bezier(.4,0,.2,1)}kbd-mapping kbd-map-title{position:absolute;margin:5px 0;width:100%;font-size:14px;font-weight:700}kbd-maps-group{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}kbd-maps-title{margin:5px 0;padding-left:53px;font-size:12px;font-weight:700}kbd-map kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#444d56;vertical-align:middle;background-color:#fafbfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}kbd-map kbd-name{display:inline-block;text-align:right;width:50px}kbd-map kbd-desc{padding-left:3px}sharecard-bg{position:fixed;top:0;left:0;width:100%;height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,0,.4);z-index:2147483647}sharecard{max-width:450px;background-color:#64b5f6}sharecard,sharecard-head{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}sharecard-head{margin:25px;color:#fff;border-radius:10px;box-shadow:0 2px 6px 0 rgba(0,0,0,.2),0 25px 50px 0 rgba(0,0,0,.15)}sharecard-card{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}sharecard-card,sharecard-top{display:-webkit-box;display:-ms-flexbox;display:flex}sharecard-top{-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-right:5px;height:65px;background-color:#fff;color:#878787;font-size:25px;font-weight:500;border-top-left-radius:10px;border-top-right-radius:10px}sharecard-top span.logos{display:block;width:48px;height:48px;margin:5px;background-repeat:no-repeat;background-position:50%;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAABU1BMVEUAAAAnNJMnNZI3Q5onNJInNJMnNJInNJMnNJI8SJ0tOZY/S55EUKAoNJI6RpwoNJNIU6InNJInNJImNJI7SJwmNJJ2fLUiMJFKVaNCTJ9faK1HUaJOWKVSXaUnNJNYY6pye7cmM5JXYKhwebMjMI8mL4719fW9vb0oNZP/UlLz8/QqN5TAwMAnNJPv7+/Pz8/q6+/p6enNzc3Kysry8vMsOJXc3env7/LU1uXo29vR0dHOzs7ExMTwjo73bW37XV3Aj1TCYELl5u3n5+fW2Obn6O7f4OrZ2+g0QJkxPpgvO5bh4uvS1OTP0ePCwsJQW6ZLVqTs7fHd3d3V1dXqv79VX6lET6A1TIxXUIBSgHxWQnpelHf+WVnopkXqbC7j5Ozi4uLDw8NGUaFATJ9SgH3r6+vGyd7BxNva2trX19ejqM2gpczHx8dze7Zha67Z2dlTgH1aXQeSAAAAJnRSTlMA6ff+497Y8NL+/fv49P379sqab/BeOiX06tzVy8m/tKqpalA7G6oKj0EAAAJlSURBVEjHndNXWxpBFIDhcS2ICRLAkt4Dx4WhLk0E6R0MYoIISrWX5P9f5cwSIRC2+T1czMV5n2FnZwn2eWONUqCAv3H2Uf5Ra1hx4+0WEXtDQW0fCPYJ1EffEfIV4CSROAE4jsePoTFsNmTJF/IeIHF2lgCIn57GodlqDWXBK7IwBYatVlMWFAildPKX7I3m74Z9fsCiQChoimoFQAz04Ad2gH1n9fv9n9hgMNDr9euLWD6fLxQKxaLfb7dTSlahbFVdEPwIQtrAihZQgyKCtCagbQe3xh0QFMgy5MR11+ewYY5/qlZ7vT2xu93ULKjbFLpiUxnIIwjgKmVTLDUFXMrAi2NJWCRLIthTBo4xyOLKpwyqU6CuDCI41hFBCVdOhyLw4FgJ1skCAiyl9BSHbCorgo6VJXTru5hrVCQS8Yr5xLzX59YJSFpVFwD9U0BGC3hGdFpATgRupTGe9R9I1b1ePBvXKDyvq/O/44LT4/E4BUbSCAwj8Evq6HlnOBprx6JhJz8Gktc7xeaP9ndY+0coQvCccFBD4JW60UIY50ciLOAODAQRVOeCHm4Q3Xks6uRDY+CQ+AR4T2wMYh6+jMCIQOp78CFoj0H7EQgIuhI3dGaHCrwgADwCPjJvA372GRigCJg49FUdk3D87pq3zp4SA5zc1Zh9DxfwkpjgUg5Mv+lbeE3McC8Lpu7SA3wk2xzcqL2tN5DfIsQC8HB7UamUy6FQOpTO5QKBQDZbKnWSyUzGjdWCwaDA8+7Le4BNgm3qQGWchYh9s5hNq6wVbBlbwhZYOp3OYOA4zmgEypnM2zj8ByIdedKrH8vDAAAAAElFTkSuQmCC");zoom:.8}sharecard-content{padding:15px;max-height:500px;font-size:20px;text-align:justify;background-color:#2196f3;overflow-x:hidden;overflow-y:auto}sharecard-via{padding:10px;font-size:10px;background-color:#2196f3}sharecard-footer{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-right:5px;height:100px;background-color:#fff;color:#878787;font-size:15px;font-weight:500;border-bottom-left-radius:10px;border-bottom-right-radius:10px}sharecard-footer,sharecard-footer div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}sharecard-footer span.qrcode{display:block;width:100px;height:100px;margin:5px;background-repeat:no-repeat;background-position:50%;background-image:url("data:image/png;base64,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")}sharecard-control{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:0 19px;height:80px;background-color:#fff}simpread-snapshot{width:100%;height:100%;cursor:move;z-index:2147483645}simpread-snapshot,sr-mask{position:fixed;left:0;top:0}sr-mask{background-color:rgba(0,0,0,.1)}.simpread-feedback,.simpread-urlscheme{position:fixed;right:20px;bottom:20px;z-index:2147483646}simpread-feedback,simpread-urlscheme{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;padding:20px 20px 0;width:500px;color:rgba(51,51,51,.87);background-color:#fff;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.26);overflow:hidden;-webkit-transform-origin:bottom;transform-origin:bottom;-webkit-transition:all .6s ease;transition:all .6s ease}simpread-feedback *,simpread-urlscheme *{font-size:12px!important;box-sizing:border-box}simpread-feedback.active,simpread-urlscheme.active{-webkit-animation-name:srFadeInUp;animation-name:srFadeInUp;-webkit-animation-duration:.45s;animation-duration:.45s;-webkit-animation-fill-mode:both;animation-fill-mode:both}simpread-feedback.hide,simpread-urlscheme.hide{-webkit-animation-name:srFadeInDown;animation-name:srFadeInDown;-webkit-animation-duration:.45s;animation-duration:.45s;-webkit-animation-fill-mode:both;animation-fill-mode:both}simpread-feedback sr-fb-label,simpread-urlscheme sr-urls-label{width:100%}simpread-feedback sr-fb-head,simpread-urlscheme sr-urls-head{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;margin-bottom:5px;width:100%}simpread-feedback sr-fb-content,simpread-urlscheme sr-urls-content{margin-bottom:5px;width:100%}simpread-feedback sr-urls-footer,simpread-urlscheme sr-urls-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;width:100%}simpread-feedback sr-fb-a,simpread-urlscheme sr-urls-a{color:#2163f7;cursor:pointer}simpread-feedback text-field-state,simpread-urlscheme text-field-state{border-top:none rgba(34,101,247,.8)!important;border-left:none rgba(34,101,247,.8)!important;border-right:none rgba(34,101,247,.8)!important;border-bottom:2px solid rgba(34,101,247,.8)!important}simpread-feedback switch,simpread-urlscheme switch{margin-top:0!important}@-webkit-keyframes srFadeInUp{0%{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes srFadeInUp{0%{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@-webkit-keyframes srFadeInDown{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}to{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}}@keyframes srFadeInDown{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}to{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}}simpread-feedback sr-fb-head{font-weight:700}simpread-feedback sr-fb-content{-webkit-box-orient:vertical;-ms-flex-direction:column;flex-direction:column}simpread-feedback sr-fb-content,simpread-feedback sr-fb-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-direction:normal}simpread-feedback sr-fb-footer{-webkit-box-orient:horizontal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;width:100%}simpread-feedback sr-close{position:absolute;right:20px;cursor:pointer;-webkit-transition:all 1s cubic-bezier(.23,1,.32,1) .1s;transition:all 1s cubic-bezier(.23,1,.32,1) .1s;z-index:200}simpread-feedback sr-close:hover{-webkit-transform:rotate(-15deg) scale(1.3);transform:rotate(-15deg) scale(1.3)}simpread-feedback sr-stars{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-top:10px}simpread-feedback sr-stars i{margin-right:10px;cursor:pointer}simpread-feedback sr-stars i svg{-webkit-transition:all 1s cubic-bezier(.23,1,.32,1) .1s;transition:all 1s cubic-bezier(.23,1,.32,1) .1s}simpread-feedback sr-stars i svg:hover{-webkit-transform:rotate(-15deg) scale(1.3);transform:rotate(-15deg) scale(1.3)}simpread-feedback sr-stars i.active svg{-webkit-transform:rotate(0) scale(1);transform:rotate(0) scale(1)}simpread-feedback sr-emojis{display:block;height:100px;overflow:hidden}simpread-feedback sr-emoji{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-transition:.3s;transition:.3s}simpread-feedback sr-emoji>svg{margin:15px 0;width:70px;height:70px;-ms-flex-negative:0;flex-shrink:0}simpread-feedback sr-stars-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin:10px 0 20px}</style>
+                        <style type="text/css">.simpread-theme-root{font-size:62.5%!important}sr-rd-content,sr-rd-desc,sr-rd-title{width:100%}sr-rd-title{display:-webkit-box;margin:1em 0 .5em;overflow:hidden;text-overflow:ellipsis;text-rendering:optimizelegibility;-webkit-line-clamp:3;-webkit-box-orient:vertical}sr-rd-content{text-align:left;word-break:break-word}sr-rd-desc{text-align:justify;line-height:2.4;margin:0 0 1.2em;box-sizing:border-box}sr-rd-content{font-size:25.6px;font-size:1.6rem;line-height:1.6}sr-rd-content h1,sr-rd-content h1 *,sr-rd-content h2,sr-rd-content h2 *,sr-rd-content h3,sr-rd-content h3 *,sr-rd-content h4,sr-rd-content h4 *,sr-rd-content h5,sr-rd-content h5 *,sr-rd-content h6,sr-rd-content h6 *{word-break:break-all}sr-rd-content div,sr-rd-content p{display:block;float:inherit;line-height:1.6;font-size:25.6px;font-size:1.6rem}sr-rd-content div,sr-rd-content p,sr-rd-content pre,sr-rd-content sr-blockquote{margin:0 0 1.2em;word-break:break-word}sr-rd-content a{padding:0 5px;vertical-align:baseline;vertical-align:initial}sr-rd-content a,sr-rd-content a:link{color:inherit;font-size:inherit;font-weight:inherit;border:none}sr-rd-content a:hover{background:transparent}sr-rd-content img{margin:10px;padding:5px;max-width:100%;background:#fff;border:1px solid #bbb;box-shadow:1px 1px 3px #d4d4d4}sr-rd-content figcaption{text-align:center;font-size:14px}sr-rd-content sr-blockquote{display:block;position:relative;padding:15px 25px;text-align:left;line-height:inherit}sr-rd-content sr-blockquote:before{position:absolute}sr-rd-content sr-blockquote *{margin:0;font-size:inherit}sr-rd-content table{width:100%;margin:0 0 1.2em;word-break:keep-all;word-break:normal;overflow:auto;border:none}sr-rd-content table td,sr-rd-content table th{border:none}sr-rd-content ul{margin:0 0 1.2em;margin-left:1.3em;padding:0;list-style:disc}sr-rd-content ol{list-style:decimal;margin:0;padding:0}sr-rd-content ol li,sr-rd-content ul li{font-size:inherit;list-style:disc;margin:0 0 1.2em}sr-rd-content ol li{list-style:decimal;margin-left:1.3em}sr-rd-content ol li *,sr-rd-content ul li *{margin:0;text-align:left;text-align:initial}sr-rd-content li ol,sr-rd-content li ul{margin-bottom:.8em;margin-left:2em}sr-rd-content li ul{list-style:circle}sr-rd-content pre{font-family:Consolas,Monaco,Andale Mono,Source Code Pro,Liberation Mono,Courier,monospace;display:block;padding:15px;line-height:1.5;word-break:break-all;word-wrap:break-word;white-space:pre;overflow:auto}sr-rd-content pre,sr-rd-content pre *,sr-rd-content pre div{font-size:17.6px;font-size:1.1rem}sr-rd-content li pre code,sr-rd-content p pre code,sr-rd-content pre{background-color:transparent;border:none}sr-rd-content pre code{margin:0;padding:0}sr-rd-content pre code,sr-rd-content pre code *{font-size:17.6px;font-size:1.1rem}sr-rd-content pre p{margin:0;padding:0;color:inherit;font-size:inherit;line-height:inherit}sr-rd-content li code,sr-rd-content p code{margin:0 4px;padding:2px 4px;font-size:17.6px;font-size:1.1rem}sr-rd-content mark{margin:0 5px;padding:2px;background:#fffdd1;border-bottom:1px solid #ffedce}.sr-rd-content-img{width:90%;height:auto}.sr-rd-content-img-load{width:48px;height:48px;margin:0;padding:0;border-style:none;border-width:0;background-repeat:no-repeat;background-image:url(data:image/gif;base64,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)}.sr-rd-content-center{text-align:center;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:vertical}.sr-rd-content-center-small{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex}.sr-rd-content-center-small img{margin:0;padding:0;border:0;box-shadow:none}img.simpread-img-broken{cursor:pointer}.sr-rd-content-nobeautify{margin:0;padding:0;border:0;box-shadow:0 0 0}sr-rd-mult{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;margin:0 0 16px;padding:16px 0 24px;width:100%;background-color:#fff;border-radius:4px;box-shadow:0 1px 2px 0 rgba(60,64,67,.3),0 2px 6px 2px rgba(60,64,67,.15)}sr-rd-mult:hover{-webkit-transition:all .45s 0ms;transition:all .45s 0ms;box-shadow:1px 1px 8px rgba(0,0,0,.16)}sr-rd-mult sr-rd-mult-content{padding:0 16px;overflow:auto}sr-rd-mult sr-rd-mult-avatar,sr-rd-mult sr-rd-mult-content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}sr-rd-mult sr-rd-mult-avatar{-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:0 15px}sr-rd-mult sr-rd-mult-avatar span{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;max-width:75px;overflow:hidden;text-overflow:ellipsis;text-align:left;font-size:16px;font-size:1rem}sr-rd-mult sr-rd-mult-avatar img{margin-bottom:0;max-width:50px;max-height:50px;width:50px;height:50px;border-radius:50%}sr-rd-mult sr-rd-mult-content img{max-width:80%}sr-rd-mult sr-rd-mult-avatar .sr-rd-content-center{margin:0}sr-page{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;width:100%}</style>
+                        <style type="text/css">sr-rd-theme-engwrite{display:none}sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{margin:20px 0 10px;padding:0;font-weight:500;-webkit-font-smoothing:antialiased}sr-rd-content h1{font-weight:300;text-align:center;font-size:44.8px;font-size:2.8rem;color:#933d3f}sr-rd-content h2{font-size:38.4px;font-size:2.4rem;border-bottom:1px solid #ccc;color:#000}sr-rd-content h3{font-size:28.8px;font-size:1.8rem}sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{font-size:25.6px;font-size:1.6rem}sr-rd-content h6{color:#777}sr-rd-content ol,sr-rd-content ul{padding-left:30px}sr-rd-content ol li>:first-child,sr-rd-content ol li ol:first-of-type,sr-rd-content ol li ul:first-of-type,sr-rd-content ul li>:first-child,sr-rd-content ul li ol:first-of-type,sr-rd-content ul li ul:first-of-type{margin-top:0}sr-rd-content ol ol,sr-rd-content ol ul,sr-rd-content ul ol,sr-rd-content ul ul{margin-bottom:0}sr-rd-content table th{font-weight:700}sr-rd-content table td,sr-rd-content table th{border:1px solid #ccc;padding:6px 13px}sr-rd-content table tr{border-top:1px solid #ccc;background-color:#fff}sr-rd-content table tr:nth-child(2n){background-color:#f8f8f8}sr-rd-content sr-blockquote{text-align:left;border-top:1px dotted #cdc7bc;border-bottom:1px dotted #cdc7bc;background-color:#f8edda;color:#777}sr-blockquote>:first-child{margin-top:0}sr-blockquote>:last-child{margin-bottom:0}.simpread-multi-root,.simpread-theme-root{background-color:#fcf5ed;color:#333}sr-rd-title{font-weight:300;text-align:center;font-size:44.8px;font-size:2.8rem;color:#933d3f}sr-rd-desc{padding:10px;background-color:#f8edda;color:#777;font-size:32px;font-size:2rem;text-align:center;border-top:1px dotted #cdc7bc;border-bottom:1px dotted #cdc7bc}sr-rd-content{padding:20px 0;margin:0 auto}sr-rd-content,sr-rd-content *,sr-rd-content div,sr-rd-content p{color:#333;line-height:1.8}sr-rd-content a,sr-rd-content a:link{color:#ae3737;text-decoration:none}sr-rd-content a:active,sr-rd-content a:focus,sr-rd-content a:hover{text-decoration:underline}sr-rd-content pre{background-color:transparent;border:1px solid #ccc;border-radius:3px}sr-rd-content li code,sr-rd-content p code{border:1px solid #eaeaea;background-color:#f4ece3;border-radius:3px}sr-rd-mult{background-color:#f8edda}</style>
+                        <style type="text/css"></style>
+                        <style type="text/css">@media (pointer:coarse){sr-read{margin:20px 5%!important;min-width:0!important;max-width:90%!important}sr-rd-title{margin-top:0;font-size:2.7rem}sr-rd-content sr-blockquote,sr-rd-desc{margin:10 0!important;padding:0 0 0 10px!important;width:90%;font-size:1.8rem;font-style:normal;line-height:1.7;text-align:justify}sr-rd-content{font-size:1.75rem;font-weight:300}sr-rd-content figure{margin:0;padding:0;text-align:center}sr-rd-content a,sr-rd-content a:link,sr-rd-content li code,sr-rd-content p code{font-size:inherit}sr-rd-footer{margin-top:20px}sr-blockquote,sr-blockquote *{margin:5px!important;padding:5px!important}sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6,sr-rd-title{font-family:PingFang SC,Verdana,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;color:#000;font-weight:100;line-height:1.35}sr-rd-content-h1,sr-rd-content-h2,sr-rd-content-h3,sr-rd-content-h4,sr-rd-content-h5,sr-rd-content-h6,sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{margin-top:1.2em;margin-bottom:.6em;line-height:1.35}sr-rd-content-h1,sr-rd-content h1{font-size:1.8em}sr-rd-content-h2,sr-rd-content h2{font-size:1.6em}sr-rd-content-h3,sr-rd-content h3{font-size:1.4em}sr-rd-content-h4,sr-rd-content-h5,sr-rd-content-h6,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{font-size:1.2em}sr-rd-content-ul,sr-rd-content ul{margin-left:1.3em!important;list-style:disc}sr-rd-content-ol,sr-rd-content ol{list-style:decimal;margin-left:1.9em!important}sr-rd-content-ol ol,sr-rd-content-ol ul,sr-rd-content-ul ol,sr-rd-content-ul ul,sr-rd-content li ol,sr-rd-content li ul{margin-bottom:.8em;margin-left:2em!important}sr-rd-content img{margin:0;padding:0;border:0;max-width:100%!important;height:auto;box-shadow:0 20px 20px -10px rgba(0,0,0,.1)}sr-rd-mult{min-width:0;background-color:#fff;box-shadow:0 1px 6px rgba(32,33,36,.28);border-radius:8px}sr-rd-mult sr-rd-mult-avatar div{margin:0}sr-rd-mult sr-rd-mult-avatar .sr-rd-content-center-small{margin:7px 0!important}sr-rd-mult sr-rd-mult-avatar span{display:block}sr-rd-mult sr-rd-mult-content{padding-left:0}@media only screen and (max-device-width:1024px){.simpread-theme-root,html.simpread-theme-root{font-size:80%!important}sr-rd-mult sr-rd-mult-avatar img{width:50px;height:50px;min-width:50px;min-height:50px}toc-bg toc{width:10px!important}toc-bg:hover toc{width:auto!important}}@media only screen and (max-device-width:414px){.simpread-theme-root,html.simpread-theme-root{font-size:70%!important}sr-rd-mult sr-rd-mult-avatar img{width:30px;height:30px;min-width:30px;min-height:30px}}@media only screen and (max-device-width:320px){.simpread-theme-root,html.simpread-theme-root{font-size:90%!important}sr-rd-content p{margin-bottom:.5em}}}</style>
+                        <style type="text/css">sr-rd-content *, sr-rd-content p, sr-rd-content div {}sr-rd-content pre code, sr-rd-content pre code * {}sr-rd-desc {}sr-rd-content pre {}sr-rd-title {}</style>
+                        <style type="text/css"></style>
+                        <style type="text/css"></style>
+                        <style type="text/css"></style>
+                        <style type="text/css"></style>
+                        <style type="text/css">sr-rd-content *, sr-rd-content p, sr-rd-content div {
+        font-size: 15px;
+    }
+
+    .annote-perview, .annote-perview * {
+        color: rgb(85, 85, 85);
+        font-weight: 400;
+        line-height: 1.8;
+    }</style>
+                        
+                        
+                        <script>setTimeout(()=>{const e=location.hash.replace("#id=","");let t,a=!1;const n=t=>{for(let n of t){let t;if((t=e.length>6?n.getAttribute("data-id"):n.getAttribute("data-idx"))==e){n.scrollIntoView({behavior:"smooth",block:"start",inline:"nearest"}),a=!0;break}}};e&&(0==(t=document.getElementsByClassName("sr-unread-card")).length&&(t=document.getElementsByTagName("sr-annote")),n(t),a||n(t=document.getElementsByClassName("sr-annote")))},500);</script>
+                        
+                        <title>简悦 | C++ Coroutines: Understanding operator co_await | Asymmetric Transfer</title>
+                    </head>
+                    <body>
+                        <sr-read style='font-family: "YaHei Consolas Hybrid"; margin: 20px 21%;'>
+                            <sr-rd-title>C++ Coroutines: Understanding operator co_await | Asymmetric Transfer</sr-rd-title>
+                    <sr-rd-desc style="margin: 0;padding-top: 0;padding-bottom: 0;font-style: normal;font-size: 18px;">Understanding how the co_await operator works can help to demystify the behaviour of coroutines and h......</sr-rd-desc>
+                    <sr-rd-content><p></p><div>
+        <article itemscope="" itemtype="http://schema.org/BlogPosting">
+
+  
+
+  <div itemprop="articleBody">
+    <p>In the previous post on <a href="https://lewissbaker.github.io/2017/09/25/coroutine-theory">Coroutine Theory</a>
+I described the high-level differences between functions and coroutines but without
+going into any detail on syntax and semantics of coroutines as described by the
+C++ Coroutines TS (<a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/n4680.pdf">N4680</a>).</p>
+
+<p>The key new facility that the Coroutines TS adds to the C++ language is the ability to
+suspend a coroutine, allowing it to be later resumed. The mechanism the TS provides for
+doing this is via the new <code>co_await</code> operator.</p>
+
+<p>Understanding how the <code>co_await</code> operator works can help to demystify the behaviour of
+coroutines and how they are suspended and resumed. In this post I will be explaining
+the mechanics of the <code>co_await</code> operator and introduce the related <strong>Awaitable</strong> and
+<strong>Awaiter</strong> type concepts.</p>
+
+<p>But before I dive into <code>co_await</code> I want to give a brief overview of the Coroutines TS
+to provide some context.</p>
+
+<h2 id="sr-toc-0">What does the Coroutines TS give us?</h2>
+
+<ul>
+  <li>Three new language keywords: <code>co_await</code>, <code>co_yield</code> and <code>co_return</code></li>
+  <li>Several new types in the <code>std::experimental</code> namespace:
+    <ul>
+      <li><code>coroutine_handle&lt;P&gt;</code></li>
+      <li><code>coroutine_traits&lt;Ts...&gt;</code></li>
+      <li><code>suspend_always</code></li>
+      <li><code>suspend_never</code></li>
+    </ul>
+  </li>
+  <li>A general mechanism that library writers can use to interact with coroutines
+and customise their behaviour.</li>
+  <li>A language facility that makes writing asynchronous code a whole lot easier!</li>
+</ul>
+
+<p>The facilities the C++ Coroutines TS provides in the language can be thought of
+as a <em>low-level assembly-language</em> for coroutines. These facilities can be difficult to use
+directly in a safe way and are mainly intended to be used by library-writers to build
+higher-level abstractions that application developers can work with safely.</p>
+
+<p>The plan is to deliver these new low-level facilities into an upcoming language standard
+(hopefully C++20) along with some accompanying higher-level types in the standard library
+that wrap these low-level building-blocks and make coroutines more accessible in a safe way
+for application developers.</p>
+
+<h2 id="sr-toc-1">Compiler &lt;-&gt; Library interaction</h2>
+
+<p>Interestingly, the Coroutines TS does not actually define the semantics of a coroutine.
+It does not define how to produce the value returned to the caller. It does not define
+what to do with the return value passed to the <code>co_return</code> statement or how to handle
+an exception that propagates out of the coroutine. It does not define what thread the
+coroutine should be resumed on.</p>
+
+<p>Instead, it specifies a general mechanism for library code to customise the behaviour
+of the coroutine by implementing types that conform to a specific interface. The compiler
+then generates code that calls methods on instances of types provided by the library.
+This approach is similar to the way that a library-writer can customise the behaviour
+of a range-based for-loop by defining the <code>begin()</code>/<code>end()</code> methods and an <code>iterator</code> type.</p>
+
+<p>The fact that the Coroutines TS doesn’t prescribe any particular semantics to
+the mechanics of a coroutine makes it a powerful tool. It allows library writers to define
+many different kinds of coroutines, for all sorts of different purposes.</p>
+
+<p>For example, you can define a coroutine that produces a single value asynchronously,
+or a coroutine that produces a sequence of values lazily, or a coroutine that simplifies
+control-flow for consuming <code>optional&lt;T&gt;</code> values by early-exiting if a <code>nullopt</code> value
+is encountered.</p>
+
+<p>There are two kinds of interfaces that are defined by the coroutines TS:
+The <strong>Promise</strong> interface and the <strong>Awaitable</strong> interface.</p>
+
+<p>The <strong>Promise</strong> interface specifies methods for customising the behaviour of the coroutine itself.
+The library-writer is able to customise what happens when the coroutine is called, what
+happens when the coroutine returns (either by normal means or via an unhandled exception)
+and customise the behaviour of any <code>co_await</code> or <code>co_yield</code> expression within the coroutine.</p>
+
+<p>The <strong>Awaitable</strong> interface specifies methods that control the semantics of a <code>co_await</code>
+expression. When a value is <code>co_await</code>ed, the code is translated into a series of calls
+to methods on the awaitable object that allow it to specify: whether to suspend the current
+coroutine, execute some logic after it has suspended to schedule the coroutine
+for later resumption, and execute some logic after the coroutine resumes to produce the
+result of the <code>co_await</code> expression.</p>
+
+<p>I’ll be covering details of the <strong>Promise</strong> interface in a future post, but for now let’s
+look at the <strong>Awaitable</strong> interface.</p>
+
+<h2 id="sr-toc-2">Awaiters and Awaitables: Explaining <code>operator co_await</code></h2>
+
+<p>The <code>co_await</code> operator is a new unary operator that can be applied to a value.
+For example: <code>co_await someValue</code>.</p>
+
+<p>The <code>co_await</code> operator can only be used within the context of a coroutine.
+This is somewhat of a tautology though, since any function body containing use
+of the <code>co_await</code> operator, by definition, will be compiled as a coroutine.</p>
+
+<p>A type that supports the <code>co_await</code> operator is called an <strong>Awaitable</strong> type.</p>
+
+<p>Note that whether or not the <code>co_await</code> operator can be applied to a type can
+depend on the context in which the <code>co_await</code> expression appears. The promise
+type used for a coroutine can alter the meaning of a <code>co_await</code> expression
+within the coroutine via its <code>await_transform</code> method (more on this later).</p>
+
+<p>To be more specific where required I like to use the term <strong>Normally Awaitable</strong>
+to describe a type that supports the <code>co_await</code> operator in a coroutine context
+whose promise type does not have an <code>await_transform</code> member.
+And I like to use the term <strong>Contextually Awaitable</strong> to describe a type that
+only supports the <code>co_await</code> operator in the context of certain types of
+coroutines due to the presence of an <code>await_transform</code> method in the coroutine’s
+promise type. (I’m open to better suggestions for these names here…)</p>
+
+<p>An <strong>Awaiter</strong> type is a type that implements the three special methods that are
+called as part of a <code>co_await</code> expression: <code>await_ready</code>, <code>await_suspend</code> and
+<code>await_resume</code>.</p>
+
+<p>Note that I have shamelessly “borrowed” the term ‘Awaiter’ here from the C# <code>async</code>
+keyword’s mechanics that is implemented in terms of a <code>GetAwaiter()</code> method which
+returns an object with an interface that is eerily similar to the C++ concept of an <strong>Awaiter</strong>.
+See <a href="https://weblogs.asp.net/dixin/understanding-c-sharp-async-await-2-awaitable-awaiter-pattern">this post</a>
+for more details on C# awaiters.</p>
+
+<p>Note that a type can be both an <strong>Awaitable</strong> type and an <strong>Awaiter</strong> type.</p>
+
+<p>When the compiler sees a <code>co_await &lt;expr&gt;</code> expression there are actually a number of
+possible things it could be translated to depending on the types involved.</p>
+
+<h3 id="sr-toc-3">Obtaining the Awaiter</h3>
+
+<p>The first thing the compiler does is generate code to obtain the <strong>Awaiter</strong> object for the awaited value.
+There are a number of steps to obtaining the awaiter object which are set out in N4680 section 5.3.8(3).</p>
+
+<p>Let’s assume that the promise object for the awaiting coroutine has type, <code>P</code>, and that <code>promise</code>
+is an l-value reference to the promise object for the current coroutine.</p>
+
+<p>If the promise type, <code>P</code>, has a member named <code>await_transform</code> then <code>&lt;expr&gt;</code> is first passed
+into a call to <code>promise.await_transform(&lt;expr&gt;)</code> to obtain the <strong>Awaitable</strong> value, <code>awaitable</code>.
+Otherwise, if the promise type does not have an <code>await_transform</code> member then we use the
+result of evaluating <code>&lt;expr&gt;</code> directly as the <strong>Awaitable</strong> object, <code>awaitable</code>.</p>
+
+<p>Then, if the <strong>Awaitable</strong> object, <code>awaitable</code>, has an applicable <code>operator co_await()</code>
+overload then this is called to obtain the <strong>Awaiter</strong> object. Otherwise the object,
+<code>awaitable</code>, is used as the awaiter object.</p>
+
+<p>If we were to encode these rules into the functions <code>get_awaitable()</code> and <code>get_awaiter()</code>, they
+might look something like this:</p>
+<div><div><pre>template&lt;typename P, typename T&gt;
+decltype(auto) get_awaitable(P&amp; promise, T&amp;&amp; expr)
+{
+  if constexpr (has_any_await_transform_member_v&lt;P&gt;)
+    return promise.await_transform(static_cast&lt;T&amp;&amp;&gt;(expr));
+  else
+    return static_cast&lt;T&amp;&amp;&gt;(expr);
+}
+
+template&lt;typename Awaitable&gt;
+decltype(auto) get_awaiter(Awaitable&amp;&amp; awaitable)
+{
+  if constexpr (has_member_operator_co_await_v&lt;Awaitable&gt;)
+    return static_cast&lt;Awaitable&amp;&amp;&gt;(awaitable).operator co_await();
+  else if constexpr (has_non_member_operator_co_await_v&lt;Awaitable&amp;&amp;&gt;)
+    return operator co_await(static_cast&lt;Awaitable&amp;&amp;&gt;(awaitable));
+  else
+    return static_cast&lt;Awaitable&amp;&amp;&gt;(awaitable);
+}
+
+</pre></div></div>
+
+<h3 id="sr-toc-4">Awaiting the Awaiter</h3>
+
+<p>So, assuming we have encapsulated the logic for turning the <code>&lt;expr&gt;</code> result into an
+<strong>Awaiter</strong> object into the above functions then the semantics of <code>co_await &lt;expr&gt;</code>
+can be translated (roughly) as follows:</p>
+<div><div><pre>{
+  auto&amp;&amp; value = &lt;expr&gt;;
+  auto&amp;&amp; awaitable = get_awaitable(promise, static_cast&lt;decltype(value)&gt;(value));
+  auto&amp;&amp; awaiter = get_awaiter(static_cast&lt;decltype(awaitable)&gt;(awaitable));
+  if (!awaiter.await_ready())
+  {
+    using handle_t = std::experimental::coroutine_handle&lt;P&gt;;
+
+    using await_suspend_result_t =
+      decltype(awaiter.await_suspend(handle_t::from_promise(p)));
+
+    &lt;suspend-coroutine&gt;
+
+    if constexpr (std::is_void_v&lt;await_suspend_result_t&gt;)
+    {
+      awaiter.await_suspend(handle_t::from_promise(p));
+      &lt;return-to-caller-or-resumer&gt;
+    }
+    else
+    {
+      static_assert(
+         std::is_same_v&lt;await_suspend_result_t, bool&gt;,
+         "await_suspend() must return 'void' or 'bool'.");
+
+      if (awaiter.await_suspend(handle_t::from_promise(p)))
+      {
+        &lt;return-to-caller-or-resumer&gt;
+      }
+    }
+
+    &lt;resume-point&gt;
+  }
+
+  return awaiter.await_resume();
+}
+
+</pre></div></div>
+
+<p>The <code>void</code>-returning version of <code>await_suspend()</code> unconditionally transfers execution
+back to the caller/resumer of the coroutine when the call to <code>await_suspend()</code> returns,
+whereas the <code>bool</code>-returning version allows the awaiter object to conditionally resume
+the coroutine immediately without returning to the caller/resumer.</p>
+
+<p>The <code>bool</code>-returning version of <code>await_suspend()</code> can be useful in cases where the
+awaiter might start an async operation that can sometimes complete synchronously.
+In the cases where it completes synchronously, the <code>await_suspend()</code> method can
+return <code>false</code> to indicate that the coroutine should be immediately resumed and
+continue execution.</p>
+
+<p>At the <code>&lt;suspend-coroutine&gt;</code> point the compiler generates some code to save the
+current state of the coroutine and prepare it for resumption. This includes
+storing the location of the <code>&lt;resume-point&gt;</code> as well as spilling any values
+currently held in registers into the coroutine frame memory.</p>
+
+<p>The current coroutine is considered suspended after the <code>&lt;suspend-coroutine&gt;</code>
+operation completes. The first point at which you can observe the suspended
+coroutine is inside the call to <code>await_suspend()</code>. Once the coroutine is
+suspended it is then able to be resumed or destroyed.</p>
+
+<p>It is the responsibility of the <code>await_suspend()</code> method to schedule the
+coroutine for resumption (or destruction) at some point in the future once
+the operation has completed. Note that returning <code>false</code> from <code>await_suspend()</code>
+counts as scheduling the coroutine for immediate resumption on the current
+thread.</p>
+
+<p>The purpose of the <code>await_ready()</code> method is to allow you to avoid
+the cost of the <code>&lt;suspend-coroutine&gt;</code> operation in cases where it is known
+that the operation will complete synchronously without needing to suspend.</p>
+
+<p>At the <code>&lt;return-to-caller-or-resumer&gt;</code> point execution is transferred back to
+the caller or resumer, popping the local stack frame but keeping the coroutine
+frame alive.</p>
+
+<p>When (or if) the suspended coroutine is eventually resumed then the execution
+resumes at the <code>&lt;resume-point&gt;</code>. ie. immediately before the <code>await_resume()</code>
+method is called to obtain the result of the operation.</p>
+
+<p>The return-value of the <code>await_resume()</code> method call becomes the result of the
+<code>co_await</code> expression. The <code>await_resume()</code> method can also throw an exception
+in which case the exception propagates out of the <code>co_await</code> expression.</p>
+
+<p>Note that if an exception propagates out of the <code>await_suspend()</code> call then the
+coroutine is automatically resumed and the exception propagates out of the <code>co_await</code>
+expression without calling <code>await_resume()</code>.</p>
+
+<h2 id="sr-toc-5">Coroutine Handles</h2>
+
+<p>You may have noticed the use of the <code>coroutine_handle&lt;P&gt;</code> type that is passed
+to the <code>await_suspend()</code> call of a <code>co_await</code> expression.</p>
+
+<p>This type represents a non-owning handle to the coroutine frame and can be used
+to resume execution of the coroutine or to destroy the coroutine frame.
+It can also be used to get access to the coroutine’s promise object.</p>
+
+<p>The <code>coroutine_handle</code> type has the following (abbreviated) interface:</p>
+<div><div><pre>namespace std::experimental
+{
+  template&lt;typename Promise&gt;
+  struct coroutine_handle;
+
+  template&lt;&gt;
+  struct coroutine_handle&lt;void&gt;
+  {
+    bool done() const;
+
+    void resume();
+    void destroy();
+
+    void* address() const;
+    static coroutine_handle from_address(void* address);
+  };
+
+  template&lt;typename Promise&gt;
+  struct coroutine_handle : coroutine_handle&lt;void&gt;
+  {
+    Promise&amp; promise() const;
+    static coroutine_handle from_promise(Promise&amp; promise);
+
+    static coroutine_handle from_address(void* address);
+  };
+}
+
+</pre></div></div>
+
+<p>When implementing <strong>Awaitable</strong> types, they key method you’ll be using on <code>coroutine_handle</code>
+will be <code>.resume()</code>, which should be called when the operation has completed and you want
+to resume execution of the awaiting coroutine. Calling <code>.resume()</code> on a <code>coroutine_handle</code>
+reactivates a suspended coroutine at the <code>&lt;resume-point&gt;</code>. The call to <code>.resume()</code> will
+return when the coroutine next hits a <code>&lt;return-to-caller-or-resumer&gt;</code> point.</p>
+
+<p>The <code>.destroy()</code> method destroys the coroutine frame, calling the destructors of any
+in-scope variables and freeing memory used by the coroutine frame.
+You should generally not need to (and indeed should really avoid) calling <code>.destroy()</code>
+unless you are a library writer implementing the coroutine promise type. Normally,
+coroutine frames will be owned by some kind of RAII type returned from the call to
+the coroutine. So calling <code>.destroy()</code> without cooperation with the RAII object could
+lead to a double-destruction bug.</p>
+
+<p>The <code>.promise()</code> method returns a reference to the coroutine’s promise object. However, like
+<code>.destroy()</code>, it is generally only useful if you are authoring coroutine promise types.
+You should consider the coroutine’s promise object as an internal implementation detail of the
+coroutine. For most <strong>Normally Awaitable</strong> types you should use <code>coroutine_handle&lt;void&gt;</code>
+as the parameter type to the <code>await_suspend()</code> method instead of <code>coroutine_handle&lt;Promise&gt;</code>.</p>
+
+<p>The <code>coroutine_handle&lt;P&gt;::from_promise(P&amp; promise)</code> function allows reconstructing the coroutine
+handle from a reference to the coroutine’s promise object. Note that you must ensure that the type,
+<code>P</code>, exactly matches the concrete promise type used for the coroutine frame; attempting to construct
+a <code>coroutine_handle&lt;Base&gt;</code> when the concrete promise type is <code>Derived</code> can lead to undefined behaviour.</p>
+
+<p>The <code>.address()</code> / <code>from_address()</code> functions allow converting a coroutine handle to/from a
+<code>void*</code> pointer. This is primarily intended to allow passing as a ‘context’ parameter into
+existing C-style APIs, so you might find it useful in implementing <strong>Awaitable</strong> types in
+some circumstances. However, in most cases I’ve found it necessary to pass additional
+information through to callbacks in this ‘context’ parameter so I generally end up storing the
+<code>coroutine_handle</code> in a struct and passing a pointer to the struct in the ‘context’ parameter
+rather than using the <code>.address()</code> return-value.</p>
+
+<h2 id="sr-toc-6">Synchronisation-free async code</h2>
+
+<p>One of the powerful design-features of the <code>co_await</code> operator is the ability to execute
+code after the coroutine has been suspended but before execution is returned to the caller/resumer.</p>
+
+<p>This allows an Awaiter object to initiate an async operation after the coroutine is already
+suspended, passing the <code>coroutine_handle</code> of the suspended coroutine to the operation
+which it can safely resume when the operation completes (potentially on another thread)
+without any additional synchronisation required.</p>
+
+<p>For example, by starting an async-read operation inside <code>await_suspend()</code> when the coroutine
+is already suspended means that we can just resume the coroutine when the operation completes
+without needing any thread-synchronisation to coordinate the thread that started the operation
+and the thread that completed the operation.</p>
+
+<div><div><pre>Time     Thread 1                           Thread 2
+  |      --------                           --------
+  |      ....                               Call OS - Wait for I/O event
+  |      Call await_ready()                    |
+  |      &lt;supend-point&gt;                        |
+  |      Call await_suspend(handle)            |
+  |        Store handle in operation           |
+  V        Start AsyncFileRead ---+            V
+                                  +-----&gt;   &lt;AsyncFileRead Completion Event&gt;
+                                            Load coroutine_handle from operation
+                                            Call handle.resume()
+                                              &lt;resume-point&gt;
+                                              Call to await_resume()
+                                              execution continues....
+           Call to AsyncFileRead returns
+         Call to await_suspend() returns
+         &lt;return-to-caller/resumer&gt;
+
+</pre></div></div>
+
+<p>One thing to be <em>very</em> careful of when taking advantage of this approach is that as
+soon as you have started the operation which publishes the coroutine handle to other
+threads then another thread may resume the coroutine on another thread before
+<code>await_suspend()</code> returns and may continue executing concurrently with the rest of
+the <code>await_suspend()</code> method.</p>
+
+<p>The first thing the coroutine will do when it resumes is call <code>await_resume()</code> to get
+the result and then often it will immediately destruct the <strong>Awaiter</strong> object
+(ie. the <code>this</code> pointer of the <code>await_suspend()</code> call).
+The coroutine could then potentially run to completion, destructing the coroutine and
+promise object, all before <code>await_suspend()</code> returns.</p>
+
+<p>So within the <code>await_suspend()</code> method, once it’s possible for the coroutine to be
+resumed concurrently on another thread, you need to make sure that you avoid accessing
+<code>this</code> or the coroutine’s <code>.promise()</code> object because both could already be destroyed.
+In general, the only things that are safe to access after the operation is started and
+the coroutine is scheduled for resumption are local variables within <code>await_suspend()</code>.</p>
+
+<h3 id="sr-toc-7">Comparison to Stackful Coroutines</h3>
+
+<p>I want to take a quick detour to compare this ability of the Coroutines TS stackless coroutines
+to execute logic after the coroutine is suspended with some existing common stackful coroutine
+facilities such as Win32 fibers or boost::context.</p>
+
+<p>With many of the stackful coroutine frameworks, the suspend operation of a coroutine is
+combined with the resumption of another coroutine into a ‘context-switch’ operation.
+With this ‘context-switch’ operation there is typically no opportunity to execute logic
+after suspending the current coroutine but before transferring execution to another coroutine.</p>
+
+<p>This means that if we want to implement a similar async-file-read operation on top of
+stackful coroutines then we have to start the operation <em>before</em> suspending the coroutine.
+It is therefore possible that the operation could complete on another thread before the
+coroutine is suspended and is eligible for resumption. This potential race between the
+operation completing on another thread and the coroutine suspending requires some kind
+of thread synchronisation to arbitrate and decide on the winner.</p>
+
+<p>There are probably ways around this by using a trampoline context that can start the
+operation on behalf of the initiating context after the initiating context has been
+suspended. However this would require extra infrastructure and an extra context-switch
+to make it work and it’s possible that the overhead this introduces would be greater
+than the cost of the synchronisation it’s trying to avoid.</p>
+
+<h2 id="sr-toc-8">Avoiding memory allocations</h2>
+
+<p>Async operations often need to store some per-operation state that keeps track
+of the progress of the operation. This state typically needs to last for the duration
+of the operation and should only be freed once the operation has completed.</p>
+
+<p>For example, calling async Win32 I/O functions requires you to allocate and pass a
+pointer to an <code>OVERLAPPED</code> structure. The caller is responsible for ensuring this
+pointer remains valid until the operation completes.</p>
+
+<p>With traditional callback-based APIs this state would typically need to be allocated
+on the heap to ensure it has the appropriate lifetime. If you were performing many
+operations, you may need to allocate and free this state for each operation.
+If performance is an issue then a custom allocator may be used that allocates these
+state objects from a pool.</p>
+
+<p>However, when we are using coroutines we can avoid the need to heap-allocate storage
+for the operation state by taking advantage of the fact that local variables within
+the coroutine frame will be kept alive while the coroutine is suspended.</p>
+
+<p>By placing the per-operation state in the <strong>Awaiter</strong> object we can effectively
+“borrow” memory from the coroutine frame for storing the per-operation state for
+the duration of the <code>co_await</code> expression. Once the operation completes, the coroutine
+is resumed and the <strong>Awaiter</strong> object is destroyed, freeing that memory in the
+coroutine frame for use by other local variables.</p>
+
+<p>Ultimately, the coroutine frame may still be allocated on the heap. However, once allocated,
+a coroutine frame can be used to execute many asynchronous operations with only that
+single heap allocation.</p>
+
+<p>If you think about it, the coroutine frame acts as a kind of really high-performance
+arena memory allocator. The compiler figures out at compile time the total arena size
+it needs for all local variables and is then able to allocate this memory out to local
+variables as required with zero overhead! Try beating that with a custom allocator ;)</p>
+
+<h2 id="sr-toc-9">An example: Implementing a simple thread-synchronisation primitive</h2>
+
+<p>Now that we’ve covered a lot of the mechanics of the <code>co_await</code> operator, I want to show
+how to put some of this knowledge into practice by implementing a basic awaitable
+synchronisation primitive: An asynchronous manual-reset event.</p>
+
+<p>The basic requirements of this event is that it needs to be <strong>Awaitable</strong> by multiple
+concurrently executing coroutines and when awaited needs to suspend the awaiting
+coroutine until some thread calls the <code>.set()</code> method, at which point any awaiting
+coroutines are resumed. If some thread has already called <code>.set()</code> then the coroutine
+should continue without suspending.</p>
+
+<p>Ideally we’d also like to make it <code>noexcept</code>, require no heap allocations and have a
+lock-free implementation.</p>
+
+<p><strong>Edit 2017/11/23: Added example usage for <code>async_manual_reset_event</code></strong></p>
+
+<p>Example usage should look something like this:</p>
+<div><div><pre>T value;
+async_manual_reset_event event;
+
+// A single call to produce a value
+void producer()
+{
+  value = some_long_running_computation();
+
+  // Publish the value by setting the event.
+  event.set();
+}
+
+// Supports multiple concurrent consumers
+task&lt;&gt; consumer()
+{
+  // Wait until the event is signalled by call to event.set()
+  // in the producer() function.
+  co_await event;
+
+  // Now it's safe to consume 'value'
+  // This is guaranteed to 'happen after' assignment to 'value'
+  std::cout &lt;&lt; value &lt;&lt; std::endl;
+}
+
+</pre></div></div>
+
+<p>Let’s first think about the possible states this event can be in: ‘not set’ and ‘set’.</p>
+
+<p>When it’s in the ‘not set’ state there is a (possibly empty) list of waiting coroutines
+that are waiting for it to become ‘set’.</p>
+
+<p>When it’s in the ‘set’ state there won’t be any waiting coroutines as coroutines that 
+<code>co_await</code> the event in this state can continue without suspending.</p>
+
+<p>This state can actually be represented in a single <code>std::atomic&lt;void*&gt;</code>.</p>
+<ul>
+  <li>Reserve a special pointer value for the ‘set’ state.
+In this case we’ll use the <code>this</code> pointer of the event since we know that can’t be the same address as any of the list items.</li>
+  <li>Otherwise the event is in the ‘not set’ state and the value is a pointer to the head of a singly linked-list of awaiting coroutine structures.</li>
+</ul>
+
+<p>We can avoid extra calls to allocate nodes for the linked-list on the heap by storing the
+nodes within an ‘awaiter’ object that is placed within the coroutine frame.</p>
+
+<p>So let’s start with a class interface that looks something like this:</p>
+<div><div><pre>class async_manual_reset_event
+{
+public:
+
+  async_manual_reset_event(bool initiallySet = false) noexcept;
+
+  // No copying/moving
+  async_manual_reset_event(const async_manual_reset_event&amp;) = delete;
+  async_manual_reset_event(async_manual_reset_event&amp;&amp;) = delete;
+  async_manual_reset_event&amp; operator=(const async_manual_reset_event&amp;) = delete;
+  async_manual_reset_event&amp; operator=(async_manual_reset_event&amp;&amp;) = delete;
+
+  bool is_set() const noexcept;
+
+  struct awaiter;
+  awaiter operator co_await() const noexcept;
+
+  void set() noexcept;
+  void reset() noexcept;
+
+private:
+
+  friend struct awaiter;
+
+  // - 'this' =&gt; set state
+  // - otherwise =&gt; not set, head of linked list of awaiter*.
+  mutable std::atomic&lt;void*&gt; m_state;
+
+};
+
+</pre></div></div>
+
+<p>Here we have a fairly straight-forward and simple interface. The main thing to note
+at this point is that it has an <code>operator co_await()</code> method that returns an, as yet,
+undefined type, <code>awaiter</code>.</p>
+
+<p>Let’s define the <code>awaiter</code> type now.</p>
+
+<h3 id="sr-toc-10">Defining the Awaiter</h3>
+
+<p>Firstly, it needs to know which <code>async_manual_reset_event</code> object it is going to be
+awaiting, so it will need a reference to the event and a constructor to initialise it.</p>
+
+<p>It also needs to act as a node in a linked-list of <code>awaiter</code> values so it will need 
+to hold a pointer to the next <code>awaiter</code> object in the list.</p>
+
+<p>It also needs to store the <code>coroutine_handle</code> of the awaiting coroutine that is executing
+the <code>co_await</code> expression so that the event can resume the coroutine when it becomes ‘set’.
+We don’t care what the promise type of the coroutine is so we’ll just use a
+<code>coroutine_handle&lt;&gt;</code> (which is short-hand for <code>coroutine_handle&lt;void&gt;</code>).</p>
+
+<p>Finally, it needs to implement the <strong>Awaiter</strong> interface, so it needs the three special
+methods: <code>await_ready</code>, <code>await_suspend</code> and <code>await_resume</code>. We don’t need to return a
+value from the <code>co_await</code> expression so <code>await_resume</code> can return <code>void</code>.</p>
+
+<p>Once we put all of that together, the basic class interface for <code>awaiter</code> looks like this:</p>
+<div><div><pre>struct async_manual_reset_event::awaiter
+{
+  awaiter(const async_manual_reset_event&amp; event) noexcept
+  : m_event(event)
+  {}
+
+  bool await_ready() const noexcept;
+  bool await_suspend(std::experimental::coroutine_handle&lt;&gt; awaitingCoroutine) noexcept;
+  void await_resume() noexcept {}
+
+private:
+
+  const async_manual_reset_event&amp; m_event;
+  std::experimental::coroutine_handle&lt;&gt; m_awaitingCoroutine;
+  awaiter* m_next;
+};
+
+</pre></div></div>
+
+<p>Now, when we <code>co_await</code> an event, we don’t want the awaiting coroutine to suspend if
+the event is already set. So we can define <code>await_ready()</code> to return <code>true</code> if the
+event is already set.</p>
+<div><div><pre>bool async_manual_reset_event::awaiter::await_ready() const noexcept
+{
+  return m_event.is_set();
+}
+
+</pre></div></div>
+
+<p>Next, let’s look at the <code>await_suspend()</code> method. This is usually where most of the
+magic happens in an awaitable type.</p>
+
+<p>First it will need to stash the coroutine handle of the awaiting coroutine into the
+<code>m_awaitingCoroutine</code> member so that the event can later call <code>.resume()</code> on it.</p>
+
+<p>Then once we’ve done that we need to try and atomically enqueue the awaiter onto
+the linked list of waiters. If we successfully enqueue it then we return <code>true</code>
+to indicate that we don’t want to resume the coroutine immediately, otherwise if
+we find that the event has concurrently been changed to the ‘set’ state then we
+return <code>false</code> to indicate that the coroutine should be resumed immediately.</p>
+<div><div><pre>bool async_manual_reset_event::awaiter::await_suspend(
+  std::experimental::coroutine_handle&lt;&gt; awaitingCoroutine) noexcept
+{
+  // Special m_state value that indicates the event is in the 'set' state.
+  const void* const setState = &amp;m_event;
+
+  // Remember the handle of the awaiting coroutine.
+  m_awaitingCoroutine = awaitingCoroutine;
+
+  // Try to atomically push this awaiter onto the front of the list.
+  void* oldValue = m_event.m_state.load(std::memory_order_acquire);
+  do
+  {
+    // Resume immediately if already in 'set' state.
+    if (oldValue == setState) return false; 
+
+    // Update linked list to point at current head.
+    m_next = static_cast&lt;awaiter*&gt;(oldValue);
+
+    // Finally, try to swap the old list head, inserting this awaiter
+    // as the new list head.
+  } while (!m_event.m_state.compare_exchange_weak(
+             oldValue,
+             this,
+             std::memory_order_release,
+             std::memory_order_acquire));
+
+  // Successfully enqueued. Remain suspended.
+  return true;
+}
+
+</pre></div></div>
+
+<p>Note that we use ‘acquire’ memory order when loading the old state so that
+if we read the special ‘set’ value then we have visibility of writes that
+occurred prior to the call to ‘set()’.</p>
+
+<p>We require ‘release’ sematics if the compare-exchange succeeds so that a
+subsequent call to ‘set()’ will see our writes to m_awaitingCoroutine and
+prior writes to the coroutine state.</p>
+
+<h3 id="sr-toc-11">Filling out the rest of the event class</h3>
+
+<p>Now that we have defined the <code>awaiter</code> type, let’s go back and look at the
+implementation of the <code>async_manual_reset_event</code> methods.</p>
+
+<p>First, the constructor. It needs to initialise to either the ‘not set’ state
+with the empty list of waiters (ie. <code>nullptr</code>) or initialise to the ‘set’ state
+(ie. <code>this</code>).</p>
+<div><div><pre>async_manual_reset_event::async_manual_reset_event(
+  bool initiallySet) noexcept
+: m_state(initiallySet ? this : nullptr)
+{}
+
+</pre></div></div>
+
+<p>Next, the <code>is_set()</code> method is pretty straight-forward - it’s ‘set’ if it
+has the special value <code>this</code>:</p>
+<div><div><pre>bool async_manual_reset_event::is_set() const noexcept
+{
+  return m_state.load(std::memory_order_acquire) == this;
+}
+
+</pre></div></div>
+
+<p>Next, the <code>reset()</code> method. If it’s in the ‘set’ state we want to transition back
+to the empty-list ‘not set’ state, otherwise leave it as it is.</p>
+<div><div><pre>void async_manual_reset_event::reset() noexcept
+{
+  void* oldValue = this;
+  m_state.compare_exchange_strong(oldValue, nullptr, std::memory_order_acquire);
+}
+
+</pre></div></div>
+
+<p>With the <code>set()</code> method, we want to transition to the ‘set’ state by exchanging
+the current state with the special ‘set’ value, <code>this</code>, and then examine what
+the old value was. If there were any waiting coroutines then we want to resume
+each of them sequentially in turn before returning.</p>
+<div><div><pre>void async_manual_reset_event::set() noexcept
+{
+  // Needs to be 'release' so that subsequent 'co_await' has
+  // visibility of our prior writes.
+  // Needs to be 'acquire' so that we have visibility of prior
+  // writes by awaiting coroutines.
+  void* oldValue = m_state.exchange(this, std::memory_order_acq_rel);
+  if (oldValue != this)
+  {
+    // Wasn't already in 'set' state.
+    // Treat old value as head of a linked-list of waiters
+    // which we have now acquired and need to resume.
+    auto* waiters = static_cast&lt;awaiter*&gt;(oldValue);
+    while (waiters != nullptr)
+    {
+      // Read m_next before resuming the coroutine as resuming
+      // the coroutine will likely destroy the awaiter object.
+      auto* next = waiters-&gt;m_next;
+      waiters-&gt;m_awaitingCoroutine.resume();
+      waiters = next;
+    }
+  }
+}
+
+</pre></div></div>
+
+<p>Finally, we need to implement the <code>operator co_await()</code> method.
+This just needs to construct an <code>awaiter</code> object.</p>
+
+<div><div><pre>async_manual_reset_event::awaiter
+async_manual_reset_event::operator co_await() const noexcept
+{
+  return awaiter{ *this };
+}
+
+</pre></div></div>
+
+<p>And there we have it. An awaitable asynchronous manual-reset event that has
+a lock-free, memory-allocation-free, <code>noexcept</code> implementation.</p>
+
+<p>If you want to have a play with the code or check out what it compiles
+down to under MSVC and Clang have a look at the <a href="https://godbolt.org/g/Ad47tH">source on godbolt</a>.</p>
+
+<p>You can also find an implementation of this class available in the
+<a href="https://github.com/lewissbaker/cppcoro">cppcoro</a> library, along with a number
+of other useful awaitable types such as <code>async_mutex</code> and <code>async_auto_reset_event</code>.</p>
+
+<h2 id="sr-toc-12">Closing Off</h2>
+
+<p>This post has looked at how the <code>operator co_await</code> is implemented and defined
+in terms of the <strong>Awaitable</strong> and <strong>Awaiter</strong> concepts.</p>
+
+<p>It has also walked through how to implement an awaitable async thread-synchronisation
+primitive that takes advantage of the fact that awaiter objects are allocated on the
+coroutine frame to avoid additional heap allocations.</p>
+
+<p>I hope this post has helped to demystify the new <code>co_await</code> operator for you.</p>
+
+<p>In the next post I’ll explore the <strong>Promise</strong> concept and how a coroutine-type author
+can customise the behaviour of their coroutine.</p>
+
+<h2 id="sr-toc-13">Thanks</h2>
+
+<p>I want to call out special thanks to Gor Nishanov for patiently and enthusiastically
+answering my many questions on coroutines over the last couple of years.</p>
+
+<p>And also to Eric Niebler for reviewing and providing feedback on an early draft of
+this post.</p>
+
+  </div>
+
+  
+  
+  
+
+  
+</article>
+
+      </div><p></p></sr-rd-content>
+                            
+                            <sr-rd-footer>
+                                <sr-rd-footer-group>
+                                    <sr-rd-footer-line></sr-rd-footer-line>
+                                    <sr-rd-footer-text>全文完</sr-rd-footer-text>
+                                    <sr-rd-footer-line></sr-rd-footer-line>
+                                </sr-rd-footer-group>
+                                <sr-rd-footer-copywrite>
+                                    <div>本文由 <a href="http://ksria.com/simpread" target="_blank">简悦 SimpRead</a> 转码，用以提升阅读体验，<a href="https://lewissbaker.github.io/2017/11/17/understanding-operator-co-await" target="_blank">原文地址 </a></div>
+                                </sr-rd-footer-copywrite>
+                            </sr-rd-footer>
+                        </sr-read>
+                    </body>
+                </html>

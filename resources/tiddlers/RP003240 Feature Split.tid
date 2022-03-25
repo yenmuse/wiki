@@ -1,0 +1,27 @@
+created: 20220208060121785
+modified: 20220209071401018
+revision: 5-f3b88bdcab8d3e7fbf50303f9c103b9a
+tags: rp003240 rf7.1
+title: RP003240 Feature Split
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startmindmap
+* RP003240
+** RP003240-A: Startup & Time Synchronization
+** RP003240-B: subfeature obsoleted as part of LTE removal CNI-74912
+** RP003240-C: Multi Carrier Setup
+*** URSC: Carrier setup over eCPRI for NR100 with 2 spatial streams
+*** URSC: Carrier setup over eCPRI for NR100 with 16 spatial streams
+*** URSC: Carrier deletion over eCPRI for NR100
+*** URSC: Passthrough mode support for NR100 with 2 spatial streams (GUS/ASIM)
+*** URSC: UL Data Transfer (GUS/ASIM) for NR100 16 spatial streams
+*** URSC: DL Data Transfer (GUS/ASIM) for NR100 2 spatial streams
+*** URSC: DL/UL Data Transfer (Hycon) over NR100 16 Antenna streams
+** RP003240-E: Radio Runtime Algorithm Support
+** RP003240-F: Prach Support
+** RP003240-G: SRS and Power scaling support
+** RP003240-H: Peripheral Runtime Behaviour
+** RP003240-I: Test Interface Support
+** RP003240-J: SW Management
+** RP003240-K: Standalone TRX Board Support
+@endmindmap""">

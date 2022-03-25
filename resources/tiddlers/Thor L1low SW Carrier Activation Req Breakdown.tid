@@ -1,0 +1,58 @@
+created: 20220209011237318
+modified: 20220209015639042
+revision: 2-bdaabb6993a16cfebcb0f1a54e0f7233
+tags: thor rf7.1
+title: Thor L1low SW Carrier Activation Req Breakdown
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startmindmap
+* Carrier Setup
+** Message Flow
+*** DL Carrier
+*** UL Carrier
+** HW Configuration
+*** RFOE Configuration
+**** L1Low shall perform initializing procedure to enable RFOE receive or transmit any packets.
+**** L1Low SW shall configure memory buffer table (MBT) for all RFOE RX instances.
+**** L1Low SW shall allocate enough memory for memory buffer table (MBT) ring buffers in RFOE RX.
+**** L1Low SW shall allocate enough memory for job descriptor table (JDT) ring buffers in RFOE RX.
+**** L1Low shall allocate enough memory for job descriptors for RFOE TX.
+**** L1Low SW shall configure Job Descriptor Table (JDT) for all RFOE RX instances.
+**** L1Low SW shall not change the contents of MBT or JDT entries while they are actively being used.
+*** EDEC Configuration
+**** L1Low shall initialize lookup table LUT to determines how each packet is parsed and decompressed.
+**** L1Low shall allocate memory for DL EDEC output data buffer.
+**** L1Low SW shall allocate memory for PUxCH EDEC output buffer.
+**** L1Low SW shall allocate memory for PRACH EDEC output buffer.
+**** L1Low shall allocate memory for EDEC output header buffer.
+*** ECMP Configuration
+**** L1Low SW shall allocate memory for job descriptors of ECMP.
+**** L1Low SW shall allocate memory for ECMP output buffer in DL.
+**** L1Low SW shall allocate memory for ECMP output buffer in UL.
+*** PSM Configuration
+**** PSM initialization
+**** PSM timer initialization
+**** L1Low SW shall partition PSM scheduler queue RAM and allocate the portions to the various queues.
+**** L1Low SW shall use following procedure to reset individual PSM scheduler queue:
+**** When resetting a MHAB, L1Low SW shall prevent PSM to launch any additional jobs in the queue of that MHAB during reset.
+**** L1Low SW shall avoid interleaving multiple cores when submitting PSM commands directly to PSM.
+**** L1Low SW shall ensure that jobs destinated for different MAB queues are put to the different PSM command queues.
+**** L1Low SW may restrict the number of job credits for a given MAB queue in order to improve load balancing between ABs and reduce wait times.
+**** L1Low SW shall enable PSM logs.
+**** L1Low SW shall allocate memory for the PSM logs.
+*** Beamforming Configuration
+**** BF_MUL Configuration
+***** L1Low shall maintain/update beamforming instance table during carrier setup/activation/deactivation and deletion.
+***** L1Low SW shall allocate memory for DL antenna stream (AxC) buffer(s) from SMEM
+***** L1Low SW shall allocate memory for both BF_MUL job descriptors
+***** L1Low shall define fixed DL beamforming weights for each BF_MUL instances
+***** L1Low SW shall start beamforming related timers for DL
+**** ARXS Configuration
+***** L1Low SW shall allocate memory for ARXM job descriptors for each carrier
+***** L1Low SW shall allocate memory for ARXE job descriptors for each carrier
+***** L1Low SW shall allocate memory for PUxCH spatial streams (SxC) buffer(s) from SMEM
+***** L1Low SW shall allocate memory for PRACH spatial streams (SxC) buffer(s) from SMEM
+***** L1Low shall define fixed UL beamforming weights to PMEM0 and PMEM1 via ARXM.
+***** L1Low SW shall copy PRACH related weights to PMEM in case of NR carrier
+***** L1Low SW shall start beamforming related timers for UL.
+@endmindmap""">

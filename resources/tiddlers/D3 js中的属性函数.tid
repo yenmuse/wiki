@@ -1,0 +1,20 @@
+created: 20210921082041224
+modified: 20210924043636650
+revision: 2-83d43a40643e6127178b00061712ab4b
+tags: d3js
+title: D3 js中的属性函数
+type: text/vnd.tiddlywiki
+
+d3.js中一共有6个属性函数：
+
+* attr
+
+* style
+
+* property
+
+* classed
+
+* text
+
+* html

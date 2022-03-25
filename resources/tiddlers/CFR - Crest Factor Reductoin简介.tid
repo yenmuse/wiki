@@ -1,0 +1,32 @@
+created: 20210924041100516
+modified: 20210926071434634
+revision: 6-d74f50b2d30073f8ea83d5b7da8b25d6
+tags: cfr dfe
+title: CFR - Crest Factor Reductoin简介
+type: text/vnd.tiddlywiki
+
+CFR是crest-factor reduction的缩写，目的是降低信号的峰均比，避免进入功放的非线性区域。高峰均比通常出现在采用多载波技术的波形中，可以想象100个幅度为1，频率分别为n*15KHz(n为从1到100的整数)的子载波，如果这些信号的相位相同，那么肯定每隔1/15000秒出现一次峰值100，1/(2*15000)秒出现一次峰值50，依此类推。当然实际中这些子载波的相位不会完全一致，而是有一定的概率分布的，具体可以参考《MIMO-OFDM Wireless Communications with MATLAB》中的7.1.2节Distribution of OFDM Signal。 CFR的技术有很多种：
+
+* 削峰类
+
+** 直接削峰
+
+** 加窗削峰
+
+** 噪声成型削峰
+
+** 脉冲抵消削峰
+
+* 概率类：
+
+* 编码类
+
+CFR相关的一些文档：
+
+* https://www.xilinx.com/Attachment/PC-CFR%20v3.0.pdf LogiCORE IP Peak Cancellation Crest Factor Reduction v3.0，Xillinx的文档，介绍了自己封装出来的PC CFR IP，干货不多，可以扫盲。
+
+* https://wenku.baidu.com/view/02cdeecca8956bec0975e3c6.html Xillinx员工写的一篇介绍CFR技术的文章，有简单的总结和梳理。
+
+* https://max.book118.com/html/2019/0109/5221044231002000.shtm 一篇电子科技大学的硕士论文，前面几章有简单的CFR技术的介绍，可以扫盲
+
+* https://wenku.baidu.com/view/17c52a69011ca300a6c390fd.html Peak Cancellation Crest Factor Reduction Reference Design， Xillinx的一篇介绍PC CFR技术的文档，作为该技术的发明者，这篇介绍最为详细。但是后来由于PC CFR被单独拿出来封成了一个IP，官方就没有这篇文档了。

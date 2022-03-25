@@ -1,0 +1,28 @@
+created: 20220302020019951
+modified: 20220304015840368
+revision: 5-feb2085040a033e550a5aaf207dec9d1
+tags: puml edec thor
+title: EDEC Output Buffer 管理相关序列图
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startuml
+ThorNrtApi -> StreamManager
+StreamManager --> EdecLutConfigStorage: FetchEdecLutConfig
+StreamManager <-- EdecLutConfigStorage: function returns the create lut entry
+StreamManager --> FdIqBufferManager: AllocateFdIqBuffer(ccId, lutEntry)
+StreamManager <-- FdIqBufferManager: function returns the allocated buffer
+StreamManager --> EaxcStream: EnableStream
+EaxcStream --> edecController: edecController::\nWriteLutEntry\n(flowId_, *lut, hab ind, ab ind)
+EaxcStream <-- edecController: function return
+StreamManager <-- EaxcStream: function return
+ThorNrtApi <-- StreamManager: function return
+
+ThorNrtApi --> TimerQueueContext: AddTxComponentCarrier, record the buffer addr and trigger timer
+TimerQueueContext --> TimerManager
+TimerManager --> BfmulTimerEo
+TimerQueueContext <-- TimerManager: function return
+ThorNrtApi <-- TimerQueueContext:function return
+
+BfmulTimerEo --> BfDlJob: PushToPsm, timeout each symbol
+BfmulTimerEo <-- BfDlJob: function return
+@enduml""">

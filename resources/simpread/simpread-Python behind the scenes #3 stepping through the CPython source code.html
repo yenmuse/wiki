@@ -1,0 +1,1696 @@
+
+                <html lang="en" class="simpread-font simpread-theme-root" style='font-size: 60%!important;'>
+                    <head>
+                        <meta charset="utf-8">
+                        <meta http-equiv="content-type" content="text/html; charset=UTF-8;charset=utf-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
+                        <meta name="author" content="Kenshin"/>
+                        <meta name="description" content="简悦 SimpRead - 如杂志般沉浸式阅读体验的扩展" />
+                        <meta name="keywords" content="Chrome extension, Chrome 扩展, 阅读模式, 沉浸式阅读, 简悦, 简阅, read mode, reading mode, reader view, firefox, firefox addon, userscript, safari, opera, tampermonkey"/>
+                        <meta name="thumbnail" content="https://simpread-1254315611.cos.ap-shanghai.myqcloud.com/static/introduce-2.png"/>
+                        <meta property="og:title" content="简悦 SimpRead - 如杂志般沉浸式阅读体验的扩展"/>
+                        <meta property="og:type" content="website">
+                        <meta property="og:local" content="zh_CN"/>
+                        <meta property="og:url" content="http://ksria.com/simpread"/>
+                        <meta property="og:image" content="https://simpread-1254315611.cos.ap-shanghai.myqcloud.com/static/introduce-2.png"/>
+                        <meta property="og:image:type" content="image/png"/>
+                        <meta property="og:image:width" content="960"/>
+                        <meta property="og:image:height" content="355"/>
+                        <meta property="og:site_name" content="http://ksria.com/simpread"/>
+                        <meta property="og:description" content="简悦 SimpRead - 如杂志般沉浸式阅读体验的扩展"/>
+                        <style type="text/css">.simpread-font{font:300 16px/1.8 -apple-system,PingFang SC,Microsoft Yahei,Lantinghei SC,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;color:#333;text-rendering:optimizelegibility;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}.simpread-hidden{display:none}.simpread-read-root{display:-webkit-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;margin:0;top:-1000px;left:0;width:100%;z-index:2147483646;overflow-x:hidden;opacity:0;-webkit-transition:all 1s cubic-bezier(.23,1,.32,1) .1s;transition:all 1s cubic-bezier(.23,1,.32,1) .1s}.simpread-read-root-show{top:0}.simpread-read-root-hide{top:1000px}sr-read{display:-webkit-flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:column nowrap;flex-flow:column;margin:20px 20%;min-width:400px;min-height:400px;text-align:center}read-process{position:fixed;top:0;left:0;height:3px;width:100%;background-color:#64b5f6;-webkit-transition:width 2s;transition:width 2s;z-index:20000}sr-rd-content-error{display:block;position:relative;margin:0;margin-bottom:30px;padding:25px;background-color:rgba(0,0,0,.05)}sr-rd-footer{-webkit-box-orient:vertical;-ms-flex-direction:column;flex-direction:column;font-size:14px}sr-rd-footer,sr-rd-footer-group{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-direction:normal}sr-rd-footer-group{-webkit-box-orient:horizontal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}sr-rd-footer-line{width:100%;border-top:1px solid #e0e0e0}sr-rd-footer-text{min-width:150px}sr-rd-footer-copywrite{margin:10px 0 0;color:inherit}sr-rd-footer-copywrite abbr{-webkit-font-feature-settings:normal;font-feature-settings:normal;font-variant:normal;text-decoration:none}sr-rd-footer-copywrite .second{margin:10px 0}sr-rd-footer-copywrite .third a:hover{border:none!important}sr-rd-footer-copywrite .third a:first-child{margin-right:50px}sr-rd-footer-copywrite .sr-icon{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:33px;height:33px;opacity:.8;-webkit-transition:opacity .5s ease;transition:opacity .5s ease;cursor:pointer}sr-rd-footer-copywrite .sr-icon:hover{opacity:1}sr-rd-footer-copywrite a,sr-rd-footer-copywrite a:link,sr-rd-footer-copywrite a:visited{margin:0;padding:0;color:inherit;background-color:transparent;font-size:inherit!important;line-height:normal;text-decoration:none;vertical-align:baseline;vertical-align:initial;border:none!important;box-sizing:border-box}sr-rd-footer-copywrite a:focus,sr-rd-footer-copywrite a:hover,sr-rd-footer a:active{color:inherit;text-decoration:none;border-bottom:1px dotted!important}.simpread-blocks{text-decoration:none!important}.simpread-blocks *{margin:0}.simpread-blocks a{padding:0;text-decoration:none!important}.simpread-blocks img{margin:0;padding:0;border:0;background:transparent;box-shadow:none}.simpread-focus-root{display:block;position:fixed;top:0;left:0;right:0;bottom:0;background-color:hsla(0,0%,92%,.9);z-index:2147483645;opacity:0;-webkit-transition:opacity 1s cubic-bezier(.23,1,.32,1) 0ms;transition:opacity 1s cubic-bezier(.23,1,.32,1) 0ms}.simpread-focus-highlight{position:relative;box-shadow:0 0 0 20px #fff;background-color:#fff;overflow:visible;z-index:2147483646}.sr-controlbar-bg sr-rd-crlbar,.sr-controlbar-bg sr-rd-crlbar fab{z-index:2147483647}sr-rd-crlbar.controlbar{position:fixed;right:0;bottom:0;width:100px;height:100%;opacity:0;-webkit-transition:opacity .5s ease;transition:opacity .5s ease}sr-rd-crlbar.controlbar:hover{opacity:1}sr-rd-crlbar fap *{box-sizing:border-box}@media (max-height:620px){fab{zoom:.8}}@media (max-height:783px){dialog-gp dialog-content{max-height:580px}dialog-gp dialog-footer{border-top:1px solid #e0e0e0}}.simpread-highlight-selector{outline:3px dashed #1976d2!important;cursor:pointer!important}.simpread-highlight-controlbar,.simpread-highlight-selector{background-color:#fafafa!important;opacity:.8!important;-webkit-transition:opacity .5s ease!important;transition:opacity .5s ease!important}.simpread-highlight-controlbar{position:relative!important;border:3px dashed #1976d2!important}simpread-highlight,sr-snapshot-ctlbar{position:fixed;top:0;left:0;right:0;padding:15px;height:50px;background-color:rgba(50,50,50,.9);box-shadow:0 2px 5px rgba(0,0,0,.26);box-sizing:border-box;z-index:2147483640}simpread-highlight,sr-highlight-ctl,sr-snapshot-ctlbar{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}sr-highlight-ctl{margin:0 5px;width:50px;height:20px;color:#fff;background-color:#1976d2;border-radius:4px;box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);cursor:pointer}toc-bg{position:fixed;left:0;top:0;width:50px;height:200px;font-size:medium}toc-bg:hover{z-index:3}.toc-bg-hidden{opacity:0;-webkit-transition:opacity .5s ease;transition:opacity .5s ease}.toc-bg-hidden:hover{opacity:1;z-index:3}.toc-bg-hidden:hover toc{width:180px}toc *{all:unset}toc{position:fixed;left:0;top:100px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding:10px;width:0;max-width:200px;max-height:500px;overflow-x:hidden;overflow-y:hidden;cursor:pointer;border:1px solid hsla(0,0%,62%,.22);-webkit-transition:width .5s;transition:width .5s}toc:hover{overflow-y:auto}toc.mini:hover{width:200px!important}toc::-webkit-scrollbar{width:3px}toc::-webkit-scrollbar-thumb{border-radius:10px;background-color:hsla(36,2%,54%,.5)}toc outline{position:relative;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;padding:2px 0;min-height:21px;line-height:21px;text-align:left}toc outline a,toc outline a:active,toc outline a:focus,toc outline a:visited{display:block;width:100%;color:inherit;font-size:11px;text-decoration:none!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}toc outline a:hover{font-weight:700!important}toc outline a.toc-outline-theme-dark,toc outline a.toc-outline-theme-night{color:#fff!important}.toc-level-h1{padding-left:5px}.toc-level-h2{padding-left:15px}.toc-level-h3{padding-left:25px}.toc-level-h4{padding-left:35px}.toc-outline-active{border-left:2px solid #f44336}toc outline active{position:absolute;left:0;top:0;bottom:0;padding:0 0 0 3px;border-left:2px solid #e8e8e8}sr-kbd{background:-webkit-gradient(linear,0 0,0 100%,from(#fff785),to(#ffc542));border:1px solid #e3be23;-o-border-image:none;border-image:none;-o-border-image:initial;border-image:initial;position:absolute;left:0;padding:1px 3px 0;font-size:11px!important;font-weight:700;box-shadow:0 3px 7px 0 rgba(0,0,0,.3);overflow:hidden;border-radius:3px}.sr-kbd-a{position:relative}kbd-mapping{position:fixed;left:5px;bottom:5px;-ms-flex-flow:row;flex-flow:row;width:250px;height:500px;background-color:#fff;border:1px solid hsla(0,0%,62%,.22);box-shadow:0 2px 5px rgba(0,0,0,.26);border-radius:3px}kbd-mapping,kbd-maps{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}kbd-maps{margin:40px 0 20px;width:100%;overflow-x:auto}kbd-maps::-webkit-scrollbar-thumb{background-clip:padding-box;border-radius:10px;border:2px solid transparent;background-color:rgba(85,85,85,.55)}kbd-maps::-webkit-scrollbar{width:10px;-webkit-transition:width .7s cubic-bezier(.4,0,.2,1);transition:width .7s cubic-bezier(.4,0,.2,1)}kbd-mapping kbd-map-title{position:absolute;margin:5px 0;width:100%;font-size:14px;font-weight:700}kbd-maps-group{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}kbd-maps-title{margin:5px 0;padding-left:53px;font-size:12px;font-weight:700}kbd-map kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#444d56;vertical-align:middle;background-color:#fafbfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}kbd-map kbd-name{display:inline-block;text-align:right;width:50px}kbd-map kbd-desc{padding-left:3px}sharecard-bg{position:fixed;top:0;left:0;width:100%;height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,0,.4);z-index:2147483647}sharecard{max-width:450px;background-color:#64b5f6}sharecard,sharecard-head{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}sharecard-head{margin:25px;color:#fff;border-radius:10px;box-shadow:0 2px 6px 0 rgba(0,0,0,.2),0 25px 50px 0 rgba(0,0,0,.15)}sharecard-card{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}sharecard-card,sharecard-top{display:-webkit-box;display:-ms-flexbox;display:flex}sharecard-top{-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-right:5px;height:65px;background-color:#fff;color:#878787;font-size:25px;font-weight:500;border-top-left-radius:10px;border-top-right-radius:10px}sharecard-top span.logos{display:block;width:48px;height:48px;margin:5px;background-repeat:no-repeat;background-position:50%;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAABU1BMVEUAAAAnNJMnNZI3Q5onNJInNJMnNJInNJMnNJI8SJ0tOZY/S55EUKAoNJI6RpwoNJNIU6InNJInNJImNJI7SJwmNJJ2fLUiMJFKVaNCTJ9faK1HUaJOWKVSXaUnNJNYY6pye7cmM5JXYKhwebMjMI8mL4719fW9vb0oNZP/UlLz8/QqN5TAwMAnNJPv7+/Pz8/q6+/p6enNzc3Kysry8vMsOJXc3env7/LU1uXo29vR0dHOzs7ExMTwjo73bW37XV3Aj1TCYELl5u3n5+fW2Obn6O7f4OrZ2+g0QJkxPpgvO5bh4uvS1OTP0ePCwsJQW6ZLVqTs7fHd3d3V1dXqv79VX6lET6A1TIxXUIBSgHxWQnpelHf+WVnopkXqbC7j5Ozi4uLDw8NGUaFATJ9SgH3r6+vGyd7BxNva2trX19ejqM2gpczHx8dze7Zha67Z2dlTgH1aXQeSAAAAJnRSTlMA6ff+497Y8NL+/fv49P379sqab/BeOiX06tzVy8m/tKqpalA7G6oKj0EAAAJlSURBVEjHndNXWxpBFIDhcS2ICRLAkt4Dx4WhLk0E6R0MYoIISrWX5P9f5cwSIRC2+T1czMV5n2FnZwn2eWONUqCAv3H2Uf5Ra1hx4+0WEXtDQW0fCPYJ1EffEfIV4CSROAE4jsePoTFsNmTJF/IeIHF2lgCIn57GodlqDWXBK7IwBYatVlMWFAildPKX7I3m74Z9fsCiQChoimoFQAz04Ad2gH1n9fv9n9hgMNDr9euLWD6fLxQKxaLfb7dTSlahbFVdEPwIQtrAihZQgyKCtCagbQe3xh0QFMgy5MR11+ewYY5/qlZ7vT2xu93ULKjbFLpiUxnIIwjgKmVTLDUFXMrAi2NJWCRLIthTBo4xyOLKpwyqU6CuDCI41hFBCVdOhyLw4FgJ1skCAiyl9BSHbCorgo6VJXTru5hrVCQS8Yr5xLzX59YJSFpVFwD9U0BGC3hGdFpATgRupTGe9R9I1b1ePBvXKDyvq/O/44LT4/E4BUbSCAwj8Evq6HlnOBprx6JhJz8Gktc7xeaP9ndY+0coQvCccFBD4JW60UIY50ciLOAODAQRVOeCHm4Q3Xks6uRDY+CQ+AR4T2wMYh6+jMCIQOp78CFoj0H7EQgIuhI3dGaHCrwgADwCPjJvA372GRigCJg49FUdk3D87pq3zp4SA5zc1Zh9DxfwkpjgUg5Mv+lbeE3McC8Lpu7SA3wk2xzcqL2tN5DfIsQC8HB7UamUy6FQOpTO5QKBQDZbKnWSyUzGjdWCwaDA8+7Le4BNgm3qQGWchYh9s5hNq6wVbBlbwhZYOp3OYOA4zmgEypnM2zj8ByIdedKrH8vDAAAAAElFTkSuQmCC");zoom:.8}sharecard-content{padding:15px;max-height:500px;font-size:20px;text-align:justify;background-color:#2196f3;overflow-x:hidden;overflow-y:auto}sharecard-via{padding:10px;font-size:10px;background-color:#2196f3}sharecard-footer{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-right:5px;height:100px;background-color:#fff;color:#878787;font-size:15px;font-weight:500;border-bottom-left-radius:10px;border-bottom-right-radius:10px}sharecard-footer,sharecard-footer div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}sharecard-footer span.qrcode{display:block;width:100px;height:100px;margin:5px;background-repeat:no-repeat;background-position:50%;background-image:url("data:image/png;base64,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")}sharecard-control{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:0 19px;height:80px;background-color:#fff}simpread-snapshot{width:100%;height:100%;cursor:move;z-index:2147483645}simpread-snapshot,sr-mask{position:fixed;left:0;top:0}sr-mask{background-color:rgba(0,0,0,.1)}.simpread-feedback,.simpread-urlscheme{position:fixed;right:20px;bottom:20px;z-index:2147483646}simpread-feedback,simpread-urlscheme{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;padding:20px 20px 0;width:500px;color:rgba(51,51,51,.87);background-color:#fff;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.26);overflow:hidden;-webkit-transform-origin:bottom;transform-origin:bottom;-webkit-transition:all .6s ease;transition:all .6s ease}simpread-feedback *,simpread-urlscheme *{font-size:12px!important;box-sizing:border-box}simpread-feedback.active,simpread-urlscheme.active{-webkit-animation-name:srFadeInUp;animation-name:srFadeInUp;-webkit-animation-duration:.45s;animation-duration:.45s;-webkit-animation-fill-mode:both;animation-fill-mode:both}simpread-feedback.hide,simpread-urlscheme.hide{-webkit-animation-name:srFadeInDown;animation-name:srFadeInDown;-webkit-animation-duration:.45s;animation-duration:.45s;-webkit-animation-fill-mode:both;animation-fill-mode:both}simpread-feedback sr-fb-label,simpread-urlscheme sr-urls-label{width:100%}simpread-feedback sr-fb-head,simpread-urlscheme sr-urls-head{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;margin-bottom:5px;width:100%}simpread-feedback sr-fb-content,simpread-urlscheme sr-urls-content{margin-bottom:5px;width:100%}simpread-feedback sr-urls-footer,simpread-urlscheme sr-urls-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;width:100%}simpread-feedback sr-fb-a,simpread-urlscheme sr-urls-a{color:#2163f7;cursor:pointer}simpread-feedback text-field-state,simpread-urlscheme text-field-state{border-top:none rgba(34,101,247,.8)!important;border-left:none rgba(34,101,247,.8)!important;border-right:none rgba(34,101,247,.8)!important;border-bottom:2px solid rgba(34,101,247,.8)!important}simpread-feedback switch,simpread-urlscheme switch{margin-top:0!important}@-webkit-keyframes srFadeInUp{0%{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes srFadeInUp{0%{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@-webkit-keyframes srFadeInDown{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}to{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}}@keyframes srFadeInDown{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}to{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}}simpread-feedback sr-fb-head{font-weight:700}simpread-feedback sr-fb-content{-webkit-box-orient:vertical;-ms-flex-direction:column;flex-direction:column}simpread-feedback sr-fb-content,simpread-feedback sr-fb-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-direction:normal}simpread-feedback sr-fb-footer{-webkit-box-orient:horizontal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;width:100%}simpread-feedback sr-close{position:absolute;right:20px;cursor:pointer;-webkit-transition:all 1s cubic-bezier(.23,1,.32,1) .1s;transition:all 1s cubic-bezier(.23,1,.32,1) .1s;z-index:200}simpread-feedback sr-close:hover{-webkit-transform:rotate(-15deg) scale(1.3);transform:rotate(-15deg) scale(1.3)}simpread-feedback sr-stars{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-top:10px}simpread-feedback sr-stars i{margin-right:10px;cursor:pointer}simpread-feedback sr-stars i svg{-webkit-transition:all 1s cubic-bezier(.23,1,.32,1) .1s;transition:all 1s cubic-bezier(.23,1,.32,1) .1s}simpread-feedback sr-stars i svg:hover{-webkit-transform:rotate(-15deg) scale(1.3);transform:rotate(-15deg) scale(1.3)}simpread-feedback sr-stars i.active svg{-webkit-transform:rotate(0) scale(1);transform:rotate(0) scale(1)}simpread-feedback sr-emojis{display:block;height:100px;overflow:hidden}simpread-feedback sr-emoji{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-transition:.3s;transition:.3s}simpread-feedback sr-emoji>svg{margin:15px 0;width:70px;height:70px;-ms-flex-negative:0;flex-shrink:0}simpread-feedback sr-stars-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin:10px 0 20px}</style>
+                        <style type="text/css">.simpread-theme-root{font-size:62.5%!important}sr-rd-content,sr-rd-desc,sr-rd-title{width:100%}sr-rd-title{display:-webkit-box;margin:1em 0 .5em;overflow:hidden;text-overflow:ellipsis;text-rendering:optimizelegibility;-webkit-line-clamp:3;-webkit-box-orient:vertical}sr-rd-content{text-align:left;word-break:break-word}sr-rd-desc{text-align:justify;line-height:2.4;margin:0 0 1.2em;box-sizing:border-box}sr-rd-content{font-size:25.6px;font-size:1.6rem;line-height:1.6}sr-rd-content h1,sr-rd-content h1 *,sr-rd-content h2,sr-rd-content h2 *,sr-rd-content h3,sr-rd-content h3 *,sr-rd-content h4,sr-rd-content h4 *,sr-rd-content h5,sr-rd-content h5 *,sr-rd-content h6,sr-rd-content h6 *{word-break:break-all}sr-rd-content div,sr-rd-content p{display:block;float:inherit;line-height:1.6;font-size:25.6px;font-size:1.6rem}sr-rd-content div,sr-rd-content p,sr-rd-content pre,sr-rd-content sr-blockquote{margin:0 0 1.2em;word-break:break-word}sr-rd-content a{padding:0 5px;vertical-align:baseline;vertical-align:initial}sr-rd-content a,sr-rd-content a:link{color:inherit;font-size:inherit;font-weight:inherit;border:none}sr-rd-content a:hover{background:transparent}sr-rd-content img{margin:10px;padding:5px;max-width:100%;background:#fff;border:1px solid #bbb;box-shadow:1px 1px 3px #d4d4d4}sr-rd-content figcaption{text-align:center;font-size:14px}sr-rd-content sr-blockquote{display:block;position:relative;padding:15px 25px;text-align:left;line-height:inherit}sr-rd-content sr-blockquote:before{position:absolute}sr-rd-content sr-blockquote *{margin:0;font-size:inherit}sr-rd-content table{width:100%;margin:0 0 1.2em;word-break:keep-all;word-break:normal;overflow:auto;border:none}sr-rd-content table td,sr-rd-content table th{border:none}sr-rd-content ul{margin:0 0 1.2em;margin-left:1.3em;padding:0;list-style:disc}sr-rd-content ol{list-style:decimal;margin:0;padding:0}sr-rd-content ol li,sr-rd-content ul li{font-size:inherit;list-style:disc;margin:0 0 1.2em}sr-rd-content ol li{list-style:decimal;margin-left:1.3em}sr-rd-content ol li *,sr-rd-content ul li *{margin:0;text-align:left;text-align:initial}sr-rd-content li ol,sr-rd-content li ul{margin-bottom:.8em;margin-left:2em}sr-rd-content li ul{list-style:circle}sr-rd-content pre{font-family:Consolas,Monaco,Andale Mono,Source Code Pro,Liberation Mono,Courier,monospace;display:block;padding:15px;line-height:1.5;word-break:break-all;word-wrap:break-word;white-space:pre;overflow:auto}sr-rd-content pre,sr-rd-content pre *,sr-rd-content pre div{font-size:17.6px;font-size:1.1rem}sr-rd-content li pre code,sr-rd-content p pre code,sr-rd-content pre{background-color:transparent;border:none}sr-rd-content pre code{margin:0;padding:0}sr-rd-content pre code,sr-rd-content pre code *{font-size:17.6px;font-size:1.1rem}sr-rd-content pre p{margin:0;padding:0;color:inherit;font-size:inherit;line-height:inherit}sr-rd-content li code,sr-rd-content p code{margin:0 4px;padding:2px 4px;font-size:17.6px;font-size:1.1rem}sr-rd-content mark{margin:0 5px;padding:2px;background:#fffdd1;border-bottom:1px solid #ffedce}.sr-rd-content-img{width:90%;height:auto}.sr-rd-content-img-load{width:48px;height:48px;margin:0;padding:0;border-style:none;border-width:0;background-repeat:no-repeat;background-image:url(data:image/gif;base64,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)}.sr-rd-content-center{text-align:center;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:vertical}.sr-rd-content-center-small{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex}.sr-rd-content-center-small img{margin:0;padding:0;border:0;box-shadow:none}img.simpread-img-broken{cursor:pointer}.sr-rd-content-nobeautify{margin:0;padding:0;border:0;box-shadow:0 0 0}sr-rd-mult{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;margin:0 0 16px;padding:16px 0 24px;width:100%;background-color:#fff;border-radius:4px;box-shadow:0 1px 2px 0 rgba(60,64,67,.3),0 2px 6px 2px rgba(60,64,67,.15)}sr-rd-mult:hover{-webkit-transition:all .45s 0ms;transition:all .45s 0ms;box-shadow:1px 1px 8px rgba(0,0,0,.16)}sr-rd-mult sr-rd-mult-content{padding:0 16px;overflow:auto}sr-rd-mult sr-rd-mult-avatar,sr-rd-mult sr-rd-mult-content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}sr-rd-mult sr-rd-mult-avatar{-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:0 15px}sr-rd-mult sr-rd-mult-avatar span{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;max-width:75px;overflow:hidden;text-overflow:ellipsis;text-align:left;font-size:16px;font-size:1rem}sr-rd-mult sr-rd-mult-avatar img{margin-bottom:0;max-width:50px;max-height:50px;width:50px;height:50px;border-radius:50%}sr-rd-mult sr-rd-mult-content img{max-width:80%}sr-rd-mult sr-rd-mult-avatar .sr-rd-content-center{margin:0}sr-page{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;width:100%}</style>
+                        <style type="text/css">sr-rd-theme-engwrite{display:none}sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{margin:20px 0 10px;padding:0;font-weight:500;-webkit-font-smoothing:antialiased}sr-rd-content h1{font-weight:300;text-align:center;font-size:44.8px;font-size:2.8rem;color:#933d3f}sr-rd-content h2{font-size:38.4px;font-size:2.4rem;border-bottom:1px solid #ccc;color:#000}sr-rd-content h3{font-size:28.8px;font-size:1.8rem}sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{font-size:25.6px;font-size:1.6rem}sr-rd-content h6{color:#777}sr-rd-content ol,sr-rd-content ul{padding-left:30px}sr-rd-content ol li>:first-child,sr-rd-content ol li ol:first-of-type,sr-rd-content ol li ul:first-of-type,sr-rd-content ul li>:first-child,sr-rd-content ul li ol:first-of-type,sr-rd-content ul li ul:first-of-type{margin-top:0}sr-rd-content ol ol,sr-rd-content ol ul,sr-rd-content ul ol,sr-rd-content ul ul{margin-bottom:0}sr-rd-content table th{font-weight:700}sr-rd-content table td,sr-rd-content table th{border:1px solid #ccc;padding:6px 13px}sr-rd-content table tr{border-top:1px solid #ccc;background-color:#fff}sr-rd-content table tr:nth-child(2n){background-color:#f8f8f8}sr-rd-content sr-blockquote{text-align:left;border-top:1px dotted #cdc7bc;border-bottom:1px dotted #cdc7bc;background-color:#f8edda;color:#777}sr-blockquote>:first-child{margin-top:0}sr-blockquote>:last-child{margin-bottom:0}.simpread-multi-root,.simpread-theme-root{background-color:#fcf5ed;color:#333}sr-rd-title{font-weight:300;text-align:center;font-size:44.8px;font-size:2.8rem;color:#933d3f}sr-rd-desc{padding:10px;background-color:#f8edda;color:#777;font-size:32px;font-size:2rem;text-align:center;border-top:1px dotted #cdc7bc;border-bottom:1px dotted #cdc7bc}sr-rd-content{padding:20px 0;margin:0 auto}sr-rd-content,sr-rd-content *,sr-rd-content div,sr-rd-content p{color:#333;line-height:1.8}sr-rd-content a,sr-rd-content a:link{color:#ae3737;text-decoration:none}sr-rd-content a:active,sr-rd-content a:focus,sr-rd-content a:hover{text-decoration:underline}sr-rd-content pre{background-color:transparent;border:1px solid #ccc;border-radius:3px}sr-rd-content li code,sr-rd-content p code{border:1px solid #eaeaea;background-color:#f4ece3;border-radius:3px}sr-rd-mult{background-color:#f8edda}</style>
+                        <style type="text/css"></style>
+                        <style type="text/css">@media (pointer:coarse){sr-read{margin:20px 5%!important;min-width:0!important;max-width:90%!important}sr-rd-title{margin-top:0;font-size:2.7rem}sr-rd-content sr-blockquote,sr-rd-desc{margin:10 0!important;padding:0 0 0 10px!important;width:90%;font-size:1.8rem;font-style:normal;line-height:1.7;text-align:justify}sr-rd-content{font-size:1.75rem;font-weight:300}sr-rd-content figure{margin:0;padding:0;text-align:center}sr-rd-content a,sr-rd-content a:link,sr-rd-content li code,sr-rd-content p code{font-size:inherit}sr-rd-footer{margin-top:20px}sr-blockquote,sr-blockquote *{margin:5px!important;padding:5px!important}sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6,sr-rd-title{font-family:PingFang SC,Verdana,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;color:#000;font-weight:100;line-height:1.35}sr-rd-content-h1,sr-rd-content-h2,sr-rd-content-h3,sr-rd-content-h4,sr-rd-content-h5,sr-rd-content-h6,sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{margin-top:1.2em;margin-bottom:.6em;line-height:1.35}sr-rd-content-h1,sr-rd-content h1{font-size:1.8em}sr-rd-content-h2,sr-rd-content h2{font-size:1.6em}sr-rd-content-h3,sr-rd-content h3{font-size:1.4em}sr-rd-content-h4,sr-rd-content-h5,sr-rd-content-h6,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{font-size:1.2em}sr-rd-content-ul,sr-rd-content ul{margin-left:1.3em!important;list-style:disc}sr-rd-content-ol,sr-rd-content ol{list-style:decimal;margin-left:1.9em!important}sr-rd-content-ol ol,sr-rd-content-ol ul,sr-rd-content-ul ol,sr-rd-content-ul ul,sr-rd-content li ol,sr-rd-content li ul{margin-bottom:.8em;margin-left:2em!important}sr-rd-content img{margin:0;padding:0;border:0;max-width:100%!important;height:auto;box-shadow:0 20px 20px -10px rgba(0,0,0,.1)}sr-rd-mult{min-width:0;background-color:#fff;box-shadow:0 1px 6px rgba(32,33,36,.28);border-radius:8px}sr-rd-mult sr-rd-mult-avatar div{margin:0}sr-rd-mult sr-rd-mult-avatar .sr-rd-content-center-small{margin:7px 0!important}sr-rd-mult sr-rd-mult-avatar span{display:block}sr-rd-mult sr-rd-mult-content{padding-left:0}@media only screen and (max-device-width:1024px){.simpread-theme-root,html.simpread-theme-root{font-size:80%!important}sr-rd-mult sr-rd-mult-avatar img{width:50px;height:50px;min-width:50px;min-height:50px}toc-bg toc{width:10px!important}toc-bg:hover toc{width:auto!important}}@media only screen and (max-device-width:414px){.simpread-theme-root,html.simpread-theme-root{font-size:70%!important}sr-rd-mult sr-rd-mult-avatar img{width:30px;height:30px;min-width:30px;min-height:30px}}@media only screen and (max-device-width:320px){.simpread-theme-root,html.simpread-theme-root{font-size:90%!important}sr-rd-content p{margin-bottom:.5em}}}</style>
+                        <style type="text/css">sr-rd-content *, sr-rd-content p, sr-rd-content div {}sr-rd-content pre code, sr-rd-content pre code * {}sr-rd-desc {}sr-rd-content pre {}sr-rd-title {}</style>
+                        <style type="text/css"></style>
+                        <style type="text/css"></style>
+                        <style type="text/css"></style>
+                        <style type="text/css"></style>
+                        <style type="text/css">sr-rd-content *, sr-rd-content p, sr-rd-content div {
+        font-size: 15px;
+    }
+
+    .annote-perview, .annote-perview * {
+        color: rgb(85, 85, 85);
+        font-weight: 400;
+        line-height: 1.8;
+    }</style>
+                        
+                        
+                        <script>setTimeout(()=>{const e=location.hash.replace("#id=","");let t,a=!1;const n=t=>{for(let n of t){let t;if((t=e.length>6?n.getAttribute("data-id"):n.getAttribute("data-idx"))==e){n.scrollIntoView({behavior:"smooth",block:"start",inline:"nearest"}),a=!0;break}}};e&&(0==(t=document.getElementsByClassName("sr-unread-card")).length&&(t=document.getElementsByTagName("sr-annote")),n(t),a||n(t=document.getElementsByClassName("sr-annote")))},500);</script>
+                        
+                        <title>简悦 | Python behind the scenes #3: stepping through the CPython source code</title>
+                    </head>
+                    <body>
+                        <sr-read style='font-family: "YaHei Consolas Hybrid"; margin: 20px 30%;'>
+                            <sr-rd-title>Python behind the scenes #3: stepping through the CPython source code</sr-rd-title>
+                    <sr-rd-desc style="margin: 0;padding-top: 0;padding-bottom: 0;font-style: normal;font-size: 18px;">In the first and the second parts of this series we explored the ideas behind the execution and the c......</sr-rd-desc>
+                    <sr-rd-content><p></p><p>In <a href="https://tenthousandmeters.com/blog/python-behind-the-scenes-1-how-the-cpython-vm-works/">the first</a> and <a href="https://tenthousandmeters.com/blog/python-behind-the-scenes-2-how-the-cpython-compiler-works/">the second</a> parts of this series we explored the ideas behind the execution and the compilation of a Python program. We'll continue to focus on ideas in the next parts but this time we'll make an exception and look at the actual code that brings those ideas to life. </p><p></p><h2 id="sr-toc-0">Plan for today</h2><p></p><p>The CPython codebase is around 350,000 lines of C code (excluding header files) and almost 600,000 lines of Python code. Undoubtedly, it would be a daunting task to comprehend all of that at once. Today we'll confine our study to that part of the source code that executes every time we run <code>python</code>. We'll start with the <code>main()</code> function of the <code>python</code> executable and step through the source code until we reach the evaluation loop, a place where Python bytecode gets executed.</p><p></p><p>Our goal is not to understand every piece of code we'll encounter but to highlight the most interesting parts, study them, and, eventually, get an approximate idea of what happens at the very start of the execution of a Python program.</p><p></p><p>There are two more notices I should make. First, we won't step into every function. We'll make only a high-level overview of some parts and dive deep into others. Nevertheless, I promise to present functions in the order of execution. Second, with the exception of a few struct definitions, I'll leave the code as is. The only thing I'll allow myself is to add some comments and to rephrase existing ones. Throughout this post, all multi-line <code>/**/</code> comments are original, and all single-line <code>//</code> comments are mine. With that said, let's begin our journey through the CPython source code.</p><p></p><h2 id="sr-toc-1">Getting CPython</h2><p></p><p>Before we can explore the source code, we need to get it. Let's clone the CPython repository:</p><p></p><div><pre>$ git clone https://github.com/python/cpython/ &amp;&amp; cd cpython
+
+</pre></div><p></p><p>The current <code>master</code> branch is the future CPython 3.10. We're interested in the latest stable release, which is CPython 3.9, so let's switch to the <code>3.9</code> branch:</p><p></p><p>Inside the root directory we find the following contents:</p><p></p><div><pre>$ ls -p
+CODE_OF_CONDUCT.md      Objects/                config.sub
+Doc/                    PC/                     configure
+Grammar/                PCbuild/                configure.ac
+Include/                Parser/                 install-sh
+LICENSE                 Programs/               m4/
+Lib/                    Python/                 netlify.toml
+Mac/                    README.rst              pyconfig.h.in
+Makefile.pre.in         Tools/                  setup.py
+Misc/                   aclocal.m4
+Modules/                config.guess
+
+</pre></div><p></p><p>Some of the listed subdirectories are of particular importance to us in the course of this series:</p><p></p><ul>
+<li><code>Grammar/</code> contains the grammar files we discussed last time.</li>
+<li><code>Include/</code> contains header files. They are used both by CPython and by the users of the <a href="https://docs.python.org/3/c-api/index.html">Python/C API</a>.</li>
+<li><code>Lib/</code> contains standard library modules written in Python. While some modules, such as <code>argparse</code> and <code>wave</code>, are written in Python entirely, many wrap C code. For example, the Python <code>io</code> module  wraps the C <code>_io</code> module.</li>
+<li><code>Modules/</code> contains standard library modules written in C. While some modules, such as <code>itertools</code>, are intended to be imported directly, others are wrapped by Python modules.</li>
+<li><code>Objects/</code> contains the implementations of built-in types. If you want to understand how <code>int</code> or <code>list</code> are implemented, this is the ultimate place to go to.</li>
+<li><code>Parser/</code> contains the old parser, the old parser generator, the new parser and the tokenizer.</li>
+<li><code>Programs/</code> contains source files that are compiled to executables. </li>
+<li><code>Python/</code> contains source files for the interpreter itself. This includes the compiler, the evaluation loop, the <code>builtins</code> module and many other interesting things.</li>
+<li><code>Tools/</code> contains tools useful for building and managing CPython. For example, the new parser generator lives here.</li>
+</ul><p></p><p>If you don't see a directory for tests, and your heart starts beating faster, relax. It's <code>Lib/test/</code>. Tests can be useful not only for CPython development but also for getting an understanding of how CPython works. For example, to understand what optimizations the peephole optimizer is expected to do, you can look at the tests in <code>Lib/test/test_peepholer.py</code>. And to understand what some piece of code of the peephole optimizer does, you can delete that piece of code, recompile CPython, run</p><p></p><div><pre>$ ./python.exe -m test test_peepholer
+
+</pre></div><p></p><p>and see which tests fail.</p><p></p><p>Ideally, all we need to do to compile CPython is to run <code>./configure</code> and <code>make</code>:</p><p></p><p><code>make</code> will produce an executable named <code>python</code>, but don't be surprised to see <code>python.exe</code> on macOS. The <code>.exe</code> extension is used to distinguish the executable from the <code>Python/</code> directory on the case-insensitive filesystem. Check out the <a href="https://devguide.python.org/setup/#compiling">Python Developer's Guide</a> for more information on compiling.</p><p></p><p>At this point, we can proudly say that we've built our own copy of CPython:</p><p></p><div><pre>$ ./python.exe
+Python 3.9.0+ (heads/3.9-dirty:20bdeedfb4, Oct 10 2020, 16:55:24)
+[Clang 10.0.0 (clang-1000.10.44.4)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+&gt;&gt;&gt; 2 ** 16
+65536
+
+</pre></div><p></p><p>Let's see what happens when we run it.</p><p></p><h2 id="sr-toc-2">main()</h2><p></p><p>The execution of CPython, like execution of any other C program, starts with the <code>main()</code> function in <a href="https://github.com/python/cpython/blob/3.9/Programs/python.c"><code>Programs/python.c</code></a>:</p><p></p><div><pre>/* Minimal main program -- everything is loaded from the library */
+
+#include "Python.h"
+
+#ifdef MS_WINDOWS
+int
+wmain(int argc, wchar_t **argv)
+{
+    return Py_Main(argc, argv);
+}
+#else
+int
+main(int argc, char **argv)
+{
+    return Py_BytesMain(argc, argv);
+}
+#endif
+
+</pre></div><p></p><p>There isn't much going on there. The only thing worth mentioning is that on Windows CPython uses <a href="https://docs.microsoft.com/en-us/cpp/c-language/using-wmain?view=vs-2019"><code>wmain()</code></a> instead of <code>main()</code> as an entrypoint to receive <code>argv</code> as <code>UTF-16</code> encoded strings. The affect of this is that on other platforms CPython performs an extra step of converting a <code>char</code> string to a <code>wchar_t</code> string. The encoding of a <code>char</code> string depends on the locale settings, and the encoding of a <code>wchar_t</code> string depends on the size of <code>wchar_t</code>. For example, if <code>sizeof(wchar_t) == 4</code>, the <code>UCS-4</code> encoding is used. <a href="https://www.python.org/dev/peps/pep-0383/">PEP 383</a> has more to say on this.</p><p></p><p>We find <code>Py_Main()</code> and <code>Py_BytesMain()</code> in <a href="https://github.com/python/cpython/blob/57c6cb5100d19a0e0218c77d887c3c239c9ce435/Modules/main.c"><code>Modules/main.c</code></a>. What they essentially do is call <code>pymain_main()</code> with slightly different arguments:</p><p></p><div><pre>int
+Py_Main(int argc, wchar_t **argv)
+{
+    _PyArgv args = {
+        .argc = argc,
+        .use_bytes_argv = 0,
+        .bytes_argv = NULL,
+        .wchar_argv = argv};
+    return pymain_main(&amp;args);
+}
+
+
+int
+Py_BytesMain(int argc, char **argv)
+{
+    _PyArgv args = {
+        .argc = argc,
+        .use_bytes_argv = 1,
+        .bytes_argv = argv,
+        .wchar_argv = NULL};
+    return pymain_main(&amp;args);
+}
+
+</pre></div><p></p><p><code>pymain_main()</code> doesn't seem to do much either:</p><p></p><div><pre>static int
+pymain_main(_PyArgv *args)
+{
+    PyStatus status = pymain_init(args);
+    if (_PyStatus_IS_EXIT(status)) {
+        pymain_free();
+        return status.exitcode;
+    }
+    if (_PyStatus_EXCEPTION(status)) {
+        pymain_exit_error(status);
+    }
+
+    return Py_RunMain();
+}
+
+</pre></div><p></p><p>Nevertheless, we should stop on it for a little bit longer. Last time we learned that before a Python program starts executing, CPython does a lot of things to compile it. It turns out that CPython does a lot of things even before it starts compiling a program. These things constitute the initialization of CPython. We mentioned the initialization in part 1 when we said that CPython works in three stages:</p><p></p><ol>
+<li>initialization</li>
+<li>compilation; and</li>
+<li>interpretation.</li>
+</ol><p></p><p>What <code>pymain_main()</code> does is call <code>pymain_init()</code> to perform the initialization and then call <code>Py_RunMain()</code> to proceed with the next stages.</p><p></p><h2 id="sr-toc-3">The initialization stage</h2><p></p><p>What does CPython do during the initialization? Let's ponder on this for a moment. At the very least it has to:</p><p></p><ul>
+<li>find a common language with the OS to handle properly the encodings of arguments, environment variables, standard streams and the file system</li>
+<li>parse the command line arguments and read the environment variables to determine the options to run with</li>
+<li>initialize the runtime state, the main interpreter state and the main thread state</li>
+<li>initialize built-in types and the <code>builtins</code> module</li>
+<li>initialize the <code>sys</code> module</li>
+<li>set up the import system</li>
+<li>create the <code>__main__</code> module.</li>
+</ul><p></p><p>Starting with CPython 3.8, all of that done in three distinct phases:</p><p></p><ol>
+<li>preinitialization</li>
+<li>core initialization; and</li>
+<li>main initialization.</li>
+</ol><p></p><p>The phases gradually introduce new capabilities. The preinitialization phase initializes the runtime state, sets up the default memory allocator and performs very basic configuration. There is no sign of Python yet. The core initialization phase initializes the main interpreter state and the main thread state, built-in types and exceptions, the <code>builtins</code> module, the <code>sys</code> module and the import system. At this point, you can use the "core" of Python. However, some things are not available yet. For example, the <code>sys</code> module is only partially initialized, and only the import of built-in and frozen modules is supported. After the main initialization phase, CPython is fully initialized and ready to compile and execute a Python program.</p><p></p><p>What's the benefit of having distinct initialization phases? In a nutshell, it allows us to tune CPython more easily. For example, one may set a custom memory allocator in the <code>preinitialized</code> state or override the path configuration in the <code>core_initialized</code> state. Such capabilities are important to the users of the Python/C API who extend and embed Python. <a href="https://www.python.org/dev/peps/pep-0432/">PEP 432</a> and <a href="https://www.python.org/dev/peps/pep-0587/">PEP 587</a> explain in greater detail why having multi-phase initialization is a good idea.</p><p></p><p>Let's go back to the source code. The <code>pymain_init()</code> function mostly deals with the preinitialization and calls <code>Py_InitializeFromConfig()</code> in the end to perform the core and the main phases of the initialization:</p><p></p><div><pre>static PyStatus
+pymain_init(const _PyArgv *args)
+{
+    PyStatus status;
+
+    // Initialize the runtime state
+    status = _PyRuntime_Initialize();
+    if (_PyStatus_EXCEPTION(status)) {
+        return status;
+    }
+
+    // Initialize default preconfig
+    PyPreConfig preconfig;
+    PyPreConfig_InitPythonConfig(&amp;preconfig);
+
+    // Perfrom preinitialization
+    status = _Py_PreInitializeFromPyArgv(&amp;preconfig, args);
+    if (_PyStatus_EXCEPTION(status)) {
+        return status;
+    }
+    // Preinitialized. Prepare config for the next initialization phases
+
+    // Initialize default config
+    PyConfig config;
+    PyConfig_InitPythonConfig(&amp;config);
+
+    // Store the command line arguments in `config-&gt;argv`
+    if (args-&gt;use_bytes_argv) {
+        status = PyConfig_SetBytesArgv(&amp;config, args-&gt;argc, args-&gt;bytes_argv);
+    }
+    else {
+        status = PyConfig_SetArgv(&amp;config, args-&gt;argc, args-&gt;wchar_argv);
+    }
+    if (_PyStatus_EXCEPTION(status)) {
+        goto done;
+    }
+
+    // Perform core and main initialization
+    status = Py_InitializeFromConfig(&amp;config);
+        if (_PyStatus_EXCEPTION(status)) {
+        goto done;
+    }
+    status = _PyStatus_OK();
+
+done:
+    PyConfig_Clear(&amp;config);
+    return status;
+}
+
+</pre></div><p></p><p><code>_PyRuntime_Initialize()</code> initializes the runtime state. The runtime state is stored in the global variable called <code>_PyRuntime</code> of type <code>_PyRuntimeState</code> that is defined as follows:</p><p></p><div><pre>/* Full Python runtime state */
+
+typedef struct pyruntimestate {
+    /* Is running Py_PreInitialize()? */
+    int preinitializing;
+
+    /* Is Python preinitialized? Set to 1 by Py_PreInitialize() */
+    int preinitialized;
+
+    /* Is Python core initialized? Set to 1 by _Py_InitializeCore() */
+    int core_initialized;
+
+    /* Is Python fully initialized? Set to 1 by Py_Initialize() */
+    int initialized;
+
+    /* Set by Py_FinalizeEx(). Only reset to NULL if Py_Initialize() is called again. */
+    _Py_atomic_address _finalizing;
+
+    struct pyinterpreters {
+        PyThread_type_lock mutex;
+        PyInterpreterState *head;
+        PyInterpreterState *main;
+        int64_t next_id;
+    } interpreters;
+
+    unsigned long main_thread;
+
+    struct _ceval_runtime_state ceval;
+    struct _gilstate_runtime_state gilstate;
+
+    PyPreConfig preconfig;
+
+    // ... less interesting stuff for now
+} _PyRuntimeState;
+
+</pre></div><p></p><p>The last field <code>preconfig</code> of <code>_PyRuntimeState</code> holds the configuration that is used to preinitialize CPython. It's also used by the next phase to complete the configuration. Here's the extensively commented definition of <code>PyPreConfig</code>:</p><p></p><div><pre>typedef struct {
+    int _config_init;     /* _PyConfigInitEnum value */
+
+    /* Parse Py_PreInitializeFromBytesArgs() arguments?
+       See PyConfig.parse_argv */
+    int parse_argv;
+
+    /* If greater than 0, enable isolated mode: sys.path contains
+       neither the script's directory nor the user's site-packages directory.
+
+       Set to 1 by the -I command line option. If set to -1 (default), inherit
+       Py_IsolatedFlag value. */
+    int isolated;
+
+    /* If greater than 0: use environment variables.
+       Set to 0 by -E command line option. If set to -1 (default), it is
+       set to !Py_IgnoreEnvironmentFlag. */
+    int use_environment;
+
+    /* Set the LC_CTYPE locale to the user preferred locale? If equals to 0,
+       set coerce_c_locale and coerce_c_locale_warn to 0. */
+    int configure_locale;
+
+    /* Coerce the LC_CTYPE locale if it's equal to "C"? (PEP 538)
+
+       Set to 0 by PYTHONCOERCECLOCALE=0. Set to 1 by PYTHONCOERCECLOCALE=1.
+       Set to 2 if the user preferred LC_CTYPE locale is "C".
+
+       If it is equal to 1, LC_CTYPE locale is read to decide if it should be
+       coerced or not (ex: PYTHONCOERCECLOCALE=1). Internally, it is set to 2
+       if the LC_CTYPE locale must be coerced.
+
+       Disable by default (set to 0). Set it to -1 to let Python decide if it
+       should be enabled or not. */
+    int coerce_c_locale;
+
+    /* Emit a warning if the LC_CTYPE locale is coerced?
+
+       Set to 1 by PYTHONCOERCECLOCALE=warn.
+
+       Disable by default (set to 0). Set it to -1 to let Python decide if it
+       should be enabled or not. */
+    int coerce_c_locale_warn;
+
+#ifdef MS_WINDOWS
+    /* If greater than 1, use the "mbcs" encoding instead of the UTF-8
+       encoding for the filesystem encoding.
+
+       Set to 1 if the PYTHONLEGACYWINDOWSFSENCODING environment variable is
+       set to a non-empty string. If set to -1 (default), inherit
+       Py_LegacyWindowsFSEncodingFlag value.
+
+       See PEP 529 for more details. */
+    int legacy_windows_fs_encoding;
+#endif
+
+    /* Enable UTF-8 mode? (PEP 540)
+
+       Disabled by default (equals to 0).
+
+       Set to 1 by "-X utf8" and "-X utf8=1" command line options.
+       Set to 1 by PYTHONUTF8=1 environment variable.
+
+       Set to 0 by "-X utf8=0" and PYTHONUTF8=0.
+
+       If equals to -1, it is set to 1 if the LC_CTYPE locale is "C" or
+       "POSIX", otherwise it is set to 0. Inherit Py_UTF8Mode value value. */
+    int utf8_mode;
+
+    /* If non-zero, enable the Python Development Mode.
+
+       Set to 1 by the -X dev command line option. Set by the PYTHONDEVMODE
+       environment variable. */
+    int dev_mode;
+
+    /* Memory allocator: PYTHONMALLOC env var.
+       See PyMemAllocatorName for valid values. */
+    int allocator;
+} PyPreConfig;
+
+</pre></div><p></p><p>After the call to <code>_PyRuntime_Initialize()</code>, the <code>_PyRuntime</code> global variable is initialized to the defaults. Next, <code>PyPreConfig_InitPythonConfig()</code> initializes new default <code>preconfig</code>, and then <code>_Py_PreInitializeFromPyArgv()</code> performs the actual preinitialization. What's the reason to initialize another <code>preconfig</code> if there is already one in <code>_PyRuntime</code>? Remember that many functions that CPython calls are also exposed via the Python/C API. So CPython just uses this API in the way it's designed to be used. Another consequence of this is that when you step through the CPython source code as we do today, you often encounter functions that seem to do more than you expect. For example, <code>_PyRuntime_Initialize()</code> is called several times during the initialization process. Of course, it does nothing on the subsequent calls.</p><p></p><p><code>_Py_PreInitializeFromPyArgv()</code> reads command line arguments, environment variables and global configuration variables and, based on that, sets  <code>_PyRuntime.preconfig</code>, the current locale and the memory allocator. It reads only those parameters that are relevant to the preinitialization phase. For example, it parses only the <code>-E -I -X</code> arguments. </p><p></p><p>At this point, the runtime is preinitialized, and <code>pymain_init()</code> starts to prepare <code>config</code> for the next initialization phase. Do not confuse <code>config</code> with <code>preconfig</code>. The former is a structure that holds most of the Python configuration. It's heavily used during the initialization stage and during the execution of a Python program as well. To get an idea of how <code>config</code> is used, I recommend you look over its lengthy definition:</p><p></p><div><pre>/* --- PyConfig ---------------------------------------------- */
+
+typedef struct {
+    int _config_init;     /* _PyConfigInitEnum value */
+
+    int isolated;         /* Isolated mode? see PyPreConfig.isolated */
+    int use_environment;  /* Use environment variables? see PyPreConfig.use_environment */
+    int dev_mode;         /* Python Development Mode? See PyPreConfig.dev_mode */
+
+    /* Install signal handlers? Yes by default. */
+    int install_signal_handlers;
+
+    int use_hash_seed;      /* PYTHONHASHSEED=x */
+    unsigned long hash_seed;
+
+    /* Enable faulthandler?
+       Set to 1 by -X faulthandler and PYTHONFAULTHANDLER. -1 means unset. */
+    int faulthandler;
+
+    /* Enable PEG parser?
+       1 by default, set to 0 by -X oldparser and PYTHONOLDPARSER */
+    int _use_peg_parser;
+
+    /* Enable tracemalloc?
+       Set by -X tracemalloc=N and PYTHONTRACEMALLOC. -1 means unset */
+    int tracemalloc;
+
+    int import_time;        /* PYTHONPROFILEIMPORTTIME, -X importtime */
+    int show_ref_count;     /* -X showrefcount */
+    int dump_refs;          /* PYTHONDUMPREFS */
+    int malloc_stats;       /* PYTHONMALLOCSTATS */
+
+    /* Python filesystem encoding and error handler:
+       sys.getfilesystemencoding() and sys.getfilesystemencodeerrors().
+
+       Default encoding and error handler:
+
+       * if Py_SetStandardStreamEncoding() has been called: they have the
+         highest priority;
+       * PYTHONIOENCODING environment variable;
+       * The UTF-8 Mode uses UTF-8/surrogateescape;
+       * If Python forces the usage of the ASCII encoding (ex: C locale
+         or POSIX locale on FreeBSD or HP-UX), use ASCII/surrogateescape;
+       * locale encoding: ANSI code page on Windows, UTF-8 on Android and
+         VxWorks, LC_CTYPE locale encoding on other platforms;
+       * On Windows, "surrogateescape" error handler;
+       * "surrogateescape" error handler if the LC_CTYPE locale is "C" or "POSIX";
+       * "surrogateescape" error handler if the LC_CTYPE locale has been coerced
+         (PEP 538);
+       * "strict" error handler.
+
+       Supported error handlers: "strict", "surrogateescape" and
+       "surrogatepass". The surrogatepass error handler is only supported
+       if Py_DecodeLocale() and Py_EncodeLocale() use directly the UTF-8 codec;
+       it's only used on Windows.
+
+       initfsencoding() updates the encoding to the Python codec name.
+       For example, "ANSI_X3.4-1968" is replaced with "ascii".
+
+       On Windows, sys._enablelegacywindowsfsencoding() sets the
+       encoding/errors to mbcs/replace at runtime.
+
+
+       See Py_FileSystemDefaultEncoding and Py_FileSystemDefaultEncodeErrors.
+       */
+    wchar_t *filesystem_encoding;
+    wchar_t *filesystem_errors;
+
+    wchar_t *pycache_prefix;  /* PYTHONPYCACHEPREFIX, -X pycache_prefix=PATH */
+    int parse_argv;           /* Parse argv command line arguments? */
+
+    /* Command line arguments (sys.argv).
+
+       Set parse_argv to 1 to parse argv as Python command line arguments
+       and then strip Python arguments from argv.
+
+       If argv is empty, an empty string is added to ensure that sys.argv
+       always exists and is never empty. */
+    PyWideStringList argv;
+
+    /* Program name:
+
+       - If Py_SetProgramName() was called, use its value.
+       - On macOS, use PYTHONEXECUTABLE environment variable if set.
+       - If WITH_NEXT_FRAMEWORK macro is defined, use __PYVENV_LAUNCHER__
+         environment variable is set.
+       - Use argv[0] if available and non-empty.
+       - Use "python" on Windows, or "python3 on other platforms. */
+    wchar_t *program_name;
+
+    PyWideStringList xoptions;     /* Command line -X options */
+
+    /* Warnings options: lowest to highest priority. warnings.filters
+       is built in the reverse order (highest to lowest priority). */
+    PyWideStringList warnoptions;
+
+    /* If equal to zero, disable the import of the module site and the
+       site-dependent manipulations of sys.path that it entails. Also disable
+       these manipulations if site is explicitly imported later (call
+       site.main() if you want them to be triggered).
+
+       Set to 0 by the -S command line option. If set to -1 (default), it is
+       set to !Py_NoSiteFlag. */
+    int site_import;
+
+    /* Bytes warnings:
+
+       * If equal to 1, issue a warning when comparing bytes or bytearray with
+         str or bytes with int.
+       * If equal or greater to 2, issue an error.
+
+       Incremented by the -b command line option. If set to -1 (default), inherit
+       Py_BytesWarningFlag value. */
+    int bytes_warning;
+
+    /* If greater than 0, enable inspect: when a script is passed as first
+       argument or the -c option is used, enter interactive mode after
+       executing the script or the command, even when sys.stdin does not appear
+       to be a terminal.
+
+       Incremented by the -i command line option. Set to 1 if the PYTHONINSPECT
+       environment variable is non-empty. If set to -1 (default), inherit
+       Py_InspectFlag value. */
+    int inspect;
+
+    /* If greater than 0: enable the interactive mode (REPL).
+
+       Incremented by the -i command line option. If set to -1 (default),
+       inherit Py_InteractiveFlag value. */
+    int interactive;
+
+    /* Optimization level.
+
+       Incremented by the -O command line option. Set by the PYTHONOPTIMIZE
+       environment variable. If set to -1 (default), inherit Py_OptimizeFlag
+       value. */
+    int optimization_level;
+
+    /* If greater than 0, enable the debug mode: turn on parser debugging
+       output (for expert only, depending on compilation options).
+
+       Incremented by the -d command line option. Set by the PYTHONDEBUG
+       environment variable. If set to -1 (default), inherit Py_DebugFlag
+       value. */
+    int parser_debug;
+
+    /* If equal to 0, Python won't try to write ``.pyc`` files on the
+       import of source modules.
+
+       Set to 0 by the -B command line option and the PYTHONDONTWRITEBYTECODE
+       environment variable. If set to -1 (default), it is set to
+       !Py_DontWriteBytecodeFlag. */
+    int write_bytecode;
+
+    /* If greater than 0, enable the verbose mode: print a message each time a
+       module is initialized, showing the place (filename or built-in module)
+       from which it is loaded.
+
+       If greater or equal to 2, print a message for each file that is checked
+       for when searching for a module. Also provides information on module
+       cleanup at exit.
+
+       Incremented by the -v option. Set by the PYTHONVERBOSE environment
+       variable. If set to -1 (default), inherit Py_VerboseFlag value. */
+    int verbose;
+
+    /* If greater than 0, enable the quiet mode: Don't display the copyright
+       and version messages even in interactive mode.
+
+       Incremented by the -q option. If set to -1 (default), inherit
+       Py_QuietFlag value. */
+    int quiet;
+
+   /* If greater than 0, don't add the user site-packages directory to
+      sys.path.
+
+      Set to 0 by the -s and -I command line options , and the PYTHONNOUSERSITE
+      environment variable. If set to -1 (default), it is set to
+      !Py_NoUserSiteDirectory. */
+    int user_site_directory;
+
+    /* If non-zero, configure C standard steams (stdio, stdout,
+       stderr):
+
+       - Set O_BINARY mode on Windows.
+       - If buffered_stdio is equal to zero, make streams unbuffered.
+         Otherwise, enable streams buffering if interactive is non-zero. */
+    int configure_c_stdio;
+
+    /* If equal to 0, enable unbuffered mode: force the stdout and stderr
+       streams to be unbuffered.
+
+       Set to 0 by the -u option. Set by the PYTHONUNBUFFERED environment
+       variable.
+       If set to -1 (default), it is set to !Py_UnbufferedStdioFlag. */
+    int buffered_stdio;
+
+    /* Encoding of sys.stdin, sys.stdout and sys.stderr.
+       Value set from PYTHONIOENCODING environment variable and
+       Py_SetStandardStreamEncoding() function.
+       See also 'stdio_errors' attribute. */
+    wchar_t *stdio_encoding;
+
+    /* Error handler of sys.stdin and sys.stdout.
+       Value set from PYTHONIOENCODING environment variable and
+       Py_SetStandardStreamEncoding() function.
+       See also 'stdio_encoding' attribute. */
+    wchar_t *stdio_errors;
+
+#ifdef MS_WINDOWS
+    /* If greater than zero, use io.FileIO instead of WindowsConsoleIO for sys
+       standard streams.
+
+       Set to 1 if the PYTHONLEGACYWINDOWSSTDIO environment variable is set to
+       a non-empty string. If set to -1 (default), inherit
+       Py_LegacyWindowsStdioFlag value.
+
+       See PEP 528 for more details. */
+    int legacy_windows_stdio;
+#endif
+
+    /* Value of the --check-hash-based-pycs command line option:
+
+       - "default" means the 'check_source' flag in hash-based pycs
+         determines invalidation
+       - "always" causes the interpreter to hash the source file for
+         invalidation regardless of value of 'check_source' bit
+       - "never" causes the interpreter to always assume hash-based pycs are
+         valid
+
+       The default value is "default".
+
+       See PEP 552 "Deterministic pycs" for more details. */
+    wchar_t *check_hash_pycs_mode;
+
+    /* --- Path configuration inputs ------------ */
+
+    /* If greater than 0, suppress _PyPathConfig_Calculate() warnings on Unix.
+       The parameter has no effect on Windows.
+
+       If set to -1 (default), inherit !Py_FrozenFlag value. */
+    int pathconfig_warnings;
+
+    wchar_t *pythonpath_env; /* PYTHONPATH environment variable */
+    wchar_t *home;          /* PYTHONHOME environment variable,
+                               see also Py_SetPythonHome(). */
+
+    /* --- Path configuration outputs ----------- */
+
+    int module_search_paths_set;  /* If non-zero, use module_search_paths */
+    PyWideStringList module_search_paths;  /* sys.path paths. Computed if
+                                       module_search_paths_set is equal
+                                       to zero. */
+
+    wchar_t *executable;        /* sys.executable */
+    wchar_t *base_executable;   /* sys._base_executable */
+    wchar_t *prefix;            /* sys.prefix */
+    wchar_t *base_prefix;       /* sys.base_prefix */
+    wchar_t *exec_prefix;       /* sys.exec_prefix */
+    wchar_t *base_exec_prefix;  /* sys.base_exec_prefix */
+    wchar_t *platlibdir;        /* sys.platlibdir */
+
+    /* --- Parameter only used by Py_Main() ---------- */
+
+    /* Skip the first line of the source ('run_filename' parameter), allowing use of non-Unix forms of
+       "#!cmd".  This is intended for a DOS specific hack only.
+
+       Set by the -x command line option. */
+    int skip_source_first_line;
+
+    wchar_t *run_command;   /* -c command line argument */
+    wchar_t *run_module;    /* -m command line argument */
+    wchar_t *run_filename;  /* Trailing command line argument without -c or -m */
+
+    /* --- Private fields ---------------------------- */
+
+    /* Install importlib? If set to 0, importlib is not initialized at all.
+       Needed by freeze_importlib. */
+    int _install_importlib;
+
+    /* If equal to 0, stop Python initialization before the "main" phase */
+    int _init_main;
+
+    /* If non-zero, disallow threads, subprocesses, and fork.
+       Default: 0. */
+    int _isolated_interpreter;
+
+    /* Original command line arguments. If _orig_argv is empty and _argv is
+       not equal to [''], PyConfig_Read() copies the configuration 'argv' list
+       into '_orig_argv' list before modifying 'argv' list (if parse_argv
+       is non-zero).
+
+       _PyConfig_Write() initializes Py_GetArgcArgv() to this list. */
+    PyWideStringList _orig_argv;
+} PyConfig;
+
+</pre></div><p></p><p>The same way as <code>pymain_init()</code> called <code>PyPreConfig_InitPythonConfig()</code> to create default <code>preconfig</code>, it now calls <code>PyConfig_InitPythonConfig()</code> to create default <code>config</code>. It then calls <code>PyConfig_SetBytesArgv()</code> to store command line arguments in <code>config.argv</code> and <code>Py_InitializeFromConfig()</code> to perform the core and main initialization phases. We move further from <code>pymain_init()</code> to <code>Py_InitializeFromConfig()</code>:</p><p></p><div><pre>PyStatus
+Py_InitializeFromConfig(const PyConfig *config)
+{
+    if (config == NULL) {
+        return _PyStatus_ERR("initialization config is NULL");
+    }
+
+    PyStatus status;
+
+    // Yeah, call once again
+    status = _PyRuntime_Initialize();
+    if (_PyStatus_EXCEPTION(status)) {
+        return status;
+    }
+    _PyRuntimeState *runtime = &amp;_PyRuntime;
+
+    PyThreadState *tstate = NULL;
+    // The core initialization phase
+    status = pyinit_core(runtime, config, &amp;tstate);
+    if (_PyStatus_EXCEPTION(status)) {
+        return status;
+    }
+    config = _PyInterpreterState_GetConfig(tstate-&gt;interp);
+
+    if (config-&gt;_init_main) {
+        // The main initialization phase
+        status = pyinit_main(tstate);
+        if (_PyStatus_EXCEPTION(status)) {
+            return status;
+        }
+    }
+
+    return _PyStatus_OK();
+}
+
+</pre></div><p></p><p>We can clearly see the separation between the initialization phases. The core phase is done by <code>pyinit_core()</code>, and the main phase is done by <code>pyinit_main()</code>. The <code>pyinit_core()</code> function initializes the "core" of Python. More specifically,</p><p></p><ol>
+<li>It prepares the configuration: parses command line arguments, reads environment variables, calculates the path configuration, chooses the encodings for the standard streams and the file system and writes all of this to <code>config</code>.</li>
+<li>It applies the configuration: configures the standard streams, generates the secret key for hashing, creates the main interpreter state and the main thread state, initializes the GIL and takes it, enables the GC, initializes built-in types and exceptions, initializes the <code>sys</code> module and the <code>builtins</code> module and sets up the import system for built-in and frozen modules.</li>
+</ol><p></p><p>During the first step, CPython calculates <code>config.module_search_paths</code>, which will be later copied to <code>sys.path</code>. Otherwise, this step is not very interesting, so let's look at  <code>pyinit_config()</code> that <code>pyinit_core()</code> calls to perform the second step:</p><p></p><div><pre>static PyStatus
+pyinit_config(_PyRuntimeState *runtime,
+              PyThreadState **tstate_p,
+              const PyConfig *config)
+{
+    // Set Py_* global variables from config.
+    // Initialize C standard streams (stdin, stdout, stderr).
+    // Set secret key for hashing.
+    PyStatus status = pycore_init_runtime(runtime, config);
+    if (_PyStatus_EXCEPTION(status)) {
+        return status;
+    }
+
+    PyThreadState *tstate;
+    // Create the main interpreter state and the main thread state.
+    // Take the GIL.
+    status = pycore_create_interpreter(runtime, config, &amp;tstate);
+    if (_PyStatus_EXCEPTION(status)) {
+        return status;
+    }
+    *tstate_p = tstate;
+
+    // Init types, exception, sys, builtins, importlib, etc.
+    status = pycore_interp_init(tstate);
+    if (_PyStatus_EXCEPTION(status)) {
+        return status;
+    }
+
+    /* Only when we get here is the runtime core fully initialized */
+    runtime-&gt;core_initialized = 1;
+    return _PyStatus_OK();
+}
+
+</pre></div><p></p><p>First, <code>pycore_init_runtime()</code> copies some of the <code>config</code> fields to the corresponding <a href="https://docs.python.org/3/c-api/init.html#global-configuration-variables">global configuration variables</a>. These global variables were used to configure CPython before <code>PyConfig</code> was introduced and continue to be a part of the Python/C API.</p><p></p><p>Next, <code>pycore_init_runtime()</code> sets the buffering modes for the <code>stdio</code>, <code>stdout</code> and <code>stderr</code> <a href="http://www.cplusplus.com/reference/cstdio/FILE/">file pointers</a>. On Unix-like systems this is done by calling the <a href="https://linux.die.net/man/3/setvbuf"><code>setvbuf()</code></a> library function.</p><p></p><p>Finally, <code>pycore_init_runtime()</code> generates the secret key for hashing, which is stored in the <code>_Py_HashSecret</code> global variable. The secret key is taken along with the input by the <a href="https://en.wikipedia.org/wiki/SipHash">SipHash24</a> hash function, which CPython uses to compute hashes. The secret key is randomly generated each time CPython starts. The purpose of randomization is to protect a Python application from hash collision DoS attacks. Python and many other languages including PHP, Ruby, JavaScript and C# were once vulnerable to such attacks. An attacker could send a set of strings with the same hash to an application and increase dramatically the CPU time required to put these strings in the dictionary because they all happen to be in the same bucket. The solution is to supply a hash function with the randomly generated key unknown to the attacker. To learn more about the attack, check <a href="https://fahrplan.events.ccc.de/congress/2011/Fahrplan/attachments/2007_28C3_Effective_DoS_on_web_application_platforms.pdf">this presentation</a>. To learn more about the hash algorithm, check <a href="https://www.python.org/dev/peps/pep-0456/">PEP 456</a>. If you need to generate the key deterministically in your program, set the <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONHASHSEED"><code>PYTHONHASHSEED</code></a> environment variable to some fixed value. </p><p></p><p>In part 1 we learned that CPython uses a thread state to store thread-specific data, such as a call stack and an exception state, and an interpreter state to store interpreter-specific data, such as loaded modules and import settings.  The <code>pycore_create_interpreter()</code>  function creates an interpreter state and a thread state for the main OS thread. We haven't seen what these structures look like yet, so here's the definition of the interpreter state struct:</p><p></p><div><pre>// The PyInterpreterState typedef is in Include/pystate.h.
+struct _is {
+
+    // _PyRuntime.interpreters.head stores the most recently created interpreter
+    // `next` allows us to access all the interpreters.
+    struct _is *next;
+    // `tstate_head` points to the most recently created thread state.
+    // Thread states of the same interpreter are linked together.
+    struct _ts *tstate_head;
+
+    /* Reference to the _PyRuntime global variable. This field exists
+       to not have to pass runtime in addition to tstate to a function.
+       Get runtime from tstate: tstate-&gt;interp-&gt;runtime. */
+    struct pyruntimestate *runtime;
+
+    int64_t id;
+    // For tracking references to the interpreter
+    int64_t id_refcount;
+    int requires_idref;
+    PyThread_type_lock id_mutex;
+
+    int finalizing;
+
+    struct _ceval_state ceval;
+    struct _gc_runtime_state gc;
+
+    PyObject *modules;  // sys.modules points to it
+    PyObject *modules_by_index;
+    PyObject *sysdict;  // points to sys.__dict__
+    PyObject *builtins; // points to builtins.__dict__
+    PyObject *importlib;
+
+    // A list of codec search functions
+    PyObject *codec_search_path;
+    PyObject *codec_search_cache;
+    PyObject *codec_error_registry;
+    int codecs_initialized;
+
+    struct _Py_unicode_state unicode;
+
+    PyConfig config;
+
+    PyObject *dict;  /* Stores per-interpreter state */
+
+    PyObject *builtins_copy;
+    PyObject *import_func;
+    /* Initialized to PyEval_EvalFrameDefault(). */
+    _PyFrameEvalFunction eval_frame;
+
+    // See `atexit` module
+    void (*pyexitfunc)(PyObject *);
+    PyObject *pyexitmodule;
+
+    uint64_t tstate_next_unique_id;
+
+    // See `warnings` module
+    struct _warnings_runtime_state warnings;
+
+    // A list of audit hooks, see sys.addaudithook
+    PyObject *audit_hooks;
+
+#if _PY_NSMALLNEGINTS + _PY_NSMALLPOSINTS &gt; 0
+    // Small integers are preallocated in this array so that they can be shared.
+    // The default range is [-5, 256].
+    PyLongObject* small_ints[_PY_NSMALLNEGINTS + _PY_NSMALLPOSINTS];
+#endif
+
+  // ... less interesting stuff for now
+};
+
+</pre></div><p></p><p>The important thing to note here is that <code>config</code> belongs to the interpreter state. The configuration that was read before is stored in <code>config</code> of the newly created interpreter state. The thread state struct is defined as follows:</p><p></p><div><pre>// The PyThreadState typedef is in Include/pystate.h.
+struct _ts {
+
+    // Double-linked list is used to access all thread states belonging to the same interpreter
+    struct _ts *prev;
+    struct _ts *next;
+    PyInterpreterState *interp;
+
+    // Reference to the current frame (it can be NULL).
+    // The call stack is accesible via frame-&gt;f_back.
+    PyFrameObject *frame;
+
+    // ... checking if recursion level is too deep
+
+    // ... tracing/profiling
+
+    /* The exception currently being raised */
+    PyObject *curexc_type;
+    PyObject *curexc_value;
+    PyObject *curexc_traceback;
+
+    /* The exception currently being handled, if no coroutines/generators
+     * are present. Always last element on the stack referred to be exc_info.
+     */
+    _PyErr_StackItem exc_state;
+
+    /* Pointer to the top of the stack of the exceptions currently
+     * being handled */
+    _PyErr_StackItem *exc_info;
+
+    PyObject *dict;  /* Stores per-thread state */
+
+    int gilstate_counter;
+
+    PyObject *async_exc; /* Asynchronous exception to raise */
+    unsigned long thread_id; /* Thread id where this tstate was created */
+
+    /* Unique thread state id. */
+    uint64_t id;
+
+    // ... less interesting stuff for now
+};
+
+</pre></div><p></p><p>Every thread needs to have an access to its thread state. When you spawn a new thread using the <a href="https://docs.python.org/3/library/threading.html"><code>threading</code></a> module, the thread starts executing a given target in the evaluation loop. It can access its thread state because the thread state is passed as an argument to the evaluation function.</p><p></p><p>After creating a thread state for the main OS thread, <code>pycore_create_interpreter()</code> initializes the GIL that prevents multiple threads from working with Python objects at the same time. Threads wait for the GIL and take the GIL at the start of the evaluation loop.</p><p></p><p>If you write a C extension and create new threads from C, you need to manually take the GIL in order to work with Python objects. When you take the GIL, CPython associates the current thread with the corresponding thread state by storing a thread state in the thread specific storage (the <a href="https://linux.die.net/man/3/pthread_setspecific"><code>pthread_setspecific()</code></a>  library function on Unix-like systems). That's the mechanism that allows any thread to access its thread state.</p><p></p><p>After <code>pycore_create_interpreter()</code> creates the main interpreter state and the main thread state, <code>pyinit_config()</code> calls <code>pycore_interp_init()</code> to finish the core initialization phase. The code of <code>pycore_interp_init()</code> is self-explanatory:</p><p></p><div><pre>static PyStatus
+pycore_interp_init(PyThreadState *tstate)
+{
+    PyStatus status;
+    PyObject *sysmod = NULL;
+
+    status = pycore_init_types(tstate);
+    if (_PyStatus_EXCEPTION(status)) {
+        goto done;
+    }
+
+    status = _PySys_Create(tstate, &amp;sysmod);
+    if (_PyStatus_EXCEPTION(status)) {
+        goto done;
+    }
+
+    status = pycore_init_builtins(tstate);
+    if (_PyStatus_EXCEPTION(status)) {
+        goto done;
+    }
+
+    status = pycore_init_import_warnings(tstate, sysmod);
+
+done:
+    // Py_XDECREF() decreases the reference count of an object.
+    // If the reference count becomes 0, the object is deallocated.
+    Py_XDECREF(sysmod);
+    return status;
+}
+
+</pre></div><p></p><p>The <code>pycore_init_types()</code> function initializes built-in types. But what does it mean? And what are types really? As you probably know, everything you work with in Python is an object. Numbers, strings, lists, functions, modules, frame objects, user-defined classes and built-in types are all Python objects. A Python object is an instance of the <code>PyObject</code> struct or an instance of any other C struct that "inherits" (we'll what it means in a moment) from <code>PyObject</code>. The <code>PyObject</code> struct has two fields: </p><p></p><div><pre>typedef struct _object {
+    _PyObject_HEAD_EXTRA // for debugging only
+    Py_ssize_t ob_refcnt;
+    PyTypeObject *ob_type;
+} PyObject;
+
+</pre></div><p></p><p>The <code>ob_refcnt</code> field stores a reference count, and the <code>ob_type</code> field points to the type of the object.</p><p></p><p>Here's an example of a simple Python object, <code>float</code>:</p><p></p><div><pre>typedef struct {
+    PyObject ob_base; // expansion of the PyObject_HEAD macro
+    double ob_fval;
+} PyFloatObject;
+
+</pre></div><p></p><p>Note how <code>PyFloatObject</code> "inherits" from <code>PyObject</code>. I say "inherits" because the C standard states that a pointer to any struct can be converted to a pointer to its first member and vice versa. This feature allows CPython to have functions that take any Python object as an argument by taking <code>PyObject</code>, thus achieving polymorphism.</p><p></p><p>The reason why CPython can do something useful with <code>PyObject</code> is because the behavior of a Python object is determined by its type, and <code>PyObject</code> always has a type. A type "knows" how to create the objects of that type, how to calculate their hashes, how to add them, how to call them, how to access their attributes, how to deallocate them and much more. Types are also Python objects represented by the <code>PyTypeObject</code> structure. All types have the same type, which is <code>PyType_Type</code>. And the type of <code>PyType_Type</code> points to <code>PyType_Type</code> itself. If this explanation seems complicated, this example should not:</p><p></p><div><pre>$ ./python.exe -q
+&gt;&gt;&gt; type([])
+&lt;class 'list'&gt;
+&gt;&gt;&gt; type(type([]))
+&lt;class 'type'&gt;
+&gt;&gt;&gt; type(type(type([])))
+&lt;class 'type'&gt;
+
+</pre></div><p></p><p>The fields of <code>PyTypeObject</code> are very well documented in the <a href="https://docs.python.org/3/c-api/typeobj.html">Python/C API Reference Manual</a>. I only leave here the definition of the struct underlying <code>PyTypeObject</code> to get an idea of the amount of information that a Python type stores:</p><p></p><div><pre>// PyTypeObject is a typedef for struct _typeobject
+struct _typeobject {
+    PyObject_VAR_HEAD // expands to 
+                      // PyObject ob_base;
+                      // Py_ssize_t ob_size;
+    const char *tp_name; /* For printing, in format "&lt;module&gt;.&lt;name&gt;" */
+    Py_ssize_t tp_basicsize, tp_itemsize; /* For allocation */
+
+    /* Methods to implement standard operations */
+
+    destructor tp_dealloc;
+    Py_ssize_t tp_vectorcall_offset;
+    getattrfunc tp_getattr;
+    setattrfunc tp_setattr;
+    PyAsyncMethods *tp_as_async; /* formerly known as tp_compare (Python 2)
+                                    or tp_reserved (Python 3) */
+    reprfunc tp_repr;
+
+    /* Method suites for standard classes */
+    PyNumberMethods *tp_as_number;
+    PySequenceMethods *tp_as_sequence;
+    PyMappingMethods *tp_as_mapping;
+
+    /* More standard operations (here for binary compatibility) */
+
+    hashfunc tp_hash;
+    ternaryfunc tp_call;
+    reprfunc tp_str;
+    getattrofunc tp_getattro;
+    setattrofunc tp_setattro;
+
+    /* Functions to access object as input/output buffer */
+    PyBufferProcs *tp_as_buffer;
+
+    /* Flags to define presence of optional/expanded features */
+    unsigned long tp_flags;
+
+    const char *tp_doc; /* Documentation string */
+
+    /* Assigned meaning in release 2.0 */
+    /* call function for all accessible objects */
+    traverseproc tp_traverse;
+
+    /* delete references to contained objects */
+    inquiry tp_clear;
+
+    /* Assigned meaning in release 2.1 */
+    /* rich comparisons */
+    richcmpfunc tp_richcompare;
+
+    /* weak reference enabler */
+    Py_ssize_t tp_weaklistoffset;
+
+    /* Iterators */
+    getiterfunc tp_iter;
+    iternextfunc tp_iternext;
+
+    /* Attribute descriptor and subclassing stuff */
+    struct PyMethodDef *tp_methods;
+    struct PyMemberDef *tp_members;
+    struct PyGetSetDef *tp_getset;
+    struct _typeobject *tp_base;
+    PyObject *tp_dict;
+    descrgetfunc tp_descr_get;
+    descrsetfunc tp_descr_set;
+    Py_ssize_t tp_dictoffset;
+    initproc tp_init;
+    allocfunc tp_alloc;
+    newfunc tp_new;
+    freefunc tp_free; /* Low-level free-memory routine */
+    inquiry tp_is_gc; /* For PyObject_IS_GC */
+    PyObject *tp_bases;
+    PyObject *tp_mro; /* method resolution order */
+    PyObject *tp_cache;
+    PyObject *tp_subclasses;
+    PyObject *tp_weaklist;
+    destructor tp_del;
+
+    /* Type attribute cache version tag. Added in version 2.6 */
+    unsigned int tp_version_tag;
+
+    destructor tp_finalize;
+    vectorcallfunc tp_vectorcall;
+};
+
+</pre></div><p></p><p>Built-in types, such as <code>int</code> and <code>list</code>, are implemented by statically defining instances of <code>PyTypeObject</code>, like so:</p><p></p><div><pre>PyTypeObject PyList_Type = {
+    PyVarObject_HEAD_INIT(&amp;PyType_Type, 0)
+    "list",
+    sizeof(PyListObject),
+    0,
+    (destructor)list_dealloc,                   /* tp_dealloc */
+    0,                                          /* tp_vectorcall_offset */
+    0,                                          /* tp_getattr */
+    0,                                          /* tp_setattr */
+    0,                                          /* tp_as_async */
+    (reprfunc)list_repr,                        /* tp_repr */
+    0,                                          /* tp_as_number */
+    &amp;list_as_sequence,                          /* tp_as_sequence */
+    &amp;list_as_mapping,                           /* tp_as_mapping */
+    PyObject_HashNotImplemented,                /* tp_hash */
+    0,                                          /* tp_call */
+    0,                                          /* tp_str */
+    PyObject_GenericGetAttr,                    /* tp_getattro */
+    0,                                          /* tp_setattro */
+    0,                                          /* tp_as_buffer */
+    Py_TPFLAGS_DEFAULT | Py_TPFLAGS_HAVE_GC |
+        Py_TPFLAGS_BASETYPE | Py_TPFLAGS_LIST_SUBCLASS, /* tp_flags */
+    list___init____doc__,                       /* tp_doc */
+    (traverseproc)list_traverse,                /* tp_traverse */
+    (inquiry)_list_clear,                       /* tp_clear */
+    list_richcompare,                           /* tp_richcompare */
+    0,                                          /* tp_weaklistoffset */
+    list_iter,                                  /* tp_iter */
+    0,                                          /* tp_iternext */
+    list_methods,                               /* tp_methods */
+    0,                                          /* tp_members */
+    0,                                          /* tp_getset */
+    0,                                          /* tp_base */
+    0,                                          /* tp_dict */
+    0,                                          /* tp_descr_get */
+    0,                                          /* tp_descr_set */
+    0,                                          /* tp_dictoffset */
+    (initproc)list___init__,                    /* tp_init */
+    PyType_GenericAlloc,                        /* tp_alloc */
+    PyType_GenericNew,                          /* tp_new */
+    PyObject_GC_Del,                            /* tp_free */
+    .tp_vectorcall = list_vectorcall,
+};
+
+</pre></div><p></p><p>CPython also needs to initialize every built-in type. This is what we started our discussion of types with. All types require some initialization, for example, to add special methods, such as <code>__call__()</code> and <code>__eq__()</code>, to the type's dictionary and to point them to the corresponding <code>tp_*</code> functions. This common initialization is done by calling <code>PyType_Ready()</code> for each type:</p><p></p><div><pre>PyStatus
+_PyTypes_Init(void)
+{
+    // The names of the special methods "__hash__", "__call_", etc. are interned by this call
+    PyStatus status = _PyTypes_InitSlotDefs();
+    if (_PyStatus_EXCEPTION(status)) {
+        return status;
+    }
+
+#define INIT_TYPE(TYPE, NAME) \
+    do { \
+        if (PyType_Ready(TYPE) &lt; 0) { \
+            return _PyStatus_ERR("Can't initialize " NAME " type"); \
+        } \
+    } while (0)
+
+    INIT_TYPE(&amp;PyBaseObject_Type, "object");
+    INIT_TYPE(&amp;PyType_Type, "type");
+    INIT_TYPE(&amp;_PyWeakref_RefType, "weakref");
+    INIT_TYPE(&amp;_PyWeakref_CallableProxyType, "callable weakref proxy");
+    INIT_TYPE(&amp;_PyWeakref_ProxyType, "weakref proxy");
+    INIT_TYPE(&amp;PyLong_Type, "int");
+    INIT_TYPE(&amp;PyBool_Type, "bool");
+    INIT_TYPE(&amp;PyByteArray_Type, "bytearray");
+    INIT_TYPE(&amp;PyBytes_Type, "str");
+    INIT_TYPE(&amp;PyList_Type, "list");
+    INIT_TYPE(&amp;_PyNone_Type, "None");
+    INIT_TYPE(&amp;_PyNotImplemented_Type, "NotImplemented");
+    INIT_TYPE(&amp;PyTraceBack_Type, "traceback");
+    INIT_TYPE(&amp;PySuper_Type, "super");
+    INIT_TYPE(&amp;PyRange_Type, "range");
+    INIT_TYPE(&amp;PyDict_Type, "dict");
+    INIT_TYPE(&amp;PyDictKeys_Type, "dict keys");
+    // ... 50 more types
+    return _PyStatus_OK();
+
+#undef INIT_TYPE
+}
+
+</pre></div><p></p><p>Some built-in types require additional type-specific initialization. For example, <code>int</code> needs to preallocate small integers in the <code>interp-&gt;small_ints</code> array so that they can be reused, and <code>float</code> needs to determine how the current machine represents floating point numbers.</p><p></p><p>When built-in types are initialized, <code>pycore_interp_init()</code> calls  <code>_PySys_Create()</code> to create the <a href="https://docs.python.org/3/library/sys.html"><code>sys</code></a> module. Why is the <code>sys</code> module the first module to be created? It's very important because it contains such things as the command line arguments passed to a program (<code>sys.argv</code>), the list of path entries to search for modules (<code>sys.path</code>), a lot of system-specific and implementation-specific data (<code>sys.version</code>, <code>sys.implementation</code>, <code>sys.thread_info</code>, etc.) and various functions for interacting with the interpreter (<code>sys.addaudithook()</code>, <code>sys.settrace()</code>, etc.). The main reason, though, to create the <code>sys</code> module so early is to initialize <code>sys.modules</code>. It points to the <code>interp-&gt;modules</code> dictionary, which is also created by <code>_PySys_Create()</code>, and acts as a cache for imported modules. It's the first place to look up for a module, and it's the place where all loaded modules go to. <a href="https://tenthousandmeters.com/blog/python-behind-the-scenes-11-how-the-python-import-system-works/">The import system</a> heavily relies on <code>sys.modules</code>.</p><p></p><p>After the call to<code>_PySys_Create()</code>, the <code>sys</code> module is only partially initialized. The functions and most of the variables are available, but invocation-specific data, such as <code>sys.argv</code> and <code>sys._xoptions</code>, and the path-related configuration, such as <code>sys.path</code> and <code>sys.exec_prefix</code>, are set during the main initialization phase.</p><p></p><p>When the <code>sys</code> module is created, <code>pycore_interp_init()</code> calls <code>pycore_init_builtins()</code> to initialize the <code>builtins</code> module. Built-in functions, like <code>abs()</code>, <code>dir()</code> and <code>print()</code>, built-in types, like <code>dict</code>, <code>int</code> and <code>str</code>, built-in exceptions, like <code>Exception</code> and <code>ValueError</code>, and built-in constants, like <code>False</code>, <code>Ellipsis</code> and <code>None</code>, are all members of the <code>builtins</code> module. Built-in functions are a part of the module definition, but other members have to be placed in the module's dictionary explicitly. The <code>pycore_init_builtins()</code> function does that. Later on, <code>frame-&gt;f_builtins</code> will be set to this dictionary to look up names so we don't need to import <code>builtins</code> directly.</p><p></p><p>The last step of the core initialization phase is performed by the <code>pycore_init_import_warnings()</code> function. You probably know that Python has <a href="https://docs.python.org/3/library/warnings.html">a mechanism to issue warnings</a>, like so:</p><p></p><div><pre>$ ./python.exe -q
+&gt;&gt;&gt; import imp
+&lt;stdin&gt;:1: DeprecationWarning: the imp module is deprecated in favour of importlib; ...
+
+</pre></div><p></p><p>Warnings can be ignored, turned into exceptions and displayed in various ways. CPython has filters to do that. Some filters are turned on by default, and the <code>pycore_init_import_warnings()</code> function is what turns them on. Most crucially, though, is that <code>pycore_init_import_warnings()</code> sets up the import system for built-in and frozen modules.</p><p></p><p>Built-in and frozen modules are two special kinds of modules. What unites them is that they are compiled directly into the <code>python</code> executable. The difference is that built-in modules are written in C, while frozen modules are written in Python. How is that possible to compile a module written in Python into the executable? This is cleverly done by incorporating marshalled code object of the module into the C source code.</p><p></p><p>An example of a frozen module is <code>_frozen_importlib</code>. It implements the core of the import system. To support the import of built-in and frozen modules, <code>pycore_init_import_warnings()</code> calls <code>init_importlib()</code>, and the very first thing <code>init_importlib()</code> does is import <code>_frozen_importlib</code>. It may seem that CPython has to import <code>_frozen_importlib</code> in order to import <code>_frozen_importlib</code>, but this is not the case. The <code>_frozen_importlib</code> module is a part of the universal API for importing any module. However, if CPython knows that it needs to import a frozen module, it can do so without reliance on <code>_frozen_importlib</code>.</p><p></p><p>The <code>_frozen_importlib</code> module depends on two other modules. First, it needs the <code>sys</code> module to get an access to <code>sys.modules</code>. Second, it needs the <code>_imp</code> module, which implements low-level import functions, including the functions for creating built-in and frozen modules. The problem is that <code>_frozen_importlib</code> cannot import any modules because the <code>import</code> statement depends on <code>_frozen_importlib</code> itself. The solution is to create the <code>_imp</code> module in <code>init_importlib()</code> and inject it and the <code>sys</code> module in <code>_frozen_importlib</code> by calling <code>_frozen_importlib._install(sys, _imp)</code>. This bootstrapping of the import system ends the core initialization phase. </p><p></p><p>We leave <code>pyinit_core()</code> and enter <code>pyinit_main()</code> responsible for the main initialization phase. This function performs some checks and calls <code>init_interp_main()</code> to do the work that can be summarized as follows:</p><p></p><ol>
+<li>Get system's realtime and monotonic clocks, ensure that <code>time.time()</code>, <code>time.monotonic()</code> and <code>time.perf_counter()</code> will work correctly.</li>
+<li>Finish the initialization of the <code>sys</code> module. This includes setting the path configuration variables, such as <code>sys.path</code>, <code>sys.executable</code> and <code>sys.exec_prefix</code>, and invocation-specific variables, such as <code>sys.argv</code> and <code>sys._xoptions</code>.</li>
+<li>Add support for the import of path-based (external) modules. This is done by importing another frozen module called <code>importlib._bootstrap_external</code>. It enables the import of modules based on <code>sys.path</code>. Also, the <a href="https://docs.python.org/3/library/zipimport.html"><code>zipimport</code></a> frozen module is imported. It enables the import of modules from ZIP archives.</li>
+<li>Normalize the names of the encodings for the file system and the standard streams. Set the error handlers for encoding and decoding when dealing with the file system.</li>
+<li>Install default signal handlers. These are the handlers that get executed when a process receives a signal like <code>SIGINT</code>. The custom handlers can be set up using the <a href="https://docs.python.org/3/library/signal.html"><code>signal</code></a> module.</li>
+<li>Import the <code>io</code> module and initialize <code>sys.stdin</code>, <code>sys.stdout</code> and <code>sys.stderr</code>. This is essentially done by calling <code>io.open()</code> on the file descriptors for the standard streams.</li>
+<li>Set <code>builtins.open</code> to <code>io.OpenWrapper</code> so that <code>open()</code> is available as a built-in function.</li>
+<li>Create the <code>__main__</code> module, set <code>__main__.__builtins__</code> to <code>builtins</code> and <code>__main__.__loader__</code> to <code>_frozen_importlib.BuiltinImporter</code>.</li>
+<li>Import <a href="https://docs.python.org/3/library/warnings.html"><code>warnings</code></a> and <a href="https://docs.python.org/3/library/site.html"><code>site</code></a> modules. The <code>site</code> module adds site-specific directories to <code>sys.path</code>. This is why <code>sys.path</code> normally contains a directory like  <code>/usr/local/lib/python3.9/site-packages/</code>.</li>
+<li>Set <code>interp-&gt;runtime-&gt;initialized = 1</code></li>
+</ol><p></p><p>The initialization of CPython is completed. The <code>pymain_init()</code> function returns, and we step into <code>Py_RunMain()</code> to see what else CPython does before it enters the evaluation loop.</p><p></p><h2 id="sr-toc-4">Running a Python program</h2><p></p><p>The <code>Py_RunMain()</code> function doesn't seem like a place where the action happens:</p><p></p><div><pre>int
+Py_RunMain(void)
+{
+    int exitcode = 0;
+
+    pymain_run_python(&amp;exitcode);
+
+    if (Py_FinalizeEx() &lt; 0) {
+        /* Value unlikely to be confused with a non-error exit status or
+           other special meaning */
+        exitcode = 120;
+    }
+
+    // Free the memory that is not freed by Py_FinalizeEx()
+    pymain_free();
+
+    if (_Py_UnhandledKeyboardInterrupt) {
+        exitcode = exit_sigint();
+    }
+
+    return exitcode;
+}
+
+</pre></div><p></p><p>First, <code>Py_RunMain()</code> calls <code>pymain_run_python()</code> to run Python. Second, it calls <code>Py_FinalizeEx()</code> to undo the initialization. The <code>Py_FinalizeEx()</code> functions frees most of the memory that CPython is able to free, and the rest is freed by <code>pymain_free()</code>. Another important reason to finalize CPython is to call the exit functions, including the functions registered with the <a href="https://docs.python.org/3/library/atexit.html"><code>atexit</code></a> module.</p><p></p><p>As you probably know, there are number of ways to run <code>python</code>, namely:</p><p></p><ul>
+<li>interactively:</li>
+</ul><p></p><div><pre>$ ./cpython/python.exe
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; sys.path[:1]
+['']
+
+</pre></div><p></p><ul>
+<li>from stdin:</li>
+</ul><p></p><div><pre>$ echo "import sys; print(sys.path[:1])" | ./cpython/python.exe
+['']
+
+</pre></div><p></p><ul>
+<li>as a command:</li>
+</ul><p></p><div><pre>$ ./cpython/python.exe -c "import sys; print(sys.path[:1])"
+['']
+
+</pre></div><p></p><ul>
+<li>as a script</li>
+</ul><p></p><div><pre>$ ./cpython/python.exe 03/print_path0.py
+['/Users/Victor/Projects/tenthousandmeters/python_behind_the_scenes/03']
+
+</pre></div><p></p><ul>
+<li>as a module:</li>
+</ul><p></p><div><pre>$ ./cpython/python.exe -m 03.print_path0
+['/Users/Victor/Projects/tenthousandmeters/python_behind_the_scenes']
+
+</pre></div><p></p><ul>
+<li>and, less obvious, package as a script (<code>print_path0_package</code> is a directory with <code>__main__.py</code>):</li>
+</ul><p></p><div><pre>$ ./cpython/python.exe 03/print_path0_package
+['/Users/Victor/Projects/tenthousandmeters/python_behind_the_scenes/03/print_path0_package']
+
+</pre></div><p></p><p>I moved one level up from the <code>cpython/</code> directory to show that different modes of invocation lead to different values of <code>sys.path[0]</code>.  What the next function on our way, <code>pymain_run_python()</code>, does is compute the value of <code>sys.path[0]</code>, prepend it to <code>sys.path</code> and run Python in the appropriate mode according to <code>config</code>:</p><p></p><div><pre>static void
+pymain_run_python(int *exitcode)
+{
+    PyInterpreterState *interp = _PyInterpreterState_GET();
+    PyConfig *config = (PyConfig*)_PyInterpreterState_GetConfig(interp);
+
+    // Prepend the search path to `sys.path`
+    PyObject *main_importer_path = NULL;
+    if (config-&gt;run_filename != NULL) {
+        // Calculate the search path for the case when the filename is a package
+        // (ex: directory or ZIP file) which contains __main__.py, store it in `main_importer_path`.
+        // Otherwise, left `main_importer_path` unchanged.
+        // Handle other cases later.
+        if (pymain_get_importer(config-&gt;run_filename, &amp;main_importer_path,
+                                exitcode)) {
+            return;
+        }
+    }
+
+    if (main_importer_path != NULL) {
+        if (pymain_sys_path_add_path0(interp, main_importer_path) &lt; 0) {
+            goto error;
+        }
+    }
+    else if (!config-&gt;isolated) {
+        PyObject *path0 = NULL;
+        // Compute the search path that will be prepended to `sys.path` for other cases.
+        // If running as script, then it's the directory where the script is located.
+        // If running as module (-m), then it's the current working directory.
+        // Otherwise, it's an empty string.
+        int res = _PyPathConfig_ComputeSysPath0(&amp;config-&gt;argv, &amp;path0);
+        if (res &lt; 0) {
+            goto error;
+        }
+
+        if (res &gt; 0) {
+            if (pymain_sys_path_add_path0(interp, path0) &lt; 0) {
+                Py_DECREF(path0);
+                goto error;
+            }
+            Py_DECREF(path0);
+        }
+    }
+
+    PyCompilerFlags cf = _PyCompilerFlags_INIT;
+
+    // Print version and platform in the interactive mode
+    pymain_header(config);
+    // Import `readline` module to provide completion,
+    // line editing and history capabilities in the interactive mode
+    pymain_import_readline(config);
+
+    // Run Python depending on the mode of invocation (script, -m, -c, etc.)
+    if (config-&gt;run_command) {
+        *exitcode = pymain_run_command(config-&gt;run_command, &amp;cf);
+    }
+    else if (config-&gt;run_module) {
+        *exitcode = pymain_run_module(config-&gt;run_module, 1);
+    }
+    else if (main_importer_path != NULL) {
+        *exitcode = pymain_run_module(L"__main__", 0);
+    }
+    else if (config-&gt;run_filename != NULL) {
+        *exitcode = pymain_run_file(config, &amp;cf);
+    }
+    else {
+        *exitcode = pymain_run_stdin(config, &amp;cf);
+    }
+
+    // Enter the interactive mode after executing a program.
+    // Enabled by `-i` and `PYTHONINSPECT`.
+    pymain_repl(config, &amp;cf, exitcode);
+    goto done;
+
+error:
+    *exitcode = pymain_exit_err_print();
+
+done:
+    Py_XDECREF(main_importer_path);
+}
+
+</pre></div><p></p><p>We won't follow all paths, but assume that we run a Python program as a script. This leads us to the <code>pymain_run_file()</code> function that checks whether the specified file can be opened, ensures it's not a directory and calls <code>PyRun_AnyFileExFlags()</code>. The <code>PyRun_AnyFileExFlags()</code> function handles a special case when the file is a terminal (<a href="https://man7.org/linux/man-pages/man3/isatty.3.html"><code>isatty(fd)</code></a> returns 1). If this is the case, it enters the interactive mode:</p><p></p><div><pre>$ ./python.exe /dev/ttys000
+&gt;&gt;&gt; 1 + 1
+2
+
+</pre></div><p></p><p>Otherwise, it calls <code>PyRun_SimpleFileExFlags()</code>. You should be familiar with <code>.pyc</code> files that constantly pop up in <code>__pycache__</code> directories alongside regular Python files. A <code>.pyc</code> file contains a marshaled code object of a module. It's used instead of the original <code>.py</code> file when we import the module so that the compilation stage can be skipped. I guess you knew that, but did you know that it's possible to run <code>.pyc</code> files directly?</p><p></p><div><pre>$ ./cpython/python.exe 03/__pycache__/print_path0.cpython-39.pyc
+['/Users/Victor/Projects/tenthousandmeters/python_behind_the_scenes/03/__pycache__']
+
+</pre></div><p></p><p>The <code>PyRun_SimpleFileExFlags()</code> function implements this logic. It checks whether the file is a <code>.pyc</code> file, whether it's compiled for the current CPython version and, if yes, calls <code>run_pyc_file()</code>. If the file is not a <code>.pyc</code> file, it calls <code>PyRun_FileExFlags()</code>. Most importantly, though, is that <code>PyRun_SimpleFileExFlags()</code> imports the <code>__main__</code> module and passes its dictionary to <code>PyRun_FileExFlags()</code> as the global and local namespaces to execute the file in.</p><p></p><div><pre>int
+PyRun_SimpleFileExFlags(FILE *fp, const char *filename, int closeit,
+                        PyCompilerFlags *flags)
+{
+    PyObject *m, *d, *v;
+    const char *ext;
+    int set_file_name = 0, ret = -1;
+    size_t len;
+
+    m = PyImport_AddModule("__main__");
+    if (m == NULL)
+        return -1;
+    Py_INCREF(m);
+    d = PyModule_GetDict(m);
+
+    if (PyDict_GetItemString(d, "__file__") == NULL) {
+        PyObject *f;
+        f = PyUnicode_DecodeFSDefault(filename);
+        if (f == NULL)
+            goto done;
+        if (PyDict_SetItemString(d, "__file__", f) &lt; 0) {
+            Py_DECREF(f);
+            goto done;
+        }
+        if (PyDict_SetItemString(d, "__cached__", Py_None) &lt; 0) {
+            Py_DECREF(f);
+            goto done;
+        }
+        set_file_name = 1;
+        Py_DECREF(f);
+    }
+
+    // Check if a .pyc file is passed
+    len = strlen(filename);
+    ext = filename + len - (len &gt; 4 ? 4 : 0);
+    if (maybe_pyc_file(fp, filename, ext, closeit)) {
+        FILE *pyc_fp;
+        /* Try to run a pyc file. First, re-open in binary */
+        if (closeit)
+            fclose(fp);
+        if ((pyc_fp = _Py_fopen(filename, "rb")) == NULL) {
+            fprintf(stderr, "python: Can't reopen .pyc file\n");
+            goto done;
+        }
+
+        if (set_main_loader(d, filename, "SourcelessFileLoader") &lt; 0) {
+            fprintf(stderr, "python: failed to set __main__.__loader__\n");
+            ret = -1;
+            fclose(pyc_fp);
+            goto done;
+        }
+        v = run_pyc_file(pyc_fp, filename, d, d, flags);
+    } else {
+        /* When running from stdin, leave __main__.__loader__ alone */
+        if (strcmp(filename, "&lt;stdin&gt;") != 0 &amp;&amp;
+            set_main_loader(d, filename, "SourceFileLoader") &lt; 0) {
+            fprintf(stderr, "python: failed to set __main__.__loader__\n");
+            ret = -1;
+            goto done;
+        }
+        v = PyRun_FileExFlags(fp, filename, Py_file_input, d, d,
+                              closeit, flags);
+    }
+    flush_io();
+    if (v == NULL) {
+        Py_CLEAR(m);
+        PyErr_Print();
+        goto done;
+    }
+    Py_DECREF(v);
+    ret = 0;
+  done:
+    if (set_file_name) {
+        if (PyDict_DelItemString(d, "__file__")) {
+            PyErr_Clear();
+        }
+        if (PyDict_DelItemString(d, "__cached__")) {
+            PyErr_Clear();
+        }
+    }
+    Py_XDECREF(m);
+    return ret;
+}
+
+</pre></div><p></p><p>The <code>PyRun_FileExFlags()</code> function begins the compilation process. It runs the parser, gets the AST of the module and calls <code>run_mod()</code> to run the AST. It also creates a <code>PyArena</code> object, which <a href="https://www.evanjones.ca/memoryallocator/">CPython uses to allocate small objects</a> (smaller or equal to 512 bytes):</p><p></p><div><pre>PyObject *
+PyRun_FileExFlags(FILE *fp, const char *filename_str, int start, PyObject *globals,
+                  PyObject *locals, int closeit, PyCompilerFlags *flags)
+{
+    PyObject *ret = NULL;
+    mod_ty mod;
+    PyArena *arena = NULL;
+    PyObject *filename;
+    int use_peg = _PyInterpreterState_GET()-&gt;config._use_peg_parser;
+
+    filename = PyUnicode_DecodeFSDefault(filename_str);
+    if (filename == NULL)
+        goto exit;
+
+    arena = PyArena_New();
+    if (arena == NULL)
+        goto exit;
+
+    // Run the parser.
+    // By default the new PEG parser is used.
+    // Pass `-X oldparser` to use the old parser.
+    // `mod` stands for module. It's the root node of the AST.
+    if (use_peg) {
+        mod = PyPegen_ASTFromFileObject(fp, filename, start, NULL, NULL, NULL,
+                                        flags, NULL, arena);
+    }
+    else {
+        mod = PyParser_ASTFromFileObject(fp, filename, NULL, start, 0, 0,
+                                         flags, NULL, arena);
+    }
+
+    if (closeit)
+        fclose(fp);
+    if (mod == NULL) {
+        goto exit;
+    }
+    // Compile the AST and run.
+    ret = run_mod(mod, filename, globals, locals, flags, arena);
+
+exit:
+    Py_XDECREF(filename);
+    if (arena != NULL)
+        PyArena_Free(arena);
+    return ret;
+}
+
+</pre></div><p></p><p><code>run_mod()</code> runs the compiler by calling <code>PyAST_CompileObject()</code>, gets the module's code object and calls <code>run_eval_code_obj()</code> to execute the code object. In the interim, it raises the <code>exec</code> event, which is a CPython's way to notify auditing tools when something important happens inside the Python runtime. <a href="https://www.python.org/dev/peps/pep-0578/">PEP 578</a> explains this mechanism.</p><p></p><div><pre>static PyObject *
+run_mod(mod_ty mod, PyObject *filename, PyObject *globals, PyObject *locals,
+            PyCompilerFlags *flags, PyArena *arena)
+{
+    PyThreadState *tstate = _PyThreadState_GET();
+    PyCodeObject *co = PyAST_CompileObject(mod, filename, flags, -1, arena);
+    if (co == NULL)
+        return NULL;
+
+    if (_PySys_Audit(tstate, "exec", "O", co) &lt; 0) {
+        Py_DECREF(co);
+        return NULL;
+    }
+
+    PyObject *v = run_eval_code_obj(tstate, co, globals, locals);
+    Py_DECREF(co);
+    return v;
+}
+
+</pre></div><p></p><p>We already know from <a href="https://tenthousandmeters.com/blog/python-behind-the-scenes-2-how-the-cpython-compiler-works/">part 2</a> that the compiler works by: </p><p></p><ol>
+<li>building a symbol table</li>
+<li>creating a CFG of basic blocks; and</li>
+<li>assembling the CFG into a code object.</li>
+</ol><p></p><p>This is exactly what <code>PyAST_CompileObject()</code> does, so we won't discuss it.</p><p></p><p><code>run_eval_code_obj()</code> begins a chain of trivial function calls that eventually lead us to <code>_PyEval_EvalCode()</code>. I paste all those functions here so that you can see where the parameters of <code>_PyEval_EvalCode()</code> come from:</p><p></p><div><pre>static PyObject *
+run_eval_code_obj(PyThreadState *tstate, PyCodeObject *co, PyObject *globals, PyObject *locals)
+{
+    PyObject *v;
+    // The special case when CPython is embeddded. We can safely ignore it.
+    /*
+     * We explicitly re-initialize _Py_UnhandledKeyboardInterrupt every eval
+     * _just in case_ someone is calling into an embedded Python where they
+     * don't care about an uncaught KeyboardInterrupt exception (why didn't they
+     * leave config.install_signal_handlers set to 0?!?) but then later call
+     * Py_Main() itself (which _checks_ this flag and dies with a signal after
+     * its interpreter exits).  We don't want a previous embedded interpreter's
+     * uncaught exception to trigger an unexplained signal exit from a future
+     * Py_Main() based one.
+     */
+    _Py_UnhandledKeyboardInterrupt = 0;
+
+    /* Set globals['__builtins__'] if it doesn't exist */
+    // In our case, it's been already set to the `builtins` module during the main initialization.
+    if (globals != NULL &amp;&amp; PyDict_GetItemString(globals, "__builtins__") == NULL) {
+        if (PyDict_SetItemString(globals, "__builtins__",
+                                 tstate-&gt;interp-&gt;builtins) &lt; 0) {
+            return NULL;
+        }
+    }
+
+    v = PyEval_EvalCode((PyObject*)co, globals, locals);
+    if (!v &amp;&amp; _PyErr_Occurred(tstate) == PyExc_KeyboardInterrupt) {
+        _Py_UnhandledKeyboardInterrupt = 1;
+    }
+    return v;
+}
+
+</pre></div><p></p><div><pre>PyObject *
+PyEval_EvalCode(PyObject *co, PyObject *globals, PyObject *locals)
+{
+    return PyEval_EvalCodeEx(co,
+                      globals, locals,
+                      (PyObject **)NULL, 0,
+                      (PyObject **)NULL, 0,
+                      (PyObject **)NULL, 0,
+                      NULL, NULL);
+}
+
+</pre></div><p></p><div><pre>PyObject *
+PyEval_EvalCodeEx(PyObject *_co, PyObject *globals, PyObject *locals,
+                  PyObject *const *args, int argcount,
+                  PyObject *const *kws, int kwcount,
+                  PyObject *const *defs, int defcount,
+                  PyObject *kwdefs, PyObject *closure)
+{
+    return _PyEval_EvalCodeWithName(_co, globals, locals,
+                                    args, argcount,
+                                    kws, kws != NULL ? kws + 1 : NULL,
+                                    kwcount, 2,
+                                    defs, defcount,
+                                    kwdefs, closure,
+                                    NULL, NULL);
+}
+
+</pre></div><p></p><div><pre>PyObject *
+_PyEval_EvalCodeWithName(PyObject *_co, PyObject *globals, PyObject *locals,
+           PyObject *const *args, Py_ssize_t argcount,
+           PyObject *const *kwnames, PyObject *const *kwargs,
+           Py_ssize_t kwcount, int kwstep,
+           PyObject *const *defs, Py_ssize_t defcount,
+           PyObject *kwdefs, PyObject *closure,
+           PyObject *name, PyObject *qualname)
+{
+    PyThreadState *tstate = _PyThreadState_GET();
+    return _PyEval_EvalCode(tstate, _co, globals, locals,
+               args, argcount,
+               kwnames, kwargs,
+               kwcount, kwstep,
+               defs, defcount,
+               kwdefs, closure,
+               name, qualname);
+}
+
+</pre></div><p></p><p>Recall that a code object describes what a piece of code does but to execute a code object, CPython needs to create a state for it, which is what a frame object is. <code>_PyEval_EvalCode()</code> creates a frame object for a given code object with specified parameters. In our case, most of the parameters are <code>NULL</code>, so little has to be done. Much more work is required when CPython executes, for example, a function's code object with different kinds of arguments passed. As a result, <code>_PyEval_EvalCode()</code> is nearly 300 lines long. We'll see what most of them are for in the next parts. For now, you can skip through <code>_PyEval_EvalCode()</code> to ensure that in the end it calls <code>_PyEval_EvalFrame()</code> to evaluate the created frame object:</p><p></p><div><pre>PyObject *
+_PyEval_EvalCode(PyThreadState *tstate,
+           PyObject *_co, PyObject *globals, PyObject *locals,
+           PyObject *const *args, Py_ssize_t argcount,
+           PyObject *const *kwnames, PyObject *const *kwargs,
+           Py_ssize_t kwcount, int kwstep,
+           PyObject *const *defs, Py_ssize_t defcount,
+           PyObject *kwdefs, PyObject *closure,
+           PyObject *name, PyObject *qualname)
+{
+    assert(is_tstate_valid(tstate));
+
+    PyCodeObject* co = (PyCodeObject*)_co;
+    PyFrameObject *f;
+    PyObject *retval = NULL;
+    PyObject **fastlocals, **freevars;
+    PyObject *x, *u;
+    const Py_ssize_t total_args = co-&gt;co_argcount + co-&gt;co_kwonlyargcount;
+    Py_ssize_t i, j, n;
+    PyObject *kwdict;
+
+    if (globals == NULL) {
+        _PyErr_SetString(tstate, PyExc_SystemError,
+                         "PyEval_EvalCodeEx: NULL globals");
+        return NULL;
+    }
+
+    /* Create the frame */
+    f = _PyFrame_New_NoTrack(tstate, co, globals, locals);
+    if (f == NULL) {
+        return NULL;
+    }
+    fastlocals = f-&gt;f_localsplus;
+    freevars = f-&gt;f_localsplus + co-&gt;co_nlocals;
+
+    /* Create a dictionary for keyword parameters (**kwags) */
+    if (co-&gt;co_flags &amp; CO_VARKEYWORDS) {
+        kwdict = PyDict_New();
+        if (kwdict == NULL)
+            goto fail;
+        i = total_args;
+        if (co-&gt;co_flags &amp; CO_VARARGS) {
+            i++;
+        }
+        SETLOCAL(i, kwdict);
+    }
+    else {
+        kwdict = NULL;
+    }
+
+    /* Copy all positional arguments into local variables */
+    if (argcount &gt; co-&gt;co_argcount) {
+        n = co-&gt;co_argcount;
+    }
+    else {
+        n = argcount;
+    }
+    for (j = 0; j &lt; n; j++) {
+        x = args[j];
+        Py_INCREF(x);
+        SETLOCAL(j, x);
+    }
+
+    /* Pack other positional arguments into the *args argument */
+    if (co-&gt;co_flags &amp; CO_VARARGS) {
+        u = _PyTuple_FromArray(args + n, argcount - n);
+        if (u == NULL) {
+            goto fail;
+        }
+        SETLOCAL(total_args, u);
+    }
+
+    /* Handle keyword arguments passed as two strided arrays */
+    kwcount *= kwstep;
+    for (i = 0; i &lt; kwcount; i += kwstep) {
+        PyObject **co_varnames;
+        PyObject *keyword = kwnames[i];
+        PyObject *value = kwargs[i];
+        Py_ssize_t j;
+
+        if (keyword == NULL || !PyUnicode_Check(keyword)) {
+            _PyErr_Format(tstate, PyExc_TypeError,
+                          "%U() keywords must be strings",
+                          co-&gt;co_name);
+            goto fail;
+        }
+
+        /* Speed hack: do raw pointer compares. As names are
+           normally interned this should almost always hit. */
+        co_varnames = ((PyTupleObject *)(co-&gt;co_varnames))-&gt;ob_item;
+        for (j = co-&gt;co_posonlyargcount; j &lt; total_args; j++) {
+            PyObject *name = co_varnames[j];
+            if (name == keyword) {
+                goto kw_found;
+            }
+        }
+
+        /* Slow fallback, just in case */
+        for (j = co-&gt;co_posonlyargcount; j &lt; total_args; j++) {
+            PyObject *name = co_varnames[j];
+            int cmp = PyObject_RichCompareBool( keyword, name, Py_EQ);
+            if (cmp &gt; 0) {
+                goto kw_found;
+            }
+            else if (cmp &lt; 0) {
+                goto fail;
+            }
+        }
+
+        assert(j &gt;= total_args);
+        if (kwdict == NULL) {
+
+            if (co-&gt;co_posonlyargcount
+                &amp;&amp; positional_only_passed_as_keyword(tstate, co,
+                                                     kwcount, kwnames))
+            {
+                goto fail;
+            }
+
+            _PyErr_Format(tstate, PyExc_TypeError,
+                          "%U() got an unexpected keyword argument '%S'",
+                          co-&gt;co_name, keyword);
+            goto fail;
+        }
+
+        if (PyDict_SetItem(kwdict, keyword, value) == -1) {
+            goto fail;
+        }
+        continue;
+
+      kw_found:
+        if (GETLOCAL(j) != NULL) {
+            _PyErr_Format(tstate, PyExc_TypeError,
+                          "%U() got multiple values for argument '%S'",
+                          co-&gt;co_name, keyword);
+            goto fail;
+        }
+        Py_INCREF(value);
+        SETLOCAL(j, value);
+    }
+
+    /* Check the number of positional arguments */
+    if ((argcount &gt; co-&gt;co_argcount) &amp;&amp; !(co-&gt;co_flags &amp; CO_VARARGS)) {
+        too_many_positional(tstate, co, argcount, defcount, fastlocals);
+        goto fail;
+    }
+
+    /* Add missing positional arguments (copy default values from defs) */
+    if (argcount &lt; co-&gt;co_argcount) {
+        Py_ssize_t m = co-&gt;co_argcount - defcount;
+        Py_ssize_t missing = 0;
+        for (i = argcount; i &lt; m; i++) {
+            if (GETLOCAL(i) == NULL) {
+                missing++;
+            }
+        }
+        if (missing) {
+            missing_arguments(tstate, co, missing, defcount, fastlocals);
+            goto fail;
+        }
+        if (n &gt; m)
+            i = n - m;
+        else
+            i = 0;
+        for (; i &lt; defcount; i++) {
+            if (GETLOCAL(m+i) == NULL) {
+                PyObject *def = defs[i];
+                Py_INCREF(def);
+                SETLOCAL(m+i, def);
+            }
+        }
+    }
+
+    /* Add missing keyword arguments (copy default values from kwdefs) */
+    if (co-&gt;co_kwonlyargcount &gt; 0) {
+        Py_ssize_t missing = 0;
+        for (i = co-&gt;co_argcount; i &lt; total_args; i++) {
+            PyObject *name;
+            if (GETLOCAL(i) != NULL)
+                continue;
+            name = PyTuple_GET_ITEM(co-&gt;co_varnames, i);
+            if (kwdefs != NULL) {
+                PyObject *def = PyDict_GetItemWithError(kwdefs, name);
+                if (def) {
+                    Py_INCREF(def);
+                    SETLOCAL(i, def);
+                    continue;
+                }
+                else if (_PyErr_Occurred(tstate)) {
+                    goto fail;
+                }
+            }
+            missing++;
+        }
+        if (missing) {
+            missing_arguments(tstate, co, missing, -1, fastlocals);
+            goto fail;
+        }
+    }
+
+    /* Allocate and initialize storage for cell vars, and copy free
+       vars into frame. */
+    for (i = 0; i &lt; PyTuple_GET_SIZE(co-&gt;co_cellvars); ++i) {
+        PyObject *c;
+        Py_ssize_t arg;
+        /* Possibly account for the cell variable being an argument. */
+        if (co-&gt;co_cell2arg != NULL &amp;&amp;
+            (arg = co-&gt;co_cell2arg[i]) != CO_CELL_NOT_AN_ARG) {
+            c = PyCell_New(GETLOCAL(arg));
+            /* Clear the local copy. */
+            SETLOCAL(arg, NULL);
+        }
+        else {
+            c = PyCell_New(NULL);
+        }
+        if (c == NULL)
+            goto fail;
+        SETLOCAL(co-&gt;co_nlocals + i, c);
+    }
+
+    /* Copy closure variables to free variables */
+    for (i = 0; i &lt; PyTuple_GET_SIZE(co-&gt;co_freevars); ++i) {
+        PyObject *o = PyTuple_GET_ITEM(closure, i);
+        Py_INCREF(o);
+        freevars[PyTuple_GET_SIZE(co-&gt;co_cellvars) + i] = o;
+    }
+
+    /* Handle generator/coroutine/asynchronous generator */
+    if (co-&gt;co_flags &amp; (CO_GENERATOR | CO_COROUTINE | CO_ASYNC_GENERATOR)) {
+        PyObject *gen;
+        int is_coro = co-&gt;co_flags &amp; CO_COROUTINE;
+
+        /* Don't need to keep the reference to f_back, it will be set
+         * when the generator is resumed. */
+        Py_CLEAR(f-&gt;f_back);
+
+        /* Create a new generator that owns the ready to run frame
+         * and return that as the value. */
+        if (is_coro) {
+            gen = PyCoro_New(f, name, qualname);
+        } else if (co-&gt;co_flags &amp; CO_ASYNC_GENERATOR) {
+            gen = PyAsyncGen_New(f, name, qualname);
+        } else {
+            gen = PyGen_NewWithQualName(f, name, qualname);
+        }
+        if (gen == NULL) {
+            return NULL;
+        }
+
+        _PyObject_GC_TRACK(f);
+
+        return gen;
+    }
+
+    retval = _PyEval_EvalFrame(tstate, f, 0);
+
+fail: /* Jump here from prelude on failure */
+
+    /* decref'ing the frame can cause __del__ methods to get invoked,
+       which can call back into Python.  While we're done with the
+       current Python frame (f), the associated C stack is still in use,
+       so recursion_depth must be boosted for the duration.
+    */
+    if (Py_REFCNT(f) &gt; 1) {
+        Py_DECREF(f);
+        _PyObject_GC_TRACK(f);
+    }
+    else {
+        ++tstate-&gt;recursion_depth;
+        Py_DECREF(f);
+        --tstate-&gt;recursion_depth;
+    }
+    return retval;
+}
+
+</pre></div><p></p><p><code>_PyEval_EvalFrame()</code> is a wrapper around <code>interp-&gt;eval_frame()</code>, which is the frame evaluation function. It's possible to set  <code>interp-&gt;eval_frame()</code> to a custom function. We could, for example, add a JIT compiler to CPython by replacing the default evaluation function with the one that stores compiled machine code in a code object and can run such code. <a href="https://www.python.org/dev/peps/pep-0523/">PEP 523</a> introduced this functionality in CPython 3.6.</p><p></p><p>By default, <code>interp-&gt;eval_frame()</code> is set to <code>_PyEval_EvalFrameDefault()</code>. This function, defined in <a href="https://github.com/python/cpython/blob/57c6cb5100d19a0e0218c77d887c3c239c9ce435/Python/ceval.c"><code>Python/ceval.c</code></a>, consists of almost 3,000 lines. Today, though, we're only interested in one. <a href="https://github.com/python/cpython/blob/57c6cb5100d19a0e0218c77d887c3c239c9ce435/Python/ceval.c#L1741">Line 1741</a> begins what we've been waiting for so long: the evaluation loop.</p><p></p><h2 id="sr-toc-5">Conclusion</h2><p></p><p>We've discussed a lot today. We started by making an overview of the CPython project, compiled CPython and stepped through its source code, studying the initialization stage along the way. I think this should give us a descent understanding of what CPython does before it starts interpreting the bytecode. What happens after is the subject of <a href="https://tenthousandmeters.com/blog/python-behind-the-scenes-4-how-python-bytecode-is-executed/">the next post</a>.</p><p></p><p>Meanwhile, to solidify what we learned today and to learn more, I really recommend you find some time to explore the CPython source code on your own. I bet you have many questions after reading this post, so you should have something to look for. Have a good time!</p><p></p><p><em>If you have any questions, comments or suggestions, feel free to contact me at victor@tenthousandmeters.com</em></p><p></p></sr-rd-content>
+                            
+                            <sr-rd-footer>
+                                <sr-rd-footer-group>
+                                    <sr-rd-footer-line></sr-rd-footer-line>
+                                    <sr-rd-footer-text>全文完</sr-rd-footer-text>
+                                    <sr-rd-footer-line></sr-rd-footer-line>
+                                </sr-rd-footer-group>
+                                <sr-rd-footer-copywrite>
+                                    <div>本文由 <a href="http://ksria.com/simpread" target="_blank">简悦 SimpRead</a> 转码，用以提升阅读体验，<a href="https://tenthousandmeters.com/blog/python-behind-the-scenes-3-stepping-through-the-cpython-source-code/" target="_blank">原文地址 </a></div>
+                                </sr-rd-footer-copywrite>
+                            </sr-rd-footer>
+                        </sr-read>
+                    </body>
+                </html>

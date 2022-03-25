@@ -1,0 +1,48 @@
+created: 20211210152250712
+modified: 20211210152912996
+revision: 4-2d15850abdef116912f64114bdbebede
+tags: numpy python
+title: numpy中将数组循环移位
+type: text/vnd.tiddlywiki
+
+numpy中将某个坐标轴上的数组循环移位是这个函数 numpy.roll.
+
+
+<<<
+numpy.roll(a, shift, axis=None)[source]
+Roll array elements along a given axis.
+
+Elements that roll beyond the last position are re-introduced at the first.
+
+Parameters
+aarray_like
+Input array.
+
+shiftint or tuple of ints
+The number of places by which elements are shifted. If a tuple, then axis must be a tuple of the same size, and each of the given axes is shifted by the corresponding number. If an int while axis is a tuple of ints, then the same value is used for all given axes.
+
+axisint or tuple of ints, optional
+Axis or axes along which elements are shifted. By default, the array is flattened before shifting, after which the original shape is restored.
+
+Returns
+resndarray
+Output array, with the same shape as a.
+<<<
+
+shift为正数的时候，表示将尾巴上的shift个元素切下来放到头上，也就是循环右移shift次；
+shift为负数的时候，表示将头上的|shift|个元素切下来放到尾巴上，也就是循环左移shift次；
+
+一个例子：
+
+
+<<<
+x = np.arange(10)
+
+np.roll(x, 2)
+
+array([8, 9, 0, 1, 2, 3, 4, 5, 6, 7])
+
+np.roll(x, -2)
+
+array([2, 3, 4, 5, 6, 7, 8, 9, 0, 1])
+<<<

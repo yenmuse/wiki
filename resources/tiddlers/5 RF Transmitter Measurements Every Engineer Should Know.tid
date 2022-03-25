@@ -1,0 +1,20 @@
+created: 20211013024415588
+modified: 20211014005119744
+revision: 1-7d0cf88adde4fe42162550fb4aa9e7bb
+tags: simpread rf
+title: 5 RF Transmitter Measurements Every Engineer Should Know
+type: text/vnd.tiddlywiki
+
+[ext[RF Transmitter Measurements Every Engineer Should Know|file:./resources/simpread/simpread-5 RF Transmitter Measurements Every Engineer Should Know - NI.html]]
+
+主要介绍了射频发送机的五个指标：
+
+* output power
+
+* power in band
+
+* unwanted signal
+
+* phase noise
+
+* modulation quality

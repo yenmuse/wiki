@@ -1,0 +1,55 @@
+created: 20210715091401610
+modified: 20211025091742066
+revision: 1-e2fd573bc733c59e86a30235851a9e83
+tags: [[made soc]] Nokia
+title: MADE ES2 Errata SW WA-MRAM Paging Issue REQ
+tmap.id: da07e902-9074-4d2f-9423-f4c685c9631f
+type: text/vnd.tiddlywiki
+
+! Issue
+
+!! Background
+
+Made Cascade uses a total of 48 KB physical RAM for handling the maximum capacity of 
+cascading data over the 25 Gbps eCPRI link. In order to realize this, the access is based on paging 
+the memory into 1 KB pages which are reserved according to needs of the incoming data. The 
+actual number of pages reserved and ordering of streams in RAM depends on the configuration 
+including for example the selected data format, the number of PRBs per symbol and the number 
+of streams.
+
+!! Issue description
+
+Under specific configurations there is a possibility that previously reserved pages are continued to 
+be written into causing overwriting of unprocessed data. Common nominator of these 
+configurations is that they dynamically require from 48 KB to 96 KB of paged cascade memory.
+
+!! Workaround
+
+Configuration should dynamically use either less than 48 KB which guarantees correct use of 
+already reserved pages of more than 96 KB of paged RAM which in turn guarantees correct 
+release of expired pages and reservation of new pages. In order to assure the use of more than 
+96 KB, placeholder ~SxCs should be activated as cascading is engaged. During operation, actual 
+~SxCs would replace these placeholder reservations in the pool.
+
+
+! Items
+
+!! Need to calculate MRMA allocated to the carrier  correctly
+
+!! Need to take both ~PUxCH and PRACH into consideration
+
+!! Need to take 2CC into consideration
+
+!! Need to take beamforming calibration into consideration
+
+!! Need to create fake streams when needed
+
+!!! Fake stream for calibration is supposed not to use ul cascade since it needs raw data from all ~AxC from each MADE, seems this is different from what's required here
+
+!! Need to discard data from fake stream
+
+! Questions
+
+!! What's the detail of MRAM paging algorithm
+
+!! What's the current implementation about MRAM, how it's allocation to each stream

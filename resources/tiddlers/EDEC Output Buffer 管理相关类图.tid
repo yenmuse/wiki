@@ -1,0 +1,80 @@
+created: 20220302013220910
+modified: 20220303094058732
+revision: 3-f0f5b63212919f2ca3872df78a7e5a5c
+tags: puml edec thor
+title: EDEC Output Buffer 管理相关类图
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startuml
+class ThorNrtApi
+
+class StreamManager
+{
+		void EnableRxEaxcStream(const uint16_t eaxcId, const l1sw::ctrl::rt::fronthaul::fhLinkManager::hwConfig::ecpriConfig::RfoeRxMode rfoeRxMode)
+}
+
+class EdecLutConfigStorage
+{
+		CN_PHY_EDEC_LUT_CFG_s* FetchEdecLutConfigForNr(varargs)
+}
+
+class CN_PHY_EDEC_LUT_CFG_s
+
+class FdIqBufferManager
+
+class FhFdIqBuffer
+
+class EaxcStream
+
+class edecController
+
+class BfmulTimerEo
+{
+		std::array<BfDlJob, BfmulJob::NUM_OF_BFMUL_INSTANCES> \njob2_{ BfDlJob(0), BfDlJob(1),BfDlJob(2),BfDlJob(3) }
+		void ExecuteBeamformingJobs(const BfmulCCInfo& info, TimerQueueContext& context)
+}
+
+class BfDlJob
+{
+		BfMulJ2d* descJob2_[2] = {}; //ping-pong buffer
+		void PushToPsm(varargs)
+}
+
+class BfmulJob
+
+class JobBase
+
+class TimerQueueContext
+{
+		FixedSizeList<BfmulCCInfo, MAX_NUM_OF_CARRIERS> componentCarriersInfo_{};
+    uint8_t numOfCarriersTriggeredBfDlJob_{};
+    uint8_t numOfBfDlJobsToBeTriggered_{};
+    std::vector<cavm_psm_cmd_addjob_s> ecmpAddJobCmdsToBeTriggered_{};
+    SharedMemPtr<em::TimerManager> timerManager_;
+		void AddTxComponentCarrier(*, *, *, uint8_t* iqBuffer, uint8_t* ecmpInputAddr0, uint8_t* ecmpInputAddr1, *)
+		inline auto& Get(const uint8_t ccIdx)
+}
+
+class BfmulCCInfo
+{
+		uint8_t* iqBuffer{};
+    uint8_t* ecmpInputAddr[2]{};
+}
+class TimerManager
+
+ThorNrtApi o-- StreamManager
+StreamManager o-- EdecLutConfigStorage
+EdecLutConfigStorage *-- CN_PHY_EDEC_LUT_CFG_s
+StreamManager *-- FdIqBufferManager
+FdIqBufferManager o-- FhFdIqBuffer
+StreamManager *-- EaxcStream
+EaxcStream o-- edecController
+ThorNrtApi o-- TimerQueueContext
+TimerQueueContext *-- BfmulCCInfo
+TimerQueueContext *-- TimerManager
+TimerManager o-- BfmulTimerEo
+BfmulTimerEo o-- BfDlJob
+BfDlJob <|--  BfmulJob
+BfmulJob <|-- JobBase
+BfDlJob o-- BfmulCCInfo
+@enduml""">

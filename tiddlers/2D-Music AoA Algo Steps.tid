@@ -1,0 +1,60 @@
+created: 20220304060757422
+creator: TidGiUser
+modified: 20220325113157846
+modifier: TidGiUser
+tags: aoa nokia
+title: 2D-Music AoA Algo Steps
+tmap.id: ac8418bd-53a8-4fd9-bdce-8fc36ced57c6
+type: text/vnd.tiddlywiki
+
+#Loop below steps for each sub-array:
+
+## Input is $$\mathrm{Z} \in \Complex^{4 \times 1632}$$, where 4 means the number of antenna in the sub-array, and 1632 mean the number of re for SRS
+
+## Cut sub-matrices out of Z according to input parameters and reorder the elements. We get $$\mathrm{Y} \in \Complex^{266 \times 40}$$, where 266 is the number of sub-matrices and 40 is the number of elements in each sub-matrices
+
+## Computation correlation matrix $$\mathrm{R_{Y}} = \mathrm{Y}^H * \mathrm{Y}$$. Note that $$\mathrm{R_{Y}} \in \Complex^{40 \times 40}$$
+
+## Eigen vector decomposition of $$\mathrm{R_{Y}}$$, $$\mathrm{R_{Y}} = \mathrm{Q} * \Sigma * \mathrm{Q}^{H}$$, where matrix $$\mathrm{Q} \in \Complex^{40 \times 40}$$, consists of the eigen vector. For the eigen vector computation, loop below steps for each eigen vector:
+
+### power iteration method to compute eigen vector and correponding eigen value
+
+## Remove the last column vector of $$\mathrm{Q}$$, we get $$\mathrm{Q}_n \in \Complex^{40 \times 39}$$, 
+
+## Compute the noise sub-space: $$\mathrm{R}_q = \mathrm{Q}_n * \mathrm{Q}_n^H$$, where $$\mathrm{R}_q \in \Complex^{40 \times 40}$$
+
+## For each evaluation point
+
+### Compute the sub-array response: $$\mathrm{A} = \mathrm{S} \otimes  \mathrm{F}$$, where
+
+#### $$\mathrm{S} = e^{-j2\pi \mathrm{d} \sin \theta_e} \in \Complex^{1 \times m}$$ where
+
+##### $$m$$ is the number of antennas in this sub-matrces
+
+##### $$\mathrm{d}$$ is ~AntIndices * ~AntDist
+
+##### $$\theta_e$$ is ~AngleGrid[~EvalPoint]
+
+#### $$\mathrm{S} = e^{-j2\pi \frac{ d_e k  f_{scs}}{f_c}} \in \Complex^{1 \times n}$$ where
+
+##### $$n$$ is the number of re in this sub-matrces 
+
+##### $$k$$ is SCIndices
+
+##### $$d_e$$ is ~DistanceGrid[~EvalPoint]
+
+### Since $$m \times n = 40$$, so $$\mathrm{A} \in \Complex^{1 \times 40}$$
+
+### Compute the spectrum for this evaluation point: $$P_{music}(e) = \frac{1}{\mathrm{A} * \mathrm{R}_q * \mathrm{A}^H}$$
+
+## Reshape the spectrum $$P_{music}$$ into a matrix,and do coarse search and then fine search
+
+# Post processing for sub-arrays
+
+## Remove outliers
+
+## Overal ~ToA is mean value over sub-arrays
+
+## Overall azimuth ~AoA are mean values over respective horizontal sub-arrays
+
+## Overall elevetion ~AoA are means values over vertial sub-arrays

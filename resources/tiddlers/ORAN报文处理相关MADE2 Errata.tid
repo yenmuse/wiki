@@ -1,0 +1,104 @@
+created: 20211025092220270
+modified: 20211026023212248
+tags: [[ecpri c-plane]] errata [[made soc]]
+title: ORAN报文处理相关MADE2 Errata
+
+目前根据文档 MADE2 ASIC Errata 第4章所述，与报文处理有关的有4个，都是硬件无法对C/U面报文中的某些字段正确处理导致的。
+
+* 4.4 Replacement of unreceived data only on section level (MADE A0/B0, corrected in C0)
+
+** Background
+
+*** In downlink, typically Made receives data of each symbol in several sections each covering a part of the PRBs of each symbol. Downlink Beam collects information on which PRBs in each symbol have been received. When beamforming, Downlink Beam replaces with zero the data of PRBs which were not received.
+
+** Issue description
+
+*** When no sections arrive for a specific symbol, it is possible that zero replacement is based on the arrival data of a previous symbol.
+
+** Workaround
+
+*** Theoretically it may be possible to compose and send a section with for example PRB #274 for every symbol by the local Made software. The message would internally be routed back to eFramer for reception. The workaround has not been tested.
+
+通常每个ofdm符号都会有好几个section，每个section携带部分PRB的数据，如果某些PRB没有相应的section，那么BEAM就会用0来替换这些数据。但这个errata说，如果某个符号所有PRB都没有相应的section，BEAM会根据上一个符号的内容来替换这个符号的东西，显然这会导致一些问题。这个文档里的这个workaround看着不太靠谱，而且也没验过。
+
+---
+
+* 4.6 C-plane field filterIndex is not forwarded to U-plane (MADE A0/B0, corrected in C0)
+
+** Background
+
+*** ORAN requires that C-plane field filterIndex is forwarded to U-plane messages. O-DU may use the filter index information to distinguish between PUSCH and PRACH data.
+
+** Issue Description
+
+*** There is no support for forwarding filterIndex in Made.
+
+** Workaround
+
+*** O-DU should distinguish PUSCH and PRACH by other means such as eAxC index.
+
+ORAN协议中说PRACH和PUSCH可以用不同的filter index：
+
+[img[file:./resources/picbed/oran_filter_index.png]]
+
+但是made目前不支持传输filter index，所以建议用其他方法来区分PRACH、PUSCH，比如eAxCID.这个errate影响不大，不用着重考虑，知道就行了。
+
+---
+
+* 4.7 Field rb controls PRB stride in section (MADE A0/B0, corrected in C0)
+
+** Background
+
+*** ORAN requires support for rb field value of one. When rb of a section equals one, the PRB sequence is not continuous. Same item as Ethernet Subsystem 3.11.
+
+** Issue Description
+
+*** Made was not required to support rb field value of one. Only zero is supported.
+
+** Workaround
+
+*** O-DU should use only continuous PRB sequences.
+
+rb这个字段很奇怪，不知道为什么会有这种需求，总而言之，rb为1的话，当前section中每隔一个RB有一个用到的PRB：
+
+[img[file:./resources/picbed/oran_rb.png]]
+
+这个errata就是说目前made不支持这个字段。
+
+---
+
+* 4.8 Field dataDirection contains value of one (MADE A0, corrected in B0/C0)
+
+** Background
+
+*** ORAN requires dataDirection equals zero in uplink.
+
+** Issue Description
+
+*** Made sets the value of the field to one.
+
+** Workaround
+
+*** The value cannot be changed in A0. The receiving node should accept the value.
+
+dataDirection表示数据是上行还是下行，对U面报文来说没有歧义，对C面报文要注意虽然所有C面报文从CU-->RU的角度来说都是下行的，但是这里的dataDirection针对的是gNB，for上行数据的C面包问，其dataDirection为0。但是根据这个errata，made目前无法为上行U面数据设置正确的dataDirection，这个字段被设置成了1。workaround也很简单，made没法改，软件不参与组包过程，只能让接收方接受这个值。这个得注意下，C0要修掉这个问题。
+
+---
+
+* 4.9 Initialization for dynamically compressed data (MADE A0/B0, corrected in C0)
+
+** Background
+
+*** When dynamically compressed eCPRI downlink data is decompressed, the PRB header in the data memory determines the sample format for each PRB. If no data has arrived for a PRB, it is possible the sample format is interpreted to result in PRB size bigger than the footprint configured for each PRB. This woud lead to incorrect data.
+
+** Issue Description
+
+*** Decompressing data from an uninitialized area of memory can result in incorrect data.
+
+** Workaround
+
+*** Downlink Beam reception data memory should be initialized so that a compression header is 
+written for each PRB which will be processed. The header should imply the shortest sample data 
+format having one bit for I and one bit for Q.
+
+这个errata的描述没太看懂，字面意思是如果下行数据是动态压缩的，而made没有收到某些PRB对应的section，就可能会用错误的方法来解压这些PRB的数据，这会导致解出来的PRB大小比配置的要大，把后面的数据搞坏掉。但问题是为什么不把每个PRB占用的内存都配置为可能的最大值呢？这不就没问题了？另外这个errata感觉跟4.4也有关系，结合起来看是不是说如果某些PRB没有对应的section(不管是O-DU本身没发还是人家发了但是中途丢了)，made会用0来填充这些PRB，但是填充的过程会有问题？而且这个workaround说实话也不太靠谱……

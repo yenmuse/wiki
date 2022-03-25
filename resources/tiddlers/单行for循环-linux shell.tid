@@ -1,0 +1,14 @@
+created: 20211025010928885
+modified: 20211025011823475
+revision: 2-004d48bf29341e5820be1dca39d34572
+tags: shell linux
+title: 单行for循环-linux shell
+type: text/vnd.tiddlywiki
+
+Linux的指令行界面中常常有不换行重复多次执行相同逻辑的需求，这时就可以使用单行for循环：[ext[simpread-HowTo Use bash For Loop In One Line - nixCraft|file:./resources/simpread/simpread-HowTo Use bash For Loop In One Line - nixCraft.html]]，语法就三个词：for，do，done。
+
+for后面跟的是要遍历的列表，do后面是针对遍历列表中每个元素的处理，done是标识这个单行for循环结束。注意for和do后面都有";"。
+
+for后面的列表有好几种形式：*表示所有文件，for i in {1..5}表示从1到。
+
+具体可参考上面的链接。

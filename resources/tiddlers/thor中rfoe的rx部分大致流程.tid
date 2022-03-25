@@ -1,0 +1,76 @@
+created: 20211220073453283
+modified: 20211227064420463
+revision: 8-0a3632b92400ef152a0f5e6b38b0ef33
+tags: rfoe thor
+title: thor中rfoe的rx部分大致流程
+type: text/vnd.tiddlywiki
+
+[img[file:./resources/picbed/thor_rfoe_rx_data_path_high_level_diagrame.png]]
+
+[img[file:./resources/picbed/rfoe_rx_flow_header_processing.png]]
+
+报文到达rfoe之后：
+
+# 提取IEEE1588v2 硬件时间戳，存放在PHY SMEM 或LLC\DDR,以供后面packet logger使用
+
+# 接下来是从报文中提取VLAN Type，具体规则从l1low角度来说不关心，这里不列了
+
+# 然后是从报文中提取~EtherType。在每个报文的SOP，CGXIF比较~EtherType和RFOE()_RX_DIRECTION_CTL(0..2)来决定如何处理该报文
+
+## 所有报文中都有这三个字段： {DA[47:0], SA[47:0], ~EtherType[15:0]}，前两个会被硬件丢掉
+
+## 收入的报文会搜索RX_DIRECTION_CTL(0..2)[ETHERTYPE]来寻找匹配的~EtherType。第一个匹配上的entry会决定rfoe如何处理该报文
+
+### 根据~EtherType是~RoE还是eCPRI还是其它：
+
+#### ~RoE：根据Packet Type过滤报文；从~RoE报文中提取8-bit的Flow ID
+
+#### eCPRI：根据Message Type过滤报文；提取16-bit的PC_ID然后通过一个''哈希函数''中提取10-bit的Flow_ID
+
+### FLOW_ID可以用来索引Flow Table的配置以及状态，Flow Table的指针指向对应的Memory Buffer Table，Job Descriptor Table
+
+### 根据MBT索引读取RX_MBT_CFG，它可以用来创建DMA指令，将报文写到circular buffer中
+
+#### circular buffer中第一个入口的位置
+
+#### 每个buffer的size
+
+#### 每个circular buffer的buffer数量
+
+### 根据FLOW_ID读取RX_JDT_CFG，可以得到
+
+#### JD buffer information：JD areas are circular buffers containing job descriptors
+
+##### location of first entry
+
+##### size of each buffer
+
+##### number of buffers in each circular buffer
+
+#### JCA messages for PSM
+
+#### flow configuration for handling the packet
+
+#### buffer state: pointer to next buffer for next update
+
+#### RX_SYNC state for ~RoE packet only
+
+### determin SOP Drop. Determine clean drop events as described in CSR error and statistics registers. Clean drop packets are not written to memory and will not update internal state other than error or statistics.
+
+### RX_SYNC for antenna flows. On bringup of antenna flows, RFOE will clean drop packets until the first SOF
+
+### If packet is not dropped during header processing, increment RX_MBT_CFG.NXT_BUF and RX_JDT_CFG.NXT_JD for next packet. This is done atomically so that following packets (could be from different LMACs) are guaranteed to get unique buffers and pointers for the DMA writes.
+
+### Construct DMA command with configuration for:
+
+#### transparent mode
+
+#### JD update memory: side, pointer location in JD buffer
+
+#### PSM command for the JCA message
+
+#### DMA start address calculated from NXT_BUF: Start_address = RX_MBT_CFG[mbt_ptr].buf_addr + (RX_MBT_CFG[mbt_ptr].NXT_BUF*RX_MBT_CFG[mbt_ptr].buf_size)
+
+
+
+

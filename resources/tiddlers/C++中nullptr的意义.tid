@@ -1,0 +1,12 @@
+created: 20211109051622189
+modified: 20211109052448345
+revision: 3-745b3ed9310244dd9f599d9e58071f80
+tags: nullptr c++
+title: C++中nullptr的意义
+type: text/vnd.tiddlywiki
+
+没有nullptr的时候，代码无法区分作为空指针的0和作为整型数字的0，这在函数重载的时候会带来一些问题：如果一个函数由两个重载版本，分别以指针和整型数字为入参，那调用时如果传入0，编译器无法区分应该调用那个重载版本。实际中，目前编译器会直接选择指针重载版本，这就导致我们没法调用func(int 0)了。
+
+nullptr就是为解决这个问题存在的，C++直接定义了一个关键字，专门用来表示空指针。
+
+<embed src="./resources/pdfs/a name for the null pointer.pdf", width="100%", height=800>

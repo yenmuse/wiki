@@ -1,0 +1,553 @@
+
+                <html lang="en" class="simpread-font simpread-theme-root" style='font-size: 60%!important;'>
+                    <head>
+                        <meta charset="utf-8">
+                        <meta http-equiv="content-type" content="text/html; charset=UTF-8;charset=utf-8">
+                        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
+                        <meta name="author" content="Kenshin"/>
+                        <meta name="description" content="简悦 SimpRead - 如杂志般沉浸式阅读体验的扩展" />
+                        <meta name="keywords" content="Chrome extension, Chrome 扩展, 阅读模式, 沉浸式阅读, 简悦, 简阅, read mode, reading mode, reader view, firefox, firefox addon, userscript, safari, opera, tampermonkey"/>
+                        <meta name="thumbnail" content="https://simpread-1254315611.cos.ap-shanghai.myqcloud.com/static/introduce-2.png"/>
+                        <meta property="og:title" content="简悦 SimpRead - 如杂志般沉浸式阅读体验的扩展"/>
+                        <meta property="og:type" content="website">
+                        <meta property="og:local" content="zh_CN"/>
+                        <meta property="og:url" content="http://ksria.com/simpread"/>
+                        <meta property="og:image" content="https://simpread-1254315611.cos.ap-shanghai.myqcloud.com/static/introduce-2.png"/>
+                        <meta property="og:image:type" content="image/png"/>
+                        <meta property="og:image:width" content="960"/>
+                        <meta property="og:image:height" content="355"/>
+                        <meta property="og:site_name" content="http://ksria.com/simpread"/>
+                        <meta property="og:description" content="简悦 SimpRead - 如杂志般沉浸式阅读体验的扩展"/>
+                        <style type="text/css">.simpread-font{font:300 16px/1.8 -apple-system,PingFang SC,Microsoft Yahei,Lantinghei SC,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;color:#333;text-rendering:optimizelegibility;-webkit-text-size-adjust:100%;-webkit-font-smoothing:antialiased}.simpread-hidden{display:none}.simpread-read-root{display:-webkit-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;position:relative;margin:0;top:-1000px;left:0;width:100%;z-index:2147483646;overflow-x:hidden;opacity:0;-webkit-transition:all 1s cubic-bezier(.23,1,.32,1) .1s;transition:all 1s cubic-bezier(.23,1,.32,1) .1s}.simpread-read-root-show{top:0}.simpread-read-root-hide{top:1000px}sr-read{display:-webkit-flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-flow:column nowrap;flex-flow:column;margin:20px 20%;min-width:400px;min-height:400px;text-align:center}read-process{position:fixed;top:0;left:0;height:3px;width:100%;background-color:#64b5f6;-webkit-transition:width 2s;transition:width 2s;z-index:20000}sr-rd-content-error{display:block;position:relative;margin:0;margin-bottom:30px;padding:25px;background-color:rgba(0,0,0,.05)}sr-rd-footer{-webkit-box-orient:vertical;-ms-flex-direction:column;flex-direction:column;font-size:14px}sr-rd-footer,sr-rd-footer-group{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-direction:normal}sr-rd-footer-group{-webkit-box-orient:horizontal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}sr-rd-footer-line{width:100%;border-top:1px solid #e0e0e0}sr-rd-footer-text{min-width:150px}sr-rd-footer-copywrite{margin:10px 0 0;color:inherit}sr-rd-footer-copywrite abbr{-webkit-font-feature-settings:normal;font-feature-settings:normal;font-variant:normal;text-decoration:none}sr-rd-footer-copywrite .second{margin:10px 0}sr-rd-footer-copywrite .third a:hover{border:none!important}sr-rd-footer-copywrite .third a:first-child{margin-right:50px}sr-rd-footer-copywrite .sr-icon{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:33px;height:33px;opacity:.8;-webkit-transition:opacity .5s ease;transition:opacity .5s ease;cursor:pointer}sr-rd-footer-copywrite .sr-icon:hover{opacity:1}sr-rd-footer-copywrite a,sr-rd-footer-copywrite a:link,sr-rd-footer-copywrite a:visited{margin:0;padding:0;color:inherit;background-color:transparent;font-size:inherit!important;line-height:normal;text-decoration:none;vertical-align:baseline;vertical-align:initial;border:none!important;box-sizing:border-box}sr-rd-footer-copywrite a:focus,sr-rd-footer-copywrite a:hover,sr-rd-footer a:active{color:inherit;text-decoration:none;border-bottom:1px dotted!important}.simpread-blocks{text-decoration:none!important}.simpread-blocks *{margin:0}.simpread-blocks a{padding:0;text-decoration:none!important}.simpread-blocks img{margin:0;padding:0;border:0;background:transparent;box-shadow:none}.simpread-focus-root{display:block;position:fixed;top:0;left:0;right:0;bottom:0;background-color:hsla(0,0%,92%,.9);z-index:2147483645;opacity:0;-webkit-transition:opacity 1s cubic-bezier(.23,1,.32,1) 0ms;transition:opacity 1s cubic-bezier(.23,1,.32,1) 0ms}.simpread-focus-highlight{position:relative;box-shadow:0 0 0 20px #fff;background-color:#fff;overflow:visible;z-index:2147483646}.sr-controlbar-bg sr-rd-crlbar,.sr-controlbar-bg sr-rd-crlbar fab{z-index:2147483647}sr-rd-crlbar.controlbar{position:fixed;right:0;bottom:0;width:100px;height:100%;opacity:0;-webkit-transition:opacity .5s ease;transition:opacity .5s ease}sr-rd-crlbar.controlbar:hover{opacity:1}sr-rd-crlbar fap *{box-sizing:border-box}@media (max-height:620px){fab{zoom:.8}}@media (max-height:783px){dialog-gp dialog-content{max-height:580px}dialog-gp dialog-footer{border-top:1px solid #e0e0e0}}.simpread-highlight-selector{outline:3px dashed #1976d2!important;cursor:pointer!important}.simpread-highlight-controlbar,.simpread-highlight-selector{background-color:#fafafa!important;opacity:.8!important;-webkit-transition:opacity .5s ease!important;transition:opacity .5s ease!important}.simpread-highlight-controlbar{position:relative!important;border:3px dashed #1976d2!important}simpread-highlight,sr-snapshot-ctlbar{position:fixed;top:0;left:0;right:0;padding:15px;height:50px;background-color:rgba(50,50,50,.9);box-shadow:0 2px 5px rgba(0,0,0,.26);box-sizing:border-box;z-index:2147483640}simpread-highlight,sr-highlight-ctl,sr-snapshot-ctlbar{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}sr-highlight-ctl{margin:0 5px;width:50px;height:20px;color:#fff;background-color:#1976d2;border-radius:4px;box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);cursor:pointer}toc-bg{position:fixed;left:0;top:0;width:50px;height:200px;font-size:medium}toc-bg:hover{z-index:3}.toc-bg-hidden{opacity:0;-webkit-transition:opacity .5s ease;transition:opacity .5s ease}.toc-bg-hidden:hover{opacity:1;z-index:3}.toc-bg-hidden:hover toc{width:180px}toc *{all:unset}toc{position:fixed;left:0;top:100px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;padding:10px;width:0;max-width:200px;max-height:500px;overflow-x:hidden;overflow-y:hidden;cursor:pointer;border:1px solid hsla(0,0%,62%,.22);-webkit-transition:width .5s;transition:width .5s}toc:hover{overflow-y:auto}toc.mini:hover{width:200px!important}toc::-webkit-scrollbar{width:3px}toc::-webkit-scrollbar-thumb{border-radius:10px;background-color:hsla(36,2%,54%,.5)}toc outline{position:relative;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;padding:2px 0;min-height:21px;line-height:21px;text-align:left}toc outline a,toc outline a:active,toc outline a:focus,toc outline a:visited{display:block;width:100%;color:inherit;font-size:11px;text-decoration:none!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}toc outline a:hover{font-weight:700!important}toc outline a.toc-outline-theme-dark,toc outline a.toc-outline-theme-night{color:#fff!important}.toc-level-h1{padding-left:5px}.toc-level-h2{padding-left:15px}.toc-level-h3{padding-left:25px}.toc-level-h4{padding-left:35px}.toc-outline-active{border-left:2px solid #f44336}toc outline active{position:absolute;left:0;top:0;bottom:0;padding:0 0 0 3px;border-left:2px solid #e8e8e8}sr-kbd{background:-webkit-gradient(linear,0 0,0 100%,from(#fff785),to(#ffc542));border:1px solid #e3be23;-o-border-image:none;border-image:none;-o-border-image:initial;border-image:initial;position:absolute;left:0;padding:1px 3px 0;font-size:11px!important;font-weight:700;box-shadow:0 3px 7px 0 rgba(0,0,0,.3);overflow:hidden;border-radius:3px}.sr-kbd-a{position:relative}kbd-mapping{position:fixed;left:5px;bottom:5px;-ms-flex-flow:row;flex-flow:row;width:250px;height:500px;background-color:#fff;border:1px solid hsla(0,0%,62%,.22);box-shadow:0 2px 5px rgba(0,0,0,.26);border-radius:3px}kbd-mapping,kbd-maps{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}kbd-maps{margin:40px 0 20px;width:100%;overflow-x:auto}kbd-maps::-webkit-scrollbar-thumb{background-clip:padding-box;border-radius:10px;border:2px solid transparent;background-color:rgba(85,85,85,.55)}kbd-maps::-webkit-scrollbar{width:10px;-webkit-transition:width .7s cubic-bezier(.4,0,.2,1);transition:width .7s cubic-bezier(.4,0,.2,1)}kbd-mapping kbd-map-title{position:absolute;margin:5px 0;width:100%;font-size:14px;font-weight:700}kbd-maps-group{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start}kbd-maps-title{margin:5px 0;padding-left:53px;font-size:12px;font-weight:700}kbd-map kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#444d56;vertical-align:middle;background-color:#fafbfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}kbd-map kbd-name{display:inline-block;text-align:right;width:50px}kbd-map kbd-desc{padding-left:3px}sharecard-bg{position:fixed;top:0;left:0;width:100%;height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background-color:rgba(0,0,0,.4);z-index:2147483647}sharecard{max-width:450px;background-color:#64b5f6}sharecard,sharecard-head{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}sharecard-head{margin:25px;color:#fff;border-radius:10px;box-shadow:0 2px 6px 0 rgba(0,0,0,.2),0 25px 50px 0 rgba(0,0,0,.15)}sharecard-card{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}sharecard-card,sharecard-top{display:-webkit-box;display:-ms-flexbox;display:flex}sharecard-top{-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-right:5px;height:65px;background-color:#fff;color:#878787;font-size:25px;font-weight:500;border-top-left-radius:10px;border-top-right-radius:10px}sharecard-top span.logos{display:block;width:48px;height:48px;margin:5px;background-repeat:no-repeat;background-position:50%;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAABU1BMVEUAAAAnNJMnNZI3Q5onNJInNJMnNJInNJMnNJI8SJ0tOZY/S55EUKAoNJI6RpwoNJNIU6InNJInNJImNJI7SJwmNJJ2fLUiMJFKVaNCTJ9faK1HUaJOWKVSXaUnNJNYY6pye7cmM5JXYKhwebMjMI8mL4719fW9vb0oNZP/UlLz8/QqN5TAwMAnNJPv7+/Pz8/q6+/p6enNzc3Kysry8vMsOJXc3env7/LU1uXo29vR0dHOzs7ExMTwjo73bW37XV3Aj1TCYELl5u3n5+fW2Obn6O7f4OrZ2+g0QJkxPpgvO5bh4uvS1OTP0ePCwsJQW6ZLVqTs7fHd3d3V1dXqv79VX6lET6A1TIxXUIBSgHxWQnpelHf+WVnopkXqbC7j5Ozi4uLDw8NGUaFATJ9SgH3r6+vGyd7BxNva2trX19ejqM2gpczHx8dze7Zha67Z2dlTgH1aXQeSAAAAJnRSTlMA6ff+497Y8NL+/fv49P379sqab/BeOiX06tzVy8m/tKqpalA7G6oKj0EAAAJlSURBVEjHndNXWxpBFIDhcS2ICRLAkt4Dx4WhLk0E6R0MYoIISrWX5P9f5cwSIRC2+T1czMV5n2FnZwn2eWONUqCAv3H2Uf5Ra1hx4+0WEXtDQW0fCPYJ1EffEfIV4CSROAE4jsePoTFsNmTJF/IeIHF2lgCIn57GodlqDWXBK7IwBYatVlMWFAildPKX7I3m74Z9fsCiQChoimoFQAz04Ad2gH1n9fv9n9hgMNDr9euLWD6fLxQKxaLfb7dTSlahbFVdEPwIQtrAihZQgyKCtCagbQe3xh0QFMgy5MR11+ewYY5/qlZ7vT2xu93ULKjbFLpiUxnIIwjgKmVTLDUFXMrAi2NJWCRLIthTBo4xyOLKpwyqU6CuDCI41hFBCVdOhyLw4FgJ1skCAiyl9BSHbCorgo6VJXTru5hrVCQS8Yr5xLzX59YJSFpVFwD9U0BGC3hGdFpATgRupTGe9R9I1b1ePBvXKDyvq/O/44LT4/E4BUbSCAwj8Evq6HlnOBprx6JhJz8Gktc7xeaP9ndY+0coQvCccFBD4JW60UIY50ciLOAODAQRVOeCHm4Q3Xks6uRDY+CQ+AR4T2wMYh6+jMCIQOp78CFoj0H7EQgIuhI3dGaHCrwgADwCPjJvA372GRigCJg49FUdk3D87pq3zp4SA5zc1Zh9DxfwkpjgUg5Mv+lbeE3McC8Lpu7SA3wk2xzcqL2tN5DfIsQC8HB7UamUy6FQOpTO5QKBQDZbKnWSyUzGjdWCwaDA8+7Le4BNgm3qQGWchYh9s5hNq6wVbBlbwhZYOp3OYOA4zmgEypnM2zj8ByIdedKrH8vDAAAAAElFTkSuQmCC");zoom:.8}sharecard-content{padding:15px;max-height:500px;font-size:20px;text-align:justify;background-color:#2196f3;overflow-x:hidden;overflow-y:auto}sharecard-via{padding:10px;font-size:10px;background-color:#2196f3}sharecard-footer{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;padding-right:5px;height:100px;background-color:#fff;color:#878787;font-size:15px;font-weight:500;border-bottom-left-radius:10px;border-bottom-right-radius:10px}sharecard-footer,sharecard-footer div{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center}sharecard-footer span.qrcode{display:block;width:100px;height:100px;margin:5px;background-repeat:no-repeat;background-position:50%;background-image:url("data:image/png;base64,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")}sharecard-control{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:0 19px;height:80px;background-color:#fff}simpread-snapshot{width:100%;height:100%;cursor:move;z-index:2147483645}simpread-snapshot,sr-mask{position:fixed;left:0;top:0}sr-mask{background-color:rgba(0,0,0,.1)}.simpread-feedback,.simpread-urlscheme{position:fixed;right:20px;bottom:20px;z-index:2147483646}simpread-feedback,simpread-urlscheme{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;padding:20px 20px 0;width:500px;color:rgba(51,51,51,.87);background-color:#fff;border-radius:3px;box-shadow:0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.26);overflow:hidden;-webkit-transform-origin:bottom;transform-origin:bottom;-webkit-transition:all .6s ease;transition:all .6s ease}simpread-feedback *,simpread-urlscheme *{font-size:12px!important;box-sizing:border-box}simpread-feedback.active,simpread-urlscheme.active{-webkit-animation-name:srFadeInUp;animation-name:srFadeInUp;-webkit-animation-duration:.45s;animation-duration:.45s;-webkit-animation-fill-mode:both;animation-fill-mode:both}simpread-feedback.hide,simpread-urlscheme.hide{-webkit-animation-name:srFadeInDown;animation-name:srFadeInDown;-webkit-animation-duration:.45s;animation-duration:.45s;-webkit-animation-fill-mode:both;animation-fill-mode:both}simpread-feedback sr-fb-label,simpread-urlscheme sr-urls-label{width:100%}simpread-feedback sr-fb-head,simpread-urlscheme sr-urls-head{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;margin-bottom:5px;width:100%}simpread-feedback sr-fb-content,simpread-urlscheme sr-urls-content{margin-bottom:5px;width:100%}simpread-feedback sr-urls-footer,simpread-urlscheme sr-urls-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;width:100%}simpread-feedback sr-fb-a,simpread-urlscheme sr-urls-a{color:#2163f7;cursor:pointer}simpread-feedback text-field-state,simpread-urlscheme text-field-state{border-top:none rgba(34,101,247,.8)!important;border-left:none rgba(34,101,247,.8)!important;border-right:none rgba(34,101,247,.8)!important;border-bottom:2px solid rgba(34,101,247,.8)!important}simpread-feedback switch,simpread-urlscheme switch{margin-top:0!important}@-webkit-keyframes srFadeInUp{0%{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes srFadeInUp{0%{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}to{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}}@-webkit-keyframes srFadeInDown{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}to{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}}@keyframes srFadeInDown{0%{opacity:1;-webkit-transform:translateY(0);transform:translateY(0)}to{opacity:0;-webkit-transform:translateY(100px);transform:translateY(100px)}}simpread-feedback sr-fb-head{font-weight:700}simpread-feedback sr-fb-content{-webkit-box-orient:vertical;-ms-flex-direction:column;flex-direction:column}simpread-feedback sr-fb-content,simpread-feedback sr-fb-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-direction:normal}simpread-feedback sr-fb-footer{-webkit-box-orient:horizontal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;width:100%}simpread-feedback sr-close{position:absolute;right:20px;cursor:pointer;-webkit-transition:all 1s cubic-bezier(.23,1,.32,1) .1s;transition:all 1s cubic-bezier(.23,1,.32,1) .1s;z-index:200}simpread-feedback sr-close:hover{-webkit-transform:rotate(-15deg) scale(1.3);transform:rotate(-15deg) scale(1.3)}simpread-feedback sr-stars{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin-top:10px}simpread-feedback sr-stars i{margin-right:10px;cursor:pointer}simpread-feedback sr-stars i svg{-webkit-transition:all 1s cubic-bezier(.23,1,.32,1) .1s;transition:all 1s cubic-bezier(.23,1,.32,1) .1s}simpread-feedback sr-stars i svg:hover{-webkit-transform:rotate(-15deg) scale(1.3);transform:rotate(-15deg) scale(1.3)}simpread-feedback sr-stars i.active svg{-webkit-transform:rotate(0) scale(1);transform:rotate(0) scale(1)}simpread-feedback sr-emojis{display:block;height:100px;overflow:hidden}simpread-feedback sr-emoji{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-transition:.3s;transition:.3s}simpread-feedback sr-emoji>svg{margin:15px 0;width:70px;height:70px;-ms-flex-negative:0;flex-shrink:0}simpread-feedback sr-stars-footer{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;margin:10px 0 20px}</style>
+                        <style type="text/css">.simpread-theme-root{font-size:62.5%!important}sr-rd-content,sr-rd-desc,sr-rd-title{width:100%}sr-rd-title{display:-webkit-box;margin:1em 0 .5em;overflow:hidden;text-overflow:ellipsis;text-rendering:optimizelegibility;-webkit-line-clamp:3;-webkit-box-orient:vertical}sr-rd-content{text-align:left;word-break:break-word}sr-rd-desc{text-align:justify;line-height:2.4;margin:0 0 1.2em;box-sizing:border-box}sr-rd-content{font-size:25.6px;font-size:1.6rem;line-height:1.6}sr-rd-content h1,sr-rd-content h1 *,sr-rd-content h2,sr-rd-content h2 *,sr-rd-content h3,sr-rd-content h3 *,sr-rd-content h4,sr-rd-content h4 *,sr-rd-content h5,sr-rd-content h5 *,sr-rd-content h6,sr-rd-content h6 *{word-break:break-all}sr-rd-content div,sr-rd-content p{display:block;float:inherit;line-height:1.6;font-size:25.6px;font-size:1.6rem}sr-rd-content div,sr-rd-content p,sr-rd-content pre,sr-rd-content sr-blockquote{margin:0 0 1.2em;word-break:break-word}sr-rd-content a{padding:0 5px;vertical-align:baseline;vertical-align:initial}sr-rd-content a,sr-rd-content a:link{color:inherit;font-size:inherit;font-weight:inherit;border:none}sr-rd-content a:hover{background:transparent}sr-rd-content img{margin:10px;padding:5px;max-width:100%;background:#fff;border:1px solid #bbb;box-shadow:1px 1px 3px #d4d4d4}sr-rd-content figcaption{text-align:center;font-size:14px}sr-rd-content sr-blockquote{display:block;position:relative;padding:15px 25px;text-align:left;line-height:inherit}sr-rd-content sr-blockquote:before{position:absolute}sr-rd-content sr-blockquote *{margin:0;font-size:inherit}sr-rd-content table{width:100%;margin:0 0 1.2em;word-break:keep-all;word-break:normal;overflow:auto;border:none}sr-rd-content table td,sr-rd-content table th{border:none}sr-rd-content ul{margin:0 0 1.2em;margin-left:1.3em;padding:0;list-style:disc}sr-rd-content ol{list-style:decimal;margin:0;padding:0}sr-rd-content ol li,sr-rd-content ul li{font-size:inherit;list-style:disc;margin:0 0 1.2em}sr-rd-content ol li{list-style:decimal;margin-left:1.3em}sr-rd-content ol li *,sr-rd-content ul li *{margin:0;text-align:left;text-align:initial}sr-rd-content li ol,sr-rd-content li ul{margin-bottom:.8em;margin-left:2em}sr-rd-content li ul{list-style:circle}sr-rd-content pre{font-family:Consolas,Monaco,Andale Mono,Source Code Pro,Liberation Mono,Courier,monospace;display:block;padding:15px;line-height:1.5;word-break:break-all;word-wrap:break-word;white-space:pre;overflow:auto}sr-rd-content pre,sr-rd-content pre *,sr-rd-content pre div{font-size:17.6px;font-size:1.1rem}sr-rd-content li pre code,sr-rd-content p pre code,sr-rd-content pre{background-color:transparent;border:none}sr-rd-content pre code{margin:0;padding:0}sr-rd-content pre code,sr-rd-content pre code *{font-size:17.6px;font-size:1.1rem}sr-rd-content pre p{margin:0;padding:0;color:inherit;font-size:inherit;line-height:inherit}sr-rd-content li code,sr-rd-content p code{margin:0 4px;padding:2px 4px;font-size:17.6px;font-size:1.1rem}sr-rd-content mark{margin:0 5px;padding:2px;background:#fffdd1;border-bottom:1px solid #ffedce}.sr-rd-content-img{width:90%;height:auto}.sr-rd-content-img-load{width:48px;height:48px;margin:0;padding:0;border-style:none;border-width:0;background-repeat:no-repeat;background-image:url(data:image/gif;base64,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)}.sr-rd-content-center{text-align:center;display:-webkit-box;-webkit-box-align:center;-webkit-box-pack:center;-webkit-box-orient:vertical}.sr-rd-content-center-small{display:-webkit-inline-box;display:-ms-inline-flexbox;display:inline-flex}.sr-rd-content-center-small img{margin:0;padding:0;border:0;box-shadow:none}img.simpread-img-broken{cursor:pointer}.sr-rd-content-nobeautify{margin:0;padding:0;border:0;box-shadow:0 0 0}sr-rd-mult{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;margin:0 0 16px;padding:16px 0 24px;width:100%;background-color:#fff;border-radius:4px;box-shadow:0 1px 2px 0 rgba(60,64,67,.3),0 2px 6px 2px rgba(60,64,67,.15)}sr-rd-mult:hover{-webkit-transition:all .45s 0ms;transition:all .45s 0ms;box-shadow:1px 1px 8px rgba(0,0,0,.16)}sr-rd-mult sr-rd-mult-content{padding:0 16px;overflow:auto}sr-rd-mult sr-rd-mult-avatar,sr-rd-mult sr-rd-mult-content{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}sr-rd-mult sr-rd-mult-avatar{-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:0 15px}sr-rd-mult sr-rd-mult-avatar span{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;max-width:75px;overflow:hidden;text-overflow:ellipsis;text-align:left;font-size:16px;font-size:1rem}sr-rd-mult sr-rd-mult-avatar img{margin-bottom:0;max-width:50px;max-height:50px;width:50px;height:50px;border-radius:50%}sr-rd-mult sr-rd-mult-content img{max-width:80%}sr-rd-mult sr-rd-mult-avatar .sr-rd-content-center{margin:0}sr-page{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;width:100%}</style>
+                        <style type="text/css">sr-rd-theme-engwrite{display:none}sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{margin:20px 0 10px;padding:0;font-weight:500;-webkit-font-smoothing:antialiased}sr-rd-content h1{font-weight:300;text-align:center;font-size:44.8px;font-size:2.8rem;color:#933d3f}sr-rd-content h2{font-size:38.4px;font-size:2.4rem;border-bottom:1px solid #ccc;color:#000}sr-rd-content h3{font-size:28.8px;font-size:1.8rem}sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{font-size:25.6px;font-size:1.6rem}sr-rd-content h6{color:#777}sr-rd-content ol,sr-rd-content ul{padding-left:30px}sr-rd-content ol li>:first-child,sr-rd-content ol li ol:first-of-type,sr-rd-content ol li ul:first-of-type,sr-rd-content ul li>:first-child,sr-rd-content ul li ol:first-of-type,sr-rd-content ul li ul:first-of-type{margin-top:0}sr-rd-content ol ol,sr-rd-content ol ul,sr-rd-content ul ol,sr-rd-content ul ul{margin-bottom:0}sr-rd-content table th{font-weight:700}sr-rd-content table td,sr-rd-content table th{border:1px solid #ccc;padding:6px 13px}sr-rd-content table tr{border-top:1px solid #ccc;background-color:#fff}sr-rd-content table tr:nth-child(2n){background-color:#f8f8f8}sr-rd-content sr-blockquote{text-align:left;border-top:1px dotted #cdc7bc;border-bottom:1px dotted #cdc7bc;background-color:#f8edda;color:#777}sr-blockquote>:first-child{margin-top:0}sr-blockquote>:last-child{margin-bottom:0}.simpread-multi-root,.simpread-theme-root{background-color:#fcf5ed;color:#333}sr-rd-title{font-weight:300;text-align:center;font-size:44.8px;font-size:2.8rem;color:#933d3f}sr-rd-desc{padding:10px;background-color:#f8edda;color:#777;font-size:32px;font-size:2rem;text-align:center;border-top:1px dotted #cdc7bc;border-bottom:1px dotted #cdc7bc}sr-rd-content{padding:20px 0;margin:0 auto}sr-rd-content,sr-rd-content *,sr-rd-content div,sr-rd-content p{color:#333;line-height:1.8}sr-rd-content a,sr-rd-content a:link{color:#ae3737;text-decoration:none}sr-rd-content a:active,sr-rd-content a:focus,sr-rd-content a:hover{text-decoration:underline}sr-rd-content pre{background-color:transparent;border:1px solid #ccc;border-radius:3px}sr-rd-content li code,sr-rd-content p code{border:1px solid #eaeaea;background-color:#f4ece3;border-radius:3px}sr-rd-mult{background-color:#f8edda}</style>
+                        <style type="text/css"></style>
+                        <style type="text/css">@media (pointer:coarse){sr-read{margin:20px 5%!important;min-width:0!important;max-width:90%!important}sr-rd-title{margin-top:0;font-size:2.7rem}sr-rd-content sr-blockquote,sr-rd-desc{margin:10 0!important;padding:0 0 0 10px!important;width:90%;font-size:1.8rem;font-style:normal;line-height:1.7;text-align:justify}sr-rd-content{font-size:1.75rem;font-weight:300}sr-rd-content figure{margin:0;padding:0;text-align:center}sr-rd-content a,sr-rd-content a:link,sr-rd-content li code,sr-rd-content p code{font-size:inherit}sr-rd-footer{margin-top:20px}sr-blockquote,sr-blockquote *{margin:5px!important;padding:5px!important}sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6,sr-rd-title{font-family:PingFang SC,Verdana,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans-serif;color:#000;font-weight:100;line-height:1.35}sr-rd-content-h1,sr-rd-content-h2,sr-rd-content-h3,sr-rd-content-h4,sr-rd-content-h5,sr-rd-content-h6,sr-rd-content h1,sr-rd-content h2,sr-rd-content h3,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{margin-top:1.2em;margin-bottom:.6em;line-height:1.35}sr-rd-content-h1,sr-rd-content h1{font-size:1.8em}sr-rd-content-h2,sr-rd-content h2{font-size:1.6em}sr-rd-content-h3,sr-rd-content h3{font-size:1.4em}sr-rd-content-h4,sr-rd-content-h5,sr-rd-content-h6,sr-rd-content h4,sr-rd-content h5,sr-rd-content h6{font-size:1.2em}sr-rd-content-ul,sr-rd-content ul{margin-left:1.3em!important;list-style:disc}sr-rd-content-ol,sr-rd-content ol{list-style:decimal;margin-left:1.9em!important}sr-rd-content-ol ol,sr-rd-content-ol ul,sr-rd-content-ul ol,sr-rd-content-ul ul,sr-rd-content li ol,sr-rd-content li ul{margin-bottom:.8em;margin-left:2em!important}sr-rd-content img{margin:0;padding:0;border:0;max-width:100%!important;height:auto;box-shadow:0 20px 20px -10px rgba(0,0,0,.1)}sr-rd-mult{min-width:0;background-color:#fff;box-shadow:0 1px 6px rgba(32,33,36,.28);border-radius:8px}sr-rd-mult sr-rd-mult-avatar div{margin:0}sr-rd-mult sr-rd-mult-avatar .sr-rd-content-center-small{margin:7px 0!important}sr-rd-mult sr-rd-mult-avatar span{display:block}sr-rd-mult sr-rd-mult-content{padding-left:0}@media only screen and (max-device-width:1024px){.simpread-theme-root,html.simpread-theme-root{font-size:80%!important}sr-rd-mult sr-rd-mult-avatar img{width:50px;height:50px;min-width:50px;min-height:50px}toc-bg toc{width:10px!important}toc-bg:hover toc{width:auto!important}}@media only screen and (max-device-width:414px){.simpread-theme-root,html.simpread-theme-root{font-size:70%!important}sr-rd-mult sr-rd-mult-avatar img{width:30px;height:30px;min-width:30px;min-height:30px}}@media only screen and (max-device-width:320px){.simpread-theme-root,html.simpread-theme-root{font-size:90%!important}sr-rd-content p{margin-bottom:.5em}}}</style>
+                        <style type="text/css">sr-rd-content *, sr-rd-content p, sr-rd-content div {}sr-rd-content pre code, sr-rd-content pre code * {}sr-rd-desc {}sr-rd-content pre {}sr-rd-title {}</style>
+                        <style type="text/css"></style>
+                        <style type="text/css"></style>
+                        <style type="text/css"></style>
+                        <style type="text/css"></style>
+                        <style type="text/css">sr-rd-content *, sr-rd-content p, sr-rd-content div {
+        font-size: 15px;
+    }
+
+    .annote-perview, .annote-perview * {
+        color: rgb(85, 85, 85);
+        font-weight: 400;
+        line-height: 1.8;
+    }</style>
+                        
+                        
+                        <script>setTimeout(()=>{const e=location.hash.replace("#id=","");let t,a=!1;const n=t=>{for(let n of t){let t;if((t=e.length>6?n.getAttribute("data-id"):n.getAttribute("data-idx"))==e){n.scrollIntoView({behavior:"smooth",block:"start",inline:"nearest"}),a=!0;break}}};e&&(0==(t=document.getElementsByClassName("sr-unread-card")).length&&(t=document.getElementsByTagName("sr-annote")),n(t),a||n(t=document.getElementsByClassName("sr-annote")))},500);</script>
+                        
+                        <title>简悦 | Python behind the scenes #5: how variables are implemented in CPython</title>
+                    </head>
+                    <body>
+                        <sr-read style='font-family: "YaHei Consolas Hybrid"; margin: 20px 30%;'>
+                            <sr-rd-title>Python behind the scenes #5: how variables are implemented in CPython</sr-rd-title>
+                    <sr-rd-desc style="margin: 0;padding-top: 0;padding-bottom: 0;font-style: normal;font-size: 18px;">Consider a simple assignment statement in Python: a = b The meaning of this statement may seem trivia......</sr-rd-desc>
+                    <sr-rd-content><p></p><p>Consider a simple assignment statement in Python:</p><p></p><p>The meaning of this statement may seem trivial. What we do here is take the value of the name <code>b</code> and assign it to the name <code>a</code>, but do we really? This is an ambiguous explanation that gives rise to a lot of questions:</p><p></p><ul>
+<li>What does it mean for a name to be associated with a value? What is a value?</li>
+<li>What does CPython do to assign a value to a name? To get the value?</li>
+<li>Are all variables implemented in the same way?</li>
+</ul><p></p><p>Today we'll answer these questions and understand how variables, so crucial aspect of a programming language, are implemented in CPython.</p><p></p><p><strong>Note</strong>: In this post I'm referring to CPython 3.9. Some implementation details will certainly change as CPython evolves. I'll try to keep track of important changes and add update notes.</p><p></p><h2 id="sr-toc-0">Start of the investigation</h2><p></p><p>Where should we start our investigation? We know from the previous parts that to run Python code, CPython compiles it to bytecode, so let's start by looking at the bytecode to which <code>a = b</code> compiles:</p><p></p><div><pre>$ echo 'a = b' | python -m dis
+
+  1           0 LOAD_NAME                0 (b)
+              2 STORE_NAME               1 (a)
+...
+
+</pre></div><p></p><p><a href="https://tenthousandmeters.com/blog/python-behind-the-scenes-4-how-python-bytecode-is-executed/">Last time</a> we learned that the CPython VM operates using the value stack. A typical bytecode instruction pops values from the stack, does something with them and pushes the result of the computation back onto the stack. The <code>LOAD_NAME</code> and <code>STORE_NAME</code> instructions are typical in that respect. Here's what they do in our example:</p><p></p><ul>
+<li><code>LOAD_NAME</code> gets the value of the name <code>b</code> and pushes it onto the stack.</li>
+<li><code>STORE_NAME</code> pops the value from the stack and associates the name <code>a</code> with that value.</li>
+</ul><p></p><p>Last time we also learned that all opcodes are implemented in a giant <code>switch</code> statement in <a href="https://github.com/python/cpython/blob/3.9/Python/ceval.c#L1464"><code>Python/ceval.c</code></a>, so we can see how the <code>LOAD_NAME</code> and <code>STORE_NAME</code> opcodes work by studying the corresponding cases of that <code>switch</code>. Let's start with the <code>STORE_NAME</code> opcode since we need to associate a name with some value before we can get the value of that name. Here's the <code>case</code> block that executes the  <code>STORE_NAME</code> opcode: </p><p></p><div><pre>case TARGET(STORE_NAME): {
+    PyObject *name = GETITEM(names, oparg);
+    PyObject *v = POP();
+    PyObject *ns = f-&gt;f_locals;
+    int err;
+    if (ns == NULL) {
+        _PyErr_Format(tstate, PyExc_SystemError,
+                      "no locals found when storing %R", name);
+        Py_DECREF(v);
+        goto error;
+    }
+    if (PyDict_CheckExact(ns))
+        err = PyDict_SetItem(ns, name, v);
+    else
+        err = PyObject_SetItem(ns, name, v);
+    Py_DECREF(v);
+    if (err != 0)
+        goto error;
+    DISPATCH();
+}
+
+</pre></div><p></p><p>Let's analyze what it does:</p><p></p><ol>
+<li>The names are strings. They are stored in a code object in a tuple called <code>co_names</code>. The <code>names</code> variable is just a shorthand for <code>co_names</code>. The argument of the <code>STORE_NAME</code> instruction is not a name but an index used to look up the name in <code>co_names</code>.  The first thing the VM does is get the name, which it's going to assign a value to, from <code>co_names</code>.</li>
+<li>The VM pops the value from the stack.</li>
+<li>Values of variables are stored in a frame object. The <code>f_locals</code> field of a frame object is a mapping from the names of local variables to their values. The VM associates a name <code>name</code> with a value <code>v</code> by setting <code>f_locals[name] = v</code>.</li>
+</ol><p></p><p>We learn from this two crucial facts:</p><p></p><ul>
+<li>Python variables are names mapped to values.</li>
+<li>Values of names are references to Python objects.</li>
+</ul><p></p><p>The logic for executing the <code>LOAD_NAME</code> opcode is a bit more complicated because the VM looks up the value of a name not only in <code>f_locals</code> but also in a few other places:</p><p></p><div><pre>case TARGET(LOAD_NAME): {
+    PyObject *name = GETITEM(names, oparg);
+    PyObject *locals = f-&gt;f_locals;
+    PyObject *v;
+
+    if (locals == NULL) {
+        _PyErr_Format(tstate, PyExc_SystemError,
+                        "no locals when loading %R", name);
+        goto error;
+    }
+
+    // look up the value in `f-&gt;f_locals`
+    if (PyDict_CheckExact(locals)) {
+        v = PyDict_GetItemWithError(locals, name);
+        if (v != NULL) {
+            Py_INCREF(v);
+        }
+        else if (_PyErr_Occurred(tstate)) {
+            goto error;
+        }
+    }
+    else {
+        v = PyObject_GetItem(locals, name);
+        if (v == NULL) {
+            if (!_PyErr_ExceptionMatches(tstate, PyExc_KeyError))
+                goto error;
+            _PyErr_Clear(tstate);
+        }
+    }
+
+    // look up the value in `f-&gt;f_globals` and `f-&gt;f_builtins`
+    if (v == NULL) {
+        v = PyDict_GetItemWithError(f-&gt;f_globals, name);
+        if (v != NULL) {
+            Py_INCREF(v);
+        }
+        else if (_PyErr_Occurred(tstate)) {
+            goto error;
+        }
+        else {
+            if (PyDict_CheckExact(f-&gt;f_builtins)) {
+                v = PyDict_GetItemWithError(f-&gt;f_builtins, name);
+                if (v == NULL) {
+                    if (!_PyErr_Occurred(tstate)) {
+                        format_exc_check_arg(
+                                tstate, PyExc_NameError,
+                                NAME_ERROR_MSG, name);
+                    }
+                    goto error;
+                }
+                Py_INCREF(v);
+            }
+            else {
+                v = PyObject_GetItem(f-&gt;f_builtins, name);
+                if (v == NULL) {
+                    if (_PyErr_ExceptionMatches(tstate, PyExc_KeyError)) {
+                        format_exc_check_arg(
+                                    tstate, PyExc_NameError,
+                                    NAME_ERROR_MSG, name);
+                    }
+                    goto error;
+                }
+            }
+        }
+    }
+    PUSH(v);
+    DISPATCH();
+}
+
+</pre></div><p></p><p>This code translates to English as follows:</p><p></p><ol>
+<li>As for the <code>STORE_NAME</code> opcode, the VM first gets the name of a variable.</li>
+<li>The VM looks up the value of the name in the mapping of local variables: <code>v = f_locals[name]</code>.</li>
+<li>If the name is not in <code>f_locals</code>, the VM looks up the value in the dictionary of global variables <code>f_globals</code>. And if the name is not in <code>f_globals</code> either, the VM looks up the value in <code>f_builtins</code>. The <code>f_builtins</code> field of a frame object points  to the dictionary of the <code>builtins</code> module, which contains built-in types, functions, exceptions and constants. If the name is not there, the VM gives up and sets the <code>NameError</code> exception. </li>
+<li>If the VM finds the value, it pushes the value onto the stack.</li>
+</ol><p></p><p>The way the VM searches for a value has the following effects:</p><p></p><ul>
+<li>We always have the names from the <code>builtin</code>'s dictionary, such as <code>int</code>, <code>next</code>, <code>ValueError</code> and <code>None</code>, at our disposal.</li>
+<li>
+<p>If we use a built-in name for a local variable or a global variable, the new variable will shadow the built-in one.</p>
+</li>
+<li>
+<p>A local variable shadows the global variable with the same name.</p>
+</li>
+</ul><p></p><p>Since all we need to be able to do with variables is to associate them with values and to get their values, you might think that the <code>STORE_NAME</code> and <code>LOAD_NAME</code> opcodes are sufficient to implement all variables in Python. This is not the case. Consider the example:</p><p></p><div><pre>x = 1
+
+def f(y, z):
+    def _():
+        return z
+
+    return x + y + z
+
+</pre></div><p></p><p>The function <code>f</code> has to load the values of variables <code>x</code>, <code>y</code> and <code>z</code> to add them and return the result. Note which opcodes the compiler produces to do that:</p><p></p><div><pre>$ python -m dis global_fast_deref.py
+...
+  7          12 LOAD_GLOBAL              0 (x)
+             14 LOAD_FAST                0 (y)
+             16 BINARY_ADD
+             18 LOAD_DEREF               0 (z)
+             20 BINARY_ADD
+             22 RETURN_VALUE
+...
+
+</pre></div><p></p><p>None of the opcodes are <code>LOAD_NAME</code>. The compiler produces the <code>LOAD_GLOBAL</code> opcode to load the value of <code>x</code>, the <code>LOAD_FAST</code> opcode to load the value of <code>y</code> and the <code>LOAD_DEREF</code> opcode to load the value of <code>z</code>.  To see why the compiler produces different opcodes, we need to discuss two important concepts: namespaces and scopes.</p><p></p><h2 id="sr-toc-1">Namespaces and scopes</h2><p></p><p>A Python program consists of code blocks. A code block is a piece of code that the VM executes as a single unit. CPython distinguishes three types of code blocks:</p><p></p><ul>
+<li>module</li>
+<li>function (comprehensions and lambdas are also functions)</li>
+<li>class definition.</li>
+</ul><p></p><p>The compiler creates a code object for every code block in a program. A code object is a structure that describes what a code block does. In particular, it contains the bytecode of a block. To execute a code object, CPython creates a state of execution for it called a frame object. Besides other things, a frame object contains name-value mappings such as <code>f_locals</code>, <code>f_globals</code> and <code>f_builtins</code>. These mappings are referred to as namespaces. Each code block introduces a namespace: its local namespace. The same name in a program may refer to different variables in different namespaces:</p><p></p><div><pre>x = y = "I'm a variable in a global namespace"
+
+def f():
+    x = "I'm a local variable"
+    print(x)
+    print(y)
+
+print(x)
+print(y)
+f()
+
+</pre></div><p></p><div><pre>$ python namespaces.py 
+I'm a variable in a global namespace
+I'm a variable in a global namespace
+I'm a local variable
+I'm a variable in a global namespace
+
+</pre></div><p></p><p>Another important notion is the notion of a scope. Here's what the Python documentation <a href="https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces">says about it</a>:</p><p></p><sr-blockquote>
+<p>A <em>scope</em> is a textual region of a Python program where a namespace is directly accessible. “Directly accessible” here means that an unqualified reference to a name attempts to find the name in the namespace.</p>
+</sr-blockquote><p></p><p>We can think about a scope as a property of a name that tells where the value of that name is stored. The example of a scope is a local scope. The scope of a name is relative to a code block. The following example illustrates the point:</p><p></p><div><pre>a = 1
+
+def f():
+    b = 3
+    return a + b
+
+</pre></div><p></p><p>Here, the name <code>a</code> refers to the same variable in both cases. From the function's perspective, it's a global variable, but from the module's perspective, it's both global and local. The variable <code>b</code> is local to the function <code>f</code>, but it doesn't exist at the module level at all.</p><p></p><p>The variable is considered to be local to a code block if it's bound in that code block. An assignment statement like <code>a = 1</code> binds the name <code>a</code> to <code>1</code>. An assignment statement, though, is not the only way to bind a name. The Python documentation <a href="https://docs.python.org/3/reference/executionmodel.html#naming-and-binding">lists a few more</a>:</p><p></p><sr-blockquote>
+<p>The following constructs bind names: formal parameters to functions, <code>import</code> statements, class and function definitions (these bind the class or function name in the defining block), and targets that are identifiers if occurring in an assignment, <code>for</code> loop header, or after as in a <code>with</code> statement or <code>except</code> clause. The <code>import</code> statement of the form <code>from ... import *</code> binds all names defined in the imported module, except those beginning with an underscore. This form may only be used at the module level.</p>
+</sr-blockquote><p></p><p>Because any binding of a name makes the compiler think that the name is local, the following code raises an exception:</p><p></p><div><pre>a = 1
+
+def f():
+    a += 1
+    return a
+
+print(f())
+
+</pre></div><p></p><div><pre>$ python unbound_local.py
+...
+    a += 1
+UnboundLocalError: local variable 'a' referenced before assignment
+
+</pre></div><p></p><p>The <code>a += 1</code> statement is a form of assignment, so the compiler thinks that <code>a</code> is local. To perform the operation, the VM tries to load the value of <code>a</code>, fails and sets the exception. To tell the compiler that <code>a</code> is global despite the assignment, we can use the <code>global</code> statement:</p><p></p><div><pre>a = 1
+
+def f():
+    global a
+    a += 1
+    print(a)
+
+f()
+
+</pre></div><p></p><div><pre>$ python global_stmt.py 
+2
+
+</pre></div><p></p><p>Similarly, we can use the <code>nonlocal</code> statement to tell the compiler that a name bound in an enclosed (nested) function refers to a variable in an enclosing function:</p><p></p><div><pre>a = "I'm not used"
+
+def f():
+    def g():
+        nonlocal a
+        a += 1
+        print(a)
+    a = 2
+    g()
+
+f()
+
+</pre></div><p></p><div><pre>$ python nonlocal_stmt.py
+3
+
+</pre></div><p></p><p>This is the work of the compiler to analyze the usage of names within a code block, take statements like <code>global</code> and <code>nonlocal</code> into account and produce the right opcodes to load and store values. In general, which opcode the compiler produces for a name depends on the scope of that name and on the type of the code block that is currently being compiled. The VM executes different opcodes differently. All of that is done to make Python variables work the way they do.</p><p></p><p>CPython uses four pairs of load/store opcodes and one more load opcode in total:</p><p></p><ul>
+<li><code>LOAD_FAST</code> and <code>STORE_FAST</code></li>
+<li><code>LOAD_DEREF</code> and <code>STORE_DEREF</code> </li>
+<li><code>LOAD_GLOBAL</code> and <code>STORE_GLOBAL</code></li>
+<li><code>LOAD_NAME</code> and <code>STORE_NAME</code>; and</li>
+<li><code>LOAD_CLASSDEREF</code>.</li>
+</ul><p></p><p>Let's figure out what they do and why CPython needs all of them.</p><p></p><h2 id="sr-toc-2">LOAD_FAST and STORE_FAST</h2><p></p><p>The compiler produces the <code>LOAD_FAST</code> and <code>STORE_FAST</code> opcodes for variables local to a function. Here's an example:</p><p></p><div><pre>$ python -m dis fast_variables.py
+...
+  2           0 LOAD_FAST                0 (x)
+              2 STORE_FAST               1 (y)
+
+  3           4 LOAD_FAST                1 (y)
+              6 RETURN_VALUE
+
+</pre></div><p></p><p>The <code>y</code> variable is local to <code>f</code> because it's bound in <code>f</code> by the assignment. The <code>x</code> variable is local to <code>f</code> because it's bound in <code>f</code> as its parameter.</p><p></p><p>Let's look at the code that executes the <code>STORE_FAST</code> opcode:</p><p></p><div><pre>case TARGET(STORE_FAST): {
+    PREDICTED(STORE_FAST);
+    PyObject *value = POP();
+    SETLOCAL(oparg, value);
+    FAST_DISPATCH();
+}
+
+</pre></div><p></p><p><code>SETLOCAL()</code> is a macro that essentially expands to <code>fastlocals[oparg] = value</code>. The <code>fastlocals</code> variable is just a shorthand for the <code>f_localsplus</code> field of a frame object. This field is an array of pointers to Python objects. It stores values of local variables, cell variables, free variables and the value stack. Last time we learned that the <code>f_localsplus</code> array is used to store the value stack. In the next section of this post we'll see how it's used to store values of cell and free variables. For now, we're interested in the first part of the array that's used for local variables.</p><p></p><p>We've seen that in the case of the <code>STORE_NAME</code> opcode, the VM first gets the name from <code>co_names</code> and then maps that name to the value on top of the stack. It uses <code>f_locals</code> as a name-value mapping, which is usually a dictionary. In the case of the <code>STORE_FAST</code> opcode, the VM doesn't need to get the name. The number of local variables can be calculated statically by the compiler, so the VM can use an array to store their values. Each local variable can the be associated with an index of that array. To map a name to a value, the VM simply stores the value in the corresponding index.</p><p></p><p>The VM doesn't need to get the names of variables local to a function to load and store their values. Nevertheless, it stores these names in a function's code object in the <code>co_varnames</code> tuple. Why? Names are necessary for debugging and error messages. They are also used by the tools such as <code>dis</code> that reads  <code>co_varnames</code> to display names in parentheses:</p><p></p><p>CPython provides the <a href="https://docs.python.org/3/library/functions.html#locals"><code>locals()</code></a> built-in function that returns the local namespace of the current code block in the form of a dictionary. The VM doesn't keep such a dictionary for functions but it can built one on the fly by mapping keys from <code>co_varnames</code> to values from <code>f_localsplus</code>.</p><p></p><p>The <code>LOAD_FAST</code> opcode simply pushes <code>f_localsplus[oparg]</code> onto the stack:</p><p></p><div><pre>case TARGET(LOAD_FAST): {
+    PyObject *value = GETLOCAL(oparg);
+    if (value == NULL) {
+        format_exc_check_arg(tstate, PyExc_UnboundLocalError,
+                             UNBOUNDLOCAL_ERROR_MSG,
+                             PyTuple_GetItem(co-&gt;co_varnames, oparg));
+        goto error;
+    }
+    Py_INCREF(value);
+    PUSH(value);
+    FAST_DISPATCH();
+}
+
+</pre></div><p></p><p>The <code>LOAD_FAST</code> and  <code>STORE_FAST</code> opcodes exist only for performance reasons. They are called <code>*_FAST</code> because the VM uses an array for the mapping, which works faster than a dictionary. What's the speed gain? Let's measure the difference between <code>STORE_FAST</code> and <code>STORE_NAME</code>. The following piece of code stores the value of the variable <code>i</code> 100 million times:</p><p></p><div><pre>for i in range(10**8):
+    pass
+
+</pre></div><p></p><p>If we place it in a module, the compiler produces the <code>STORE_NAME</code> opcode. If we place it in a function, the compiler produces the <code>STORE_FAST</code> opcode. Let's do both and compare the running times:</p><p></p><div><pre>import time
+
+
+# measure STORE_NAME
+times = []
+for _ in range(5):
+    start = time.time()
+    for i in range(10**8):
+        pass
+    times.append(time.time() - start)
+
+print('STORE_NAME: ' + ' '.join(f'{elapsed:.3f}s' for elapsed in sorted(times)))
+
+
+# measure STORE_FAST
+def f():
+    times = []
+    for _ in range(5):
+        start = time.time()
+        for i in range(10**8):
+            pass
+        times.append(time.time() - start)
+
+    print('STORE_FAST: ' + ' '.join(f'{elapsed:.3f}s' for elapsed in sorted(times)))
+
+f()
+
+</pre></div><p></p><div><pre>$ python fast_vs_name.py
+STORE_NAME: 4.536s 4.572s 4.650s 4.742s 4.855s
+STORE_FAST: 2.597s 2.608s 2.625s 2.628s 2.645s
+
+</pre></div><p></p><p>Another difference in the implementation of <code>STORE_NAME</code> and <code>STORE_FAST</code> could theoretically affect these results. The case block for the <code>STORE_FAST</code> opcode ends with the <code>FAST_DISPATCH()</code> macro, which means that the VM goes to the next instruction straight away after it executes the <code>STORE_FAST</code> instruction. The case block for the <code>STORE_NAME</code> opcode ends with the <code>DISPATCH()</code> macro, which means that the VM may possible go to the start of the evaluation loop. At the start of the evaluation loop the VM checks whether it has to suspend the bytecode execution, for example, to release the GIL or to handle the signals. I've replaced the <code>DISPATCH()</code> macro with <code>FAST_DISPATCH()</code> in the case block for <code>STORE_NAME</code>, recompiled CPython and got similar results. So, the difference in times should indeed be explained by:</p><p></p><ul>
+<li>the extra step to get a name; and</li>
+<li>the fact that a dictionary is slower than an array.</li>
+</ul><p></p><h2 id="sr-toc-3">LOAD_DEREF and STORE_DEREF</h2><p></p><p>There is one case when the compiler doesn't produce the <code>LOAD_FAST</code> and <code>STORE_FAST</code> opcodes for variables local to a function. This happens when a variable is used within a nested function. </p><p></p><div><pre>def f():
+    b = 1
+    def g():
+        return b
+
+</pre></div><p></p><div><pre>$ python -m dis nested.py
+...
+Disassembly of &lt;code object f at 0x1027c72f0, file "nested.py", line 1&gt;:
+  2           0 LOAD_CONST               1 (1)
+              2 STORE_DEREF              0 (b)
+
+  3           4 LOAD_CLOSURE             0 (b)
+              6 BUILD_TUPLE              1
+              8 LOAD_CONST               2 (&lt;code object g at 0x1027c7240, file "nested.py", line 3&gt;)
+             10 LOAD_CONST               3 ('f.&lt;locals&gt;.g')
+             12 MAKE_FUNCTION            8 (closure)
+             14 STORE_FAST               0 (g)
+             16 LOAD_CONST               0 (None)
+             18 RETURN_VALUE
+
+Disassembly of &lt;code object g at 0x1027c7240, file "nested.py", line 3&gt;:
+  4           0 LOAD_DEREF               0 (b)
+              2 RETURN_VALUE
+
+</pre></div><p></p><p>The compiler produces the <code>LOAD_DEREF</code> and <code>STORE_DEREF</code> opcodes for cell and free variables. A cell variable is a local variable referenced in a nested function. In our example, <code>b</code> is a cell variable of the function <code>f</code>, because it's referenced by <code>g</code>. A free variable is a cell variable from the perspective of a nested function. It's a variable not bound in a nested function but bound in the enclosing function or a variable declared <code>nonlocal</code>. In our example, <code>b</code> is a free variable of the function <code>g</code>, because it's not bound in <code>g</code> but bound in <code>f</code>. </p><p></p><p>The values of cell and free variables are stored in the <code>f_localsplus</code> array after the values of normal local variables. The only difference is that <code>f_localsplus[index_of_cell_or_free_variable]</code> points not to the value directly but to a cell object containing the value:</p><p></p><div><pre>typedef struct {
+    PyObject_HEAD
+    PyObject *ob_ref;       /* Content of the cell or NULL when empty */
+} PyCellObject;
+
+</pre></div><p></p><p>The <code>STORE_DEREF</code> opcode pops the value from the stack, gets the cell of the variable specified by <code>oparg</code> and assigns <code>ob_ref</code> of that cell to the popped value:</p><p></p><div><pre>case TARGET(STORE_DEREF): {
+    PyObject *v = POP();
+    PyObject *cell = freevars[oparg]; // freevars = f-&gt;f_localsplus + co-&gt;co_nlocals
+    PyObject *oldobj = PyCell_GET(cell);
+    PyCell_SET(cell, v); // expands to ((PyCellObject *)(cell))-&gt;ob_ref = v
+    Py_XDECREF(oldobj);
+    DISPATCH();
+}
+
+</pre></div><p></p><p>The <code>LOAD_DEREF</code> opcode works by pushing the contents of a cell onto the stack:</p><p></p><div><pre>case TARGET(LOAD_DEREF): {
+    PyObject *cell = freevars[oparg];
+    PyObject *value = PyCell_GET(cell);
+    if (value == NULL) {
+      format_exc_unbound(tstate, co, oparg);
+      goto error;
+    }
+    Py_INCREF(value);
+    PUSH(value);
+    DISPATCH();
+}
+
+</pre></div><p></p><p>What's the reason to store values in cells? This is done to connect a free variable with the corresponding cell variable. Their values are stored in different namespaces in different frame objects but in the same cell. The VM passes the cells of an enclosing function to the enclosed function when it creates the enclosed function. The <code>LOAD_CLOSURE</code> opcode pushes a cell onto the stack and the <code>MAKE_FUNCTION</code> opcode creates a function object with that cell for the corresponding free variable. Due to the cell mechanism, when an enclosing function reassigns a cell variable, an enclosed function sees the reassignment:</p><p></p><div><pre>def f():
+    def g():
+        print(a)
+    a = 'assigned'
+    g()
+    a = 'reassigned'
+    g()
+
+f()
+
+</pre></div><p></p><div><pre>$ python cell_reassign.py 
+assigned
+reassigned
+
+</pre></div><p></p><p>and vice versa:</p><p></p><div><pre>def f():
+    def g():
+        nonlocal a
+        a = 'reassigned'
+    a = 'assigned'
+    print(a)
+    g()
+    print(a)
+
+f()
+
+</pre></div><p></p><div><pre>$ python free_reassign.py 
+assigned
+reassigned
+
+</pre></div><p></p><p>Do we really need the cell mechanism to implement such behavior? Couldn't we just use the enclosing namespace to load and store values of free variables? Yes, we could, but consider the following example:</p><p></p><div><pre>def get_counter(start=0):
+    def count():
+        nonlocal c
+        c += 1
+        return c
+
+    c = start - 1
+    return count
+
+count = get_counter()
+print(count())
+print(count())
+
+</pre></div><p></p><p>Recall that when we call a function, CPython creates a frame object to execute it. This example shows that an enclosed function can outlive the frame object of an enclosing function. The benefit of the cell mechanism is that it allows to avoid keeping the frame object of an enclosing function and all its references in memory.</p><p></p><h2 id="sr-toc-4">LOAD_GLOBAL and STORE_GLOBAL</h2><p></p><p>The compiler produces the <code>LOAD_GLOBAL</code> and <code>STORE_GLOBAL</code> opcodes for global variables in functions. The variable is considered to be global in a function if it's declared <code>global</code> or if it's not bound within the function and any enclosing function (i.e. it's neither local nor free). Here's an example:</p><p></p><div><pre>a = 1
+d = 1
+
+def f():
+    b = 1
+    def g():
+        global d
+        c = 1
+        d = 1
+        return a + b + c + d
+
+</pre></div><p></p><p>The <code>c</code> variable is not global to <code>g</code> because it's local to <code>g</code>. The <code>b</code> variable is not global to <code>g</code> because it's free. The <code>a</code> variable is global to <code>g</code> because it's neither local nor free. And the <code>d</code> variable is global to <code>g</code> because it's explicitly declared <code>global</code>.</p><p></p><p>Here's the implementation of the <code>STORE_GLOBAL</code> opcode:</p><p></p><div><pre>case TARGET(STORE_GLOBAL): {
+    PyObject *name = GETITEM(names, oparg);
+    PyObject *v = POP();
+    int err;
+    err = PyDict_SetItem(f-&gt;f_globals, name, v);
+    Py_DECREF(v);
+    if (err != 0)
+        goto error;
+    DISPATCH();
+}
+
+</pre></div><p></p><p>The <code>f_globals</code> field of a frame object is a dictionary that maps global names to their values. When CPython creates a frame object for a module, it assigns <code>f_globals</code> to the dictionary of the module. We can easily check this:</p><p></p><div><pre>$ python -q
+&gt;&gt;&gt; import sys
+&gt;&gt;&gt; globals() is sys.modules['__main__'].__dict__
+True
+
+</pre></div><p></p><p>When the VM executes the <code>MAKE_FUNCTION</code> opcode to create a new function object, it assigns the <code>func_globals</code> field of that object to <code>f_globals</code> of the current frame object. When the function gets called, the VM creates a new frame object for it with <code>f_globals</code> set to <code>func_globals</code>.</p><p></p><p>The implementation of <code>LOAD_GLOBAL</code> is similar to that of <code>LOAD_NAME</code> with two exceptions:</p><p></p><ul>
+<li>It doesn't look up values in <code>f_locals</code>.</li>
+<li>It uses cache to decrease the lookup time.</li>
+</ul><p></p><p>CPython caches the results in a code object in the <code>co_opcache</code> array. This array stores pointers to the <code>_PyOpcache</code> structs:</p><p></p><div><pre>typedef struct {
+    PyObject *ptr;  /* Cached pointer (borrowed reference) */
+    uint64_t globals_ver;  /* ma_version of global dict */
+    uint64_t builtins_ver; /* ma_version of builtin dict */
+} _PyOpcache_LoadGlobal;
+
+struct _PyOpcache {
+    union {
+        _PyOpcache_LoadGlobal lg;
+    } u;
+    char optimized;
+};
+
+</pre></div><p></p><p>The <code>ptr</code> field of the <code>_PyOpcache_LoadGlobal</code> struct points to the actual result of <code>LOAD_GLOBAL</code>. The cache is maintained per instruction number. Another array in a code object called <code>co_opcache_map</code> maps each instruction in the bytecode to its index minus one in <code>co_opcache</code>. If an instruction is not <code>LOAD_GLOBAL</code>, it maps the instruction to <code>0</code>, which means that the instruction is never cached. The size of the cache doesn't exceed 254. If the bytecode contains more than 254 <code>LOAD_GLOBAL</code> instructions, <code>co_opcache_map</code> maps extra instructions to <code>0</code> as well.</p><p></p><p>If the VM finds a value in the cache when it executes <code>LOAD_GLOBAL</code>, it makes sure that the <code>f_global</code> and <code>f_builtins</code> dictionaries haven't been modified since the last time the value was looked up. This is done by comparing <code>globals_ver</code> and <code>builtins_ver</code> with <code>ma_version_tag</code> of the dictionaries. The <code>ma_version_tag</code> field of a dictionary changes each time the dictionary is modified. See <a href="https://www.python.org/dev/peps/pep-0509/">PEP 509</a> for more details.</p><p></p><p>If the VM doesn't find a value in the cache, it does a normal look up first in <code>f_globals</code> and then in <code>f_builtins</code>. If it eventually finds a value, it remembers current <code>ma_version_tag</code> of both dictionaries and pushes the value onto the stack.</p><p></p><h2 id="sr-toc-5">LOAD_NAME and STORE_NAME (and LOAD_CLASSDEREF)</h2><p></p><p>At this point you might wonder why CPython uses the <code>LOAD_NAME</code> and <code>STORE_NAME</code> opcodes at all. The compiler indeed doesn't produce these opcodes when it compiles functions. However, besides function, CPython has two other types of code blocks: modules and class definitions. We haven't talked about class definitions at all, so let's fix it.</p><p></p><p>First, it's crucial to understand that when we define a class, the VM executes its body. Here's what I mean:</p><p></p><div><pre>class A:
+    print('This code is executed')
+
+</pre></div><p></p><div><pre>$ python create_class.py 
+This code is executed
+
+</pre></div><p></p><p>The compiler creates code objects for class definitions just as it creates code objects for modules and functions. What's interesting is that the compiler almost always produces the <code>LOAD_NAME</code> and <code>STORE_NAME</code> opcodes for variables within a class body. There are two rare exceptions to this rule: free variables and variables explicitly declared <code>global</code>. </p><p></p><p>The VM executes <code>*_NAME</code> opcodes and <code>*_FAST</code> opcodes differently. As a result, variables work differently in a class body than they do in a function:</p><p></p><div><pre>x = 'global'
+
+class C:
+    print(x)
+    x = 'local'
+    print(x)
+
+</pre></div><p></p><div><pre>$ python class_local.py
+global
+local
+
+</pre></div><p></p><p>On the first load, the VM loads the value of the <code>x</code> variable from <code>f_globals</code>. Then, it stores the new value in <code>f_locals</code> and, on the second load, loads it from there. If <code>C</code> was a function,  we would get <code>UnboundLocalError: local variable 'x' referenced before assignment</code> when we call it, because the compiler would think that the <code>x</code> variable is local to <code>C</code>.</p><p></p><p>How do the namespaces of classes and functions interplay? When we place a function inside a class, which is a common practice to implement methods, the function doesn't see the names bound in the class' namespace:</p><p></p><div><pre>class D:
+    x = 1
+    def method(self):
+        print(x)
+
+D().method()
+
+</pre></div><p></p><div><pre>$ python func_in_class.py
+...
+NameError: name 'x' is not defined
+
+</pre></div><p></p><p>This is because the VM stores the value of <code>x</code>  with <code>STORE_NAME</code> when it executes the class definition and tries to load it with <code>LOAD_GLOBAL</code> when it executes the function. However, when we place a class definition inside a function, the cell mechanism works as if we place a function inside a function:</p><p></p><div><pre>def f():
+    x = "I'm a cell variable"
+    class B:
+        print(x)
+
+f()
+
+</pre></div><p></p><div><pre>$ python class_in_func.py 
+I'm a cell variable
+
+</pre></div><p></p><p>There's a difference, though. The compiler produces the <code>LOAD_CLASSDEREF</code> opcode instead of <code>LOAD_DEREF</code> to load the value of <code>x</code>. The documentation of the <code>dis</code> module <a href="https://docs.python.org/3/library/dis.html#opcode-LOAD_CLASSDEREF">explains</a> what <code>LOAD_CLASSDEREF</code> does:</p><p></p><sr-blockquote>
+<p>Much like <a href="https://docs.python.org/3/library/dis.html#opcode-LOAD_DEREF"><code>LOAD_DEREF</code></a> but first checks the locals dictionary before consulting the cell. This is used for loading free variables in class bodies.</p>
+</sr-blockquote><p></p><p>Why does it check the locals dictionary first? In the case of a function, the compiler knows for sure if a variable is local or not. In the case of a class, the compiler cannot be sure. This is because CPython has metaclasses, and a metaclass may prepare a non-empty locals dictionary for a class by implementing the <a href="https://docs.python.org/3/reference/datamodel.html#preparing-the-class-namespace"><code>__prepare__</code></a> method.</p><p></p><p>We can see now why the compiler produces the <code>LOAD_NAME</code> and <code>STORE_NAME</code> opcodes for class definitions but we also saw that it produces these opcodes for variables within the module's namespace, as in the <code>a = b</code> example. They work as expected because module's <code>f_locals</code> and module's <code>f_globals</code> is the same thing:</p><p></p><div><pre>$ python -q
+&gt;&gt;&gt; locals() is globals()
+True
+
+</pre></div><p></p><p>You might wonder why CPython doesn't use the <code>LOAD_GLOBAL</code> and <code>STORE_GLOBAL</code> opcodes in this case. Honestly, I don't know the exact reason, if there is any, but I have a guess. CPython provides the built-in <a href="https://docs.python.org/3/library/functions.html#compile"><code>compile()</code></a>, <a href="https://docs.python.org/3/library/functions.html#eval"><code>eval()</code></a> and <a href="https://docs.python.org/3/library/functions.html#exec"><code>exec()</code></a> functions that can be used to dynamically compile and execute Python code. These functions use the <code>LOAD_NAME</code> and <code>STORE_NAME</code> opcodes within the top-level namespace. It makes perfect sense because it allows to execute code dynamically in a class body and get the same effect as if that code was written there:</p><p></p><div><pre>a = 1
+
+class A:
+    b = 2
+    exec('print(a + b)', globals(), locals())
+
+</pre></div><p></p><p>CPython chose to always use the <code>LOAD_NAME</code> and <code>STORE_NAME</code> opcodes for modules. In this way, the bytecode the compiler produces when we run a module in a normal way is the same as when we execute the module with <code>exec()</code>.</p><p></p><h2 id="sr-toc-6">How the compiler decides which opcode to produce</h2><p></p><p>We learned in <a href="https://tenthousandmeters.com/blog/python-behind-the-scenes-2-how-the-cpython-compiler-works/">part 2</a> of this series that before the compiler creates a code object for a code block, it builds a symbol table for that block. A symbol table contains information about symbols (i.e. names) used within a code block including their scopes. The compiler decides which load/store opcode to produce for a given name based on its scope and the type of the code block that is currently being compiled. The algorithm can be summarized as follows:</p><p></p><ol>
+<li>Determine the scope of the variable:<ol>
+<li>If the variable declared <code>global</code>, it's an explicit global variable.</li>
+<li>If the variable declared <code>nonlocal</code>, it's a free variable.</li>
+<li>If the variable is bound within the current code block, it's a local variable.</li>
+<li>If the variable is bound in the enclosing code block that is not a class definition, it's a free variable.</li>
+<li>Otherwise, it's a implicit global variable.</li>
+</ol>
+</li>
+<li>Update the scope:<ol>
+<li>If the variable is local and and it's free in the enclosed code block, it's a cell variable.</li>
+</ol>
+</li>
+<li>Decide which opcode to produce:<ol>
+<li>If the variable is a cell variable or a free variable, produce <code>*_DEREF</code> opcode; produce the <code>LOAD_CLASSDEREF</code> opcode to load the value if the current code block is a class definition.</li>
+<li>If the variable is a local variable and the current code block is a function, produce <code>*_FAST</code> opcode.</li>
+<li>If the variable is an explicit global variable or if it's an implicit global variable and the current code block is a function, produce <code>*_GLOBAL</code> opcode.</li>
+<li>Otherwise, produce <code>*_NAME</code> opcode.</li>
+</ol>
+</li>
+</ol><p></p><p>You don't need to remember these rules. You can always read the source code. Check out <a href="https://github.com/python/cpython/blob/3.9/Python/symtable.c#L497"><code>Python/symtable.c</code></a> to see how the compiler determines the scope of a variable, and <a href="https://github.com/python/cpython/blob/3.9/Python/compile.c#L3550"><code>Python/compile.c</code></a> to see how it decides which opcode to produce.</p><p></p><h2 id="sr-toc-7">Conclusion</h2><p></p><p>The topic of Python variables is much more complicated than it may seem at first. A good portion of the Python documentation is related to variables, including a <a href="https://docs.python.org/3/reference/executionmodel.html#naming-and-binding">section on naming and binding</a> and a <a href="https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces">section on scopes and namespaces</a>. The top questions of <a href="https://docs.python.org/3/faq/programming.html">the Python FAQ</a> are about variables. I say nothing about questions on Stack Overflow. While the official resources give some idea why Python variables work the way they do, it's still hard to understand and remember all the rules. Fortunately, it's easier to understand how Python variables work by studying the source code of the Python implementation. And that's what we did today.</p><p></p><p>We've studied a group of opcodes that CPython uses to load and store values of variables. To understand how the VM executes other opcodes that actually compute something, we need to discuss the core of Python – Python object system. This is our plan for <a href="https://tenthousandmeters.com/blog/python-behind-the-scenes-6-how-python-object-system-works/">the next time</a>.</p><p></p><p><em>If you have any questions, comments or suggestions, feel free to contact me at victor@tenthousandmeters.com</em></p><p></p></sr-rd-content>
+                            
+                            <sr-rd-footer>
+                                <sr-rd-footer-group>
+                                    <sr-rd-footer-line></sr-rd-footer-line>
+                                    <sr-rd-footer-text>全文完</sr-rd-footer-text>
+                                    <sr-rd-footer-line></sr-rd-footer-line>
+                                </sr-rd-footer-group>
+                                <sr-rd-footer-copywrite>
+                                    <div>本文由 <a href="http://ksria.com/simpread" target="_blank">简悦 SimpRead</a> 转码，用以提升阅读体验，<a href="https://tenthousandmeters.com/blog/python-behind-the-scenes-5-how-variables-are-implemented-in-cpython/" target="_blank">原文地址 </a></div>
+                                </sr-rd-footer-copywrite>
+                            </sr-rd-footer>
+                        </sr-read>
+                    </body>
+                </html>

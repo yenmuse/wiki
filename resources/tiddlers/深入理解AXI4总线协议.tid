@@ -1,0 +1,20 @@
+created: 20211014015544438
+modified: 20211014020402710
+revision: 5-25677dd55df981b671336bd2c554d246
+tags: simpread axi
+title: 深入理解AXI4总线协议
+type: text/vnd.tiddlywiki
+
+[ext[simpread-深入 AXI4 总线（O）专栏目录与资料集合|file:./resources/simpread/simpread-深入 AXI4 总线(零)专栏目录与资料集合.html]]
+
+[ext[simpread-深入 AXI4 总线（一）握手机制|file:./resources/simpread/simpread-深入 AXI4 总线（一）握手机制.html]]
+
+[ext[simpread-深入 AXI4 总线（二）架构|file:./resources/simpread/simpread-深入 AXI4 总线（二）架构.html]]
+
+[ext[simpread-深入 AXI4 总线（三）传输事务结构|file:./resources/simpread/simpread-深入 AXI4 总线（三）传输事务结构.html]]
+
+[ext[simpread-深入 AXI4 总线（四）传输事务属性（draft）|file:./resources/simpread/simpread-深入 AXI4 总线（四）传输事务属性（draft）.html]]
+
+[ext[simpread-深入 AXI4 总线（五 A）单机多传输事务场景|file:./resources/simpread/simpread-深入 AXI4 总线（五 A）单机多传输事务场景.html]]
+
+[ext[simpread-深入 AXI4 总线（五 B）多主机传输事务场景|file:./resources/simpread/simpread-深入 AXI4 总线（五 B）多主机传输事务场景.html]]

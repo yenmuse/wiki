@@ -1,0 +1,18 @@
+created: 20211108043114417
+modified: 20211108050702748
+revision: 4-2ac964f2e581e3b966424243e787a79d
+tags: 时频资源分配 rbg [[5G NR]]
+title: 5g nr中的RBG
+type: text/vnd.tiddlywiki
+
+RBG是resource block group的缩写，因为NR中带宽大，RB多，资源分配时每个RB一个bit的话，会增加负荷，所以一个RBG中有多个RB，以此减少资源分配时所需bit数。RBG中RB个数见下表：
+
+|!Bandwidth Part Size|!Configuration 1|!Configuration2|
+|1-36|2|4|
+|37-72|4|8|
+|73-144|8|16|
+|145-275|16|16|
+
+* 注意当BWP中PRB个数除RBG中PRB个数除不尽时，第一个和最后一个RBG的PRB个数可能跟其它RBG的大小不同。
+
+* RBG序号从低频到高频，RBG0对应bitmap的MSB。
