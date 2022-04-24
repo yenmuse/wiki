@@ -1,0 +1,67 @@
+created: 20210726031629824
+creator: TidGiUser
+modified: 20220325165759860
+modifier: TidGiUser
+tags: 发送定时调整流程 [[5G NR]]
+title: 5G NR中发送定时调整流程
+tmap.id: 52969613-9188-4b5f-bf72-4509cd4ff150
+type: text/vnd.tiddlywiki
+
+UE在发送上行信号的时候，相较于下行信号的接收，时间上需要有一个提前量，如下图所示：
+
+{{5g_nr_ul_dl_timing_relation.png}}
+
+这个提前量同UE/基站之间的距离密切相关，会动态的调整，称为发送定时调整流程。
+
+! 发送定时的计算主要跟这两个变量有关系：
+
+!! N,,TA,offset,, :
+
+这个可以理解为一个初始值，由两种配置方式
+
+!!! 通过RRC消息ServingCellConfigCommon或ServingCellConfigCommonSIB中携带的n-TimingAdvanceOffset来指示
+
+
+```
+n-TimingAdvanceOffset               ENUMERATED { n0, n25600, n39936 }
+The N_TA-Offset to be applied for random access on this serving cell. If the field is absent, the UE applies the value defined for the duplex mode and frequency range of this serving cell.
+```
+
+
+!!! RRC消息中没有配置的话，就设置默认值，参考38.133的Timing章节中相关描述:
+
+|Frequency range and band of cell used for uplink transmission|N,,TA,offset,, Unit: TC|
+|FR1 FDD band without LTE-NR coexistence case or FR1 TDD band without LTE-NR coexistence case|25600 (Note 1)|
+|FR1 FDD band with LTE-NR coexistence case|0 (Note 1)|
+|FR1 TDD band with LTE-NR coexistence case|39936 (Note 1)|
+|FR2|13792|
+
+<<<
+Note 1:The UE identifies  N,,TA,offset,,  based on the information n-TimingAdvanceOffset. If UE is not provided with the information n-TimingAdvanceOffset, the default value of   is set as 25600 for FR1 band. In case of multiple UL carriers in the same TAG, UE expects that the same value of n-TimingAdvanceOffset is provided for all the UL carriers according to clause 4.2 in TS 38.213 [3] and the value 39936 of   can also be provided for a FDD serving cell.
+Note 2:	Void
+<<<
+
+
+!! N,,TA,, : 
+
+在[[RAR消息|5G NR RAR中UL Grant的含义]]中携带的T,,A,, 范围为0~3846，此时N,,TA,,=T,,A,,*16*64/2^^u^^，对应的是UE收到RAR后的第一次上行发送；而在非RAR时，T,,A,,表示的时N,,TA,,的调整量，也就是N,,TA_new,, = N,,TA_old,, + (T,,A,,-31)*16*64/2^^u^^，其中T,,A,,取值范围是[0,63].
+
+! 新的发送定时什么时候开始生效呢？
+
+除了RAR UL GRANT调度的PUSCH，其他情况下，UE应该在n+k+1 slot应用新的发送定时，其中
+
+* n表示UE收到TA指令的slot号
+
+* k = ceil(N^^subframe,u^^,,slot,, * (N,,T1 ,,+ N,,T2,, + N,,TAmax,, +0.5)/T,,sf,,)，其中
+
+** N,,T1 ,, 表示PDSCH processing procedure time，UE在这个时间之前没法回复相应的HARQ ind，单位是1ms
+
+** N,,T2,, 表示PUSCH preparation procedure time, UE在这个时间之前没法响应DCI调度的上行发送，单位是1ms
+
+** N,,TAmax,,：the maximum timing advance value in msec that can be provided by a TA command field of 12 bits
+
+关于发送定时调整，还有几点需要注意的：
+
+* 如果UE的下行接受定时改变，无法通过上行发送定时调整完全补偿，UE可以响应的改变N,,TA,,
+
+* 如果两个相邻的slot由于发送定时调整出现重叠，则后者需要缩短

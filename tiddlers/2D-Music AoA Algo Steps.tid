@@ -1,10 +1,18 @@
 created: 20220304060757422
 creator: TidGiUser
+<<<<<<< HEAD
 modified: 20220325113157846
 modifier: TidGiUser
 tags: aoa nokia
 title: 2D-Music AoA Algo Steps
 tmap.id: ac8418bd-53a8-4fd9-bdce-8fc36ced57c6
+=======
+modified: 20220325142352575
+modifier: TidGiUser
+tags: aoa nokia
+title: 2D-Music AoA Algo Steps
+tmap.id: c15a7171-33e7-4ed3-982e-b7a5380eac18
+>>>>>>> 1aa6b92 (Updated with Git-Sync)
 type: text/vnd.tiddlywiki
 
 #Loop below steps for each sub-array:
@@ -53,8 +61,18 @@ type: text/vnd.tiddlywiki
 
 ## Remove outliers
 
+<<<<<<< HEAD
 ## Overal ~ToA is mean value over sub-arrays
 
 ## Overall azimuth ~AoA are mean values over respective horizontal sub-arrays
 
 ## Overall elevetion ~AoA are means values over vertial sub-arrays
+=======
+## Overal ToA is mean value over sub-arrays
+
+## Overall azimuth AoA are mean values over respective horizontal sub-arrays
+
+## Overall elevetion AoA are means values over vertial sub-arrays
+
+{{A Computationally Efficient 2D MUSIC Approach for 5G and 6G Sensing Networks.pdf}}
+>>>>>>> 1aa6b92 (Updated with Git-Sync)

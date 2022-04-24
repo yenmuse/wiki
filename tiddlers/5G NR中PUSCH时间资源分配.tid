@@ -1,0 +1,87 @@
+created: 20210713044309548
+creator: TidGiUser
+modified: 20220325142751083
+modifier: TidGiUser
+tags: 视频资源分配 [[5G NR]] pusch
+title: 5G NR中PUSCH时间资源分配
+tmap.id: 1f08b4ab-79d4-4d28-83fb-e924501f3c89
+type: text/vnd.tiddlywiki
+
+5G NR中PUSCH时间上的资源分配主要由DCI 0-0/0-1或RAR中的UL Grant中相关字段决定，这个字段指向了一张表格，根据不同的场景，这个表格可能是一个default配置，也可能是一个RRC消息中携带的一个表格。这张表格对多有16行，所以通常4bit的字段就够了，每一行指示了：
+
+* slot偏移：在某个slot收到携带ul grant的dci之后，偏移多少slot是相应的pusch
+
+* 起始符号/长度(start and length indicator, sliv)：pusch在这个slot内的开始符号和占据几个符号，考虑到不能发生越界，start+length不能超过14，所以这里将这两个信息编码到一起
+
+* pusch映射类型：会影响dmrs的位置
+
+协议中default的那个表有两张，分别for normal cp和extended cp， normal cp的如下所示：
+
+|!Row index|!Pusch mapping type|!K,,2,,|!S|!L|
+|1|A|j|0|14|
+|2|A|j|0|12|
+|3|A|j|0|10|
+|4|B|j|2|10|
+|5|B|j|4|10|
+|6|B|j|4|8|
+|7|B|j|4|6|
+|8|A|j+1|0|14|
+|9|A|j+1|0|12|
+|10|A|j+1|0|10|
+|11|A|j+2|0|14|
+|12|A|j+2|0|12|
+|13|A|j+2|0|10|
+|14|B|j|8|6|
+|15|A|j+3|0|14|
+|16|A|j+3|0|10|
+
+这张表中的j由下面这张表确定：
+
+|!u,,PUSCH,,|!j|
+|0|1|
+|1|1|
+|2|2|
+|3|3|
+
+另外，对于RAR中ul grant调度的pusch，计算偏移时还要加上一个delta：
+
+|!u,,PUSCH,,|!delta|
+|0|2|
+|1|3|
+|2|4|
+|3|6|
+
+其中u,,PUSCH,, 是对应的pusch的子载波间隔
+
+除了这个默认的表，RRC消息中也会携带同样的信息：
+
+
+```
+PUSCH-TimeDomainResourceAllocationList ::=  SEQUENCE (SIZE(1..maxNrofUL-Allocations)) OF PUSCH-TimeDomainResourceAllocation
+
+PUSCH-TimeDomainResourceAllocation ::=  SEQUENCE {
+    k2                                      INTEGER(0..32)          OPTIONAL,   -- Need S
+    mappingType                             ENUMERATED {typeA, typeB},
+    startSymbolAndLength                    INTEGER (0..127)
+}
+```
+* k2：Corresponds to L1 parameter 'K2' (see TS 38.214 [19], clause 6.1.2.1) When the field is absent the UE applies the value 1 when PUSCH SCS is 15/30 kHz; the value 2 when PUSCH SCS is 60 kHz, and the value 3 when PUSCH SCS is 120KHz.
+
+* mappingType
+
+* startSymbolAndLength：An index giving valid combinations of start symbol and length (jointly encoded) as start and length indicator (SLIV). The network configures the field so that the allocation does not cross the slot boundary.
+
+这个图比较形象,虽然是下行的，但是机制差不多：
+
+{{5gnr下行时域资源分配.png}}
+
+//那么UE到底什么时候用默认的那张表，什么时候使用RRC消息中带下来的那张表呢？//
+
+|!RNTI|!PDCCH search space|!pusch-ConfigCommon includes pusch-TimeDomainAllocationList|!pusch-Config includes pusch-TimeDomainAllocationList|!PUSCH time domain resource allocation to apply|
+|PUSCH scheduled by MAC RAR as described in subclause 8.2 of [6, TS 38.213]||no|-|default|
+|PUSCH scheduled by MAC RAR as described in subclause 8.2 of [6, TS 38.213]||yes|-|pusch-TimeDomainAllocationList provided in pusch-ConfigCommon|
+|C-RNTI, MCS-C-RNTI, TC-RNTI, CS-RNTI|Any common search space associated with CORESET 0|no|-|defult|
+|C-RNTI, MCS-C-RNTI, TC-RNTI, CS-RNTI|Any common search space associated with CORESET 0|yes|-|pusch-AlloTimeDomaincationList provided in pusch-ConfigCommon|
+|C-RNTI, MCS-C-RNTI, TC-RNTI, CS-RNTI, SP-CSI-RNTI|Any common search space not associated with CORESET 0,UE specific search space|no|no|default|
+|C-RNTI, MCS-C-RNTI, TC-RNTI, CS-RNTI, SP-CSI-RNTI|Any common search space not associated with CORESET 0,UE specific search space|yes|no|pusch-TimeDomainAllocationList provided in pusch-ConfigCommon|
+|C-RNTI, MCS-C-RNTI, TC-RNTI, CS-RNTI, SP-CSI-RNTI|Any common search space not associated with CORESET 0,UE specific search space|yes or no|yes|pusch-TimeDomainAllocationList provided in pusch-Config|

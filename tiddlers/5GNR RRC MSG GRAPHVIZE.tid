@@ -1,0 +1,139 @@
+created: 20211030012014648
+creator: TidGiUser
+modified: 20220325143919059
+modifier: TidGiUser
+tags: rrc graphviz
+title: 5GNR RRC MSG GRAPHVIZE
+tmap.id: 030d6994-7173-4c30-a5a5-88e66ba84b2f
+type: text/vnd.tiddlywiki
+
+<$viz text='  digraph G {
+    rankdir = LR;
+    node [color=lightblue, style=filled];
+
+    RRCReconfiguration[color=red, style=filled];
+    RRCResume[color=red, style=filled];
+    RRCSetup[color=red, style=filled];
+    SIB1[color=red, style=filled];
+
+    RRCReconfiguration -> CellGroupConfig [label = masterCellGroup];
+    RRCResume -> CellGroupConfig [label = masterCellGroup];
+    RRCSetup -> CellGroupConfig [label = masterCellGroup];
+
+    CellGroupConfig -> CellGroupId [label = cellGroupId];
+    CellGroupConfig -> "RLC-BearerConfig" [label = "rlc-BearerToAddModList"];
+    CellGroupConfig -> "LogicalChannelIdentity" [label = "rlc-BearerToReleaseList"];
+    CellGroupConfig -> "mac-CellGroupConfig" [label = "MAC-CellGroupConfig"];
+    CellGroupConfig -> "PhysicalCellGroupConfig" [label = "physicalCellGroupConfig"];
+    CellGroupConfig -> "SpCellConfig" [label = "spCellConfig"];
+    CellGroupConfig -> "SCellConfig" [label = "sCellToAddModList"];
+    CellGroupConfig -> "SCellIndex" [label = "sCellToReleaseList"];
+    CellGroupConfig -> "reportUplinkTxDirectCurrent-v1530";
+
+    SCellConfig -> SCellIndex [label = sCellIndex]
+    SCellConfig -> ServingCellConfig [label = sCellToAddModList];
+    SCellConfig -> ServingCellConfigCommon [label = sCellToAddModList];
+    
+    
+    ServingCellConfigCommon -> UplinkConfigCommon [label = "uplinkConfigCommon \n or supplementaryUplinkConfig"];
+    ServingCellConfigCommon -> PhysCellId [label = "physCellId"];
+    ServingCellConfigCommon -> DownlinkConfigCommon [label = "downlinkConfigCommon"];
+    ServingCellConfigCommon -> "n-TimingAdvanceOffset";
+    ServingCellConfigCommon -> "ssb-PositionsInBurst";
+    ServingCellConfigCommon -> "ssb-PeriodicityServingCell";
+    ServingCellConfigCommon -> "dmrs-TypeA-Position";
+    ServingCellConfigCommon -> "RateMatchPatternLTE-CRS" [label = "lte-CRS-ToMatchAround"];
+    ServingCellConfigCommon -> RateMatchPattern [label = "rateMatchPatternToAddModList \n and rateMatchPatternToReleaseList"]
+    ServingCellConfigCommon -> SubcarrierSpacing [label = "ssbSubcarrierSpacing"]
+    ServingCellConfigCommon -> "TDD-UL-DL-ConfigCommon" [label = "tdd-UL-DL-ConfigurationCommon"]
+    ServingCellConfigCommon -> "ss-PBCH-BlockPower";
+
+    ServingCellConfig -> UplinkConfig [label = "uplinkConfig or \n supplementaryUplink"];
+    ServingCellConfig -> "BWP-DownlinkDedicated" [label = "initialDownlinkBWP"];
+    ServingCellConfig -> "TDD-UL-DL-ConfigDedicated" [label = "tdd-UL-DL-ConfigurationDedicated"];
+    ServingCellConfig -> "BWP-Id" [label = "downlinkBWP-ToReleaseList"];
+    ServingCellConfig -> "BWP-Id" [label = "firstActiveDownlinkBWP-Id"];
+    ServingCellConfig -> "BWP-Id" [label = "defaultDownlinkBWP-Id"];
+    ServingCellConfig -> "BWP-Downlink" [label = "downlinkBWP-ToAddModList"];
+    ServingCellConfig -> "bwp-InactivityTimer";
+    ServingCellConfig -> "PDCCH-ServingCellConfig" [label = "pdcch-ServingCellConfig"];
+    ServingCellConfig -> "PDSCH-ServingCellConfig" [label = "pdsch-ServingCellConfig"];
+    ServingCellConfig -> "CSI-MeasConfig" [label = "csi-MeasConfig"];
+    ServingCellConfig -> "sCellDeactivationTimer";
+    ServingCellConfig -> "CrossCarrierSchedulingConfig" [label = "crossCarrierSchedulingConfig"];
+    ServingCellConfig -> "TAG-Id" [label = "tag-Id"];
+    ServingCellConfig -> "pathlossReferenceLinking";
+    ServingCellConfig -> "MeasObjectId" [label = "servingCellMO"];
+    
+    UplinkConfig -> "PUSCH-ServingCellConfig" [label = pusch_ServingCellConfig];
+    UplinkConfig -> "SRS-CarrierSwitching" [label = carrierSwitching];
+    UplinkConfig -> "BWP-Id" [label = "uplinkBWP_ToReleaseList and \n firstActiveUplinkBWP_Id"];
+    UplinkConfig -> "BWP-UplinkDedicated" [label = initialUplinkBWP];
+    UplinkConfig -> "BWP-Uplink" [label = uplinkBWP_ToAddModList];
+
+    "BWP-DownlinkDedicated" -> "PDCCH-Config" [label = "pdcch-Config"];
+    "BWP-DownlinkDedicated" -> "PDSCH-Config" [label = "pdsch-Config"];
+    "BWP-DownlinkDedicated" -> "SPS-Config" [label = "sps-Config"];
+    "BWP-DownlinkDedicated" -> "RadioLinkMonitoringConfig" [label = radioLinkMonitoringConfig];
+    
+    "CSI-MeasConfig" -> "NZP-CSI-RS-Resource" [label = "nzp-CSI-RS-ResourceToAddModList"];
+    "CSI-MeasConfig" -> "NZP-CSI-RS-ResourceId" [label = "nzp-CSI-RS-ResourceToReleaseList"];
+    "CSI-MeasConfig" -> "NZP-CSI-RS-ResourceSet" [label = "nzp-CSI-RS-ResourceSetToAddModList"];
+    "CSI-MeasConfig" -> "NZP-CSI-RS-ResourceSetId" [label = "nzp-CSI-RS-ResourceSetToReleaseList"];
+    "CSI-MeasConfig" -> "CSI-IM-Resource" [label = "csi-IM-ResourceToAddModList"];
+    "CSI-MeasConfig" -> "CSI-IM-ResourceId" [label = "csi-IM-ResourceToReleaseList"];
+    "CSI-MeasConfig" -> "CSI-IM-ResourceSet" [label = "csi-IM-ResourceSetToAddModList"];
+    "CSI-MeasConfig" -> "CSI-IM-ResourceSetId" [label = "csi-IM-ResourceSetToReleaseList"];
+    "CSI-MeasConfig" -> "CSI-SSB-ResourceSet" [label = "csi-SSB-ResourceSetToAddModList"];
+    "CSI-MeasConfig" -> "CSI-SSB-ResourceSetId" [label = "csi-SSB-ResourceSetToReleaseList"];
+    "CSI-MeasConfig" -> "CSI-ResourceConfig" [label = "csi-ResourceConfigToAddModList"];
+    "CSI-MeasConfig" -> "CSI-ResourceConfigId" [label = "csi-ResourceConfigToReleaseList"];
+    "CSI-MeasConfig" -> "CSI-ReportConfig" [label = "csi-ReportConfigToAddModList"];
+    "CSI-MeasConfig" -> "CSI-ReportConfigId" [label = "csi-ReportConfigToReleaseList"];
+    "CSI-MeasConfig" -> "reportTriggerSize";
+    "CSI-MeasConfig" -> "CSI-AperiodicTriggerStateList" [label = "aperiodicTriggerStateList"];
+    "CSI-MeasConfig" -> "CSI-SemiPersistentOnPUSCH-TriggerStateList" [label = "semiPersistentOnPUSCH-TriggerStateList"];
+
+    UplinkConfigCommon -> FrequencyInfoUL [label = frequencyInfoUL];
+    UplinkConfigCommon -> "BWP-UplinkCommon" [label = initialUplinkBWP];
+
+    DownlinkConfigCommon -> FrequencyInfoDL [label = "frequencyInfoDL"]
+    DownlinkConfigCommon -> "BWP-DownlinkCommon" [label = "initialDownlinkBWP"]
+
+    "BWP-Uplink" -> "BWP-UplinkDedicated" [label = bwp_Dedicated];
+    "BWP-Uplink" -> "BWP-UplinkCommon" [label = bwp_Common];
+
+    "BWP-UplinkDedicated" -> "PUCCH-Config" [label = pucch_Config];
+    "BWP-UplinkDedicated" -> "PUSCH-Config" [label = pusch_Config];
+    "BWP-UplinkDedicated" -> "SRS-Config" [label = configuredGrantConfig];
+    "BWP-UplinkDedicated" -> BeamFailureRecoveryConfig  [label = beamFailureRecoveryConfig];
+    
+    "BWP-UplinkCommon" -> BWP [label = genericParameters];
+    "BWP-UplinkCommon" -> "RACH-ConfigCommon" [label = rach_ConfigCommon];
+    "BWP-UplinkCommon" -> "PUSCH-ConfigCommon" [label = pusch_ConfigCommon];
+    "BWP-UplinkCommon" -> "PUCCH-ConfigCommon" [label = pucch_ConfigCommon];
+
+    SIB1 -> ServingCellConfigCommonSIB [label = servingCellConfigCommon];
+    ServingCellConfigCommonSIB -> UplinkConfigCommonSIB [label = "uplinkConfigCommon \n or supplementaryUplink"];
+    ServingCellConfigCommonSIB -> DownlinkConfigCommonSIB [label = downlinkConfigCommon];
+    ServingCellConfigCommonSIB -> n_TimingAdvanceOffset;
+    ServingCellConfigCommonSIB -> "ssb-PositionsInBurst";
+    ServingCellConfigCommonSIB -> "ssb-PeriodicityServingCell";
+    ServingCellConfigCommonSIB -> "TDD-UL-DL-ConfigCommon" [label = "tdd-UL-DL-ConfigurationCommon"];
+    ServingCellConfigCommonSIB -> "ss-PBCH-BlockPower";
+    
+    UplinkConfigCommonSIB -> "BWP-UplinkCommon" [label = initialUplinkBWP];
+    UplinkConfigCommonSIB -> FrequencyInfoUL_SIB [label = frequencyInfoUL];
+    UplinkConfigCommonSIB -> TimeAlignmentTimer [label = timeAlignmentTimerCommon];
+    
+    FrequencyInfoUL_SIB -> MultiFrequencyBandListNR_SIB [label = frequencyBandList];
+    
+    DownlinkConfigCommonSIB -> FrequencyInfoDL_SIB [label = frequencyInfoDL];
+    DownlinkConfigCommonSIB -> "BWP-DownlinkCommon" [label = initialDownlinkBWP];
+    DownlinkConfigCommonSIB -> "BCCH-Config" [label = "bcch-Config"];
+    DownlinkConfigCommonSIB -> "PCCH-Config" [label = "pcch-Config"];
+
+    "BWP-DownlinkCommon" -> BWP [label = genericParameters]
+    "BWP-DownlinkCommon" -> "PDCCH-ConfigCommon" [label = "pdcch-ConfigCommon"]
+    "BWP-DownlinkCommon" -> "PDSCH-ConfigCommon" [label = "pdsch-ConfigCommon"]
+}' class="myexample"/>

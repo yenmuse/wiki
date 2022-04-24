@@ -1,0 +1,10 @@
+created: 20220326050947234
+creator: TidGiUser
+modified: 20220327143120391
+modifier: TidGiUser
+tags: [[tw macro]]
+title: todo list plugin example
+tmap.id: dc969475-8d9d-496d-801e-214beeb1f2d5
+type: text/vnd.tiddlywiki
+
+<<todolist-ui caption:"!! My Todo List" base:"Simple" width:60%>>

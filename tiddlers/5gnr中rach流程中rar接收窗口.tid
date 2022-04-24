@@ -1,0 +1,18 @@
+created: 20211101063448429
+creator: TidGiUser
+modified: 20220325144108477
+modifier: TidGiUser
+tags: rar rach [[5G NR]]
+title: 5gnr中rach流程中rar接收窗口
+tmap.id: cd7c1300-d149-424e-bfef-2d7f923a2130
+type: text/vnd.tiddlywiki
+
+先思考一个问题，基站解PRACH是需要时间的，系统上对这个时间有什么要求？目前能看到的就是UE在发完PRACH之后的第一个PDCCH occassion进入rar接收窗口，UE在窗口期间会监控PDCCH，如果接收窗口超出之后还没有收到一个[[RA-RNTI|5g nr中ra-rnti的计算]]加扰的PDCCH，或者对应的RAR没收到，则认为此次rar接收失败。具体的描述可以参考3GPP TS 38.321的5.1.3：Random Access Preamble transmission 的相关描述。
+
+这里说的rar接收窗口的长度是由rrc消息带下来的：
+
+RACH-ConfigGeneric --> ra-ResponseWindow ENUMERATED {sl1, sl2, sl4, sl8, sl10, sl20, sl40, sl80}
+
+其中的sl1~sl80表示1个slot，2个slot，80个slot。
+
+注意PDCCH与对应的传输rar的PDSCH是有间隔的，知道这个，我们就可以计算出基站应该在什么时候下发PDCCH，也就是留给基站解PRACH的时间有多少。

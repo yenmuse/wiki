@@ -1,0 +1,10 @@
+created: 20211025012131236
+creator: TidGiUser
+modified: 20220325155618259
+modifier: TidGiUser
+tags: 段错误 linux
+title: linux下segmentation fault怎么查
+tmap.id: a43b2fca-84fc-4b8b-9396-c8ea70f76faf
+type: text/vnd.tiddlywiki
+
+{{simpread-Linux 下 segmentation fault(段错误) 总结.html}}

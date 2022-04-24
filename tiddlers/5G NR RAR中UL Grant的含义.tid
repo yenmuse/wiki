@@ -1,0 +1,36 @@
+created: 20210713011803059
+modified: 20210714010606046
+tags: rach [[5G NR]]
+title: 5G NR RAR中UL Grant的含义
+tmap.id: de40f015-f9e1-497d-bdc0-20c7c30a15a0
+type: text/vnd.tiddlywiki
+
+RAR中的UL Grant一共27个bit，各个字段的内容如下表所示：
+
+|!RAR grant field|!number of bits|
+|Frequency hopping flag|1|
+|PUSCH frequency resource allocation|14|
+|PUSCH time resource allocation|4|
+|MSC|4|
+|TPC command for PUSCH|3|
+|CSI request|1|
+
+frequency hopping flag表示RAR对应的PUSCH是否要做跳频，0表示不需要做，1表示需要做
+
+频域资源分配，14个bit
+
+时域资源分配，4个bit确定了一个最多16个元素的列表中的一个元素，它确定了对应[[PUSCH的时域资源是怎么分配的|5G NR中PUSCH时间资源分配]]
+
+TPC指令表示了PUSCH的发送功率，含义如下表：
+
+|!TPC Command|!Value (ind dB)|
+|0|-6|
+|1|-4|
+|2|-2|
+|3|0|
+|4|2|
+|5|4|
+|6|6|
+|7|8|
+
+CSI request 目前保留，没有用到

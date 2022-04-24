@@ -1,0 +1,78 @@
+created: 20220303062351179
+modified: 20220303083813163
+tags: thor ecmp puml
+title: ECMP Output Buffer 管理相关类图
+tmap.id: 8c07ff4e-67ab-4148-bebc-fbb54a835c8c
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startuml
+class EaxcStream
+
+class IoMemDefs
+{
+		MemAllocation fcpPacketBuffer;
+    MemAllocation ecmpInputHeaderBuffer;
+    MemAllocation dmaCfgBuffer;
+    MemAllocation ecmpJobDescriptorBuffer;
+    MemAllocation ecmpWaMdabJobDescriptorBuffer;
+    MemAllocation rfoeTxJobDescriptorBuffer;
+    MemAllocation iqDataSymbolBuffer;
+    MemAllocation ecmpOutputBuffer;
+}
+
+class  MemAllocation
+{
+    size_t numOfElems;
+    size_t elemSizeInBytes;
+}
+
+class FhCircularBuffer
+{
+		size_t    stepSize;
+    uint64_t* baseAddress;
+    bool      isSmem;
+    size_t    bufferSizeInSteps;
+    size_t    currentIndex{0};
+		static uint64_t* allocate(size_t sizeBytes, size_t alignBytes, bool useSmem)
+		uint64_t* getWritePtr(size_t maxWriteSizeInBytes);
+    uint64_t* getNextEntryU64() { return getNEntriesU64(1); };
+    uint64_t* getNEntriesU64(size_t numSteps);
+}
+
+class UplaneJobCreator
+{
+		void UplaneJobCreator(FhCircularBuffer&& ecmpOutputBufferIn,*,*,*,*,*)
+		void createJobs(*,*,*,*,*,*)
+}
+
+class UplaneJobCreatorBase
+
+class EcmpJdInputParams
+{
+    uint64_t* inputHeaderAddr;
+    uint64_t  inputHeaderLengthIn64bitWords;
+    uint64_t* iqDmaCfgAddr;
+    uint64_t  numIqDmaCfgs;
+    uint64_t* outputAddr;
+    uint64_t  outputLengthIn64bitWords;
+    uint8_t   mantissaSize;
+}
+class EcmpJdNew
+{
+		void EcmpJdNew::setDmaParams(const EcmpJdInputParams& ecmpJdInputParams)
+}
+
+class RfoeTxJobCreator
+{
+		void RfoeTxJobCreator::updatePacketReadParams(RfoeTxJdNew& rfoeTxJd, const ReadParams& packetData)
+}
+EaxcStream o-- IoMemDefs
+IoMemDefs o-- MemAllocation
+EaxcStream o-- FhCircularBuffer
+FhCircularBuffer o-- IoMemDefs
+EaxcStream *-- UplaneJobCreator
+UplaneJobCreator o-- EcmpJdInputParams
+EcmpJdInputParams o-- EcmpJdNew
+UplaneJobCreatorBase <|-- UplaneJobCreator
+UplaneJobCreator o-- RfoeTxJobCreator
+@enduml""">

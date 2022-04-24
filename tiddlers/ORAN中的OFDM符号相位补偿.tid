@@ -1,0 +1,19 @@
+created: 20210926093736533
+modified: 20211014030934116
+tags: ofdm符号生成 相位补偿 oran
+title: ORAN中的OFDM符号相位补偿
+tmap.id: 543e351c-dfc5-4639-8a1f-c53a8d53cd0b
+type: text/vnd.tiddlywiki
+
+ORAN中在规定了OFDM的相位补偿需要由radio部分完成。OFDM的相位补偿主要是因为NR的基站与UE之间的中心频点可能不同，这就导致了收发双方存在频偏，而且与LTE不同，NR生成OFDM符号波形时，其时间点是每14个符号重新从0开始一次，而不是LTE的每个符号都从0开始。这就导致NR在接受相邻两个OFDM时，不仅要考虑频偏，还要考虑每个OFDM符号起始处，频偏随着时间积累导致的相位差。
+
+ORAN中具体内容是放在Annex E OFDM Phase Compensation：
+
+Suppose that the transmitter performs up-conversion of the signal 𝑠,,𝑙,,^^(𝑝,𝜇)^^(𝑡) to RF centre frequency 𝑓,,0,, , and the receiver performs down-conversion from RF centre frequency 𝑓,,1,,. Unlike LTE, it is possible that the transmitter and receiver have different centre frequencies, 𝑓,,0,, ≠ 𝑓,,1,, , which motivates the introduction of OFDM phase compensation in NR. Ignoring channel distortions and noise for simplicity, the baseband signal at the receiver in the same time interval can be written as:
+
+𝑠,,𝑙,,^^(𝑝,𝜇)^^(𝑡) ∙ 𝑒^^𝑗2𝜋(𝑓,,0,,−𝑓,,1,,)𝑡^^ = 𝑠,,𝑙,,^^(𝑝,𝜇)^^(𝑡) ∙ 𝑒^^𝑗𝜃,,𝑙,,^^ ∙ 𝑒^^𝑗2𝜋(𝑓,,0,,−𝑓,,1,,)(𝑡−(𝑡,,(𝐶𝑃,𝑙),,^^𝜇^^))^^
+
+where 𝜃,,𝑙,, = 2𝜋(𝑓,,0,, − 𝑓,,1,,)𝑡,,(𝐶𝑃,𝑙),,^^u^^
+and 𝑡,,(𝐶𝑃,𝑙),, ^^𝜇^^ = 𝑡,,(𝑠𝑡𝑎𝑟𝑡,𝑙),,^^𝜇^^ + 𝑁,,(𝐶𝑃,𝑙),, ^^𝜇^^ * 𝑇𝑐 is the time at the end of the cyclic prefix of OFDM symbol 𝑙.
+
+目前3GPP协议的建议是收发双方分别完成一部分的相位补偿，而ORAN规定了这一部分在radio部分完成。发送方补偿量为 exp(-j*2*pi*f,,0,,*t,,(𝐶𝑃,𝑙),,^^u^^)，接收方补偿量为exp(j*2*pi*f,,1,,*t,,(𝐶𝑃,𝑙),,^^u^^)

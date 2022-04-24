@@ -1,0 +1,20 @@
+created: 20211203014635190
+modified: 20211203062108177
+tags: 频偏估计
+title: OFDM频偏估计mindmap
+tmap.id: 543c57c2-1130-44f3-a576-b8f040079116
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startmindmap
+* OFDM频偏估计
+** 来源与基本原理
+** 频偏的影响
+** 估计方法
+*** 时域估计方法
+*** 基于CP的频域估计方法
+*** 基于导频的频域估计方法
+** 频偏估计的范围扩展
+** 频偏估计的平均与合并
+** 频偏估计的假设检验
+@endmindmap"""
+>

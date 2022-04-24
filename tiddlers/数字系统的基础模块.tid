@@ -1,0 +1,16 @@
+created: 20211025014625037
+modified: 20211025015751644
+tags: [[Principles and Practices of Interconnection Networks]]
+title: 数字系统的基础模块
+tmap.id: d0737bd9-0117-4fda-b020-22d0305a2619
+type: text/vnd.tiddlywiki
+
+数字系统主要由这三种基础模块组成：
+
+* 逻辑处理：负责数据的组合、转换等，通常就是数学运算、逻辑判断这些
+
+* 数据存储：存储数据，以待后用
+
+* 通信：将数据从一个地方移动到另一个地方
+
+摘自 Principles and Practices of Interconnection Networks.

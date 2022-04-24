@@ -1,0 +1,12 @@
+created: 20211109042026549
+modified: 20211109042500909
+tags: csi-rs srs [[5G NR]]
+title: 5g nr中srs与csi-rs的比较
+tmap.id: cbf117aa-7ff2-4c21-9050-9c742515a58b
+type: text/vnd.tiddlywiki
+
+srs与csi-rs虽然方向不同，但是作用类似：都是为了探测信道。但是从细节来看，srs与csi-rs的结构区别相当大：
+
+* srs最多支持4个antenna ports，csi-rs最多可以支持到32个antenna ports
+
+* 作为一个上行信号，srs被设计为low cubic-metric，以让ue能以较低成本达到较高功放效率

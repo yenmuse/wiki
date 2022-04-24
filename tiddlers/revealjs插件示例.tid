@@ -1,0 +1,22 @@
+created: 20211031130820224
+creator: TidGiUser
+modified: 20220325161250507
+modifier: TidGiUser
+tags: 
+title: revealjs插件示例
+tmap.id: 13fcef5d-4629-4c6f-be2b-e09a2f56c9c3
+type: text/vnd.tiddlywiki
+
+<$presentation>
+<$slide>
+<h2>Hello There</h2>
+<p>
+reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
+</p>
+</$slide>
+<$slide>Embedded inside TiddlyWiki</$slide>
+<$slide>
+  <$slide>Vertical Slides</$slide>
+  <$slide>Can also me manged with one level of nesting</$slide>
+</$slide>
+</$presentation>

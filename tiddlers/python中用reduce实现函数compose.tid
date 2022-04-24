@@ -1,0 +1,47 @@
+created: 20211105070709955
+modified: 20211105071406827
+tags: 函数式 [[python code base]]
+title: python中用reduce实现函数compose
+tmap.id: 864b9b47-4892-414b-8858-d2234b1294b2
+type: text/vnd.tiddlywiki
+
+
+```
+# importing reduce() from functools
+from functools import reduce
+
+# composite_function accepts N
+# number of function as an
+# argument and then compose them
+def composite_function(*func):
+	
+	def compose(f, g):
+		return lambda x : f(g(x))
+  #	reduce(function, iterable[, initializer])
+  # function -- 函数，有两个参数
+  # iterable -- 可迭代对象
+  # initializer -- 可选，初始参数
+	return reduce(compose, func, lambda x : x)
+
+# Function to add 2
+def add(x):
+	return x + 2
+
+# Function to multiply 2
+def multiply(x):
+	return x * 2
+
+# Function to subtract 2
+def subtract(x):
+	return x - 1
+
+# Here add_subtract_multiply will
+# store lambda x : multiply(subtract(add(x)))
+add_subtract_multiply = composite_function(multiply,subtract,add)
+
+print("Adding 2 to 5, then subtracting 1 and multiplying the result with 2: ", add_subtract_multiply(5))
+
+```
+
+
+https://www.geeksforgeeks.org/function-composition-in-python/

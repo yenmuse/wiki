@@ -1,0 +1,22 @@
+created: 20210709012727108
+creator: TidGiUser
+modified: 20220325165834649
+modifier: TidGiUser
+tags: rar [[5G NR]] rach
+title: 5G NR MAC Payload for Random Access Response
+tmap.id: 98d2bc95-2d8f-4a4a-b11a-16f7dc0864dc
+type: text/vnd.tiddlywiki
+
+RAR也就是随机接入流程中常说1的msg2，其payload是在MAC层协议中定义的：
+
+{{5G_NR_MAC_Payload_RAR.png}}
+
+* R 表示reserved，填为0，一共1个bit
+
+* TA Cmd：一共12 bit，基站根据msg1计算出TA，UE收到之后要根据TA Cmd调整自己的发送时间，具体可以参考[[发送定时调整流程|5G NR中发送定时调整流程]]
+
+* [[UL Grant|5G NR RAR中UL Grant的含义]]：上行许可，UE根据UL Grant计算自己发送PUSCH的时频资源，共27 bit
+
+* Temp C-RNTI：16 bit，随机接入期间的MAC entity要用这个RNTI来加扰 
+
+38.321 version 15.6.0

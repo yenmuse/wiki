@@ -1,0 +1,35 @@
+created: 20210628065138862
+creator: TidGiUser
+modified: 20220325160651808
+modifier: TidGiUser
+tags: 帧格式 [[5G NR]] Nokia
+title: Nokia支持的5G NR厘米波帧格式
+tmap.id: e51fe7e1-0afd-4af4-bfa2-d675797fd760
+type: text/vnd.tiddlywiki
+
+TDD uplink-downlink configurations supported by Nokia for cmwave TDD (only 5 subframes out of 10 shown)
+
+|!Feature|!Period [ms]|
+|!|!|!0-0|!0-1|!1-2|!1-3 |!2-4 |!2-5 |!3-6 |!3-7 |!4-8 |!4-9|
+|!5GC1116-0 |5|D|D|D |S |U |U |D |D |D |D|
+|!5GC1116-3|5|D |D |D |D |D |D |D |S |U |U|
+|!5GC1070|5|D|D|D|S|U|D|D|S|U|U|
+|!5GC1208|2.5|D|D|D|S|U|D|D|D|S|U|
+
+Nokia supported special slot configurations for cmwave TDD
+
+|!Feature|!DL(symbols)|!GP(symbols)|!UL(symbols)|
+|!5GC1116-0 |6|4|4|
+|!5GC1116-3|4|6|4|
+|!5GC1070|10|2|2|
+|!5GC1208|8|4|2|
+
+形象一点的图可以参照这个：
+
+{{nokia_5gnr_frame_structure.png}}
+
+The main reason for 5GC 1116 is coexistence with LTE TDD in bands like 2.6GHz (B41). The 3 ms shifted variations is needed in order to ''support 8 SSBs'' (else only 6 SSBs are supported).
+
+Implementing and maintaining additional frame structures is very ''costly'' so its unlikely that many additional frame structures will be added. In addition, when multiple operators are deploying macro networks in same TDD band they must use identical and synchronized frame structure to ''avoid causing mutual interference''. This is also the reason that dynamically changing the frame structure e.g. to switch a DL slot to UL for short period is not applicable to macro networks but only small cells not in the scope of this document.
+
+上面这段话可以看出，宏站由于覆盖范围比较大，为了避免站间的干扰，通常会避免站间使用不同的帧格式或者动态更新帧格式，但是小站会更灵活一些。

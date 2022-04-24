@@ -1,0 +1,158 @@
+created: 20211201085727880
+modified: 20220301013130004
+tags: cb007724 nokia
+title: l1low中更新l2cache相关流程
+tmap.id: 3ba64201-2f19-4ceb-8eb1-3588f721ced0
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startuml
+class Data
+{
+				std::unordered_map<Pid, uint16_t> m_pids;
+        // Sorted by pid
+        std::vector<std::pair<Pid, BfVector>> m_bfVecs;
+        Pid m_largestRangeStartPid = UINT16_MAX;
+        Pid m_largestRangeEndPid = 0;
+        uint16_t m_largestRangeStartIndex = 0;
+}
+
+class SwBfVectorStorage
+{
+void AddAllocation(const Pid start, const uint16_t range);
+void FreeStorage(const Pid start, const uint16_t range);
+void UpdateBfVector(const Pid pid, const BfVector& sourceBfVec);
+const BfVector* GetBfVector(const Pid pid) const;
+class Data data_[2];
+Data* writePtr_ = &data_[0];
+Data* readPtr_ = &data_[1];
+}
+
+class SwBfVectorStorageController
+{
+void AddL2CacheAlloc(const uint32_t l2CacheId, const Pid pid, const uint16_t range);
+void FreeL2Cache(const uint32_t l2CacheId, const Pid pid, uint16_t range);
+const BfVector& GetBfVector(const uint32_t l2CacheId, const Pid pid) const;
+void UpdateBfVector(const uint32_t l2CacheId, const Pid pid, const BfVector& newVec);
+std::map<uint32_t, SwBfVectorStorage> l2Caches_;
+}
+
+class ResourceManager
+{
+    void L2CacheAlloc(const L2CacheAllocConfig& config);
+    bool L2CacheAlloc(const uint32_t l2Cache, const uint16_t pid, const uint16_t range);
+    void UpdateL2Cache(const uint32_t l2Cache, const uint16_t pid, const BfVector& newVec);
+    void UpdatePidRangeList(const uint32_t l2Cache);
+    void UpdateUbeamL2Cache(const uint16_t pid, const BfVector& newVec);
+    const SwBfVectorStorage& GetL2Cache(const uint32_t l2Cache);
+    void ResetUbeamL2Cache();
+    void FreeL2Cache(const L2CacheFreeConfig& config);
+		std::shared_ptr<SwBfVectorStorageController> swBfVectorStorageController_;
+}
+
+class MadeNrtApi
+{
+void SetBfWeightSet(const BfWeightSetInfo& bfWeightSetInfo) override;
+void UpdateFullSplitModeBfWeightSet(const std::string arrayName) override;
+void SetDefaultDlBeam(const SpatialStreamParamsDl& params);
+void SetDefaultUlBeam(const SpatialStreamParamsUl& params);
+}
+
+class UbeamNrtApi
+{
+void SetBfWeightSet(const BfWeightSetInfo& bfWeightSetInfo) override;
+}
+
+class ThorNrtApi
+{
+void SetBfWeightSet(const BfWeightSetInfo& bfWeightSetInfo) override;
+}
+
+interface HwNrtApi
+{
+virtual void SetBfWeightSet(const BfWeightSetInfo& bfWeightSetInfo);
+virtual void SetFullPanelMode();
+virtual void UpdateFullSplitModeBfWeightSet(const std::string arrayName);
+virtual void SetDefaultBfVector();
+}
+
+class L2CacheAllocConfig
+{
+uint32_t l2Cache;
+uint32_t pid;
+uint32_t range;
+}
+
+class BfWeightSetInfo
+{
+std::string file;
+uint32_t record;
+L2CacheAllocConfig config;
+bool fullOverwrite;
+}
+
+class BeamFormingPatternsSetConfHandler
+{
+bool Execute(hlapi::tr::Object& object, HoData& hoData) override;
+}
+
+class BeamformingPatternsFileConfHandler
+{
+bool Execute(hlapi::tr::Object& object, HoData& hoData) override;
+}
+
+class BfConfFileHandler
+
+class MadeEcpriRxArrayCarrierConfHandler
+{
+void ConfigureCarrierToL1Low(const l1low::hlapi::tr::Object& object,
+                                 l1low::hlapi::HoData& hoData,
+                                 const std::vector<l1low::hlapi::ho::ECpriLowLevelRxLinkConf>&
+                                     carrierLowLevelStreams) override;
+}
+
+class EcpriRxArrayCarrierConfHandler
+
+class EcpriRxArrayCarrierConfHandlerBase
+
+class MadeEcpriTxArrayCarrierConfHandler
+{
+void ConfigureCarrierToL1Low(const l1low::hlapi::tr::Object& object,
+                                 l1low::hlapi::HoData& hoData,
+                                 const std::vector<l1low::hlapi::ho::ECpriLowLevelTxLinkConf>&
+                                     carrierLowLevelStreams) override;
+}
+
+class EcpriTxArrayCarrierConfHandler
+
+class EcpriTxArrayCarrierConfHandlerBase
+
+class HoHandler
+
+SwBfVectorStorage *-- Data
+SwBfVectorStorageController *-- SwBfVectorStorage
+ResourceManager o-- SwBfVectorStorageController
+HwNrtApi <|-- MadeNrtApi
+HwNrtApi <|-- UbeamNrtApi
+HwNrtApi <|-- ThorNrtApi
+ResourceManager o-- HwNrtApi
+MadeNrtApi o-- ResourceManager
+UbeamNrtApi o-- ResourceManager
+ThorNrtApi o-- ResourceManager
+BeamFormingPatternsSetConfHandler o-- ResourceManager
+BeamFormingPatternsSetConfHandler *-- BfWeightSetInfo
+BfWeightSetInfo *-- L2CacheAllocConfig
+BeamFormingPatternsSetConfHandler "0..*" -- "1..*" BeamformingPatternsFileConfHandler
+(BeamFormingPatternsSetConfHandler, BeamformingPatternsFileConfHandler) . BfConfFileHandler
+HoHandler <|-- BeamFormingPatternsSetConfHandler
+HoHandler <|-- BeamformingPatternsFileConfHandler
+MadeEcpriRxArrayCarrierConfHandler o-- ResourceManager
+MadeEcpriTxArrayCarrierConfHandler o-- ResourceManager
+EcpriRxArrayCarrierConfHandler <|-- MadeEcpriRxArrayCarrierConfHandler
+EcpriRxArrayCarrierConfHandlerBase <|-- EcpriRxArrayCarrierConfHandler
+HoHandler <|-- EcpriRxArrayCarrierConfHandlerBase
+EcpriTxArrayCarrierConfHandler <|-- MadeEcpriTxArrayCarrierConfHandler
+EcpriTxArrayCarrierConfHandlerBase <|-- EcpriTxArrayCarrierConfHandler
+HoHandler <|-- EcpriTxArrayCarrierConfHandlerBase
+
+@enduml"""
+>

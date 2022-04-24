@@ -1,0 +1,81 @@
+created: 20211029142541020
+modified: 20211030090746713
+tags: [[to do]] 线性代数 矩阵分解
+title: 几种常见的矩阵分解及其推导
+tmap.id: 3392149f-36dd-46d3-9ae9-cc60a9e242b2
+type: text/vnd.tiddlywiki
+
+矩阵本身可能非常复杂，具体应用中常需要将矩阵分解成多个矩阵的积，简化分析。常见的矩阵分解有：LU分解，QR分解，Schur分解，特征值分解，SVD分解等。
+
+LU分解和QR分解都有很直观的推导方法；Schur分解、特征值分解、SVD分解之间关系紧密，其中特征值分解又称为谱分解，与谱定理有密切关系。下面介绍这几种矩阵分解以及推导。
+
+---
+
+! LU分解及其推导
+
+LU分解可以将一个矩阵分解为一个下三角矩阵和一个上三角矩阵的和，可以看作是高斯消去法的矩阵形式。对一个矩阵进行''高斯行变换可以看作是左乘一个矩阵''。
+
+举个例子：$$\mathbf{A}=\left(\begin{array}{ccc}{2} & {2} & {2} \\ {4} & {7} & {7} \\ {6} & {18} & {22}\end{array}\right)$$,对其做行变换：
+
+$$\left(\begin{array}{ccc}{2} & {2} & {2} \\ {4} & {7} & {7} \\ {6} & {18} & {22}\end{array}\right) \begin{array}{l}{R_{2}-2 R_{1}} \\ {R_{3}-3 R_{1}}\end{array}$$ --> $$\left(\begin{array}{ccc}{2} & {2} & {2} \\ {0} & {3} & {3} \\ {0} & {12} & {16}\end{array}\right)\quad R_{3}-4 R_{2}$$ --> $$\left(\begin{array}{lll}{2} & {2} & {2} \\ {0} & {3} & {3} \\ {0} & {0} & {4}\end{array}\right)$$
+
+得到了一个上三角矩阵，记作$$\mathbf{U}$$。上面的三次行变换可以分别用矩阵表示为：
+
+$$\left(\begin{array}{rrr}{1} & {0} & {0} \\ {-2} & {1} & {0} \\ {0} & {0} & {1}\end{array}\right)$$，$$\left(\begin{array}{rrr}{1} & {0} & {0} \\ {0} & {1} & {0} \\ {-3} & {0} & {1}\end{array}\right)$$，$$\left(\begin{array}{rrr}{1} & {0} & {0} \\ {0} & {1} & {0} \\ {0} & {-4} & {1}\end{array}\right)$$
+
+这三个矩阵相乘，得到$$\left(\begin{array}{rrr}{1} & {0} & {0} \\ {-2} & {1} & {0} \\ {5} & {-4} & {1}\end{array}\right)$$，将它的''逆矩阵''记作$$\mathbf{L}$$。
+也就是$$\mathbf{A} = \mathbf{L} \mathbf{U}$$。
+
+---
+
+! QR分解及其推导
+
+QR分解定理：
+
+<<<
+Every matrix $$\mathbf{A}_{m \times n}$$ with linearly independent columns can be uniquely factored as $$\mathbf{A}=\mathbf{Q} \mathbf{R}$$ in which the columns of $$\mathbf{Q}_{m \times n}$$ are an orthonormal basis for $$R(\mathbf{A})$$ and $$\mathbf{R}_{n \times n}$$ is an upper-triangular matrix with positive diagonal entries.
+<<<
+
+也就是说，''QR分解将一个列向量相互独立的矩阵分解为一个酉阵和一个对角线上全为正值的上三角矩阵的积''。QR分解可以自然的由格拉姆-施密特过程推导出来，并得到Q，R矩阵。
+
+格拉姆-施密特过程：
+
+
+<<<
+If $$\mathcal{B}=\left\{\mathbf{x}_{1}, \mathbf{x}_{2}, \ldots, \mathbf{x}_{n}\right\}$$ is a basis for a general inner-product space $$\mathcal{S}$$,
+then the Gram–Schmidt sequence defined by
+$$\mathbf{u}_{1}=\frac{\mathbf{x}_{1}}{\left\|\mathbf{x}_{1}\right\|}$$ and $$\mathbf{u}_{k}=\frac{\mathbf{x}_{k}-\sum_{i=1}^{k-1}\left\langle\mathbf{u}_{i} | \mathbf{x}_{k}\right\rangle \mathbf{u}_{i}}{\left\|\mathbf{x}_{k}-\sum_{i=1}^{k-1}\left\langle\mathbf{u}_{i} | \mathbf{x}_{k}\right\rangle \mathbf{u}_{i}\right\|}$$
+for $$k=2, \ldots, n$$ is an orthonormal basis for $$\mathcal{S}$$. 
+When $$\mathcal{S}$$ is an n-dimensional subspace of $$C^{m \times 1}$$, the Gram–Schmidt sequence can be expressed as：
+$$\mathbf{u}_{k}=\frac{\left(\mathbf{I}-\mathbf{U}_{k} \mathbf{U}_{k}^{*}\right) \mathbf{x}_{k}}{\left\|\left(\mathbf{I}-\mathbf{U}_{k} \mathbf{U}_{k}^{*}\right) \mathbf{x}_{k}\right\|}$$ for k = 1, 2,...,n
+in which $$\mathbf{U}_{1}=\mathbf{0}_{m \times 1}$$ and $$\mathbf{U}_{k}=\left(\mathbf{u}_{1}\left|\mathbf{u}_{2}\right| \cdots | \mathbf{u}_{k-1}\right)_{m \times k-1}$$ for $$k>1$$.
+<<<
+
+格拉姆-施密特过程的思路是：
+
+# 首先找到该矩阵某个列向量，比如$$\mathbf{x}_{1}$$,张成的子空间，显然该子空间是矩阵列向量空间的一个子空间。那么该子空间的正交基很容易得到：$$\mathbf{u}_{1}=\frac{\mathbf{x}_{1}}{\left\|\mathbf{x}_{1}\right\|}$$
+
+# 然后再找到矩阵的另一个列向量$$\mathbf{x}_{2}$$, 我们想要的是$$\mathbf{x}_{1}$$、$$\mathbf{x}_{2}$$ 所张成的子空间的单位正交基。已知其中一个单位正交基是$$\mathbf{u}_{1}=\frac{\mathbf{x}_{1}}{\left\|\mathbf{x}_{1}\right\|}$$，那很显然另一个''正交基''是$$\mathbf{x}_{1}$$张成的子空间相对于$$\mathbf{x}_{1}$$、$$\mathbf{x}_{2}$$所张成子空间的正交补的一个正交基，由投影定理可知: $$\mathbf{u}_{2} \leftarrow \mathbf{x}_{2}-\left(\mathbf{u}_{1}^{*} \mathbf{x}_{2}\right) \mathbf{u}_{1}$$，那么''单位正交基''就是$$\mathbf{u}_{2} \leftarrow \frac{\mathbf{u}_{2}}{\left\|\mathbf{u}_{2}\right\|}$$
+
+# 重复上面步骤，直至所有列向量都遍历了一遍，即可得到矩阵列向量空间的一组单位正交基
+
+现在假设有一个矩阵$$\mathbf{A}_{m \times n}=\left(\mathbf{a}_{1}\left|\mathbf{a}_{2}\right| \cdots | \mathbf{a}_{n}\right)$$，对其列向量应用格拉姆-施密特过程，得到一组单位正交基$$\left\{\mathbf{q}_{1}, \mathbf{q}_{2}, \ldots, \mathbf{q}_{n}\right\}$$，那么：
+$$\mathbf{q}_{1}=\frac{\mathbf{a}_{1}}{\nu_{1}} \quad$$ and $$\quad \mathbf{q}_{k}=\frac{\mathbf{a}_{k}-\sum_{i=1}^{k-1}\left\langle\mathbf{q}_{i} | \mathbf{a}_{k}\right\rangle \mathbf{q}_{i}}{\nu_{k}} \quad$$ for $$k=2,3, \ldots, n$$
+其中 $$\nu_{1}=\left\|\mathbf{a}_{1}\right\|$$，$$\nu_{k}=\left\|\mathbf{a}_{k}-\sum_{i=1}^{k-1}\left\langle\mathbf{q}_{i} | \mathbf{a}_{k}\right\rangle \mathbf{q}_{i}\right\|$$ for $$k>1$$。 
+上面的表达式也可以写为：
+$$\mathbf{a}_{1}=\nu_{1} \mathbf{q}_{1} \quad$$ and $$\quad \mathbf{a}_{k}=\left\langle\mathbf{q}_{1} | \mathbf{a}_{k}\right\rangle \mathbf{q}_{1}+\cdots+\left\langle\mathbf{q}_{k-1} | \mathbf{a}_{k}\right\rangle \mathbf{q}_{k-1}+\nu_{k} \mathbf{q}_{k} \quad$$ for $$k>1$$
+写成矩阵形式就是
+$$\left(\mathbf{a}_{1}\left|\mathbf{a}_{2}\right| \cdots | \mathbf{a}_{n}\right)=\left(\mathbf{q}_{1}\left|\mathbf{q}_{2}\right| \cdots | \mathbf{q}_{n}\right)\left(\begin{array}{ccccc}{\nu_{1}} & {\left\langle\mathbf{q}_{1} | \mathbf{a}_{2}\right\rangle} & {\left\langle\mathbf{q}_{1} | \mathbf{a}_{3}\right\rangle} & {\ldots} & {\left\langle\mathbf{q}_{1} | \mathbf{a}_{n}\right\rangle} \\ { 0} & {\nu_{2}} & {\left\langle\mathbf{q}_{2} | \mathbf{a}_{3}\right\rangle} & {\ldots} & {\left\langle\mathbf{q}_{2} | \mathbf{a}_{n}\right\rangle} \\ { 0} & {0} & {\nu_{3}} & {\cdots} & {\left\langle\mathbf{q}_{3} | \mathbf{a}_{n}\right\rangle} \\ {\vdots} & {\vdots} & {\vdots} & {\ddots} & {\vdots} \\ { 0} & {0} & {0} & {\cdots} & {\nu_{n}}\end{array}\right)$$
+也就是 $$\mathbf{A}_{m \times n}=\mathbf{Q}_{m \times n} \mathbf{R}_{n \times n}$$。
+
+---
+
+! 舒尔分解及其推导
+
+---
+
+! 特征值分解及其推导
+
+---
+
+! 奇异值分解及其推导

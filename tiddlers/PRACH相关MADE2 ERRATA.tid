@@ -1,0 +1,75 @@
+created: 20211014020906079
+creator: TidGiUser
+modified: 20220325161112783
+modifier: TidGiUser
+tags: prach nokia errata [[made soc]]
+title: PRACH相关MADE2 ERRATA
+tmap.id: b8aadfb7-5424-44f8-90dd-cc285de8306f
+type: text/vnd.tiddlywiki
+
+目前根据文档 [ext[MADE2 ASIC Errata|https://nokia.sharepoint.com/:w:/r/sites/madesoc/_layouts/15/Doc.aspx?sourcedoc=%7B53AE82D2-B1AD-4930-88ED-62A70F1D8FC9%7D&file=Made%20ASIC%20ES2%20Errata.docx&action=default&mobileredirect=true&DefaultItemOpen=1]] 第4章所述，与PRACH相关的ERRATA共有3个，分别是4.2/4.13/4.14：
+
+!! * 4.2 PRACH symbol indexing specified different in ORAN (MADE A0/B0, corrected in C0)
+
+** ''Background''
+
+*** Made indexes PRACH symbols so that in the received pattern starts symbol and slot/group indexing with zero. If there are several symbol groups separated by cyclic prefix, the group index is incremented by one and symbol indexes start from zero.
+
+** ''Issue description''
+
+*** The mandatory ORAN indexed differently.
+
+** ''Workaround''
+
+*** Use optional PRACH indexing specified in ORAN. 
+
+DOORS中的L1L_SW_2804对此有更清楚的描述，
+
+```
+O-RAN M-plane specification defines that SlotId field in egress PRACH eCPRI packets is as follows:
+•	Slot ID is zero based PRACH occasion number within subframe (i.e. PRACH occasion number shall carry over slot boundary in subframe)
+•	Symbol ID is zero based PRACH repetition number within PRACH occasion.
+•	FrameId and SubframeId are according to air interface time.
+
+Due to MADE2 HW versions A0 and B0 HW bug, above definition of slot ID cannot be fulfilled in case L1Low SW configures occasions to both slots of SCS 30kHz subframe separately. HW does not carry the occasion number from first slot of subframe to the next and it restarts from zero in second slot of the subframe. In receiver side (Loki) it is an issue as it selects write address of data by slotId/symbolId. MADE2 HW version C0 includes configuration bit to carry occasion number over slot boundary and this workaround becomes obsolete.
+```
+
+{{made2_b0_prach_slotid_workaround.png}}
+
+---
+
+!! * 4.13 Configuration of PRACH Cyclic Prefix (MADE A0/B0, corrected in C0)
+
+** ''Background''
+
+*** Two Cyclic Prefix configuration fields exist for PRACH reception, DUL_PRACH_PREAMBLE0/1:NCP and DUL_PRACH_TRANSMIT0/1_SYMBOL:NCP. The first field is for configuring a prefix before the first PRACH group start. The second field is for configuring a prefix at the beginning of each group. The first field is not supported in Continuous Decimation mode of reception.
+
+** ''Issue description''
+
+*** In Continuous Decimation mode, the contribution of DUL_PRACH_PREAMBLE0/1:NCP to the internal Transform source address calculation is lost at the subframe boundary.
+
+** ''Workaround''
+
+*** In Continuous Decimation mode, the value configured to the DUL_PRACH_PREAMBLE0/1:NCP field should be zero and the total number of samples in the two Cyclic Prefixes should be configured into the value of the DUL_PRACH_TRANSMIT0/1_SYMBOL:NCP field. Configurations having one PRACH group per subframe can be received with a statically configured value. Configurations having more than one PRACH group per subframe require dynamic update of Cyclic Prefix length configuration field during runtime in order to position PRACH group reception correctly in relation to the time domain data. The dynamic update should be done after all of the Decimations for the second-to-last PRACH symbol of a group have been done and before all of the Decimations for the last PRACH symbol of a group are done.
+
+
+看起来prach的cp有两套相关的寄存器：DUL_PRACH_PREAMBLE0/1:NCP和DUL_PRACH_TRANSMIT0/1_SYMBOL:NCP，前者是第一个prach occasion的cp长度，后者是所有prach occasion的cp长度。然后continuous decimation mode时，前者在每次子帧边界的时候都会被清掉，所以workaround是干脆只设置DUL_PRACH_TRANSMIT0/1_SYMBOL:NCP。但有个问题是prach每个0.5ms边界的第一个occasion的cp长度会稍微更长一点，不知道这个怎么解决的。可以参考DOORS中的L1L_SW_2921，说法跟这个errata里面不太一样。
+---
+
+!! * 4.14 Configuration of PRACH Processing Start Time (MADE A0/B0, corrected in C0)
+
+** ''Background''
+
+*** There are parallel mechanisms for configuring the start time of PRACH processing. Use of one of the mechanisms is necessary in order to avoid uncertainty in the time of beamforming of PRACH symbols which would cause failure of Cascading which is typically configured with a short timing staggering between Made chips.
+
+
+** ''Issue description''
+
+*** The third-generation mechanism “PRACH N2 Start” can be impacted by the uncertainty of the incoming AXI stream packets from DFE which may lead to shortening of the period from a packet with a CT marker to the next packet with a CT marker by one packet. As a result of the impact, some PRACH symbols might not be received. Regarding the configuration of the third-generation mechanism, please refer to the description of the DUL_AXC_TRANSMIT:N2 register field.
+
+** ''Workaround''
+
+*** The second-generation mechanism “PRACH Defer” should be used for configuring the start time of PRACH processing. When this mechanism is in use, PRACH processing is started after the configured number of time domain samples has been received from DFE. Regarding the configuration of the second-generation mechanism, please refer to the description of the least significant bits of DUL_AXC_TRANSMIT_PERIOD:PERIOD register field.
+
+
+上面的workaround直接摘自文档，实际中可能由于一些原因导致未能生效，寻求其它解决方案。

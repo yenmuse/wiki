@@ -1,0 +1,46 @@
+created: 20211118071747970
+creator: TidGiUser
+modified: 20220325153728578
+modifier: TidGiUser
+tags: bf_mul nokia
+title: bf_mul中pid_line的概念
+tmap.id: 815905d5-1fe7-4725-a18c-e8cbe96e05d9
+type: text/vnd.tiddlywiki
+
+nokia设计了三个做波束赋形的模块，按时间先后分别是：
+
+* beam module in MADE ~SoC
+
+* Lightweight beamer (GLEAM001) module for Beamer-AEQN FPGA
+
+* Universal beamer (uBEAM) module which should replace GLEAM Beamer-AEQN-rel D
+
+bf_mul就是uBEAM中的做波束赋形的具体模块。它的设计理念与MADE中的beam不太一样，是基于bf_index的，每个bf_index跟一个PID line绑定，每个PID line将bf_index与它对应的时频资源对应起来，频域可以细到RE级别；而MADE中的beam模块感觉更像是围绕时频资源网格进行的，每个OFDM符号上的频域资源通过预先配置好的寄存器与一个PID表对应起来，每个PID表可以指示某些频域资源对应的bf_index；
+
+回到bf_mul，每个PID line有128比特，对应1个bf_index，可以设置成两种模式：BF=0跟BF=1,BF是PID line中的一个字段；感觉和3GPP中规定的两种频域资源分配方式对应。下图显示了两种模式下的128 bit中分别包含了什么内容：
+
+{{bf_mul_pid_format.png}}
+
+其中有如下几个关键字段，它们含义如下：
+
+* BF：0 --> 用firstPRB和lastPRB来表示频域资源范围，1 --> 用rgbBitMask字段表示频域资源范围
+
+* firstPRB,lastPRB：很好理解，表示PRB范围，主要用于BF=0的情况。另外再BF=1的时候firstPRB还可以表示rgb从哪个PRB开始计数。
+
+* bundleSize: bundle可以用来为一段连续的PRB资源指示递增的bfIndex，具体这里的bundleSize表示每个bundle有几个PRB，注意第一个bundle的PRB个数由firstBundle来指示，最后一个bundle的PRB个数不用指定，自然会由firstPRB、lastPRB、firstBundle、bundleSize这几个字段决定
+
+* RB：1 --> firstPRB和lastPRB范围内隔一个PRB应用，0 --> firstPRB和lastPRB范围内每个PRB都应用
+
+* reMask: 表示范围内每个PRB的12个RE用什么bfIndex，bitmap
+
+* symbolMask: 14个bit，每个bit表示一个符号
+
+* groupSize：表示每个rgb中包含几个PRB
+
+* rgbBitMask：一个bit表示一个rgb，每个rgb包含的PRB个数由上面的groupSize表示
+
+另外关于上面的rbg分配方式，要注意与ORAN的定义稍有不同：
+
+{{oran_rbg_mask_definition.png}}
+
+oran的定义中，startPrbc不仅会影响第一个rbg的位置，而且会影响f(0)，也就是第一个rbg包含的PRB个数。

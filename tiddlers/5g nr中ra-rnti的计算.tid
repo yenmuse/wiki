@@ -1,0 +1,20 @@
+created: 20211102022056011
+modified: 20211102023118510
+tags: rnti [[5G NR]]
+title: 5g nr中ra-rnti的计算
+tmap.id: c824d18d-2d02-4030-b918-4a8a28cce714
+type: text/vnd.tiddlywiki
+
+ra-rnti是rar对应的pdcch加扰用的，根据3gpp spec ts 38 321，计算方式如下：
+
+RA-RNTI= 1 + s_id + 14 × t_id + 14 × 80 × f_id + 14 × 80 × 8 × ul_carrier_id
+
+其中：
+
+* s_id是相应prach的第一个ofdm，范围是[0，14)
+
+* t_id是相应prach的第一个slot在系统帧中的序号，范围是[0,80)
+
+* f_id是相应prach在频域的索引，范围是[0,8)，这是由rrc参数msg1-FDM决定的：ENUMERATED {one, two, four, eight}.The number of PRACH transmission occasions FDMed in one time instance.
+
+* ul_carrier_id, 0 for NUL carrier and 1 for SUL carrier

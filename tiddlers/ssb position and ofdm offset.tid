@@ -1,0 +1,16 @@
+created: 20211102081153290
+creator: TidGiUser
+modified: 20220327150341783
+modifier: TidGiUser
+tags: 
+title: ssb position and ofdm offset
+tmap.id: 55052def-fd15-4e17-9a91-89755b866a58
+type: text/vnd.tiddlywiki
+
+<$presentation>
+<$list filter="[tag[ssb position and ofdm phase offset]]">
+<$slide tiddlerTitle={{!!title}} backgroundColor={{!!color}}>
+<$transclude mode="block" />
+</$slide>
+</$list>
+</$presentation>

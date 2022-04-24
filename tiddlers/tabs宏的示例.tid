@@ -1,0 +1,10 @@
+created: 20220327141602169
+creator: TidGiUser
+modified: 20220327150129895
+modifier: TidGiUser
+tags: [[tw macro]]
+title: tabs宏的示例
+tmap.id: ef5537fb-1ca9-4a2a-8ee5-922792b63168
+type: text/vnd.tiddlywiki
+
+<<tabs tabsList:"[tag[tabs demo]]" default:"tabs demo 1st" class:"tc-vertical">>

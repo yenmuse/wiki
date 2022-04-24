@@ -1,0 +1,23 @@
+created: 20211014013004293
+modified: 20211014013256688
+tags: dsp c++
+title: C++ 功能 vs 性能
+tmap.id: 4723d4a7-1e11-434e-b8ff-46915edd6998
+type: text/vnd.tiddlywiki
+
+有些C++的功能会对prototype有较大好处，但是会造成性能损失，在写DSP代码的时候需要注意权衡。下表列出了一些C++功能及其对性能的影响。
+
+|!C++ Language Feature	|!Performance Penalty|
+|Classes	|no|
+|Inheritance	|no|
+|Multiple Inheritance	|no|
+|Virtual Base Classes	|only when used|
+|Polymorphism (virtual functions)	|only when used|
+|Abstract Classes (pure virtual functions)	|only when used|
+|Run-Time Type Identification (RTTI)	|yes, even if not used|
+|Dynamic Casts (an RTTI feature)	|only when used|
+|Overloading	|no|
+|Operator Overloading	|no|
+|Templates	|no|
+|Namespaces	|no|
+|Exceptions	severe |even if not used|

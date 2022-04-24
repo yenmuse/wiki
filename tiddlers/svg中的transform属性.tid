@@ -1,0 +1,27 @@
+created: 20211121142841994
+creator: TidGiUser
+modified: 20220325163330691
+modifier: TidGiUser
+tags: svg
+title: svg中的transform属性
+tmap.id: 77f196d1-0fdb-4d18-940e-1a23d3d95761
+type: text/vnd.tiddlywiki
+
+svg中的各个元素支持transform属性，其实就是对相应图形的缩放，旋转，具体的transform方法有translate、rotate、skew之类
+
+* matrix：matrix(a,b ,c, d, e, f ) 函数以六个值的变换矩阵形式指定一个 transform。 matrix（a，b，c，d，e，f）等同于应用变换矩阵
+
+
+* translate: translate(x [y]) 变换函数通过 x 向量和 y 向量移动元素 (i.e. xnew = xold + x, ynew = yold + y). 如果 y 向量没有被提供，那么默认为 0
+
+
+* scale：scale(x [y]) 变换函数通过 x 和 y指定一个 等比例放大缩小 操作。如果 y 没有被提供，那么假定为等同于 x
+
+
+* rotate： rotate(a [x y]) 变换方法通过一个给定角度对一个指定的点进行旋转变换。如果x和y没有提供，那么默认为当前元素坐标系原点。否则，就以(x,y)为原点进行旋转。
+
+* skewx：skewX(a) 变换函数指定了沿 x 轴倾斜 a° 的倾斜变换。
+
+* skewy：skewY(a) 变换函数指定了沿 y 轴倾斜 a° 的倾斜变换。
+
+[ext[MDN-svg中transform的使用|https://developer.mozilla.org/zh-CN/docs/Web/SVG/Attribute/transform]]

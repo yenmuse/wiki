@@ -1,0 +1,20 @@
+created: 20211130022003099
+creator: TidGiUser
+modified: 20220325143236152
+modifier: TidGiUser
+tags: pusch 信道估计 5gmax
+title: 5gmax pusch 原始信道估计
+tmap.id: d445ebbd-5c44-4cf0-b09a-26a8e861b179
+type: text/vnd.tiddlywiki
+
+''原始信道估计： ''
+
+$$\widehat{\mathbf{H}}_{p, \text { raw }}^{\text {pilot }}=\mathbf{A}_{p}^{\mathrm{H}} \mathbf{Y}$$，
+
+其中：
+
+$$\mathbf{A}_{p}$$是一个$$N_{p_{sc}} \times N_{p_{sc}}$$的对角阵，$$p_{sc}$$天线端口p上导频占据的子载波个数
+
+$$\mathbf{Y}$$是对应天线端口上一个$$N_{p_{sc}} \times 1$$的向量
+
+

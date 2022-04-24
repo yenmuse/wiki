@@ -1,0 +1,28 @@
+created: 20211014051051465
+creator: TidGiUser
+modified: 20220325161713702
+modifier: TidGiUser
+tags: snr rsrq rssi rsrp
+title: rsrp/rssi/rsrq/snr and their interplay
+tmap.id: 93af0e87-0d3b-49f0-8fa7-e7a9c4b1d007
+type: text/vnd.tiddlywiki
+
+下面这些是从share technote中摘下来的一些介绍：
+
+[[rsrp|simpread-ShareTechnote RSRP(Reference Signal Recieved Power).html]],
+[[rssi|simpread-ShareTechnote RSSI(Recieved Signal Strength Indicator).html]],
+[[rsrq|simpread-ShareTechnote RSRQ(Reference Signal Recieved Quality).html]],
+[[snr|simpread-ShareTechnote SNR  SINAD  SINR.html]],
+[[rsrp/rssi/rsrq/snr interplay|simpread-ShareTechnote RSRP, RSRQ, RSSI, SINR Interplay.html]]
+
+[ext[SINR, RSRP, RSSI AND RSRQ MEASUREMENTS IN LONG TERM EVOLUTION NETWORKS|https://airccse.org/journal/jwmn/7415ijwmn09.pdf]]
+
+rsrp是reference signal received power的缩写，是参考信号的功率，注意LTE中PDSCH的CRS是re级别的，rsrp就是这些re的平均功率，3gpp协议中的正式定义如下：
+
+//Reference signal received power (RSRP), is defined as the linear average over the power contributions (in [W]) of the resource elements that carry cell-specific reference signals within the considered measurement frequency bandwidth. For RSRP determination the cell-specific reference signals R0 according TS 36.211 shall be used. If the UE can reliably detect that R1 is available it may use R1 in addition to R0 to determine RSRP.//
+
+rssi是revceived signal strength indicator的缩写，表示UE在整个带宽上观察到的功率，includes the main signal and co-channel non-serving cell signal, adjacent channel interference and even the thermal noise within the specified band.
+
+rsrq就是参考信号的功率比上接收信号的功率，注意rsrp要先乘以带宽内RB个数.
+
+snr通过香农公式与带宽内传输速度也就是throughput联系起来，注意香农公式是纯理论的推导，所以这里实际使用的时候会加上alpha/beta两个修正参数。

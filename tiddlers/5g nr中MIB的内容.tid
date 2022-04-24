@@ -1,0 +1,36 @@
+created: 20211104014116481
+modified: 20211105012719032
+tags: ssb pbch mib [[5G NR]]
+title: 5g nr中MIB的内容
+tmap.id: 25a4625f-4e87-4637-8958-21633e1fce5e
+type: text/vnd.tiddlywiki
+
+
+```
+-- ASN1START
+-- TAG-MIB-START
+
+MIB ::=                             SEQUENCE {
+    systemFrameNumber                   BIT STRING (SIZE (6)),
+    subCarrierSpacingCommon             ENUMERATED {scs15or60, scs30or120},
+    ssb-SubcarrierOffset                INTEGER (0..15),
+    dmrs-TypeA-Position                 ENUMERATED {pos2, pos3},
+    pdcch-ConfigSIB1                    PDCCH-ConfigSIB1,
+    cellBarred                          ENUMERATED {barred, notBarred},
+    intraFreqReselection                ENUMERATED {allowed, notAllowed},
+    spare                               BIT STRING (SIZE (1))
+}
+
+-- TAG-MIB-STOP
+-- ASN1STOP
+
+```
+
+|!MIB字段描述|
+|''systemFrameNumber'': 一共6个bit，注意SFN一共10bit，这里的6bit是MSB，还剩4bit的LSB，以及其它的一些timing info体现在PBCH的编码过程中|
+|''subCarrierSpacingCommon''：只有1个bit，SIB1，初始接入时的msg 2、4，寻呼以及广播SI消息要用它指定的scs，如果ue是在FR1搜到MIB: 0-->15KHz,1-->30KHz, FR2搜到MIB：0-->30KHz, 1-->120KHz|
+|''ssb-SubcarrierOffset''：对应层一参数k,,SSB,, ，因为ssb所在的synchronization raster与crb grid所在的普通的channel raster可能不是对齐的，所以需要这个参数来指定ssb最底下那个tone与它所在的那个crb grid的rb的最底下那个tone的间隔。注意k,,SSB,,的单位是15KHz(FR1)或60KHz(FR2).SSB 又分为 Type A 和 Type B：Type A：SSB 的 SCS 为 15kHz 和 30kHz（$$\mu\in{0，1}$$）。主要应用在 FR1 频段，此时 kssb 取值范围为 0~23，使用的 SCS 为 15kHz。Type B：SSB 的 SCS 为 120kHz 和 240kHz（$$\mu\in{3，4}$$）。主要应用在 FR2 频段，此时 kssb 取值范围为 0~11，使用的 SCS 由字段subCarrierSpacingCommon 给出。 注意这里的取值范围可能会超出15，所以还需要有一个MSB体现在PBCH的编码过程中。|
+|''dmrs-TypeA-Position''：1bit，表示后面上行、下行的参考信号位置，参考[[5g nr中解调参考信号的时域位置]]|
+|''pdcch-ConfigSIB1'': UE收完SSB就要收SIB1了，SIB1是在PDSCH上的，PDSCH是靠PDCCH调度的，所以UE还得知道相应PDCCH的配置，这就是这个字段的意义|
+|''cellBarred''：1bit，如果UE收到这个bit是1，那就不要再做后续的动作了，这个小区禁止接入|
+|''intrFreqReselection''：1bit，表示是否允许搜索同频小区|

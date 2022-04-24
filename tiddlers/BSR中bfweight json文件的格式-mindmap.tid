@@ -1,0 +1,44 @@
+created: 20211201072936063
+modified: 20220208062122501
+tags: cb007724 nokia
+title: BSR中bfweight json文件的格式-mindmap
+tmap.id: 5437ff5b-6b3b-4cf8-813c-c101a30e2459
+type: text/vnd.tiddlywiki
+
+<$plantuml source="""@startmindmap
+* json file
+** header
+*** major version: =2. File format version number – major.
+*** minor version: File format version number – minor.
+** payload
+*** beam_set_info: beamSet properties
+**** name: name of beamSet
+**** version: 1
+**** left_edge_angle: typically -45 or -60 deg
+**** right_edge_angle: typically 45 or 60 deg
+**** description: feature ID etc.
+*** payload_info
+**** antenna_topology
+***** M: Number of rows the antenna ports are arranged into.
+***** N: Number of columns the antenna ports are arranged into.
+***** P: Number of polarizations supported by antenna array.
+**** vector_element_to_antenna_port_map
+***** m: Zero-based row number of antenna port in (m,n,p) notation
+***** n: Zero-based column number of antenna port in (m,n,p) notation
+***** p: Zero-based polarization number supported by antenna port in (m,n,p) notation
+****:format Format of beamforming weight vector’s components.
+ComplexFixed16 (0) – Format uses ComplexFixed16 stored in complex_fixed16_vectors field of Payload.
+CompactComplexFloat (1) – Format uses shared 4-bit exponent and two 6-bit mantissas stored in compact_complex_float_vectors field of Payload.
+CompactComplexFixed (2) – Format uses two 16-bit fixed point numbers stored in compact_complex_fixed_vectors field of Payload.;
+
+**** identical_polarization_beams: =true;Indicates whether beam weight vectors are identical for all polarizations
+*** complex_fixed16_vectors
+**** beam_weight_vector_info
+***** azimuth_angle: beam center angle in azimuth
+***** elevation_angle: beam center angle in elevation
+***** description: free form text of beamId (can also be blank)
+****:elements Components of beamforming weight vector. 
+The number and ordering of elements in the array is specific to HW implementation.;
+***** re: Real component of a complex number.
+***** im: Imaginary component of complex number.
+@endmindmap""">

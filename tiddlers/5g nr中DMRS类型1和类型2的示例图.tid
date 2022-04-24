@@ -1,5 +1,6 @@
 created: 20211109031954250
 creator: TidGiUser
+<<<<<<< HEAD
 modified: 20220325113604233
 modifier: TidGiUser
 tags: dmrs [[5G NR]]
@@ -8,3 +9,13 @@ tmap.id: 45dfe414-fb47-484c-9740-6fd7193d7db9
 type: text/vnd.tiddlywiki
 
 [img[file:./resources/picbed/5gnr_dmrs_type1_type2_ex.png]]
+=======
+modified: 20220325142638392
+modifier: TidGiUser
+tags: dmrs [[5G NR]]
+title: 5g nr中DMRS类型1和类型2的示例图
+tmap.id: 0019f742-fcff-4ec2-9ff8-18a028aa0df2
+type: text/vnd.tiddlywiki
+
+{{5gnr_dmrs_type1_type2_ex.png}}
+>>>>>>> 1aa6b92 (Updated with Git-Sync)

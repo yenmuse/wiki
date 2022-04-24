@@ -1,0 +1,68 @@
+created: 20220307090207269
+creator: TidGiUser
+modified: 20220325160913481
+modifier: TidGiUser
+tags: [[python code base]] 特征值分解 线性代数
+title: Power Iteration(幂迭代)做特征值分解
+tmap.id: 46760996-6cbe-4512-85a4-ac8e0456edb1
+type: text/vnd.tiddlywiki
+
+
+```
+def power_it(A, n_eig_vec = 1, n_it = 5, fill_flag = False):
+    n_dim = A.shape[0]
+    n_eig_vec = min((n_eig_vec,A.shape[1]))
+    
+    tmp = 1/np.sqrt(2)*(np.random.normal(0,1,(n_dim,n_eig_vec))+ 
+                    1.j*np.random.normal(0,1,(n_dim,n_eig_vec))) 
+    Q = gram_schmidt(tmp)
+    
+    for i in np.arange(n_it):
+        Qtmp = np.matmul(A,Q)
+        Q = gram_schmidt(Qtmp)
+        
+    for i in np.arange(n_eig_vec):
+        tmp = Q[:,i]
+        Q[:,i] = tmp/np.linalg.norm(tmp)
+        
+    if fill_flag:
+        V = np.concatenate((Q,
+                            np.zeros((n_dim, 
+                                      n_dim - n_eig_vec),
+                                     dtype=complex)),axis=1)
+    else:
+        V = Q
+    
+    w = np.real(np.diag(np.matmul(np.conj(np.transpose(V)),np.matmul(A,V))))
+    
+    return (w,V)
+
+def gram_schmidt(V):
+    '''
+    Modified Gram Schmidt orthonormalization as described in
+    http://persson.berkeley.edu/18.335/lec5handout6pp.pdf
+    '''
+    n = V.shape[1]
+    Q = np.zeros_like(V)
+    for i in np.arange(n):
+        r_ii = np.linalg.norm(V[:,i])
+        if r_ii ==0 or np.isnan(r_ii):
+            break
+
+        Q[:,i] = 1/r_ii * V[:,i]
+        for j in np.arange(i+1,n):
+            r_ij = np.matmul(np.conjugate(Q[:,i].T),V[:,j])
+            V[:,j] = V[:,j] - r_ij*Q[:,i]
+            
+#    for i in np.arange(n):
+#        tmp = Q[:,i]
+#        Q[:,i] = tmp/np.linalg.norm(tmp)
+#        
+    return Q
+```
+
+算法原理参考
+
+{{simpread-Power Iteration - ML Wiki.html}}
+
+上面的代码实现是先用gram_schmidt对一个随机矩阵做QR分解，得到的Q满足$$QQ^H=I$$，然后用Q做参考文件中提到的block iteration

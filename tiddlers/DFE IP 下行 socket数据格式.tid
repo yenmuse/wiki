@@ -1,0 +1,13 @@
+created: 20211215023438066
+creator: TidGiUser
+modified: 20220325155054174
+modifier: TidGiUser
+tags: dfe nokia
+title: DFE IP 下行 socket数据格式
+tmap.id: 8ddd8f86-3750-494f-9801-b43a9b5c1034
+type: text/vnd.tiddlywiki
+
+其实也就是CP2 dump的数据格式
+
+{{CP2_data_format_from_Aku.png}}
+{{CP2_data_format.png}}

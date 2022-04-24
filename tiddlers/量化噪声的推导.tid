@@ -1,0 +1,14 @@
+created: 20211013043857370
+creator: TidGiUser
+modified: 20220325164738009
+modifier: TidGiUser
+tags: 量化噪声
+title: 量化噪声的推导
+tmap.id: 9a889f8e-5ff3-4f05-843c-931a3cd3c063
+type: text/vnd.tiddlywiki
+
+{{quantizaton_noise.png}}
+
+上面的推导涉及了rms的概念，可以参考[[rms基本概念]]
+
+从上面的推导也可以看出，量化噪声其实是ADC每个bit对应的模拟量的电压值一一对应的，或者说就是由其决定的:噪声功率是数字1等效功率减去10*log10(6)

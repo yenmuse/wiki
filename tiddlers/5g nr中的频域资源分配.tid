@@ -1,0 +1,32 @@
+created: 20211108045753940
+creator: TidGiUser
+modified: 20220325142959821
+modifier: TidGiUser
+tags: 时频资源分配 [[5G NR]]
+title: 5g nr中的频域资源分配
+tmap.id: 91dbc5c9-b4c6-4548-83c8-9f46f0c11734
+type: text/vnd.tiddlywiki
+
+频域资源分配方式有两种：bitmap和riv：
+
+* bitmap，也就是type0，一个bit代表一个[[RBG|5g nr中的RBG]]，注意bitmap的MSB对应BWP的低频
+
+* riv，也就是type1，用start、length这两个字段表示资源分配，节省了资源，缺点是无法表示非连续资源分配
+
+{{5g nr频域资源分配方式.png}}
+
+* DCI 0-0和1-0这种短DCI中用的都是riv这种。
+
+* 注意这两种分配方式都是''针对VRB''的。
+
+* 对于type0.我们只能配置VRB --> PRB的非交织映射，type1随意
+
+* 两种分配方式可以根据每次DCI中的指示动态切换
+
+** In 38.214-5.1.2.2, it is stated as follows.
+
+*** If the scheduling DCI is configured to indicate the downlink resource allocation type as part of the Frequency domain resource assignment field by setting a higher layer parameter resourceAllocation in pdsch-Config to 'dynamicswitch', the UE shall use downlink resource allocation type 0 or type 1 as defined by this DCI field. Otherwise the UE shall use the downlink frequency resource allocation type as defined by the higher layer parameter resourceAllocation.
+
+** In 38.212-7.3.1.2.2, it is stated as follows.
+
+*** If both resource allocation type 0 and 1 are configured, the MSB bit is used to indicate resource allocation type 0 or resource allocation type 1, where the bit value of 0 indicates resource allocation type 0 and the bit value of 1 indicates resource allocation type 1.

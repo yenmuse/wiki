@@ -1,0 +1,20 @@
+created: 20211102024149247
+creator: TidGiUser
+modified: 20220325142842312
+modifier: TidGiUser
+tags: ssb rach [[5G NR]]
+title: 5g nr中rach与ssb association
+tmap.id: 5b6f6e17-1486-4511-8e72-57a34a720b6e
+type: text/vnd.tiddlywiki
+
+{{rach_ssb_association_ex1.png}}
+
+{{rach_ssb_association_ex2.png}}
+
+上面两个例子是基本情况，另外还要注意一些特殊情况：
+
+* prach的周期最长是160ms，也就是16个系统帧
+
+* ssb也是有周期的，ssb-PositionInBurst是5ms，期间不同的pattern会有不同的SSB个数，记作N,,Tx,,
+
+* 有个参数叫做association period，表示每个关联周期中有几个prach周期，N,,Tx,,个ssb要在关联周期内关联到RO一次，如果在一个关联周期内，由多余的RO没有与之关联的ssb，那这些RO不能用

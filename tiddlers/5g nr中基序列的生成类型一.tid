@@ -1,0 +1,43 @@
+created: 20211116012205749
+modified: 20211116090219019
+tags: 序列生成 [[5G NR]]
+title: 5g nr中基序列的生成类型一
+tmap.id: d801c61d-b4e0-4c3e-8b7d-bfc7978fcb48
+type: text/vnd.tiddlywiki
+
+5g nr中参考信号序列通常是对基序列施加不同的相位偏移得到的。基序列的生成有两种类型，这里先讨论类型一。
+
+$$
+r_{u, v}^{(\alpha, \delta)}(n)=e^{j \alpha n} \bar{r}_{u, v}(n), \quad 0 \leq n<M_{\mathrm{ZC}}
+$$
+
+其中$$M_{\mathrm{ZC}}=m N_{\mathrm{SC}}^{\mathrm{RB}} / 2^{\delta}$$表示序列长度，可以看到同一个基序列因为$$\alpha,\delta$$的区别生成了不同的序列。
+
+基序列$$\bar{r}_{u,v}(n)$$可以分成30个组，组号为$$u \in\{0,1, \ldots, 29\}$$，组内序列号为$$v$$。当序列$$M_{ZC}=mN_{SC}^{RB}/2^{\delta}, 1/2 <=m/2^{\delta}<=5$$时，每组内''只有一个''基序列；当$$6<=m/2^{\delta}$$的时候，每组内有两个基序列，$$v$$可以取值为0或者1.
+
+按照序列长度分成两种情况，分别是小于36和大于等于36的。
+
+---
+
+当序列长度大于等于36时，基序列为：$$\begin{aligned}
+&\bar{r}_{u, v}(n)=x_{q}\left(n \bmod N_{\mathrm{ZC}}\right) \\
+&x_{q}(m)=e^{-j \frac{\pi q m(m+1)}{N_{\mathrm{ZC}}}}
+\end{aligned}$$
+
+其中$$
+\begin{aligned}
+&q=\lfloor\bar{q}+1 / 2\rfloor+v \cdot(-1)^{\lfloor 2 \bar{q}\rfloor} \\
+&\bar{q}=N_{\mathrm{ZC}} \cdot(u+1) / 31
+\end{aligned}
+$$
+
+其中$$N_{ZC}$$是小于$$M_{ZC}$$的最大质数。注意31就是36以下最大的质数，这里用31这样的magic number是为了保证:''不同的$$u$$一定会得到不同的$$\bar{q}$$''；另外$$\lfloor\bar{q} + 1/2\rfloor$$其实就是$$\bar{q}$$的四舍五入取整。
+
+---
+
+当序列长度小于36的时候，也可以分成两种情况：
+
+当$$M_{\mathrm{ZC}}=30$$时，基序列为$$\bar{r}_{u, v}(n)=e^{-j \frac{\pi(u+1)(n+1)(n+2)}{31}}, \quad 0 \leq n \leq M_{\mathrm{ZC}}-1$$
+
+当$$M_{\mathrm{ZC}} \in\{6,12,18,24\}$$时，基序列为$$\bar{r}_{u, v}(n)=e^{j \varphi(n) \pi / 4}, \quad 0 \leq n \leq M_{\mathrm{ZC}}-1$$，其中$$\varphi(n)$$由协议中定义的几个表格给出.(Tables 5.2.2.2-1 to 5.2.2.2-4)
+

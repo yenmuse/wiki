@@ -1,0 +1,88 @@
+created: 20211019083545058
+creator: TidGiUser
+modified: 20220325161018877
+modifier: TidGiUser
+tags: 多线程 pronto nokia
+title: PR611244空指针保护是否足够安全?
+tmap.id: aedd5b96-1080-48a2-8d8d-fdc959eea236
+type: text/vnd.tiddlywiki
+
+[ext[PR611244|https://pronto.int.net.nokia.com/pronto/problemReportSearch.html?freeTextdropDownID=prId&searchTopText=PR611244&HomeFlag=true]]的现象是fcp运行过程中出现crash，后来发现一个可疑的点是每次crash前后大概率出现
+
+
+```
+INF_LOG("#NRT: %s lock", __FUNCTION__);
+```
+
+和
+
+```
+INF_LOG("#NRT: %s unlock", __FUNCTION__);
+```
+这样的打印
+然后检查加锁的时间，发现长达200~400毫秒，会导致odp pcq full，也就是如下打印：
+
+```
+Oct 11 085155 made start-l1low-with-user.sh[10980] [INF] BIP PKTIO 904731218560 thread 4 retrieve_rd_stat_entry PCQ [0] is full
+Oct 11 085155 made start-l1low-with-user.sh[10980] [INF] BIP PKTIO 904797834752 thread 4 retrieve_rd_stat_entry PCQ [1] is full
+Oct 11 085155 made start-l1low-with-user.sh[10980] [INF] BIP PKTIO 904883821696 thread 3 bip_recv_rx_pcq PCQ [1] is not full anymore
+Oct 11 085155 made start-l1low-with-user.sh[10980] [INF] BIP PKTIO 904883834752 thread 4 retrieve_rd_stat_entry PCQ [1] is full
+Oct 11 085155 made start-l1low-with-user.sh[10980] [INF] BIP PKTIO 904883875456 thread 3 bip_recv_rx_pcq PCQ [1] is not full anymore
+Oct 11 085155 made start-l1low-with-user.sh[10980] [INF] BIP PKTIO 904883954944 thread 3 bip_recv_rx_pcq PCQ [0] is not full anymore
+Oct 11 085155 made start-l1low-with-user.sh[10980] [INF] BIP PKTIO 904883963264 thread 4 retrieve_rd_stat_entry PCQ [0] is full
+Oct 11 085155 made start-l1low-with-user.sh[10980] [INF] BIP PKTIO 904883968384 thread 3 bip_recv_rx_pcq PCQ [0] is not full anymore
+```
+
+所以尝试移除这里的rt core自旋锁，tester验证之后发现确实不会出现crash，这确认了crash是由于这里的长时间的rt core自旋锁导致的，所以下一步是考虑移除自旋锁是否安全。这里自旋锁的作用是保护nrt core收到相应m-plane消息之后更新beam weight的时候是run to completion的，rt core上的fcp处理函数不会在beam weight更新期间使用它。目前代码中，beam weight是存放在~SwBfVectorStorage这个类中的，所以需要先对这个类有一点了解。
+
+# SwBfVectorStorage这个类中关键成员变量是  Data* writePtr_ = &data_[0]; 和Data* readPtr_ = &data_[1];Data是自定义的一个结构体。整体如下所示：
+{{l1low_SwBfVectorStorage_structure.png}}
+
+注意初始化的时候writePtr和readPtr分别指向Data[0]和Data[1]。
+
+# SwBfVectorStorage这个类对外暴露的接口主要是alloc/free/update/get，也就是函数AddAllocation/FreeStorage/UpdateBfVector。前三个接口会修改成员变量，内部的主要逻辑是包在CopyDataToWriteTable和SwapDataPointers这两个函数之间的。
+
+## CopyDataToWriteTable函数会将readPtr指向的内容整个复制到writePtr，放在修改beam weight之前是因为我们接着就要通过writePtr来更新了。
+
+## SwapDataPointers函数会交换readPtr和writePtr，放在beam weight修改完毕后是因为get接口是通过readPtr将beam weight暴露给外部模块的，所以readPtr要始终指向最新的beam weight。
+
+所以将施加于rt core自旋锁移除之后，值得关心的场景主要是：
+
+* 两个NR载波，cell 0 lock，cell 1 active
+
+* sm要更新cell 0的beam weight，此时cell 0处于lock状态，是安全的，但是cell 1是active状态，如果正在调用SwBfVectorStorage的get接口:
+
+
+```
+inline const BfVector* SwBfVectorStorage::GetBfVector(const Pid pid) const
+{
+    const Data* const tempReadPtr = readPtr_;
+    if (tempReadPtr->m_largestRangeStartPid > pid or pid >= tempReadPtr->m_largestRangeEndPid)
+    {
+        auto it = tempReadPtr->m_pids.find(pid);
+        return it != tempReadPtr->m_pids.end() ? &tempReadPtr->m_bfVecs[it->second].second
+                                               : nullptr;
+    }
+
+    return &tempReadPtr
+                ->m_bfVecs[static_cast<uint16_t>(tempReadPtr->m_largestRangeStartIndex + pid -
+                                                 tempReadPtr->m_largestRangeStartPid)]
+                .second;
+}
+```
+
+，可能会出现问题。上面函数的第一步就是取readPtr，corner case主要有：
+
+# get操作与alloc/free/update操作没有overlap，这样不会出现race condition，是安全的
+
+# 取readPtr与CopyDataToWriteTable撞在一起：此时nrt core正在将readPtr指向的东西往writePtr搬，这时预期rt core通过readPtr取beam weight是安全的
+
+# 取readPtr在CopyDataToWriteTable之后，SwapDataPointers之前：此时nrt core正在更新beam weight，而rt core通过readPtr取beam weight，理论上也是安全的，只是取到的beam weight可能不是最新的，''不知道这个是不是会导致throught put下降的问题？''
+
+# 取readPtr与SwapDataPointers撞在一起：此时可能出现的race condition是std::swap不保证线程安全，导致本来要取readPtr，结果去到了writePtr，注意此时的writePtr指向的beam weight是更新之前的，所以如果要get新的beam weight的话，就会找不到或者找错：
+
+## ``找错会导致fcp用错beam weight，--> through put下降？``
+
+## ``找不到会返回空指针，而fcp当前代码因为性能的考虑没做空指针保护，可能会出现crash``
+
+上面的分析的粒度比较大，如果拆到更细的粒度来看可能会有其它奇奇怪怪的race condition，但是概率预计非常小。

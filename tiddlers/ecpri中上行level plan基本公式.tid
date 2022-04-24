@@ -1,0 +1,32 @@
+created: 20211029061449575
+modified: 20211029093020323
+tags: [[level plan]] [[ecpri u-plane]]
+title: ecpri中上行level plan基本公式
+tmap.id: 3de785c6-2752-4a37-ae4a-c8c758ca3501
+type: text/vnd.tiddlywiki
+
+eCPRI的协议中规定了上行level plan要将从单个天线单元(Antenna Element)上收到的rms为-152dBm的子载波转化为至少1。
+
+<<<
+In UL direction the UL gain is defined by mapping -152 dBm received at the assumed lossless antenna array element within any subcarrier to a subcarrier specific IQ-level on the eCPRI interface of “1”. The corresponding UL gain results to be:
+
+''UL_gain [dB] = Interface resolution [[[dBFs|dbfs定义与示例]]] – (-152dBm)''
+<<<
+
+上面公式中接口分辨率是由接口处传输的数据格式决定的，如果是用的BFP格式，那么：
+
+Interface resolution [dBFs] = -20*log10(2exp(Mantissa_bits-1) * 2exp(2exp(Exponent_bits-1))
+
+这里这个-152dBm来的很突兀，背后的逻辑是这样的：
+
+* 最小的子载波带宽为SCS,,min,,=1.25KHz(for long prach)
+
+* 假设noise figure是NF=3dB
+
+* 那么1.25KHz带宽内的热噪声功率为：-174dBm/Hz + 3dB + 10*log10(1.25e3) = -140dBm
+
+* 要求量化噪声要比热噪声小20dB，也就是-160dBm，这个没啥道理就是这么要求的
+
+* 根据[[量化噪声的推导]]，可以知道对于接口上的数字1，其等效功率就是 -160dBm + 10*log10(6) 约等于-152dBm
+
+上面 -174dBm/Hz这个数字是从波尔茨曼常量得到的：波尔茨曼常量是k=1.38mW*10^^-20^^mW*s/K，开尔文温度为T=290度也就是17摄氏度时，热噪声功率为 -174dBm/Hz = 10*log10(k*T)。
