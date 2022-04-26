@@ -1,0 +1,16 @@
+created: 20220426050315777
+creator: TidGiUser
+modified: 20220426053551066
+modifier: TidGiUser
+tags: wifi
+title: 802.11帧的类型
+tmap.id: 4d7d537b-e99c-4212-80de-edd811667344
+type: text/vnd.tiddlywiki
+
+802.11主要有三种类型的帧：
+
+# 数据帧
+
+# 控制帧
+
+# 管理帧
