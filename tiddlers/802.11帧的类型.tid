@@ -1,6 +1,6 @@
 created: 20220426050315777
 creator: TidGiUser
-modified: 20220426053551066
+modified: 20220426054804986
 modifier: TidGiUser
 tags: wifi
 title: 802.11帧的类型
@@ -9,8 +9,16 @@ type: text/vnd.tiddlywiki
 
 802.11主要有三种类型的帧：
 
-# 数据帧
+# 数据帧(data frame)：好比802.11中的驮马，负责在工作站间搬运数据，可能会因为所处网络环境不同而有所差异。
 
-# 控制帧
+# 控制帧(control frame)：通常与数据帧搭配使用，负责：
 
-# 管理帧
+## 区域的清空，area clearing
+
+## 信道的取得，channel acquisition
+
+## 载波监听的维护，carrier-sensing maintainence
+
+## 收到数据时予以肯定的回复，positive acknowledgement of received data
+
+# 管理帧(management frame)：负责监督，主要用来加入或退出无线网络，以及处理接入点之间关联的转移事宜
