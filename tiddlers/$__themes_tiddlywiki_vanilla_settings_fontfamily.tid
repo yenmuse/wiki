@@ -1,8 +1,8 @@
 created: 20190420034215366
 creator: TidGiUser
-modified: 20220325111340321
+modified: 20220427073156776
 modifier: TidGiUser
 title: $:/themes/tiddlywiki/vanilla/settings/fontfamily
 type: text/vnd.tiddlywiki
 
-'YaHei Consolas Hybrid','Fira Code',-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+'MSYHMONO','YaHei Consolas Hybrid','Fira Code',-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"

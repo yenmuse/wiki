@@ -1,8 +1,8 @@
 created: 20190421072924643
 creator: TidGiUser
-modified: 20220325114717458
+modified: 20220427073204354
 modifier: TidGiUser
 title: $:/themes/tiddlywiki/vanilla/settings/editorfontfamily
 type: text/vnd.tiddlywiki
 
-'YaHei Consolas Hybrid','Fira Code',"SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace
+'MSYHMONO','YaHei Consolas Hybrid','Fira Code',"SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace
