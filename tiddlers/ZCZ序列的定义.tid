@@ -1,0 +1,36 @@
+created: 20220428052704652
+creator: TidGiUser
+modified: 20220428053718887
+modifier: TidGiUser
+tags: 
+title: ZCZ序列的定义
+tmap.id: 9d9e3282-9786-4211-a74f-ffb0ad8a546c
+type: text/vnd.tiddlywiki
+
+$$S$$是一个由$$M$$个周期为$$L$$的序列组成的序列集：
+$$\begin{aligned}
+S &=\left\{S_{0}, S_{1}, S_{2}, \ldots, S_{p}, \ldots, S_{M-1}\right\} \\
+S_{p} &=\left(s_{0}^{p}, s_{1}^{p}, s_{2}^{p}, \ldots, s_{q}^{p}, \ldots, s_{L-1}^{p}\right)
+\end{aligned}$$
+
+其中$$0 \leq p \leq M-1,0 \leq q \leq L-1$$，$$S_{p}$$和$$s_{q}^{p}$$分别表示序列和序列中的元素。
+
+如果$$S$$中的所有序列满足如下的自相关性质：
+
+$$
+\begin{aligned}
+R_{S_{p_{0}}}(\tau) &=\sum_{q=0}^{L-1} s_{q}^{p_{0}} s_{(q+\tau) \bmod L}^{p_{0}^{*}} \\
+&= \begin{cases}E_{p_{0}} & (\tau=0) \\
+0 t & (-T \leq \tau \leq-1, \quad 1 \leq \tau \leq T)\end{cases}
+\end{aligned}
+$$
+
+和如下的互相关性质：
+$$
+\begin{aligned}
+R_{S_{p_{0}}, S_{p_{1}}}(\tau) &=\sum_{q=0}^{L-1} s_{q}^{p_{0}} s_{(q+\tau) \bmod L}^{p_{1}^{*}} \\
+&=0(-T \leq \tau \leq T)
+\end{aligned}
+$$
+
+则称$$S$$是一个ZCZ序列集.
