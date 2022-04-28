@@ -1,0 +1,32 @@
+created: 20220428062031957
+creator: TidGiUser
+modified: 20220428062323680
+modifier: TidGiUser
+tags: wifi [[python code base]]
+title: 802.11 aj中加扰序列的生成
+tmap.id: af5a4ce5-3092-4a69-a3fd-28ed6344b766
+type: text/vnd.tiddlywiki
+
+[img[802.11 aj中加扰序列生成示意图.png]]
+
+
+```
+import numpy as np
+import functools
+
+scrambler_init = np.array([1, 1, 1, 1, 1, 1, 1])
+scrambler_taps = np.array([3, 6])
+def calc_scrambler_shift_output(scramber_seq, scramber_taps):
+    return functools.reduce(lambda x,y:np.bitwise_xor(scramber_seq[x],scramber_seq[y]), scramber_taps)
+def generate_seq(scrambler_init, scrambler_taps, steps):
+    seq = np.zeros(steps)
+    scrambler_seq = scrambler_init
+    for i in np.arange(steps):
+        seq[i] = calc_scrambler_shift_output(scrambler_seq, scrambler_taps)
+        scrambler_seq = np.roll(scrambler_seq, 1)
+        scrambler_seq[0] = seq[i]
+    return seq
+seq = generate_seq(scrambler_init, scrambler_taps, 129)
+```
+
+

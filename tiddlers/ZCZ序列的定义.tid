@@ -1,6 +1,6 @@
 created: 20220428052704652
 creator: TidGiUser
-modified: 20220428053718887
+modified: 20220428062025412
 modifier: TidGiUser
 tags: 
 title: ZCZ序列的定义
@@ -34,3 +34,5 @@ R_{S_{p_{0}}, S_{p_{1}}}(\tau) &=\sum_{q=0}^{L-1} s_{q}^{p_{0}} s_{(q+\tau) \bmo
 $$
 
 则称$$S$$是一个ZCZ序列集.
+
+[[802.11 aj中zcz序列的性质]]中的代码会基于aj中使用的zcz序列计算自相关、互相关并画图。
