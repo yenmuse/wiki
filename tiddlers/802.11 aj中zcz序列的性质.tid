@@ -1,8 +1,8 @@
 created: 20220427072432886
 creator: TidGiUser
-modified: 20220427132600902
+modified: 20220428020258721
 modifier: TidGiUser
-tags: wifi
+tags: wifi [[python code base]]
 title: 802.11 aj中zcz序列的性质
 tmap.id: 5c172933-5960-4f81-9f3b-ebb2b91d377c
 type: text/vnd.tiddlywiki
@@ -28,7 +28,7 @@ z_d_256_str = "12230231102122111223130232031100122320131021003301122013213222111
 z_d_256 = np.flipud(np.array([zzc_str_complex_map[c] for c in z_d_256_str]))
 
 def circ_xcorr(x, y):
-    return np.array([np.sum(x*np.roll(y, i)) for i in np.arange(len(x))])
+    return np.array([np.sum(x*np.conjugate(np.roll(y, -i))) for i in np.arange(len(x))])
     
 acor_a = circ_xcorr(z_a_256, z_a_256)
 xcor_a_b = circ_xcorr(z_a_256,z_b_256)
