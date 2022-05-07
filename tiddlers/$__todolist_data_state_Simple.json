@@ -2,5 +2,6 @@
     "option": "yes",
     "editview": "view",
     "itemtext": "",
-    "markall": ""
+    "markall": "",
+    "timestamp": "show"
 }
