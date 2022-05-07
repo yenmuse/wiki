@@ -1,6 +1,6 @@
 created: 20220507075159171
 creator: TidGiUser
-modified: 20220507083614040
+modified: 20220507085716204
 modifier: TidGiUser
 tags: 5gmax 调制解调
 title: 5gmax中的软解调算法 --- type为Equiv时
@@ -35,4 +35,6 @@ $$
 
 [img[3gpp 16qam星座图.png]]
 
-其中$$d=2 / \sqrt{10}$$
+其中$$d=2 / \sqrt{10}$$。
+
+仔细观察，可以看出，
