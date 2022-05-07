@@ -1,0 +1,42 @@
+created: 20220507075159171
+creator: TidGiUser
+draft.of: 5gmax中的软解调算法 --- type为Equiv时
+draft.title: 5gmax中的软解调算法 --- type为Equiv时
+modified: 20220507083705994
+modifier: TidGiUser
+tags: 5gmax 调制解调
+title: Draft of '5gmax中的软解调算法 --- type为Equiv时' by TidGiUser
+tmap.id: e14e248e-3127-4bf7-9aea-bb2aeb8247a4
+type: text/vnd.tiddlywiki
+
+[[5gmax中的软解调算法 --- type为hsnr时]]中要逐个求出符号$$\hat{s}_i$$与各个星座点之间的距离才能判断大小，运算量不小，尤其是在高调制阶数比如64QAM/256QAM的时候。为了进一步降低运算量，又提出了一种等价的但是更加简化的算法。
+
+''先看QPSK信号，星座图如下''：
+
+[img[3gpp qpsk星座图.png]]
+
+上图中$$d=2 / \sqrt{2}$$，仔细观察，可以看出，$$s_0^{(1)}$$就是左半边，$$s_0^{(0)}$$就是右半边，那么$$\hat{s}_i$$跟这两个集合中距离最近的点的虚部其实是一样的，这两个点分别记作：$$(\mathrm{d} / 2, \operatorname{Im}(\mathrm{s})) \text { and }(-\mathrm{d} / 2, \operatorname{Im}(\mathrm{s}))$$，那么：
+
+$$\begin{aligned}
+&L_{0}^{i}=\left(\min _{s \in s_{m}^{(1)}}\left(\left|\hat{s}_{i}-s\right|^{2}\right)-\min _{s \in s_{m}^{(0)}}\left(\left|\hat{s}_{i}-s\right|^{2}\right)\right) \cdot S N R_{i} \\
+&=\left(\left(\left(\operatorname{Re}\left(\hat{s}_{i}\right)-\left(-\frac{d}{2}\right)\right)^{2}+\left(\operatorname{Im}\left(\hat{s}_{i}\right)-\operatorname{Im}(s)\right)^{2}\right)-\left(\left(\operatorname{Re}\left(\hat{s}_{i}\right)-\left(\frac{d}{2}\right)\right)^{2}+\left(\operatorname{Im}\left(\hat{s}_{i}\right)-\operatorname{Im}(s)\right)^{2}\right)\right) \cdot S N R_{i} \\
+&=\left(\left(\operatorname{Re}\left(\hat{s}_{i}\right)-\left(-\frac{d}{2}\right)\right)^{2}-\left(\operatorname{Re}\left(\hat{s}_{i}\right)-\left(\frac{d}{2}\right)\right)^{2}\right) \cdot S N R_{i} \\
+&=S N R_{i} \cdot 2 d \cdot \operatorname{Re}\left(\hat{s}_{i}\right)
+\end{aligned}$$
+
+类似的可以得到$$L_1^i$$。综合起来也就是:
+
+$$
+\begin{aligned}
+&L_{0}^{i}=S N R_{i} \cdot 2 d \cdot \operatorname{Re}\left(\hat{s}_{i}\right) \\
+&L_{1}^{i}=S N R_{i} \cdot 2 d \cdot \operatorname{Im}\left(\hat{s}_{i}\right)
+\end{aligned}
+$$
+
+''再看16QAM信号，星座图如下''：
+
+[img[3gpp 16qam星座图.png]]
+
+其中$$d=2 / \sqrt{10}$$。
+
+仔细观察，可以看出，

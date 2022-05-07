@@ -1,17 +1,17 @@
 created: 20220507065820326
 creator: TidGiUser
-modified: 20220507070952840
+modified: 20220507075509577
 modifier: TidGiUser
 tags: 5gmax 调制解调
 title: 5gmax中的软解调算法 --- type为hsnr时
 tmap.id: 01de6b0d-a2cf-4fa3-8ca8-d2b70ad991f9
 type: text/vnd.tiddlywiki
 
-[5gmax中的软解调算法 --- type为exact时]中有求指数、对数、除法等运算较大的操作，所以这里稍微改进了一下：
+[[5gmax中的软解调算法 --- type为exact时]]中有求指数、对数、除法等运算较大的操作，所以这里稍微改进了一下：
 $$
 \begin{aligned}
 &L_{m}^{i}=-\left(-S N R_{i} \cdot \min _{s \in s_{m}^{(1)}}\left(\left|\hat{s}_{i}-s\right|^{2}\right)+S N R_{i} \cdot \min _{s \in s_{m}^{(0)}}\left(\left|\hat{s}_{i}-s\right|^{2}\right)\right) \\
 &=\left(\min _{s \in s_{m}^{(1)}}\left(\left|\hat{s}_{i}-s\right|^{2}\right)-\min _{s \in s_{m}^{(0)}}\left(\left|\hat{s}_{i}-s\right|^{2}\right)\right) \cdot S N R_{i}
-\end{aligned}
+\end{aligned}$$
 
 其实很好理解，就是本来要计算符号$$\hat{s}_i$$分别到$$s_m^{(0)}, s_m^{(1)}$$中所有星座点的距离，然后求和，这里不求和了，而是从分别从$$s_m^{(0)}, s_m^{(1)}$$中找到距离$$\hat{s}_i$$最近的点。这样就可以消除掉求指数、求对数的过程了。
