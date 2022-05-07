@@ -1,0 +1,25 @@
+created: 20220507061533239
+creator: TidGiUser
+modified: 20220507064340012
+modifier: TidGiUser
+tags: 5gmax
+title: 5gmax中的软解调算法 --- type为exact时
+tmap.id: e8d7b225-8a05-40bc-b063-3eb0a2f0caaa
+type: text/vnd.tiddlywiki
+
+对收到的第$$i$$个符号$$\hat{s}_i$$,它的第$$m$$bit $$x_m$$的对数似然比为：
+$$
+L_{m}^{i}=\log \frac{P\left(x_{m}=1 \mid \hat{s}_{i}\right)}{P\left(x_{m}=0 \mid \hat{s}_{i}\right)}
+$$
+
+通常逻辑1对应负LLR，逻辑0对应正LLR，所以要调换一下正负号，也就是：
+$$
+L_{m}^{i}=-\log \frac{P\left(x_{m}=1 \mid \hat{s}_{i}\right)}{P\left(x_{m}=0 \mid \hat{s}_{i}\right)}
+$$
+
+假设实部和虚部的噪声是独立同分布的高斯噪声：$$N\left(0, \sigma_{I / Q}^{2}\right)$$，其中 $$\sigma_{I / Q}^{2}=\sigma_{I}^{2}=\sigma_{Q}^{2}$$是实部、虚部的噪声功率，并且都是总噪声功率的一半$$\sigma_{I / Q}^{2}=\sigma_{I}^{2}=\sigma_{Q}^{2}=\frac{\sigma_{n}^{2}}{2}$$，那么上面的式子变成了：
+$$
+L_{m}^{i}=-\log \frac{\sum_{s \in s_{m}^{(1)}} \frac{1}{2 \pi \sigma_{I / Q}^{2}} \exp \left(-\frac{\left|\hat{s}_{i}-s\right|^{2}}{2 \sigma_{I / Q}^{2}}\right)}{\sum_{s \in s_{m}^{(0)}} \frac{1}{2 \pi \sigma_{I / Q}^{2}} \exp \left(-\frac{\left|\hat{s}_{i}-s\right|^{2}}{2 \sigma_{I / Q}^{2}}\right)}=-\log \frac{\sum_{s \in s_{m}^{(1)}} \exp \left(-\frac{\left|\hat{s}_{i}-s\right|^{2}}{\sigma_{n}^{2}}\right)}{\sum_{s \in s_{m}^{(0)}} \exp \left(-\frac{\left|\hat{s}_{i}-s\right|^{2}}{\sigma_{n}^{2}}\right)}
+$$
+
+其中，$$s_m^{(0)}, s_m^{(1)}$$分别表示第$$m$$个bit为0和1的星座点的集合。

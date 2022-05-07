@@ -1,0 +1,58 @@
+created: 20220507054714830
+creator: TidGiUser
+modified: 20220507055919324
+modifier: TidGiUser
+reference: Tony J Rouphael - Wireless receiver architectures and design _ antennas, rf, mixed signal, and digital signal-Elsevier Academic Press (2015)
+tags: 射频收发系统
+title: 射频收发系统中的镜像抑制-Hartley结构
+tmap.id: 47dba55f-7190-4525-b9b2-8a0686a3f72e
+type: text/vnd.tiddlywiki
+
+[img[Hartley结构的镜像抑制]]
+
+还是以一个单音余弦信号为例，输入的射频信号为
+$$
+\begin{aligned}
+x(t) &=x_{\text {signal }}(t)+x_{\text {image }}(t) \\
+&=A \cos \left(\Omega_{R F} t\right)+B \cos \left(\Omega_{\text {image }} t\right)
+\end{aligned}
+$$
+
+在I路经过混频，得到的是：
+
+$$
+\begin{aligned}
+I(t)=& x(t) \sin \left(\Omega_{L O} t\right)=\left[A \cos \left(\Omega_{R F} t\right)+B \cos \left(\Omega_{\text {image }} t\right)\right] \sin \left(\Omega_{L O} t\right) \\
+=& \frac{A}{2}\left\{\sin \left[\left(\Omega_{L O}+\Omega_{R F}\right) t\right]+\sin \left[\left(\Omega_{L O}-\Omega_{R F}\right) t\right]\right\} \\
+&+\frac{B}{2}\left\{\sin \left[\left(\Omega_{L O}+\Omega_{\text {image }}\right) t\right]+\sin \left[\left(\Omega_{L O}-\Omega_{\text {image }}\right) t\right]\right\}
+\end{aligned}
+$$
+
+再经过带通滤波器滤除高频信号，得到：
+
+$$
+\widehat{I}(t)=-\frac{A}{2} \sin \left[\left(\Omega_{R F}-\Omega_{L O}\right) t\right]+\frac{B}{2} \sin \left[\left(\Omega_{L O}-\Omega_{\text {image }}\right) t\right]
+$$
+
+再经过90度旋转，得到：
+$$
+\widehat{I}_{\angle 90^{\circ}}(t)=+\frac{A}{2} \cos \left[\left(\Omega_{R F}-\Omega_{L O}\right) t\right]-\frac{B}{2} \cos \left[\left(\Omega_{L O}-\Omega_{\text {image }}\right) t\right]
+$$
+
+Q路信号经过混频和带通滤波(注意这里没有90度旋转)，得到：
+
+$$
+\widehat{Q}(t)=\frac{A}{2} \cos \left[\left(\Omega_{R F}-\Omega_{L O}\right) t\right]+\frac{B}{2} \cos \left[\left(\Omega_{\text {image }}-\Omega_{L O}\right) t\right]
+$$
+
+将上面得到的两路信号加起来，得到：
+
+$$
+\begin{aligned}
+\widehat{I}_{\angle 90^{\circ}}(t)+\widehat{Q}(t)=& \frac{A}{2} \cos \left[\left(\Omega_{R F}-\Omega_{L O}\right) t\right]-\frac{B}{2} \cos \left[\left(\Omega_{L O}-\Omega_{\text {image }}\right) t\right] \\
+&+\frac{A}{2} \cos \left[\left(\Omega_{R F}-\Omega_{L O}\right) t\right]+\frac{B}{2} \cos \left[\left(\Omega_{\text {image }}-\Omega_{L O}\right) t\right] \\
+=& A \cos \left[\left(\Omega_{R F}-\Omega_{L O}\right) t\right]
+\end{aligned}
+$$
+
+也就是干净的中频信号，镜像频率上的干扰相互抵消了。

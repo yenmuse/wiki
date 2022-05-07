@@ -1,0 +1,29 @@
+created: 20220507060125472
+creator: TidGiUser
+modified: 20220507060257991
+modifier: TidGiUser
+tags: 
+title: 三角函数的和差化积与积化和差公式
+tmap.id: 47d14bef-8472-45eb-bb39-f1148b8e2523
+type: text/vnd.tiddlywiki
+
+和差化积公式：
+
+$$
+\begin{aligned}
+&\cos (a+b)=\cos a \cos b-\sin a \sin b \\
+&\cos (a-b)=\cos a \cos b+\sin a \sin b \\
+&\sin (a+b)=\sin a \cos b+\sin b \cos a \\
+&\sin (a-b)=\sin a \cos b-\sin b \cos a
+\end{aligned}
+$$
+
+积化和差公式：
+
+$$
+\begin{aligned}
+&\cos a \cos b=\frac{1}{2}(\cos (a+b)+\cos (a-b)) \\
+&\sin a \sin b=\frac{1}{2}(\cos (a-b)-\cos (a+b)) \\
+&\sin a \cos b=\frac{1}{2}(\sin (a-b)-\sin (a+b))
+\end{aligned}
+$$

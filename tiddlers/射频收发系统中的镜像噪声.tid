@@ -1,0 +1,44 @@
+created: 20220507052949457
+creator: TidGiUser
+modified: 20220507054917558
+modifier: TidGiUser
+reference: Tony J Rouphael - Wireless receiver architectures and design _ antennas, rf, mixed signal, and digital signal-Elsevier Academic Press (2015)
+tags: 射频收发系统
+title: 射频收发系统中的镜像噪声
+tmap.id: 459a2950-8e25-4d53-8c1f-cd39cb49b365
+type: text/vnd.tiddlywiki
+
+[img[镜像频率经过mixer之后污染中频.png]]
+
+image band的信号和噪声经过混频器之后，会被频移到中频上，带来干扰。
+
+以单音余弦信号为例：
+
+$$
+\begin{aligned}
+x_{\text {signal }}(t) x_{L O}(t) &=A(t) \Gamma \cos \left(\Omega_{c} t\right) \cos \left(\Omega_{L O} t\right) \\
+&=\frac{A(t) \Gamma}{2}\left\{\cos \left(\left[\Omega_{c}+\Omega_{L O}\right] t\right)+\cos \left(\left[\Omega_{c}-\Omega_{L O}\right] t\right)\right\}
+\end{aligned}
+$$
+
+其中$$x_{\text {signal }}(t) = A(t) \cos \left(\Omega_{c} t\right)$$, $$x_{L O}(t) = \Gamma \cos \left(\Omega_{L O} t\right)$$
+
+该乘积经过带通滤波器之后，高频分量被滤除，剩下：
+
+$$
+\widehat{x}_{\text {signal }}(t)=x_{\text {signal }}(t) x_{L O}(t) * h(t)=\frac{A(t) \Gamma}{2} \cos \left(\Omega_{I F} t\right)
+$$
+
+假设在$$F_{\text {image }}=F_{c}+2 F_{I F}$$这个镜像频率上有干扰，比如其它设备的信号，那么经过相同的过程，得到：
+
+$$
+\widehat{x}_{\text {image }}(t)=x_{\text {image }}(t) x_{L O}(t) * h(t)=\frac{B(t) \Gamma}{2} \cos \left(\Omega_{I F} t\right)
+$$
+
+所以最终的信号是：
+
+$$
+\widehat{x}_{\text {signal }}(t)+\widehat{x}_{\text {image }}(t)=\frac{[A(t)+B(t)] \Gamma}{2} \cos \left(\Omega_{I F} t\right)
+$$
+
+对于$$F_{\text {image }}=F_{c}-2 F_{I F}$$，类似的，也会对中频信号造成干扰。
