@@ -1,13 +1,13 @@
 created: 20220507061533239
 creator: TidGiUser
-modified: 20220507064340012
+modified: 20220507070014462
 modifier: TidGiUser
-tags: 5gmax
+tags: 5gmax 调制解调
 title: 5gmax中的软解调算法 --- type为exact时
 tmap.id: e8d7b225-8a05-40bc-b063-3eb0a2f0caaa
 type: text/vnd.tiddlywiki
 
-对收到的第$$i$$个符号$$\hat{s}_i$$,它的第$$m$$bit $$x_m$$的对数似然比为：
+对收到的第$$i$$个符号$$\hat{s}_i$$,它的第$$m$$个bit $$x_m$$的对数似然比为：
 $$
 L_{m}^{i}=\log \frac{P\left(x_{m}=1 \mid \hat{s}_{i}\right)}{P\left(x_{m}=0 \mid \hat{s}_{i}\right)}
 $$
@@ -22,4 +22,9 @@ $$
 L_{m}^{i}=-\log \frac{\sum_{s \in s_{m}^{(1)}} \frac{1}{2 \pi \sigma_{I / Q}^{2}} \exp \left(-\frac{\left|\hat{s}_{i}-s\right|^{2}}{2 \sigma_{I / Q}^{2}}\right)}{\sum_{s \in s_{m}^{(0)}} \frac{1}{2 \pi \sigma_{I / Q}^{2}} \exp \left(-\frac{\left|\hat{s}_{i}-s\right|^{2}}{2 \sigma_{I / Q}^{2}}\right)}=-\log \frac{\sum_{s \in s_{m}^{(1)}} \exp \left(-\frac{\left|\hat{s}_{i}-s\right|^{2}}{\sigma_{n}^{2}}\right)}{\sum_{s \in s_{m}^{(0)}} \exp \left(-\frac{\left|\hat{s}_{i}-s\right|^{2}}{\sigma_{n}^{2}}\right)}
 $$
 
-其中，$$s_m^{(0)}, s_m^{(1)}$$分别表示第$$m$$个bit为0和1的星座点的集合。
+其中，$$s_m^{(0)}, s_m^{(1)}$$分别表示第$$m$$个bit为0和1的星座点的集合。注意对符号$$\hat{s}_i$$来说，scaling以及均衡造成的影响在这里应该已经消除，所以$$\hat{s}_{i}, s_{m}^{(0)}, s_{m}^{(1)}$$的平均功率为1，所以我们可以$${SNR}_i$$来代替上面的$$\frac{1}{\sigma_{n}^{2}}$$，得到：
+$$
+L_{m}^{i}=-\log \frac{\sum_{s \in s_{m}^{(1)}} \exp \left(-S N R_{i} \cdot\left|\hat{s}_{i}-s\right|^{2}\right)}{\sum_{s \in s_{m}^{(0)}} \exp \left(-S N R_{i} \cdot\left|\hat{s}_{i}-s\right|^{2}\right)}
+$$
+
+当5gmax中软解调类型选为exact时，应用该式计算LLR。
