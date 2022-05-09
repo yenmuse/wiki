@@ -1,6 +1,6 @@
 created: 20220507075159171
 creator: TidGiUser
-modified: 20220507085716204
+modified: 20220509065021470
 modifier: TidGiUser
 tags: 5gmax 调制解调
 title: 5gmax中的软解调算法 --- type为Equiv时
@@ -37,4 +37,215 @@ $$
 
 其中$$d=2 / \sqrt{10}$$。
 
-仔细观察，可以看出，
+仔细观察，可以看出，对于$$L_0^i$$，可以分成三种情况讨论：
+
+1：当$$Re(\hat{s}^i) >= d$$时：$$\hat{s}^i$$距离$$s_0^{(0)}, s_0^{(1)}$$的最近的点的坐标分别为$$(\mathrm{d} / 2, \operatorname{Im}(\mathrm{s})) \text { and }(\mathrm{3d} / 2, \operatorname{Im}(\mathrm{s}))$$，所以$$\hat{s}^i$$到这两个点的距离中，虚部部分相互抵消了，剩下的实部部分为$$S N R_{i} \cdot 2 d \cdot\left(2 \operatorname{Re}\left(\hat{s}_{i}\right)-d\right)$$
+
+2：当$$-d < Re(\hat{s}^i) < d$$时：$$\hat{s}^i$$距离$$s_0^{(0)}, s_0^{(1)}$$的最近的点的坐标分别为$$(\mathrm{d} / 2, \operatorname{Im}(\mathrm{s})) \text { and }(-\mathrm{d} / 2, \operatorname{Im}(\mathrm{s}))$$，所以$$\hat{s}^i$$到这两个点的距离中，虚部部分相互抵消了，剩下的实部部分为$$S N R_{i} \cdot 2 d \cdot \operatorname{Re}\left(\hat{s}_{i}\right)$$
+
+3: 当$$Re(\hat{s}^i) <= -d$$时：$$\hat{s}^i$$距离$$s_0^{(0)}, s_0^{(1)}$$的最近的点的坐标分别为$$(\mathrm{d} / 2, \operatorname{Im}(\mathrm{s})) \text { and }(-3 \mathrm{~d} / 2, \operatorname{Im}(\mathrm{s}))$$，所以$$\hat{s}^i$$到这两个点的距离中，虚部部分相互抵消了，剩下的实部部分为$$S N R_{i} \cdot 2 d \cdot\left(2 \operatorname{Re}\left(\hat{s}_{i}\right)+d\right)$$
+
+总结一下，也就是：
+
+$$
+L_{0}^{i}=\left\{\begin{array} { c } 
+{ S N R _ { i } \cdot 2 d \cdot ( 2 \operatorname { R e } ( \hat { s } _ { i } ) - d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot \operatorname { R e } ( \hat { s } _ { i } ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 2 \operatorname { R e } ( \hat { s } _ { i } ) + d ) }
+\end{array} \quad , \text { if } \left\{\begin{array}{c}
+d \leq \operatorname{Re}\left(\hat{s}_{i}\right) \\
+-d<\operatorname{Re}\left(\hat{s}_{i}\right)<d \\
+\operatorname{Re}\left(\hat{s}_{i}\right) \leq-d
+\end{array}\right.\right.
+$$
+
+
+对于$$L_1^i, L_2^i, L_3^i$$，可以做类似的简化。
+
+最终，对于一个16QAM符号，可以得到：
+
+$$
+\begin{aligned}
+&L_{0}^{i}=\left\{\begin{array} { c } 
+{ S N R _ { i } \cdot 2 d \cdot ( 2 \operatorname { R e } ( \hat { s } _ { i } ) - d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot \operatorname { R e } ( \hat { s } _ { i } ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 2 \operatorname { R e } ( \hat { s } _ { i } ) + d ) }
+\end{array} \quad \text { , if } \left\{\begin{array}{c}
+d \leq \operatorname{Re}\left(\hat{s}_{i}\right) \\
+-d<\operatorname{Re}\left(\hat{s}_{i}\right)<d \\
+\operatorname{Re}\left(\hat{s}_{i}\right) \leq-d
+\end{array}\right.\right.\\
+&L_{1}^{i}=\left\{\begin{array} { c } 
+{ S N R _ { i } \cdot 2 d \cdot ( 2 \operatorname { I m } ( \hat { s } _ { i } ) - d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot \operatorname { I m } ( \hat { s } _ { i } ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 2 \operatorname { I m } ( \hat { s } _ { i } ) + d ) }
+\end{array} \quad \text { ,if } \left\{\begin{array}{c}
+d \leq \operatorname{Im}\left(\hat{s}_{i}\right) \\
+-d<\operatorname{Im}\left(\hat{s}_{i}\right)<d \\
+\operatorname{Im}\left(\hat{s}_{i}\right) \leq-d
+\end{array}\right.\right.\\
+&L_{2}^{i}=S N R_{i} \cdot 2 d \cdot\left(d-\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right|\right)\\
+&L_{3}^{i}=S N R_{i} \cdot 2 d \cdot\left(d-\left|\operatorname{Im}\left(\hat{s}_{i}\right)\right|\right)
+\end{aligned}
+$$
+
+
+对于64QAM和256QAM，简化的思路是类似的，最终得到的结果如下：
+
+对于64QAM符号：
+
+[img[3gpp 64qam星座图.png]]
+
+$$
+\begin{aligned}
+&L_{0}^{i}=\left\{\begin{array} { c } 
+{ S N R _ { i } \cdot 2 d \cdot ( 4 \operatorname { R e } ( \hat { s } _ { i } ) - 6 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 3 \operatorname { R e } ( \hat { s } _ { i } ) - 3 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 2 \operatorname { R e } ( \hat { s } _ { i } ) - d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot \operatorname { R e } ( \hat { s } _ { i } ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 2 \operatorname { R e } ( \hat { s } _ { i } ) + d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 3 \operatorname { R e } ( \hat { s } _ { i } ) + 3 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 4 \operatorname { R e } ( \hat { s } _ { i } ) + 6 d ) }
+\end{array} \quad \text { , if } \quad \left\{\begin{array}{c}
+3 d \leq \operatorname{Re}\left(\hat{s}_{i}\right) \\
+2 d \leq \operatorname{Re}\left(\hat{s}_{i}\right)<3 d \\
+d \leq \operatorname{Re}\left(\hat{s}_{i}\right)<2 d \\
+-d<\operatorname{Re}\left(\hat{s}_{i}\right)<d \\
+-2 d<\operatorname{Re}\left(\hat{s}_{i}\right) \leq-d \\
+-3 d<\operatorname{Re}\left(\hat{s}_{i}\right) \leq-2 d \\
+\operatorname{Re}\left(\hat{s}_{i}\right) \leq-3 d
+\end{array}\right.\right.\\
+&L_{1}^{i}=\left\{\begin{array} { l } 
+{ S N R _ { i } \cdot 2 d \cdot ( 4 \operatorname { I m } ( \hat { s } _ { i } ) - 6 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 3 \operatorname { I m } ( \hat { s } _ { i } ) - 3 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 2 \operatorname { I m } ( \hat { s } _ { i } ) - d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot \operatorname { I m } ( \hat { s } _ { i } ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 2 \operatorname { I m } ( \hat { s } _ { i } ) + d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 3 \operatorname { I m } ( \hat { s } _ { i } ) + 3 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 4 \operatorname { I m } ( \hat { s } _ { i } ) + 6 d ) }
+\end{array} \quad , \text { if } \quad \left\{\begin{array}{c}
+3 d \leq \operatorname{Im}\left(\hat{s}_{i}\right) \\
+2 d \leq \operatorname{Im}\left(\hat{s}_{i}\right)<3 d \\
+d \leq \operatorname{Im}\left(\hat{s}_{i}\right)<2 d \\
+-d<\operatorname{Im}\left(\hat{s}_{i}\right)<d \\
+-2 d<\operatorname{Im}\left(\hat{s}_{i}\right) \leq-d \\
+-3 d<\operatorname{Im}\left(\hat{s}_{i}\right) \leq-2 d \\
+\operatorname{Im}\left(\hat{s}_{i}\right) \leq-3 d
+\end{array}\right.\right.\\
+&L_{2}^{i}=\left\{\begin{array} { l } 
+{ S N R _ { i } \cdot 2 d \cdot ( - 2 | \operatorname { R e } ( \hat { s } _ { i } ) | + 3 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( - | \operatorname { R e } ( \hat { s } _ { i } ) | + 2 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( - 2 | \operatorname { R e } ( \hat { s } _ { i } ) | + 5 d ) }
+\end{array} \quad \text { if } \quad \left\{\begin{array}{c}
+\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right| \leq d \\
+d<\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right|<3 d \\
+3 d \leq\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right|
+\end{array}\right.\right.\\
+&L_{3}^{i}=\left\{\begin{array} { l } 
+{ S N R _ { i } \cdot 2 d \cdot ( - 2 | \operatorname { I m } ( \hat { s } _ { i } ) | + 3 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( - | \operatorname { I m } ( \hat { s } _ { i } ) | + 2 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( - 2 | \operatorname { I m } ( \hat { s } _ { i } ) | + 5 d ) }
+\end{array} \quad \text { if } \quad \left\{\begin{array}{c}
+\left|\operatorname{Im}\left(\hat{s}_{i}\right)\right| \leq d \\
+d\left|\operatorname{Im}\left(\hat{s}_{i}\right)\right|<3 d \\
+3 d \leq\left|\operatorname{Im}\left(\hat{s}_{i}\right)\right|
+\end{array}\right.\right.\\
+&L_{4}^{i}=S N R_{i} \cdot 2 d \cdot\left(d-|2 d-| \operatorname{Re}\left(\hat{s}_{i}\right)||\right)\\
+&L_{5}^{i}=S N R_{i} \cdot 2 d \cdot\left(d-|2 d-| \operatorname{Im}\left(\hat{s}_{i}\right)||\right)
+\end{aligned}
+$$
+
+对于256QAM：
+
+$$
+\begin{aligned}
+&L_{0}^{i}=\left\{\begin{array} { l } 
+{ S N R _ { i } \cdot 2 d \cdot ( 8 \operatorname { R e } ( \hat { s } _ { i } ) - \operatorname { s i g n } ( \operatorname { R e } ( \hat { s } _ { i } ) ) \cdot 2 8 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 7 \operatorname { R e } ( \hat { s } _ { i } ) - \operatorname { s i g n } ( \operatorname { R e } ( \hat { s } _ { i } ) ) \cdot 2 1 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 6 \operatorname { R e } ( \hat { s } _ { i } ) - \operatorname { s i g n } ( \operatorname { R e } ( \hat { s } _ { i } ) ) \cdot 1 5 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 5 \operatorname { R e } ( \hat { s } _ { i } ) - \operatorname { s i g n } ( \operatorname { R e } ( \hat { s } _ { i } ) ) \cdot 1 0 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 4 \operatorname { R e } ( \hat { s } _ { i } ) - \operatorname { s i g n } ( \operatorname { R e } ( \hat { s } _ { i } ) ) \cdot 6 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 3 \operatorname { R e } ( \hat { s } _ { i } ) - \operatorname { s i g n } ( \operatorname { R e } ( \hat { s } _ { i } ) ) \cdot 3 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 2 \operatorname { R e } ( \hat { s } _ { i } ) - \operatorname { s i g n } ( \operatorname { R e } ( \hat { s } _ { i } ) ) \cdot d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot \operatorname { R e } ( \hat { s } _ { i } ) }
+\end{array} \quad \text { if } \quad \left\{\begin{array}{c}
+7 d \leq\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right| \\
+6 d \leq\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right|<7 d \\
+5 d \leq\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right|<6 d \\
+4 d \leq\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right|<5 d \\
+3 d \leq\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right|<4 d \\
+2 d \leq\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right|<3 d \\
+d \leq\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right|<2 d \\
+\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right|<d
+\end{array}\right.\right.\\
+&L_{1}^{i}=\left\{\begin{array}{l}
+S N R_{i} \cdot 2 d \cdot\left(8 \operatorname{Im}\left(\hat{s}_{i}\right)-\operatorname{sign}\left(\operatorname{Im}\left(\hat{s}_{i}\right)\right) \cdot 28 d\right) \\
+S N R_{i} \cdot 2 d \cdot\left(7 \operatorname{Im}\left(\hat{s}_{i}\right)-\operatorname{sign}\left(\operatorname{Im}\left(\hat{s}_{i}\right)\right) \cdot 21 d\right) \\
+S N R_{i} \cdot 2 d \cdot\left(6 \operatorname{Im}\left(\hat{s}_{i}\right)-\operatorname{sign}\left(\operatorname{Im}\left(\hat{s}_{i}\right)\right) \cdot 15 d\right) \\
+S N R_{i} \cdot 2 d \cdot\left(5 \operatorname{Im}\left(\hat{s}_{i}\right)-\operatorname{sign}\left(\operatorname{Im}\left(\hat{s}_{i}\right)\right) \cdot 10 d\right) \\
+S N R_{i} \cdot 2 d \cdot\left(4 \operatorname{Im}\left(\hat{s}_{i}\right)-\operatorname{sign}\left(\operatorname{Im}\left(\hat{s}_{i}\right)\right) \cdot 6 d\right) \\
+S N R_{i} \cdot 2 d \cdot\left(3 \operatorname{Im}\left(\hat{s}_{i}\right)-\operatorname{sign}\left(\operatorname{Im}\left(\hat{s}_{i}\right)\right) \cdot 3 d\right) \\
+S N R_{i} \cdot 2 d \cdot\left(2 \operatorname{Im}\left(\hat{s}_{i}\right)-\operatorname{sign}\left(\operatorname{Im}\left(\hat{s}_{i}\right)\right) \cdot d\right) \\
+S N R_{i} \cdot 2 d \cdot \operatorname{Im}\left(\hat{s}_{i}\right)
+\end{array} \quad, i f \quad\left\{\begin{array}{c}
+7 d \leq\left|\operatorname{Im}\left(\hat{s}_{i}\right)\right| \\
+6 d \leq\left|\operatorname{Im}\left(\hat{s}_{i}\right)\right|<7 d \\
+5 d \leq\left|\operatorname{Im}\left(\hat{s}_{i}\right)\right|<6 d \\
+4 d \leq\left|\operatorname{Im}\left(\hat{s}_{i}\right)\right|<5 d \\
+3 d \leq\left|\operatorname{Im}\left(\hat{s}_{i}\right)\right|<4 d \\
+2 d \leq\left|\operatorname{Im}\left(\hat{s}_{i}\right)\right|<3 d \\
+d \leq\left|\operatorname{Im}\left(\hat{s}_{i}\right)\right|<2 d \\
+\left|\operatorname{Im}\left(\hat{s}_{i}\right)\right|<d
+\end{array}\right.\right.
+\end{aligned}
+$$
+
+$$
+\begin{gathered}
+K_{R e}=4 d-\left|\operatorname{Re}\left(\hat{s}_{i}\right)\right| \\
+K_{I m}=4 d-\left|\operatorname{Im}\left(\hat{S}_{i}\right)\right| \\
+T_{R e}=2 d-\left|K_{R e}\right| \\
+T_{I m}=2 d-\left|K_{I m}\right|
+\end{gathered}
+$$
+
+$$
+\begin{gathered}
+L_{2}^{i}=\left\{\begin{array} { c } 
+{ S N R _ { i } \cdot 2 d \cdot ( 4 K _ { R e } - \operatorname { s i g n } ( K _ { R e } ) \cdot 6 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 3 K _ { R e } - \operatorname { s i g n } ( K _ { R e } ) \cdot 3 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 2 K _ { R e } - \operatorname { s i g n } ( K _ { R e } ) \cdot d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot K _ { R e } }
+\end{array} \quad , \text { if } \left\{\begin{array}{c}
+3 d \leq\left|K_{R e}\right| \\
+2 d \leq\left|K_{R e}\right|<3 d \\
+d \leq\left|K_{R e}\right|<2 d \\
+\left|K_{R e}\right|<d
+\end{array}\right.\right. \\
+L_{3}^{i}=\left\{\begin{array} { c } 
+{ S N R _ { i } \cdot 2 d \cdot ( 4 K _ { I m } - \operatorname { s i g n } ( K _ { I m } ) \cdot 6 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 3 K _ { I m } - \operatorname { s i g n } ( \operatorname { I m } ( \hat { s } _ { i } ) \cdot 3 d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot ( 2 K _ { I m } - \operatorname { s i g n } ( \operatorname { I m } ( \hat { s } _ { i } ) ) \cdot d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot K _ { I m } }
+\end{array} \quad , \text { if } \left\{\begin{array}{c}
+3 d \leq\left|K_{I m}\right| \\
+2 d \leq\left|K_{I m}\right|<3 d \\
+d \leq\left|K_{I m}\right|<2 d \\
+\left|K_{I m}\right|<d
+\end{array}\right.\right. \\
+L_{4}^{i}=\left\{\begin{array} { c } 
+{ S N R _ { i } \cdot 2 d \cdot ( 2 T _ { R e } - \operatorname { s i g n } ( T _ { R e } ) \cdot d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot T _ { R e } }
+\end{array} \quad , \text { if } \left\{\begin{array}{l}
+d \leq\left|T_{R e}\right| \\
+\left|T_{R e}\right|<d
+\end{array}\right.\right. \\
+L_{5}^{i}=\left\{\begin{array} { c } 
+{ S N R _ { i } \cdot 2 d \cdot ( 2 T _ { I m } - \operatorname { s i g n } ( T _ { I m } ) \cdot d ) } \\
+{ S N R _ { i } \cdot 2 d \cdot T _ { I m } }
+\end{array} \quad \text { if } \left\{\begin{array}{l}
+d \leq\left|T_{I m}\right| \\
+\left|T_{I m}\right|<d
+\end{array}\right.\right.
+\end{gathered}
+$$
