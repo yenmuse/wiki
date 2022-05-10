@@ -1,0 +1,26 @@
+created: 20220510011623943
+creator: TidGiUser
+modified: 20220510013504833
+modifier: TidGiUser
+tags: 计算机网络
+title: 链路层多路访问协议
+tmap.id: 30e0e79d-8caa-4fa2-8c11-d1072ce4f429
+type: text/vnd.tiddlywiki
+
+在一个共享介质上多个传输节点分布式的传输数据，一定会相互干扰，为了解决这个问题，人们提出了大量的多路访问协议
+
+<$plantuml source="""@startmindmap
+* 多路访问协议
+	* 信道划分协议
+		* 时分
+		* 频分
+		* 码分
+	* 随机接入协议
+		* aloha协议
+		* 时隙aloha协议
+		* csma/cd协议
+		* csma/ca协议
+	* 轮流协议
+		* 轮询协议
+		* 令牌传递协议
+@endmindmap"""/>

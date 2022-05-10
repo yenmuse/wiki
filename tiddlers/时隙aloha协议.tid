@@ -1,0 +1,50 @@
+created: 20220510020731204
+creator: TidGiUser
+modified: 20220510023351874
+modifier: TidGiUser
+tags: 计算机网络
+title: 时隙aloha协议
+tmap.id: deec1097-a916-405a-a46f-2ea2ccfe5df8
+type: text/vnd.tiddlywiki
+
+时隙aloha协议的工作方式：
+
+# 所有帧大小相同，时间被划分为统一长度，称为时隙，每个时隙等于帧传输时间，节点是同步的，每个节点都知道时隙的开始位置，并且只在时隙起点开始传输
+
+# 如果一个时隙中发生了碰撞，则所有节点要在该时隙结束前检测到碰撞
+
+# 当节点有一个帧的数据要发送时，它等待到下一个时隙开始发送
+
+# 如果没有碰撞，则该节点成功的传输它的帧
+
+# 如果发生碰撞，则该节点以概率p在后续的每个时隙重传该帧，直至该帧被无碰撞的发送出去
+
+时隙aloha协议的传输效率：
+
+[img[时隙aloha协议中的干扰传输.png]]
+
+一个节点在某时隙发送数据，概率为p，其它N-1个节点不发数据的概率为$${(1-p)^{(N-1)}}$$，所以该节点能够成功发送数据的概率为$$p{(1-p)}^{{N-1}}$$，所以这个N节点系统中，某一时隙可以成功发送数据的概率为$$Np{(1-p)}^{{N-1}}$$，该式对$$p$$求导：
+$$
+\begin{aligned}
+&E(p)=N p(1-p)^{N-1} \\
+&E^{\prime}(p)=N(1-p)^{N-1}-N p(N-1)(1-p)^{N-2} \\
+&\quad=N(1-p)^{N-2}((1-p)-p(N-1))
+\end{aligned}
+$$
+
+令导数为0，得到：
+$$
+E^{\prime}(p)=0 \Rightarrow p^{*}=\frac{1}{N}
+$$
+
+所以当N趋向无限大时：
+$$
+\begin{aligned}
+&E\left(p^{*}\right)=N \frac{1}{N}\left(1-\frac{1}{N}\right)^{N-1}=\left(1-\frac{1}{N}\right)^{N-1}=\frac{\left(1-\frac{1}{N}\right)^{N}}{1-\frac{1}{N}} \\
+&\lim _{N \rightarrow \infty}\left(1-\frac{1}{N}\right)=1 \quad \lim _{N \rightarrow \infty}\left(1-\frac{1}{N}\right)^{N}=\frac{1}{e}
+\end{aligned}
+$$
+Thus
+$$
+\lim _{N \rightarrow \infty} E\left(p^{*}\right)=\frac{1}{e}
+$$

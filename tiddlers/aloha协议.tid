@@ -1,0 +1,49 @@
+created: 20220510014324964
+creator: TidGiUser
+modified: 20220510021727248
+modifier: TidGiUser
+tags: 计算机网络
+title: aloha协议
+tmap.id: e7bbce62-bfe0-4e7e-afc6-328aedf27edc
+type: text/vnd.tiddlywiki
+
+aloha协议的工作方式：
+
+# 当一帧首次从上层发下来时，节点立刻将该帧完整的传输进广播信道
+
+# 如果发生碰撞，该节点在完整传输完该碰撞帧之后立即以概率p重传
+
+# 否则该节点等待一个帧传输时间，等待之后，它以概率p传输该帧或以概率p-1继续等待另一个帧传输时间
+
+
+aloha协议的传输效率：
+
+[img[aloha协议中的干扰传输.png]]
+
+我们以帧传输时间为单位1，系统中一共N个节点。
+
+假设某节点在时间$$t_0$$开始传输，则该传输成功的条件是$$[t_0 - 1, t_0]$$以及$$[t_0, t_0 + 1]$$期间，其它N-1个节点都没有开始传输，二者的概率均为$${(1 - p)}^{(N - 1)}$$，所以该系统中的N个节点在任意时刻开始传输，该系统的传输效率为 $$N p   {(1-p)}^{(N-1)}$$，该式对$$p$$求导：
+
+$$
+\begin{aligned}
+&E(p)=N p(1-p)^{2(N-1)} \\
+&E^{\prime}(p)=N(1-p)^{2(N-2)}-N p 2(N-1)(1-p)^{2(N-3)} \\
+&=N(1-p)^{2(N-3)}((1-p)-p 2(N-1))
+\end{aligned}
+$$
+
+令导数为0，得到：
+
+$$
+E^{\prime}(p)=0 \Rightarrow p^{*}=\frac{1}{2 N-1}
+$$
+
+令N趋向无限大：
+$$
+\begin{aligned}
+&E\left(p^{*}\right)=\frac{N}{2 N-1}\left(1-\frac{1}{2 N-1}\right)^{2(N-1)} \\
+&\lim _{N \rightarrow \infty} E\left(p^{*}\right)=\frac{1}{2} \cdot \frac{1}{e}=\frac{1}{2 e}
+\end{aligned}
+$$
+
+也就是说aloha协议的效率最高只有$$\frac{1}{2 e}$$
