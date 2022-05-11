@@ -1,0 +1,12 @@
+created: 20220511090609638
+creator: TidGiUser
+modified: 20220511090836906
+modifier: TidGiUser
+tags: python numpy
+title: numpy ndarray indexing时注意返回类型一维还是多维
+tmap.id: 96187d90-677d-47de-a3dc-c8aa70d9b9f2
+type: text/vnd.tiddlywiki
+
+[img[numpy ndarray indexing 1D or mD.png]]
+
+注意在numpy中对一个多为数组取indexing的时候，其输出根据我们indexing方式的不同，返回数据的维数也是不同的。
