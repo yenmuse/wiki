@@ -1,0 +1,34 @@
+created: 20220516060343541
+creator: TidGiUser
+modified: 20220516060411388
+modifier: TidGiUser
+tags: 示意图
+title: 线性信道示意图
+tmap.id: 6357b02a-547a-4e10-b79c-32de1a926fd6
+type: text/vnd.tiddlywiki
+
+$$
+\left[\begin{array}{lllll}
+s 0 & s 6 & s 5 & s 4 & s 3 \\
+s 1 & s 0 & s 6 & s 5 & s 4 \\
+s 2 & s 1 & s 0 & s 6 & s 5 \\
+s 3 & s 2 & s 1 & s 0 & s 6 \\
+s 4 & s 3 & s 2 & s 1 & s 0 \\
+s 5 & s 4 & s 3 & s 2 & s 1 \\
+s 6 & s 5 & s 4 & s 3 & s 2
+\end{array}\right] \times\left[\begin{array}{l}
+h 0 \\
+h 1 \\
+h 2 \\
+h 3 \\
+h 4
+\end{array}\right]=\left[\begin{array}{l}
+r 0 \\
+r 1 \\
+r 2 \\
+r 3 \\
+r 4 \\
+r 5 \\
+r 6
+\end{array}\right]
+$$
