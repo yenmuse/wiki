@@ -1,0 +1,22 @@
+created: 20220516084355353
+creator: TidGiUser
+modified: 20220516090831529
+modifier: TidGiUser
+tags: wifi
+title: 802.11 aj 信道估计中迭代处理模块
+tmap.id: a7de82f8-b956-4938-b6df-c70236753b91
+type: text/vnd.tiddlywiki
+
+[img[aj phy信道估计中的迭代处理模块.png]]
+
+其中分块DFT阵变换表示将$$Q\times N$$维行向量乘以矩阵
+$$
+\mathbf{F}_{Q}^{*} \otimes \mathbf{I}_{Q^{K} L}=\left[\begin{array}{cccc}
+\mathbf{F}_{Q}^{*}(1,1) \cdot \mathbf{I}_{Q^{K} L} & \mathbf{F}_{Q}^{*}(1,2) \cdot \mathbf{I}_{Q^{K} L} & \cdots & \mathbf{F}_{Q}^{*}(1, Q) \cdot \mathbf{I}_{Q^{K} L} \\
+\mathbf{F}_{Q}^{*}(2,1) \cdot \mathbf{I}_{Q^{K} L} & \mathbf{F}_{Q}^{*}(2,2) \cdot \mathbf{I}_{Q^{K} L} & \cdots & \mathbf{F}_{Q}^{*}(2, Q) \cdot \mathbf{I}_{Q^{K} L} \\
+\vdots & \vdots & \ddots & \vdots \\
+\mathbf{F}_{Q}^{*}(Q, 1) \cdot \mathbf{I}_{Q^{K} L} & \mathbf{F}_{Q}^{*}(Q, 2) \cdot \mathbf{I}_{Q^{K} L} & \cdots & \mathbf{F}_{Q}^{*}(Q, Q) \cdot \mathbf{I}_{Q^{K} L}
+\end{array}\right]
+$$
+
+$$\otimes$$表示克罗内克积，$$I_{Q^kL}$$表示维数为$$Q^kL \times Q^kL$$的单位阵，$$\mathbf{F}_{Q}^{*}(p, q)$$ 表示 $$\mathbf{F}_{Q}$$的共轭矩阵的第$$p$$行第$$q$$列元素$$ p, q=1,2, \ldots, Q$$
