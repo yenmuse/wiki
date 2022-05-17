@@ -1,6 +1,6 @@
 created: 20220516060343541
 creator: TidGiUser
-modified: 20220516060411388
+modified: 20220517085335189
 modifier: TidGiUser
 tags: 示意图
 title: 线性信道示意图
@@ -32,3 +32,7 @@ r 5 \\
 r 6
 \end{array}\right]
 $$
+
+$$r(k)=s(k) \otimes h(k)=\sum_{m=-\infty}^{+\infty} \mathrm{s}(\mathrm{~m}) \mathrm{h}(\mathrm{k}-\mathrm{m})$$
+
+$$r(k)=h(k) \otimes s(k)=\sum_{m=-\infty}^{+\infty} \mathrm{h}(\mathrm{~m}) \mathrm{s}(\mathrm{k}-\mathrm{m})$$
