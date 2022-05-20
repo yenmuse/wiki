@@ -1,6 +1,6 @@
 created: 20220516060343541
 creator: TidGiUser
-modified: 20220520005252257
+modified: 20220520030120840
 modifier: TidGiUser
 tags: 示意图
 title: 卷积示意图
@@ -22,9 +22,9 @@ $$r(k)=h(k) * s(k)=\sum_{m=-\infty}^{+\infty} \mathrm{h}(\mathrm{~m}) \mathrm{s}
 
 ''圆周卷积''
 
-$$r(k)=s(k) \otimes h(k)=\sum_{m=-\infty}^{+\infty} \mathrm{s}(\mathrm{~m}) \mathrm{h}(\mathrm{k}-\mathrm{m})$$
+$$\tilde{r}(k)=\tilde{s}(k) \otimes \tilde{h}(k)=\sum_{m=-\infty}^{+\infty} \mathrm{\tilde{s}}(\mathrm{~m}) \mathrm{\tilde{h}}(\mathrm{k}-\mathrm{m})$$
 
-$$r(k)=h(k) \otimes s(k)=\sum_{m=-\infty}^{+\infty} \mathrm{h}(\mathrm{~m}) \mathrm{s}(\mathrm{k}-\mathrm{m})$$
+$$\tilde{r}(k)=\tilde{h}(k) \otimes \tilde{s}(k)=\sum_{m=-\infty}^{+\infty} \mathrm{\tilde{h}}(\mathrm{~m}) \mathrm{\tilde{s}}(\mathrm{k}-\mathrm{m})$$
 
 ''圆周卷积写成矩阵形式''
 
