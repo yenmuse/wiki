@@ -1,0 +1,14 @@
+created: 20220520021808509
+creator: TidGiUser
+modified: 20220520022802918
+modifier: TidGiUser
+tags: 频偏估计
+title: 频偏导致的符号间相位偏移
+tmap.id: dea5148b-8e9b-4456-8de4-7d7f2203aaf8
+type: text/vnd.tiddlywiki
+
+$$s_0(t), s_1(t)$$分别是长度为$$T_0, T_1$$的发送信号，现在将它两顺序拼接在一起，得到发送信号为$$s(t) = s_0(t) + s_1(t-T_0)$$.
+
+经历频偏为$$\Delta f$$，则接收方收到的信号为$$r(t) = s(t)*e^{j2\pi\Delta ft} = (s_0(t) + s_1(t-T_0))*e^{j2\pi\Delta ft} = s_0(t)*e^{j2\pi\Delta ft} + s_1(t-T_0)*e^{j2\pi\Delta ft} = s_0(t)*e^{j2\pi\Delta ft} + e^{j2\pi \Delta fT0}*s_1(t-T_0)*e^{j2\pi\Delta f(t-T_0)}$$
+
+注意对于$$s_1(t)$$，它经历的不仅仅是频偏，还有频偏在时间上积累导致的相位偏移。
