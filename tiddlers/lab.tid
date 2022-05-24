@@ -1,0 +1,18 @@
+created: 20220524032008889
+creator: TidGiUser
+modified: 20220524032700311
+modifier: TidGiUser
+tags: 
+title: lab
+tmap.id: e05bb050-90af-4445-9fa7-e550d30e01d4
+type: text/vnd.tiddlywiki
+
+\import $:/core/ui/ControlPanel/KeyboardShortcuts
+
+<table>
+<tbody>
+<$list filter="[all[shadows+tiddlers]prefix[$:/config/ShortcutInfo/fishing-]removeprefix[$:/config/ShortcutInfo/]]" variable="shortcutName">
+<<shortcut-item>>
+</$list>
+</tbody>
+</table>
