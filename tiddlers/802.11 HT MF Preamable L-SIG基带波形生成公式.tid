@@ -1,0 +1,12 @@
+created: 20220607122916103
+creator: TidGiUser
+modified: 20220607122951234
+modifier: TidGiUser
+tags: wifi
+title: 802.11 HT MF Preamable L-SIG基带波形生成公式
+tmap.id: 81bb6fe2-e1cd-4cbb-ab1f-05ff5b06408e
+type: text/vnd.tiddlywiki
+
+$$
+r_{L-S I G}^{\left(i_{T X}\right)}(t)=\frac{1}{\sqrt{N_{T X} \cdot N_{L-S I G}^{T o n e}}} w_{\mathrm{T}_{S Y M}}(t) \sum_{k=-26}^{26}\left(D_{k}+p_{0} P_{k}\right) \exp \left(j 2 \pi k \Delta_{F}\left(t-T_{G I}-T_{C S}^{i_{T X}}\right)\right)
+$$

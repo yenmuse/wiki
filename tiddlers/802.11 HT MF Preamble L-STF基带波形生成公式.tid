@@ -1,0 +1,49 @@
+created: 20220603163313879
+creator: TidGiUser
+modified: 20220603164247951
+modifier: TidGiUser
+tags: wifi
+title: 802.11 HT MF Preamble L-STF基带波形生成公式
+tmap.id: dbd10b7b-a186-4893-95aa-8393bf158bf3
+type: text/vnd.tiddlywiki
+
+$$
+r_{L-S T F}^{\left(i_{T X}\right)}(t)=\frac{1}{\sqrt{N_{T X} \cdot N_{L-S T F}^{T o n e}}} w_{T_{L-S T F}}(t) \sum_{k=-N_{S R}}^{N_{S R}} \Upsilon_{k} S_{k} \exp \left(j 2 \pi k \Delta_{F}\left(t-T_{C S}^{i_{T X}}\right)\right)
+$$
+
+$$
+\begin{aligned}
+&S_{-26,26}=\sqrt{1 / 2} \\
+&\{0,0,1+j, 0,0,0,-1-j, 0,0,0,1+j, 0,0,0,-1-j, 0,0,0,-1-j, 0,0,0,1+j, 0,0,0, \\
+&\quad 0,0,0,0,-1-j, 0,0,0,-1-j, 0,0,0,1+j, 0,0,0,1+j, 0,0,0,1+j, 0,0,0,1+j, 0,0\}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+S_{-58,58} &=\sqrt{1 / 2} \\
+&\{0,0,1+j, 0,0,0,-1-j, 0,0,0,1+j, 0,0,0,-1-j, 0,0,0,-1-j, 0,0,0,1+j, 0,0,0,\\
+& 0,0,0,0,-1-j, 0,0,0,-1-j, 0,0,0,1+j, 0,0,0,1+j, 0,0,0,1+j, 0,0,0,1+j, 0,0,0,0,0 \\
+& 0,0,0,0,0,0,0,0,0,0,1+j, 0,0,0,-1-j, 0,0,0,1+j, 0,0,0,-1-j, 0,0,0,-1-j, 0,0,0,1+j, \\
+&0,0,0,0,0,0,0,-1-j, 0,0,0,-1-j, 0,0,0,1+j, 0,0,0,1+j, 0,0,0,1+j, 0,0,0,1+j, 0,0\}
+\end{aligned}
+$$
+
+$$
+{ }^{w} T^{(t)}=\left\{\begin{array}{lc}
+\sin ^{2}\left(\frac{\pi}{2}\left(0.5+t / T_{T R}\right)\right) \\
+1 & \left(-T_{T R} / 2<t<T_{T R} / 2\right) \\
+\sin ^{2}\left(\frac{\pi}{2}\left(0.5-(t-T) / T_{T R}\right)\right) & \left(T-T_{T R} / 2 \leq t<T-T_{T R} / 2\right)
+\end{array}\right.
+$$
+
+$$
+\Upsilon_{k}=\left\{\begin{array}{l}
+1, k \leq 0, \text { in a } 40 \mathrm{MHz} \text { channel } \\
+j, k>0, \text { in a } 40 \mathrm{MHz} \text { channel }
+\end{array}\right.
+$$
+
+$$
+\Upsilon_{k}=1 \text {, in a } 20 \mathrm{MHz} \text { channel }
+$$
