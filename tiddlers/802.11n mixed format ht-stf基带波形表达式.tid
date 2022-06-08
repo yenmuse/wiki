@@ -1,15 +1,15 @@
 created: 20220607122953852
 creator: TidGiUser
-modified: 20220607123106003
+modified: 20220608064711091
 modifier: TidGiUser
 tags: wifi
-title: 802.11 HT MF Preamable HT-STF基带波形生成公式
+title: 802.11n mixed format ht-stf基带波形表达式
 tmap.id: e0cd156b-94ea-4bcf-b607-caed78b16d25
 type: text/vnd.tiddlywiki
 
 $$
 \begin{aligned}
 r_{H T-S T F}^{i_{T X}}(t)=& \frac{1}{\sqrt{N_{S T S} \cdot N_{H T-S T F}^{T o n e}}} w_{\mathrm{T}_{H T-S T F}}(t) \\
-& \sum_{k=-N_{S R}} \sum_{i_{S T S}=1}^{N_{S T S}}\left[Q_{k}\right]_{i_{T X}, i_{S T S}} \Upsilon_{k} H T S_{k} \exp \left(j 2 \pi k \Delta_{F}\left(t-T_{C S}^{i_{S T S}}\right)\right)
+& \sum_{k=-N_{S R}}^{N_{SR}} \sum_{i_{S T S}=1}^{N_{S T S}}\left[Q_{k}\right]_{i_{T X}, i_{S T S}} \Upsilon_{k} H T S_{k} \exp \left(j 2 \pi k \Delta_{F}\left(t-T_{C S}^{i_{S T S}}\right)\right)
 \end{aligned}
 $$

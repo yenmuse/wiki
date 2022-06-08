@@ -1,0 +1,28 @@
+created: 20220607032100835
+creator: TidGiUser
+modified: 20220608081759554
+modifier: TidGiUser
+tags: 802.11
+title: 802.11n 发送链路模块
+tmap.id: a7ed922b-eb7f-4623-828e-a95128c60fa4
+type: text/vnd.tiddlywiki
+
+[img[802.11n 发送链路模块.png]]
+
+注意上图右侧是一个特定的2 FEC Encoders + 4个空流 + BCC Encoding + no STBC + 4 Transmit Chains的一个示例，实际情况可能不同：
+
+# 当使用BCC Encoding时，可能有1个或2个FEC Encoders：当选择的MCS会带来超过300Mb/s的PHY rate时会选择2个FEC Encoder
+
+# stream parser可能会有1、2、3、4个输出
+
+# 当使用LDPC时，不使用interleaver
+
+# 当使用STBC时，STBC的输出比输入要多
+
+# 当使用spatial mapping时， transmit chain可能比space-time stream多
+
+# spatial mapper的输入可能是 1、2、3、4个
+
+# $$N_{SS}$$个数由MCS决定，MCS由TXVECTOR中的参数决定，收方通过HT-SIG中相应字段确定
+
+# $$N_{STS}$$由$$N_{ss}$$以及TXVECTOR中的STBC字段共同决定，到这里其实就可以确定STBC具体配置了；收方通过HT-SIG中相应字段确定

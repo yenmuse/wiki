@@ -1,0 +1,24 @@
+created: 20220608061302300
+creator: TidGiUser
+modified: 20220608063640797
+modifier: TidGiUser
+tags: 802.11
+title: 802.11n l-stf的一些性质
+tmap.id: 2c32e726-64fa-4559-ab23-db0a104dc567
+type: text/vnd.tiddlywiki
+
+# l-stf的频域序列每隔4个子载波出现一个非零值，所以通过IFFT转换成时域之后，每隔0.8us序列重复一次，在20MHz采样频率下，也就是一个样点50ns，800ns也就是16个样点序列重复一次
+
+# l-stf可以通过互相关(接受序列与协议定义的序列)以及自相关(每个0.8us重复一次)来得到初始定时；也可以用来计算频偏，可以估计的频偏范围是$$\pm625kHz(\pm 1/0.8us/2)$$
+
+# l-stf也可以用来做AGC
+
+# l-stf的互相关特性会由于信道中的延迟响应恶化，见下图：
+
+## [img[l-stf完美互相关.png]]
+
+## [img[l-stf延迟互相关.png]]
+
+## 上面两张图截自Cambridge-Next Generation Wireless LANs 802.11n.pdf
+
+## 可以看出，第二张图中时延50ns也就是1个20MHz样点时，相关峰相较第一张图变宽了；时延400ns相比时延50ns，出现了一些伪相关峰，这会影响时偏估计。

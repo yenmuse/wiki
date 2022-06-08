@@ -1,0 +1,21 @@
+created: 20220608064751899
+creator: TidGiUser
+modified: 20220608065223247
+modifier: TidGiUser
+tags: 802.11
+title: 802.11n 40MHz带宽时的上20MHz偏移90°
+tmap.id: 79cd15f1-75b2-47e4-a99b-3bd22273a0af
+type: text/vnd.tiddlywiki
+
+$$
+\Upsilon_{k}=\left\{\begin{array}{l}
+1, k \leq 0, \text { in a } 40 \mathrm{MHz} \text { channel } \\
+j, k>0, \text { in a } 40 \mathrm{MHz} \text { channel }
+\end{array}\right.
+$$
+
+$$
+\Upsilon_{k}=1 \text {, in a } 20 \mathrm{MHz} \text { channel }
+$$
+
+观察基带波形的表达式，可以看到40MHz带宽时，上面20MHz相比下面20MHz带宽其中的子载波要多乘一个$$j$$，也就是偏移90°，这是为了降低上下20MHz子载波之间的相关性，''避免高PAPR''。

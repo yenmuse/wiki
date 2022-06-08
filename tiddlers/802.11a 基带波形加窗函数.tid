@@ -1,0 +1,22 @@
+created: 20220608032733933
+creator: TidGiUser
+modified: 20220608033315102
+modifier: TidGiUser
+tags: 802.11
+title: 802.11a 基带波形加窗函数
+tmap.id: 682340b9-83c1-4c2a-9361-96f6a756180c
+type: text/vnd.tiddlywiki
+
+$$
+w_T(t)=\left\{\begin{array}{lc}
+\sin ^{2}\left(\frac{\pi}{2}\left(0.5+t / T_{T R}\right)\right) & \left(-T_{T R} / 2<t<T_{T R} / 2\right)\\
+1 & \left(T_{T R} / 2 \leq t<T - T_{T R} / 2\right) \\
+\sin ^{2}\left(\frac{\pi}{2}\left(0.5-(t-T) / T_{T R}\right)\right) & \left(T-T_{T R} / 2 \leq t<T+T_{T R} / 2\right)
+\end{array}\right.
+$$
+
+这里加窗是为了避免频谱泄露，符合[[协议规定的频谱遮罩|802.11发射机的频谱遮罩]]。
+
+[img[802.11a加窗示意图.png]]
+
+上图截自IEEE Computer Society - IEEE Std 802.11™‐2020-The Institute of Electrical and Electronics Engineers, Inc. (2021).pdf 17.3.2.5

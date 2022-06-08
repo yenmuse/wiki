@@ -1,0 +1,12 @@
+created: 20220607063103600
+creator: TidGiUser
+modified: 20220608030732218
+modifier: TidGiUser
+tags: 802.11
+title: 802.11发射机的频谱遮罩
+tmap.id: 361dfa7e-fdf7-48ab-80a1-11127df67f36
+type: text/vnd.tiddlywiki
+
+[img[802.11 a_g_n_ac 使用的OFDM频谱遮罩.png]]
+
+上图摘自Tektronix-802.11物理层和发射机测量概述_CN.pdf
