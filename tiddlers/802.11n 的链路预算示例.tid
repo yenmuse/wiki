@@ -1,0 +1,47 @@
+created: 20220609061913629
+creator: TidGiUser
+modified: 20220610012453476
+modifier: TidGiUser
+tags: 802.11
+title: 802.11n 的链路预算示例
+tmap.id: f977ab13-cad6-4227-a6ca-770da4ad986a
+type: text/vnd.tiddlywiki
+
+[img[802.11n几个mcs下的链路预算.png]]
+
+上图截自 Cambridge-Next Generation Wireless LANs 802.11n.pdf
+
+以20MHz MCS0为例，看看链路预算中各个元素是怎么计算的：
+
+# 一些假设或典型值
+
+# 选用信道模型D，断电距离为10m
+
+## 假设单个发送天线上的发射功率为15dBm
+
+## 发送和接收天线的增益设置为2dBi，这个是802.11设备全向天线的典型值；发射机和接收机都有两个天线
+
+## 接收机噪声系数取典型值6dB
+
+# 20MHz带宽上的热噪声功率为 $$-174dBm/Hz + 10lg(20 \times 10^{6}) \approx -101dBm$$，考虑到6dB的噪声系数，则噪声功率为-95dBm
+
+# 路径损耗公式为：
+
+$$
+d \leq d_{BP}时， L(d) = L_{FS}(d) + SF
+$$
+
+$$
+d > d_{BP}时， L(d) = L_{FS}(d) + 35lg(\frac{d}{d_{BP}}) + SF
+$$
+
+其中$$L_{FS}(d)$$表示自由路径损耗，定义为
+$$
+L_{FS}(d) = 20lg(d) + 20lg(f) - 147.5
+$$
+
+$$L_{SF}(d)$$单位是dB，d单位是米，f单位是赫兹。
+
+将假设的d=98.2m SF=5dB 带入上式即可得到总的损耗
+
+结合上面的计算，接收机在基带看到的信号功率为 $$RSSI = P_{T} + A_{T} - PL - SF +A_{R}$$，其中$$P_{T}, A_{T}, PL, SF, A_{R}$$分别表示发送功率、发送天线增益、路径损耗、阴影衰落、接收天线增益

@@ -1,0 +1,14 @@
+created: 20220609060629129
+creator: TidGiUser
+modified: 20220609061816845
+modifier: TidGiUser
+tags: 802.11
+title: 802.11n 的发送载波中心频率与符号时钟频率的误差
+tmap.id: 1899e023-5a24-465d-8a4e-95467279240f
+type: text/vnd.tiddlywiki
+
+根据协议要求， 802.11n要求发送载波中心频率与符号始终频率在5GHz频带/2.4GHz频带上，频率误差范围 $$\pm 20ppm$$/$$\pm 25ppm$$，这意味着：
+
+# 5GHz上的$$\pm 20ppm$$意味着$$\pm 100KHz$$的频偏，如果收发双方都有这样的误差，则整个链路上的频偏范围达到$$\pm 200KHz$$；类似的，2.4GHz上，整个链路上的频偏范围达到了$$\pm 120KHz$$
+
+# 每过1s，每1ppm的频率误差会带来1us的定时误差

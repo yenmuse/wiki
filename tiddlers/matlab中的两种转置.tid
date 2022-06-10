@@ -1,0 +1,14 @@
+created: 20220609080434550
+creator: TidGiUser
+modified: 20220609080659336
+modifier: TidGiUser
+tags: matlab
+title: matlab中的两种转置
+tmap.id: 148634f1-7b01-4cb4-a75d-ed3692b682b8
+type: text/vnd.tiddlywiki
+
+matlab中：
+
+# 单引号 “‘”表示非共轭转置，只是行列索引互换，不会对复数元素取共轭
+
+# “.'”表示共轭转置

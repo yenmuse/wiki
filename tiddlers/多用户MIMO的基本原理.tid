@@ -1,0 +1,22 @@
+created: 20220610085013116
+creator: TidGiUser
+modified: 20220610090340940
+modifier: TidGiUser
+tags: 多天线技术
+title: 多用户MIMO的基本原理
+tmap.id: 39158797-ebaf-4cb1-ac8d-38aa812567d4
+type: text/vnd.tiddlywiki
+
+在多用户MIMO系统中，下行和上行信道分别被称为 BC(Broadcast Channel)和MAC(Multiple Access Channel)。
+
+# 在MAC中，基站可以获取所有用户的数据流，所以其原理类似单用户MIMO
+
+# 在BC中，每个用户的天线数目都小于基站的天线数，无法获得所有的数据流，而且多个用户之间也无法协同进行数据处理，所以需要一些特殊的算法：
+
+## 信道反转(Channel Invesion)
+
+## 块对角化(Block Diagnolization)
+
+## 脏页编码(Dirty Paper Coding)
+
+## Tolinson-Harashima预编码(THP)
